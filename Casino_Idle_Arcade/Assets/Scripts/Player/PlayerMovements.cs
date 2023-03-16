@@ -8,20 +8,23 @@ public class PlayerMovements : MonoBehaviour
 
     //variables
     [SerializeField] float rotationSpeed;
-    [SerializeField] CharacterController cc;
-    float speed;
-    Vector3 velocity;
-    [SerializeField] Animator anim;
-    [SerializeField] Transform cameraTransform;
-    
     Vector3 movementDir;
     float xDir, zDir;
     float inputMagnitude;
+    Vector3 velocity;
+    float speed;
+
+
+    // references
+    [SerializeField] Rigidbody rb;
+    [SerializeField] Animator anim;
+    [SerializeField] Transform cameraTransform;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+        velocity = transform.position;
     }
 
     // Update is called once per frame
@@ -34,13 +37,15 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        cc.Move(velocity);
-        velocity = Vector3.zero;
+        rb.position = velocity;
     }
     private void Move()
     {
-        xDir = Input.GetAxis("Horizontal");
-        zDir = Input.GetAxis("Vertical");
+        //xDir = Input.GetAxis("Horizontal");
+        //zDir = Input.GetAxis("Vertical");
+
+        xDir = Joystick.Instance.Horizontal + Input.GetAxis("Horizontal");
+        zDir = Joystick.Instance.Vertical + Input.GetAxis("Vertical");
 
         movementDir = new Vector3(xDir, 0, zDir);
         inputMagnitude = Mathf.Clamp01(movementDir.magnitude);
@@ -66,7 +71,6 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-
         velocity += anim.deltaPosition * 2f;
     }
 }
