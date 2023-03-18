@@ -7,6 +7,5 @@ public class CustomerData : ScriptableObject
 {
     [SerializeField] float moveSpeed;
     [SerializeField] int cashAmount;
-    [SerializeField] Transform[] Destinations;
     
 }
