@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
+
 public class PlayerMovements : MonoBehaviour
 {
 
@@ -20,6 +21,12 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
     
+    public static PlayerMovements Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +68,6 @@ public class PlayerMovements : MonoBehaviour
         {
             anim.SetBool("isMoving", true);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDir.normalized), Time.deltaTime * rotationSpeed);
-            
         }
         else
         {
