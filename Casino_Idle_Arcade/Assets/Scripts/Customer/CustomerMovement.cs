@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CustomerMovement : Customer
 {
-
+    Transform dir;
     [SerializeField] NavMeshAgent agent;
 
     public Transform destination;
@@ -14,12 +14,14 @@ public class CustomerMovement : Customer
 
     private void Update()
     {
+        dir = destination;
         if (destination != null)
         {
             agent.SetDestination(destination.position);
-
             if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
             {
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, dir.rotation, 0.1f);
                 anim.SetBool("idle", true);
                 anim.SetBool("isWalking", false);
             }
