@@ -19,10 +19,12 @@ public class CashierFirstTransform : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Customer"))
+        if (other.gameObject.Equals(firstCustomer.gameObject))
         {
+            CustomerSpawner.instance.customersList.Remove(firstCustomer);
+            CustomerSpawner.instance.AllCustomerInLineMoveForward();
             firstCustomer = null;
-
+            
         }
     }
 }

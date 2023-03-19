@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CashierManager : MonoBehaviour
 {
+    public List<Transform> customerSpots = new List<Transform>();
+
     [SerializeField] float cooldown;
     [SerializeField] CashierFirstTransform firstCounter;
     public bool cashierAvailabe;
@@ -25,7 +27,6 @@ public class CashierManager : MonoBehaviour
                     SlotMachineManager.emtpySlotMachines[0].customer = firstCounter.firstCustomer;
                     SlotMachineManager.emtpySlotMachines.Remove(SlotMachineManager.emtpySlotMachines[0]);
                     cooldown = 3f;
-
                 }
             }
         
@@ -52,7 +53,7 @@ public class CashierManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerIsCashier = false;
-
+            
         }
     }
 

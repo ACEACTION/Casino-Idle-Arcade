@@ -36,22 +36,28 @@ public class SlotMachine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(customer.gameObject))
+        if (customer != null)
         {
-            customerIsPlaying = true;
-            customer.anim.SetBool("idle", false);
-            customer.anim.SetBool("isPlayingCard", true);
+            if (other.gameObject.Equals(customer.gameObject))
+            {
+                customerIsPlaying = true;
+                customer.anim.SetBool("idle", false);
+                customer.anim.SetBool("isPlayingCard", true);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.Equals(customer.gameObject))
+        if (customer != null)
         {
-            cooldown = cooldownAmount;
-            customerIsPlaying = false;
-            isEmpty = true;
-            SlotMachineManager.emtpySlotMachines.Add(this);
+            if (other.gameObject.Equals(customer.gameObject))
+            {
+                cooldown = cooldownAmount;
+                customerIsPlaying = false;
+                isEmpty = true;
+                SlotMachineManager.emtpySlotMachines.Add(this);
+            }
         }
     }
 }

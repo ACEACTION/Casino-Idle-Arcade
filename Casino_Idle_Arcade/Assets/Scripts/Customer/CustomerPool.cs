@@ -6,8 +6,8 @@ using UnityEngine.Pool;
 
 public class CustomerPool : MonoBehaviour
 {
-    [SerializeField] GameObject customer;
-    public ObjectPool<GameObject> customerPool;
+    [SerializeField] CustomerMovement customer;
+    public ObjectPool<CustomerMovement> customerPool;
 
     public static CustomerPool instance;
 
@@ -21,32 +21,32 @@ public class CustomerPool : MonoBehaviour
 
     void Start()
     {
-        customerPool = new ObjectPool<GameObject>(CreateCustomer, OnGet, OnRelease, OnDestroyCustomer, false, 10, 50);
+        customerPool = new ObjectPool<CustomerMovement>(CreateCustomer, OnGet, OnRelease, OnDestroyCustomer, false, 10, 50);
     }
 
-    private void OnDestroyCustomer(GameObject obj)
+    private void OnDestroyCustomer(CustomerMovement obj)
     {
         Destroy(obj);
     }
 
-    private void OnRelease(GameObject obj)
+    private void OnRelease(CustomerMovement obj)
     {
-        obj.SetActive(false);
+        obj.gameObject.SetActive(false);
     }
 
-    private void OnGet(GameObject obj)
+    private void OnGet(CustomerMovement obj)
     {
-        obj.SetActive(true);
+        obj.gameObject.SetActive(true);
     }
 
-    private GameObject CreateCustomer()
+    private CustomerMovement CreateCustomer()
     {
-        GameObject cs = Instantiate(customer);
+        CustomerMovement cs = Instantiate(customer);
 
         return cs;
     }
 
-    public void OnReleaseHit(GameObject customer)
+    public void OnReleaseHit(CustomerMovement customer)
     {
         customerPool.Release(customer);
     }
