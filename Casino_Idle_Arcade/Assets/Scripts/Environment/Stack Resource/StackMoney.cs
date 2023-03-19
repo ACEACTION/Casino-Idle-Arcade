@@ -27,14 +27,6 @@ public class StackMoney : MonoBehaviour
         MakeSlots();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            MakeSlots();
-        }
-    }
-
     void MakeSlots()
     {
         for (int x = 0; x < xSize; x++)

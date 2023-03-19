@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class CashierManager : MonoBehaviour
 {
+    [SerializeField] int slotMachinePayment;
+    [SerializeField] int tablePayment;
+
+
     public List<Transform> customerSpots = new List<Transform>();
 
     [SerializeField] float cooldown;
     [SerializeField] CashierFirstTransform firstCounter;
+    [SerializeField] StackMoney stackMoney;
     public bool cashierAvailabe;
     public bool playerIsCashier;
-
     public int tableIndex = 0;
     private void Update()
     {
@@ -24,15 +28,19 @@ public class CashierManager : MonoBehaviour
             {
                 if(GameInstrumentsManager.emtpySlotMachines.Count != 0)
                 {
+                    firstCounter.firstCustomer.PayMoney(stackMoney, slotMachinePayment);
                     //sending customers to slot machines
                     firstCounter.firstCustomer.SetMove(GameInstrumentsManager.emtpySlotMachines[0].customerSpot);
                     GameInstrumentsManager.emtpySlotMachines[0].isEmpty = false;
                     GameInstrumentsManager.emtpySlotMachines[0].customer = firstCounter.firstCustomer;
                     GameInstrumentsManager.emtpySlotMachines.Remove(GameInstrumentsManager.emtpySlotMachines[0]);
+
                     cooldown = 3f;
                 }
                 else if(GameInstrumentsManager.emptyTableList.Count != 0)
                 {
+
+                    firstCounter.firstCustomer.PayMoney(stackMoney, tablePayment);
                     var table = GameInstrumentsManager.emptyTableList[0];
 
                     //sending customers to tables

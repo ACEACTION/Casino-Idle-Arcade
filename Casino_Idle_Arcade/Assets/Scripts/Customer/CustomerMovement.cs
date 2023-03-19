@@ -20,7 +20,6 @@ public class CustomerMovement : Customer
             agent.SetDestination(destination.position);
             if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
             {
-
                 transform.rotation = Quaternion.Slerp(transform.rotation, dir.rotation, 0.1f);
                 anim.SetBool("idle", true);
                 anim.SetBool("isWalking", false);
