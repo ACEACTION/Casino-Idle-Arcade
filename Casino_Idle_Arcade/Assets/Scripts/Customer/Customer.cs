@@ -12,11 +12,8 @@ public class Customer : MonoBehaviour
     public CustomerState csState;
     public CustomerData stats;
     bool payedMoney;
+    public bool tableWinner;
 
-    public void Leave()
-    {
-
-    }
 
     public void PayMoney(StackMoney stackMoney, int amount)
     {

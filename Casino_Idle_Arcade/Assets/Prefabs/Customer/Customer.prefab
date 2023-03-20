@@ -515,7 +515,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4978187463501947340}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2.324505
@@ -530,7 +530,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4978187463501947340}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -558,6 +558,7 @@ MonoBehaviour:
   anim: {fileID: 5320856513153801346}
   csState: 1
   stats: {fileID: 11400000, guid: ac3bb7d9a176050469411901512231ea, type: 2}
+  tableWinner: 0
   agent: {fileID: 1791738785}
   destination: {fileID: 0}
 --- !u!1 &5106541512157677110

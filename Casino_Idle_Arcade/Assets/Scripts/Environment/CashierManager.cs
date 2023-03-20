@@ -35,20 +35,22 @@ public class CashierManager : MonoBehaviour
                     GameInstrumentsManager.emtpySlotMachines[0].customer = firstCounter.firstCustomer;
                     GameInstrumentsManager.emtpySlotMachines.Remove(GameInstrumentsManager.emtpySlotMachines[0]);
 
-                    cooldown = 3f;
+                    cooldown = 1f;
                 }
                 else if(GameInstrumentsManager.emptyTableList.Count != 0)
                 {
 
-                    firstCounter.firstCustomer.PayMoney(stackMoney, tablePayment);
                     var table = GameInstrumentsManager.emptyTableList[0];
 
                     //sending customers to tables
                     if (table.hasEmptySlots)
                     {
+                        firstCounter.firstCustomer.PayMoney(stackMoney, tablePayment);
+
                         firstCounter.firstCustomer.SetMove(table.customerSpot[tableIndex]);
                         table.customerList.Add(firstCounter.firstCustomer);
-                        cooldown = 3f;
+                        table.customersInPlace[tableIndex] = firstCounter.firstCustomer;
+                        cooldown = 1f;
                         tableIndex++;
 
                         if(tableIndex  >= table.maximumCapacity)

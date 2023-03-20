@@ -35,4 +35,31 @@ public class CustomerMovement : Customer
 
     }
 
+    public void Leave()
+    {
+        if (tableWinner)
+        {
+            SetMove(ChipDesk.instance.customerSpot);
+        }
+        else
+        {
+            SetMove(ExitPosition.instance.customerSpot);
+
+        }
+    }
+
+    public void settingIdleAnimationTrue()
+    {
+        anim.SetBool("idle", true);
+    }
+
+    public void disablingWinnigAnim()
+    {
+        anim.SetBool("isWinning", false);
+    }
+
+    public void disablePlayingAnim()
+    {
+        anim.SetBool("isPlayingCard", false);
+    }
 }

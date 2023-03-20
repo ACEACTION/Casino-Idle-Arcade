@@ -46,7 +46,7 @@ public class CustomerPool : MonoBehaviour
         return cs;
     }
 
-    public void OnReleaseHit(CustomerMovement customer)
+    public void OnReleaseCustomer(CustomerMovement customer)
     {
         customerPool.Release(customer);
     }

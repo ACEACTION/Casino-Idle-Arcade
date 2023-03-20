@@ -1,28 +1,118 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    [SerializeField] float cooldown;
-    public float cooldownAmount;
-    public List<Customer> customerList = new List<Customer>();
+    [SerializeField] float castTime;
+    public float castTimeAmount;
+
+    [SerializeField] float playingTime;
+    public float playingTimeAmount;
+
+    public int customersInPlaceCount = 0;
+    public List<CustomerMovement> customersInPlace = new List<CustomerMovement>(6);
+    public List<CustomerMovement> customerList = new List<CustomerMovement>();
     public List<Transform> customerSpot = new List<Transform>();
     public int maximumCapacity;
     public bool hasEmptySlots;
+    public bool readyToPlay;
 
+    public bool customersPlaying = true;
+    private bool playerIsDealer;
+    private bool dealerAvailabe;
+
+
+    public Customer winnerCustomer;
     private void Start()
     {
-        cooldown = cooldownAmount;
+        playingTime = playingTimeAmount;
+        castTime = castTimeAmount;
         GameInstrumentsManager.tableList.Add(this);
         GameInstrumentsManager.emptyTableList.Add(this);
     }
 
     private void Update()
     {
+        if (readyToPlay && (playerIsDealer || dealerAvailabe))
+        {
+            castTime -= Time.deltaTime;
+            if(castTime <= 0 && customersPlaying)
+            {
+                ///playing starts here
+
+                //setting customers animation to playing mode
+                foreach(Customer cost in customerList)
+                {
+                    cost.anim.SetBool("isPlayingCard", true);
+                }
+                //adding chipEffect to tables
+                //ChipSpawning();
+                playingTime -= Time.deltaTime;
+                if(playingTime <= 0 && customersPlaying)
+                {
+                    foreach (Customer cost in customerList)
+                    {
+                        cost.anim.SetBool("isPlayingCard", false);
+                    }
+                    customersPlaying = false;
+                    //pickingWinner
+                    winnerCustomer = customerList[Random.Range(0, customerList.Count)];
+                    winnerCustomer.tableWinner = true;
+
+
+                    winnerCustomer.anim.SetBool("isWinning", true);
+                    StartCoroutine(WaitingForWinner());
+
+                }
+            }
+        }
+
         if(customerList.Count == maximumCapacity)
         {
             hasEmptySlots = false;
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerIsDealer = true;
+        }
+        if (other.gameObject.CompareTag("Dealer"))
+        {
+            dealerAvailabe = true;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerIsDealer = false;
+
+        }
+    }
+
+    IEnumerator WaitingForWinner()
+    {
+        yield return new WaitForSeconds(3f);
+        foreach(CustomerMovement cs in customerList)
+        {
+            cs.Leave();
+        }
+        castTime = castTimeAmount;
+        playingTime = playingTimeAmount;
+        customersPlaying = true;
+    }
+
+    void ChipSpawning()
+    {
+
     }
 }

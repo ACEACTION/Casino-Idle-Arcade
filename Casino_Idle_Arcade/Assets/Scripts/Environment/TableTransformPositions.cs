@@ -6,19 +6,35 @@ public class TableTransformPositions : MonoBehaviour
 {
     [SerializeField] Table parentTable;
 
-    int indexOfThisPlace;
+    public int IndexOfThisPlace;
 
     private void Start()
     {
-        indexOfThisPlace = parentTable.customerSpot.IndexOf(this.transform);
+        IndexOfThisPlace = parentTable.customerSpot.IndexOf(this.transform);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
+        {
+            parentTable.customersInPlaceCount++;
+
+            if(parentTable.customersInPlaceCount == parentTable.maximumCapacity)
+            {
+                parentTable.readyToPlay = true;
+            }
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.Equals(parentTable.customerList[indexOfThisPlace].gameObject))
+        if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
         {
-            parentTable.customerList.Remove(parentTable.customerList[indexOfThisPlace]);
+            parentTable.customerList.Remove(parentTable.customersInPlace[IndexOfThisPlace]);
+            parentTable.customersInPlaceCount = 0;
+            parentTable.customersInPlace[IndexOfThisPlace] = null;
+            parentTable.readyToPlay = false;
             parentTable.hasEmptySlots = true;
+            GameInstrumentsManager.emptyTableList.Add(parentTable);
         }
     }
 }

@@ -27,7 +27,6 @@ public class SlotMachine : MonoBehaviour
             if(cooldown <= 0)
             {
                 //customer should leave the machine here
-                customer.Leave();
             }
         
         }
