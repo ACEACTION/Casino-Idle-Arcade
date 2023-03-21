@@ -43,6 +43,7 @@ public class CustomerMovement : Customer
         }
         else
         {
+            //if bar is open
             SetMove(ExitPosition.instance.customerSpot);
 
         }

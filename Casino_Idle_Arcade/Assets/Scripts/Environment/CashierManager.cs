@@ -29,6 +29,7 @@ public class CashierManager : MonoBehaviour
             {
                 if(GameInstrumentsManager.emtpySlotMachines.Count != 0)
                 {
+                    print("emptyyyy");
                     firstCounter.firstCustomer.PayMoney(stackMoney, slotMachinePayment);
                     //sending customers to slot machines
                     firstCounter.firstCustomer.SetMove(GameInstrumentsManager.emtpySlotMachines[0].customerSpot);
@@ -36,7 +37,7 @@ public class CashierManager : MonoBehaviour
                     GameInstrumentsManager.emtpySlotMachines[0].customer = firstCounter.firstCustomer;
                     GameInstrumentsManager.emtpySlotMachines.Remove(GameInstrumentsManager.emtpySlotMachines[0]);
 
-                    cooldown = 1f;
+                    cooldown = 2f;
                 }
                 else if(GameInstrumentsManager.emptyTableList.Count != 0)
                 {
@@ -51,7 +52,7 @@ public class CashierManager : MonoBehaviour
                         firstCounter.firstCustomer.SetMove(emptyTable.customerSpot[tableIndex]);
                         emptyTable.customerList.Add(firstCounter.firstCustomer);
                         emptyTable.customersInPlace[tableIndex] = firstCounter.firstCustomer;
-                        cooldown = 1f;
+                        cooldown = 2f;
                         tableIndex++;
 
                         if(tableIndex  >= emptyTable.maximumCapacity)

@@ -9,6 +9,7 @@ public class Table : MonoBehaviour
     [SerializeField] float castTime;
     public float castTimeAmount;
 
+    public Animator dealerAnim;
     [SerializeField] float playingTime;
     public float playingTimeAmount;
 
@@ -21,8 +22,8 @@ public class Table : MonoBehaviour
     public bool readyToPlay;
 
     public bool customersPlaying = true;
-    private bool playerIsDealer;
-    private bool dealerAvailabe;
+    public bool playerIsDealer;
+    public bool dealerAvailabe;
 
 
     public Customer winnerCustomer;
@@ -38,13 +39,18 @@ public class Table : MonoBehaviour
     {
         if (readyToPlay && (playerIsDealer || dealerAvailabe))
         {
+            dealerAnim.SetBool("playingCard", true);
             castTime -= Time.deltaTime;
             if(castTime <= 0 && customersPlaying)
             {
+
+                //disabling dealer animation here
+                dealerAnim.SetBool("playingCard", false);
+
                 ///playing starts here
 
                 //setting customers animation to playing mode
-                foreach(Customer cost in customerList)
+                foreach (Customer cost in customerList)
                 {
                     cost.anim.SetBool("isPlayingCard", true);
                 }
@@ -101,6 +107,8 @@ public class Table : MonoBehaviour
 
     IEnumerator WaitingForWinner()
     {
+        dealerAnim.SetBool("playingCard", false);
+
         yield return new WaitForSeconds(3f);
         foreach(CustomerMovement cs in customerList)
         {
@@ -109,6 +117,9 @@ public class Table : MonoBehaviour
         castTime = castTimeAmount;
         playingTime = playingTimeAmount;
         customersPlaying = true;
+        print("ridam tosh");
+        GameInstrumentsManager.emptyTableList.Add(this);
+
     }
 
     void ChipSpawning()

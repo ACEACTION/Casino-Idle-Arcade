@@ -7,7 +7,7 @@ public class SlotMachine : MonoBehaviour
 {
     [SerializeField] float cooldown;
     public float cooldownAmount;
-    public Customer customer;
+    public CustomerMovement customer;
     public Transform customerSpot;
     [SerializeField] float winPorbability;
     public bool isEmpty = true;
@@ -26,7 +26,7 @@ public class SlotMachine : MonoBehaviour
             cooldown -= Time.deltaTime;
             if(cooldown <= 0)
             {
-                //customer should leave the machine here
+                //customer.Leave();
             }
         
         }
