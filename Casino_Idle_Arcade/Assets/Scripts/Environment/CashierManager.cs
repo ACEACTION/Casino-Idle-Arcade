@@ -17,6 +17,7 @@ public class CashierManager : MonoBehaviour
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
+    Table emptyTable;
     private void Update()
     {
         //if cashier spot !null
@@ -40,22 +41,22 @@ public class CashierManager : MonoBehaviour
                 else if(GameInstrumentsManager.emptyTableList.Count != 0)
                 {
 
-                    var table = GameInstrumentsManager.emptyTableList[0];
+                    emptyTable = GameInstrumentsManager.emptyTableList[0];
 
                     //sending customers to tables
-                    if (table.hasEmptySlots)
+                    if (emptyTable.hasEmptySlots)
                     {
                         firstCounter.firstCustomer.PayMoney(stackMoney, tablePayment);
 
-                        firstCounter.firstCustomer.SetMove(table.customerSpot[tableIndex]);
-                        table.customerList.Add(firstCounter.firstCustomer);
-                        table.customersInPlace[tableIndex] = firstCounter.firstCustomer;
+                        firstCounter.firstCustomer.SetMove(emptyTable.customerSpot[tableIndex]);
+                        emptyTable.customerList.Add(firstCounter.firstCustomer);
+                        emptyTable.customersInPlace[tableIndex] = firstCounter.firstCustomer;
                         cooldown = 1f;
                         tableIndex++;
 
-                        if(tableIndex  >= table.maximumCapacity)
+                        if(tableIndex  >= emptyTable.maximumCapacity)
                         {
-                            GameInstrumentsManager.emptyTableList.Remove(table);
+                            GameInstrumentsManager.emptyTableList.Remove(emptyTable);
                             tableIndex = 0;
                         }
                     }

@@ -15,26 +15,37 @@ public class TableTransformPositions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
+        if (parentTable.customersInPlace[IndexOfThisPlace] != null)
         {
-            parentTable.customersInPlaceCount++;
-
-            if(parentTable.customersInPlaceCount == parentTable.maximumCapacity)
+            if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
             {
-                parentTable.readyToPlay = true;
+                parentTable.customersInPlaceCount++;
+
+                if (parentTable.customersInPlaceCount == parentTable.maximumCapacity)
+                {
+                    parentTable.readyToPlay = true;
+                }
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
+        if (parentTable.customersInPlace[IndexOfThisPlace] != null)
         {
-            parentTable.customerList.Remove(parentTable.customersInPlace[IndexOfThisPlace]);
-            parentTable.customersInPlaceCount = 0;
-            parentTable.customersInPlace[IndexOfThisPlace] = null;
-            parentTable.readyToPlay = false;
-            parentTable.hasEmptySlots = true;
-            GameInstrumentsManager.emptyTableList.Add(parentTable);
+
+            if (other.gameObject.Equals(parentTable.customersInPlace[IndexOfThisPlace].gameObject))
+            {
+                parentTable.customerList.Remove(parentTable.customersInPlace[IndexOfThisPlace]);
+                parentTable.customersInPlaceCount = 0;
+                parentTable.customersInPlace[IndexOfThisPlace] = null;
+                parentTable.readyToPlay = false;
+                parentTable.hasEmptySlots = true;
+                if (!GameInstrumentsManager.emptyTableList.Contains(parentTable))
+                {
+                    GameInstrumentsManager.emptyTableList.Add(parentTable);
+                }
+                print(GameInstrumentsManager.emptyTableList.IndexOf(parentTable)) ;
+            }
         }
     }
 }
