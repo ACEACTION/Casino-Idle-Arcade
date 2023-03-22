@@ -12,6 +12,8 @@ public class CashierManager : MonoBehaviour
     public List<Transform> customerSpots = new List<Transform>();
 
     [SerializeField] float cooldown;
+    [SerializeField] float cooldownAmount;
+
     [SerializeField] CashierFirstTransform firstCounter;
     [SerializeField] StackMoney stackMoney;
     public bool cashierAvailabe;
@@ -27,7 +29,10 @@ public class CashierManager : MonoBehaviour
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
-
+                if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
+                {
+                    cooldown = cooldownAmount;
+                }
             }
         
         }

@@ -3,59 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SlotMachine : MonoBehaviour
+public class SlotMachine : CasinoGame
 {
-    [SerializeField] float cooldown;
-    public float cooldownAmount;
-    public CustomerMovement customer;
-    public Transform customerSpot;
-    [SerializeField] float winPorbability;
-    public bool isEmpty = true;
-    private bool customerIsPlaying;
     private void Start()
     {
-        cooldown = cooldownAmount;
-
-    }
-
-    private void Update()
-    {
-        if (customerIsPlaying)
-        {
-            cooldown -= Time.deltaTime;
-            if(cooldown <= 0)
-            {
-                //customer.Leave();
-            }
-        
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (customer != null)
-        {
-            if (other.gameObject.Equals(customer.gameObject))
-            {
-                customerIsPlaying = true;
-                customer.anim.SetBool("idle", false);
-                customer.anim.SetBool("isPlayingCard", true);
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (customer != null)
-        {
-            if (other.gameObject.Equals(customer.gameObject))
-            {
-                cooldown = cooldownAmount;
-                customerIsPlaying = false;
-                isEmpty = true;
-                //GameInstrumentsManager.emtpySlotMachines.Add(this);
-            }
-        }
+        CasinoElementManager.jackPots.Add(this);
     }
 }

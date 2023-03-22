@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1380959919}
+  - component: {fileID: 5830974466096971151}
   m_Layer: 0
   m_Name: customerSpot (1)
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 7691326297396350370}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5830974466096971151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380959918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc31b4286cae4ae4bb627ffba44c1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gi: {fileID: 2710459379509837936}
+  customer: {fileID: 0}
 --- !u!1 &1938136867865552276
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,12 +427,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acb10aa382b28340aabd47bfdf02999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  cooldownAmount: 11
-  customer: {fileID: 0}
-  customerSpot: {fileID: 1380959919}
-  winPorbability: 0
-  isEmpty: 1
+  castTime: 0
+  castTimeAmount: 0
+  isCapacityFull: 0
+  customers: []
+  elementSpot:
+  - {fileID: 5830974466096971151}
+  maxGameCapacity: 1
+  customerCounter: 0
+  readyToPlay: 0
 --- !u!1 &8305385470526626664
 GameObject:
   m_ObjectHideFlags: 0

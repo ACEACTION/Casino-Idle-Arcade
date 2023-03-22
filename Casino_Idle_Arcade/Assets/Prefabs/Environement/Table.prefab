@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 165238312}
   - component: {fileID: 165238314}
-  - component: {fileID: 165238313}
   - component: {fileID: 1631857976}
+  - component: {fileID: 7892412175840742059}
   m_Layer: 0
   m_Name: T-0 (2)
   m_TagString: Untagged
@@ -47,20 +47,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!114 &165238313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165238311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e090c64d62762154f9d5e84fe8620166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentTable: {fileID: 3469287837259454304}
-  IndexOfThisPlace: 0
 --- !u!54 &1631857976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,6 +63,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7892412175840742059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165238311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc31b4286cae4ae4bb627ffba44c1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gi: {fileID: 1045904133}
+  customer: {fileID: 0}
 --- !u!1 &1403019549
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,8 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1403019550}
   - component: {fileID: 1403019552}
-  - component: {fileID: 1403019551}
   - component: {fileID: 1659200753}
+  - component: {fileID: 974611723}
   m_Layer: 0
   m_Name: T-0
   m_TagString: Untagged
@@ -124,20 +124,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!114 &1403019551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403019549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e090c64d62762154f9d5e84fe8620166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentTable: {fileID: 3469287837259454304}
-  IndexOfThisPlace: 0
 --- !u!54 &1659200753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,6 +140,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &974611723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403019549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc31b4286cae4ae4bb627ffba44c1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gi: {fileID: 1045904133}
+  customer: {fileID: 0}
 --- !u!1 &1555330954
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,8 +164,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1555330955}
   - component: {fileID: 1555330957}
-  - component: {fileID: 1555330956}
   - component: {fileID: 76027493}
+  - component: {fileID: 3413168012401430917}
   m_Layer: 0
   m_Name: T-0 (1)
   m_TagString: Untagged
@@ -201,20 +201,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.57, z: 0}
---- !u!114 &1555330956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555330954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e090c64d62762154f9d5e84fe8620166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentTable: {fileID: 3469287837259454304}
-  IndexOfThisPlace: 0
 --- !u!54 &76027493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,6 +217,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3413168012401430917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555330954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc31b4286cae4ae4bb627ffba44c1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gi: {fileID: 1045904133}
+  customer: {fileID: 0}
 --- !u!1 &2990030175395715276
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,9 +374,11 @@ GameObject:
   - component: {fileID: 7432650612723773418}
   - component: {fileID: 5803398084703707215}
   - component: {fileID: 8605596613750199429}
-  - component: {fileID: 3469287837259454304}
   - component: {fileID: 2095644479}
   - component: {fileID: 2095644478}
+  - component: {fileID: 1045904133}
+  - component: {fileID: 1501299145616175908}
+  - component: {fileID: 733965703}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -455,45 +457,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3469287837259454304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7813117492289418576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b303a636486364492ad363e0d063d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castTime: 0
-  castTimeAmount: 2
-  dealerAnim: {fileID: 1373557073777399005}
-  playingTime: 0
-  playingTimeAmount: 4
-  customersInPlaceCount: 0
-  customersInPlace:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  customerList: []
-  customerSpot:
-  - {fileID: 1403019550}
-  - {fileID: 1555330955}
-  - {fileID: 165238312}
-  maximumCapacity: 3
-  hasEmptySlots: 1
-  readyToPlay: 0
-  customersPlaying: 1
-  playerIsDealer: 0
-  dealerAvailabe: 0
-  winnerCustomer: {fileID: 0}
 --- !u!54 &2095644479
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -523,6 +486,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.744287, y: 0.8742356, z: 1.4882956}
   m_Center: {x: -1.8286173, y: 0.4371176, z: 0.17781258}
+--- !u!114 &1045904133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813117492289418576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3e6bbc7152fa34e8f6292e1a39e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCapacityFull: 0
+  customers: []
+  elementSpots:
+  - {fileID: 974611723}
+  - {fileID: 3413168012401430917}
+  - {fileID: 7892412175840742059}
+  maxGameCapacity: 3
+  customerCounter: 0
+  castTime: 5
+  castTimeAmount: 5
+  readyToPlay: 0
+  workerCheker: {fileID: 1501299145616175908}
+  dealerCastTime: 2
+  dealerCastTimeAmount: 2
+  hasChips: 1
+--- !u!114 &1501299145616175908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813117492289418576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workerType: 0
+  worker: {fileID: 0}
+  isWorkerAvailable: 0
+  isPlayerAvailable: 0
+--- !u!114 &733965703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813117492289418576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workerType: 0
+  worker: {fileID: 0}
+  isWorkerAvailable: 0
+  isPlayerAvailable: 0
 --- !u!1001 &1070024896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -869,6 +891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dealer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975734050851776202, guid: a602c9b7fbf94e4478dadda770321068,
+        type: 3}
+      propertyPath: m_TagString
+      value: RouletteDealer
       objectReference: {fileID: 0}
     - target: {fileID: 8244718217549659604, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}

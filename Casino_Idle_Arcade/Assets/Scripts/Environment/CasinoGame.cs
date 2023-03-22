@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CasinoGame : CasinoElement
 {
+    public float castTime;
+    public float castTimeAmount;
+    
     public bool readyToPlay;
     public override void CustomerHasArrived()
     {
@@ -12,5 +15,10 @@ public class CasinoGame : CasinoElement
  
         customerCounter++;
         readyToPlay = customerCounter == maxGameCapacity;
+    }
+
+    public virtual void PlayGame()
+    {
+
     }
 }

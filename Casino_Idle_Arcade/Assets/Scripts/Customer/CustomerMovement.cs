@@ -34,6 +34,15 @@ public class CustomerMovement : Customer
         destination = ts;
 
     }
+    public void WinProccess()
+    {
+        SetMove(ChipDesk.instance.customerSpot);
+    }
+
+    public void LosePorccess()
+    {
+        SetMove(ExitPosition.instance.customerSpot);
+    }
 
     public void Leave()
     {

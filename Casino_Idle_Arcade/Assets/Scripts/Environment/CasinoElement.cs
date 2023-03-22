@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class CasinoElement : MonoBehaviour
 {
-    public int castTime;
-    public int castTimeAmount;
+
     public bool isCapacityFull;
     public List<CustomerMovement> customers = new List<CustomerMovement>();
-    public List<CasinoElementSpot> elementSpot = new List<CasinoElementSpot>();
+    public List<CasinoElementSpot> elementSpots = new List<CasinoElementSpot>();
     public int maxGameCapacity;
     public int customerCounter;
 
-    public bool HasCapacity() =>  customers.Count <= maxGameCapacity;
+    public bool HasCapacity() =>  customers.Count < maxGameCapacity;
 
     public void AddToCustomerList(CustomerMovement customer) => customers.Add(customer);
 
@@ -27,7 +26,7 @@ public class CasinoElement : MonoBehaviour
 
     public CasinoElementSpot GetEmptySpot()
     {
-        foreach (CasinoElementSpot spot in elementSpot)
+        foreach (CasinoElementSpot spot in elementSpots)
         {
             if (spot.IsEmptySpot()) return spot;
         }
@@ -37,9 +36,12 @@ public class CasinoElement : MonoBehaviour
 
     public void SendCustomerToElement(CustomerMovement customer)
     {
+
         CasinoElementSpot spot = GetEmptySpot();
+
         customer.SetMove(spot.transform);
         spot.customer = customer;
         customers.Add(customer);
+
     }
 }

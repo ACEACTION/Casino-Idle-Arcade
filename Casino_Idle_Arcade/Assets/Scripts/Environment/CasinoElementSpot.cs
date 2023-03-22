@@ -13,9 +13,13 @@ public class CasinoElementSpot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(customer))
+        if (customer != null)
         {
-            gi.CustomerHasArrived();
+
+            if (other.gameObject.Equals(customer.gameObject))
+            {
+                gi.CustomerHasArrived();
+            }
         }
     }
 
