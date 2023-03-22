@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CustomerState
-{
-    inLine, firstCounter, movingIn, leaving, playingGame
-}
+
 public class Customer : MonoBehaviour
-{    
+{
+    public ElementsType elementType;
     public Animator anim;
-    public CustomerState csState;
     public CustomerData stats;
     bool payedMoney;
     public bool tableWinner;
 
 
+    private void OnEnable()
+    {
+        SetElementType();
+    }
+
+
+    void SetElementType()
+    {
+        elementType = CasinoManager.instance.availableElements[Random.Range(0, CasinoManager.instance.availableElements.Count)];
+
+    }
     public void PayMoney(StackMoney stackMoney, int amount)
     {
         if (payedMoney) return;

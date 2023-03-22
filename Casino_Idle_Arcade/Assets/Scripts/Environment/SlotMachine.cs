@@ -15,8 +15,7 @@ public class SlotMachine : MonoBehaviour
     private void Start()
     {
         cooldown = cooldownAmount;
-        GameInstrumentsManager.slotMachineList.Add(this);
-        GameInstrumentsManager.emtpySlotMachines.Add(this);
+
     }
 
     private void Update()
@@ -55,7 +54,7 @@ public class SlotMachine : MonoBehaviour
                 cooldown = cooldownAmount;
                 customerIsPlaying = false;
                 isEmpty = true;
-                GameInstrumentsManager.emtpySlotMachines.Add(this);
+                //GameInstrumentsManager.emtpySlotMachines.Add(this);
             }
         }
     }

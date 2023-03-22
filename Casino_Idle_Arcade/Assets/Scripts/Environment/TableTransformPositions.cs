@@ -42,10 +42,6 @@ public class TableTransformPositions : MonoBehaviour
                 parentTable.readyToPlay = false;
                 parentTable.hasEmptySlots = true;
 
-
- 
-
-                print(GameInstrumentsManager.emptyTableList.IndexOf(parentTable)) ;
             }
         }
     }

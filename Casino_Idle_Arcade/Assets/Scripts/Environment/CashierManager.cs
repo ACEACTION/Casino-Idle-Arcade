@@ -25,44 +25,9 @@ public class CashierManager : MonoBehaviour
             && firstCounter.firstCustomer != null)
         {
             cooldown -= Time.deltaTime;
-            if(cooldown <= 0)
+            if (cooldown <= 0)
             {
-                if(GameInstrumentsManager.emtpySlotMachines.Count != 0)
-                {
-                    print("emptyyyy");
-                    firstCounter.firstCustomer.PayMoney(stackMoney, slotMachinePayment);
-                    //sending customers to slot machines
-                    firstCounter.firstCustomer.SetMove(GameInstrumentsManager.emtpySlotMachines[0].customerSpot);
-                    GameInstrumentsManager.emtpySlotMachines[0].isEmpty = false;
-                    GameInstrumentsManager.emtpySlotMachines[0].customer = firstCounter.firstCustomer;
-                    GameInstrumentsManager.emtpySlotMachines.Remove(GameInstrumentsManager.emtpySlotMachines[0]);
 
-                    cooldown = 2f;
-                }
-                else if(GameInstrumentsManager.emptyTableList.Count != 0)
-                {
-
-                    emptyTable = GameInstrumentsManager.emptyTableList[0];
-
-                    //sending customers to tables
-                    if (emptyTable.hasEmptySlots)
-                    {
-                        firstCounter.firstCustomer.PayMoney(stackMoney, tablePayment);
-
-                        firstCounter.firstCustomer.SetMove(emptyTable.customerSpot[tableIndex]);
-                        emptyTable.customerList.Add(firstCounter.firstCustomer);
-                        emptyTable.customersInPlace[tableIndex] = firstCounter.firstCustomer;
-                        cooldown = 2f;
-                        tableIndex++;
-
-                        if(tableIndex  >= emptyTable.maximumCapacity)
-                        {
-                            GameInstrumentsManager.emptyTableList.Remove(emptyTable);
-                            tableIndex = 0;
-                        }
-                    }
-
-                }
             }
         
         }

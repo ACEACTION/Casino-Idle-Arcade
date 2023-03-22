@@ -31,8 +31,8 @@ public class Table : MonoBehaviour
     {
         playingTime = playingTimeAmount;
         castTime = castTimeAmount;
-        GameInstrumentsManager.tableList.Add(this);
-        GameInstrumentsManager.emptyTableList.Add(this);
+/*        GameInstrumentsManager.tableList.Add(this);
+        GameInstrumentsManager.emptyTableList.Add(this);*/
     }
 
     private void Update()
@@ -117,8 +117,7 @@ public class Table : MonoBehaviour
         castTime = castTimeAmount;
         playingTime = playingTimeAmount;
         customersPlaying = true;
-        print("ridam tosh");
-        GameInstrumentsManager.emptyTableList.Add(this);
+       // GameInstrumentsManager.emptyTableList.Add(this);
 
     }
 
