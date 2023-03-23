@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class StackMoneyMaker : MonoBehaviour
+public class StackMoneyPool : MonoBehaviour
 {
     [SerializeField] Money moneyPrefab;
     public ObjectPool<Money> pool;
 
-    public static StackMoneyMaker Instance;
+    public static StackMoneyPool Instance;
     private void Awake()
     {
         if (Instance == null)

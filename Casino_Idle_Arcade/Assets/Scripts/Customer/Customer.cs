@@ -29,7 +29,7 @@ public class Customer : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            Money money = StackMoneyMaker.Instance.pool.Get();
+            Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
             stackMoney.AddToStack(money);
         }

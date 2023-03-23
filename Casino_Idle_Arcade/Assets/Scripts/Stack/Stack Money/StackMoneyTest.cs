@@ -10,7 +10,7 @@ public class StackMoneyTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Money money = StackMoneyMaker.Instance.pool.Get();
+            Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
             stackResource.AddToStack(money);
         }

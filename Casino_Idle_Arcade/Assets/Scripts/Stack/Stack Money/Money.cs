@@ -21,7 +21,7 @@ public class Money : MonoBehaviour
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
-                StackMoneyMaker.Instance.OnReleaseMoney(this);
+                StackMoneyPool.Instance.OnReleaseMoney(this);
             }
         }
     }
