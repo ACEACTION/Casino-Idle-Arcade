@@ -9,7 +9,6 @@ public class Roulette : CasinoGame
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
-
     int winnerIndex;
     public bool hasChips;
     bool actCustomerAnimation = false;
@@ -35,7 +34,8 @@ public class Roulette : CasinoGame
         {
             //game ended
             ChoseWinner();
-            ResetTable();
+            StartCoroutine(ResetGame());
+
         }
 
     }
@@ -58,20 +58,15 @@ public class Roulette : CasinoGame
         }
     }
 
-    void ResetTable()
+
+    public override IEnumerator ResetGame()
     {
+
+        dealerCastTime = dealerCastTimeAmount;
         choseWinnerPossible = true;
         actCustomerAnimation = false;
-        customers.Clear();
-        foreach(CasinoElementSpot spots in elementSpots)
-        {
-            spots.customer = null;
-        }
-        customerCounter = 0;
-        castTime = castTimeAmount;
-        readyToPlay = false;
-        dealerCastTime = dealerCastTimeAmount;
-        
+        return base.ResetGame();
+
 
     }
     void ActiveactCustomerAnimation()
@@ -81,7 +76,7 @@ public class Roulette : CasinoGame
             actCustomerAnimation = true;
             foreach (CustomerMovement customer in customers)
             {
-                customer.anim.SetBool("isPlayingCard", true);
+                customer.SetPlayingCardAnimation(true);
             }
         }
     }
