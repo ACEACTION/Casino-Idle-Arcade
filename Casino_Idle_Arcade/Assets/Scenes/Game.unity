@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ba07d877a762d428cfa541f97a64d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableElements: 00000000
+  availableElements: 0000000001000000
 --- !u!4 &6063045
 Transform:
   m_ObjectHideFlags: 0
@@ -278,6 +278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jackpot_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691326297396350370, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
@@ -606,6 +611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823209786}
     m_Modifications:
+    - target: {fileID: 1045904133, guid: 38478be9cb847724fb286f58d1ceab51, type: 3}
+      propertyPath: delayToReset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_RootOrder
@@ -2139,6 +2148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7691326297396350370, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
       propertyPath: m_RootOrder
@@ -2203,14 +2217,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 344478149}
     m_Modifications:
-    - target: {fileID: 1380959919, guid: de1b773f4c94db8499b8b931fa21d027, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
       propertyPath: m_Name
       value: Jackpot_01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691326297396350370, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
@@ -2284,6 +2299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jackpot_01 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691326297396350370, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
@@ -2779,10 +2799,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 344478149}
     m_Modifications:
+    - target: {fileID: 2710459379509837936, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: delayToReset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
       propertyPath: m_Name
       value: Jackpot_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7691326297396350370, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
@@ -3953,6 +3983,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823209786}
     m_Modifications:
+    - target: {fileID: 1045904133, guid: 38478be9cb847724fb286f58d1ceab51, type: 3}
+      propertyPath: delayToReset
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_RootOrder
@@ -4085,12 +4119,17 @@ PrefabInstance:
     - target: {fileID: 3734533504020691514, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
       propertyPath: cooldown
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3734533504020691514, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
       propertyPath: cooldownAmount
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734533504020691514, guid: 6f619111aff58f94cbb052b279e39270,
+        type: 3}
+      propertyPath: cashierAvailabe
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f619111aff58f94cbb052b279e39270, type: 3}
@@ -4125,6 +4164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExitDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 893786805192370747, guid: 9ca658f0b1a3275409922c4640bb4849,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 893786805192370750, guid: 9ca658f0b1a3275409922c4640bb4849,
         type: 3}

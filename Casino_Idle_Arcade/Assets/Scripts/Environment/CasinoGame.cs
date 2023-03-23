@@ -7,7 +7,8 @@ public class CasinoGame : CasinoElement
 {
     public float castTime;
     public float castTimeAmount;
-    
+    public float delayToReset;
+
     public bool readyToPlay;
     public override void CustomerHasArrived()
     {
@@ -19,6 +20,20 @@ public class CasinoGame : CasinoElement
 
     public virtual void PlayGame()
     {
+
+    }
+
+    public virtual IEnumerator ResetGame()
+    {
+        readyToPlay = false;
+        yield return new WaitForSeconds(delayToReset);
+        castTime = castTimeAmount;
+        customers.Clear();
+        customerCounter = 0;
+        foreach (CasinoElementSpot spots in elementSpots)
+        {
+            spots.customer = null;
+        }
 
     }
 }

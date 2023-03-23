@@ -8,7 +8,6 @@ public class CustomerMovement : Customer
 {
     Transform dir;
     [SerializeField] NavMeshAgent agent;
-
     public Transform destination;
 
 
@@ -36,13 +35,25 @@ public class CustomerMovement : Customer
     }
     public void WinProccess()
     {
-        SetMove(ChipDesk.instance.customerSpot);
+        SetWinningAnimation(true);
     }
-
     public void LosePorccess()
     {
+        SetLosingAnimation(true);
+    }
+
+    //should be edited after this to add more chipdesk from manager
+    public void WinningAnimationEvent()
+    {
+        isLeaving = true;
+        SetMove(ChipDesk.instance.customerSpot);
+    }
+    public void LosingAnimationEvent()
+    {
+        isLeaving = true;
         SetMove(ExitPosition.instance.customerSpot);
     }
+
 
     public void Leave()
     {

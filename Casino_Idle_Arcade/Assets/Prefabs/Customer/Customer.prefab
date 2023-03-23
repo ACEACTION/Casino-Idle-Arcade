@@ -235,9 +235,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3669614427928112104}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Armature
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,11 +555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e6612d44adf4348bdaf5f680422a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 0
   anim: {fileID: 5320856513153801346}
-  csState: 1
   stats: {fileID: 11400000, guid: ac3bb7d9a176050469411901512231ea, type: 2}
   tableWinner: 0
   agent: {fileID: 1791738785}
+  collider: {fileID: 1791738788}
   destination: {fileID: 0}
 --- !u!1 &5106541512157677110
 GameObject:

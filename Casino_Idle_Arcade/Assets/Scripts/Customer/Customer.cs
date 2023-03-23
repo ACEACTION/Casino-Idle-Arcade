@@ -10,11 +10,35 @@ public class Customer : MonoBehaviour
     public CustomerData stats;
     bool payedMoney;
     public bool tableWinner;
-
+    public bool isLeaving;
 
     private void OnEnable()
     {
         SetElementType();
+    }
+
+    public void SetPlayingCardAnimation(bool state)
+    {
+        anim.SetBool("isPlayingCard", state);
+    }
+
+    public void SetPlayingJackPotAnimation(bool state)
+    {
+        anim.SetBool("isPlayingJackPot", state);
+    }
+
+    public void SetWinningAnimation(bool state)
+    {
+        anim.SetBool("isWinning", state);
+    }
+    public void SetSadWalkAnimation(bool state)
+    {
+        anim.SetBool("sadWalking", state);
+    }
+
+    public void SetLosingAnimation(bool state)
+    {
+        anim.SetBool("isLosing", state);
     }
 
 
@@ -23,6 +47,7 @@ public class Customer : MonoBehaviour
         elementType = CasinoManager.instance.availableElements[Random.Range(0, CasinoManager.instance.availableElements.Count)];
 
     }
+
     public void PayMoney(StackMoney stackMoney, int amount)
     {
         if (payedMoney) return;

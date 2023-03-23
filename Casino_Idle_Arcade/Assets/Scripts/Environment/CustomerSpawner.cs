@@ -7,7 +7,7 @@ public class CustomerSpawner : MonoBehaviour
 {
     public  CashierManager cashierManager;
     public  List<CustomerMovement> customersList = new List<CustomerMovement>();
-
+    public CustomerMovement cs;
     public static CustomerSpawner instance;
     public int maxCustomer;
     public void Awake()
@@ -31,7 +31,8 @@ public class CustomerSpawner : MonoBehaviour
         if (customersList.Count < maxCustomer)
         {
             //Getting from CustomerPool
-            var cs = CustomerPool.instance.customerPool.Get();
+            cs = CustomerPool.instance.customerPool.Get();
+            cs.isLeaving = false;
             customersList.Add(cs);
             cs.transform.position = spawnPoint.position;
             var i = customersList.IndexOf(cs);

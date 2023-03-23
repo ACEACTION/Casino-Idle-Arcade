@@ -7,6 +7,8 @@ public class CashierManager : MonoBehaviour
 {
     [SerializeField] int slotMachinePayment;
     [SerializeField] int tablePayment;
+    [SerializeField] WorkerCheker workerCheker;
+
 
 
     public List<Transform> customerSpots = new List<Transform>();
@@ -23,7 +25,7 @@ public class CashierManager : MonoBehaviour
     private void Update()
     {
         //if cashier spot !null
-        if ((playerIsCashier || cashierAvailabe)
+        if ((workerCheker.isPlayerAvailable || workerCheker.isWorkerAvailable)
             && firstCounter.firstCustomer != null)
         {
             cooldown -= Time.deltaTime;

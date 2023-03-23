@@ -13,7 +13,11 @@ public class CashierFirstTransform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Customer"))
         {
-            firstCustomer = other.gameObject.GetComponent<CustomerMovement>();
+            
+            if (!other.gameObject.GetComponent<CustomerMovement>().isLeaving)
+            {
+                firstCustomer = other.gameObject.GetComponent<CustomerMovement>();
+            }
         }
     }
 
@@ -21,8 +25,6 @@ public class CashierFirstTransform : MonoBehaviour
     {
         if (firstCustomer != null)
         {
-
-
             if (other.gameObject.Equals(firstCustomer.gameObject))
             {
                 CustomerSpawner.instance.customersList.Remove(firstCustomer);
