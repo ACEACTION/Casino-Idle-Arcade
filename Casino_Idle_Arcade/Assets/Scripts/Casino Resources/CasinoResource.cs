@@ -6,4 +6,7 @@ public class CasinoResource : MonoBehaviour
 {
     public ChipData data;
 
+
+    public virtual void ReleasResource() { }
+
 }

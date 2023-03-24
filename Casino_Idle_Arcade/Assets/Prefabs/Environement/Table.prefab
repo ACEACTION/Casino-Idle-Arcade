@@ -231,6 +231,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gi: {fileID: 1045904133}
   customer: {fileID: 0}
+--- !u!1 &1936140260362772011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5274721340613529291}
+  m_Layer: 0
+  m_Name: First Stack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5274721340613529291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936140260362772011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2557349763720846266}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2990030175395715276
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +394,69 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5641779558091338604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2557349763720846266}
+  m_Layer: 0
+  m_Name: 'Stack '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2557349763720846266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641779558091338604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.01, y: 0.132, z: 1.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5274721340613529291}
+  m_Father: {fileID: 7432650612723773418}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5972601958323593111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7283231125557037781}
+  m_Layer: 0
+  m_Name: Play Chip Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7283231125557037781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972601958323593111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.896, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7432650612723773418}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7813117492289418576
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,10 +472,10 @@ GameObject:
   - component: {fileID: 2095644478}
   - component: {fileID: 1045904133}
   - component: {fileID: 1501299145616175908}
-  - component: {fileID: 733965703}
+  - component: {fileID: 1195514174}
   m_Layer: 0
   m_Name: Table
-  m_TagString: Untagged
+  m_TagString: Roulette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -404,6 +498,8 @@ Transform:
   - {fileID: 165238312}
   - {fileID: 321900201134245837}
   - {fileID: 7342186188250739888}
+  - {fileID: 2557349763720846266}
+  - {fileID: 7283231125557037781}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -508,12 +604,14 @@ MonoBehaviour:
   customerCounter: 0
   castTime: 5
   castTimeAmount: 5
-  delayToReset: 4
+  delayToReset: 7
   readyToPlay: 0
-  workerCheker: {fileID: 1501299145616175908}
   dealerCastTime: 2
   dealerCastTimeAmount: 2
-  hasChips: 1
+  getChipDuration: 0.7
+  workerCheker: {fileID: 1501299145616175908}
+  gameStack: {fileID: 1195514174}
+  playChipSpot: {fileID: 7283231125557037781}
 --- !u!114 &1501299145616175908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +628,7 @@ MonoBehaviour:
   worker: {fileID: 0}
   isWorkerAvailable: 0
   isPlayerAvailable: 0
---- !u!114 &733965703
+--- !u!114 &1195514174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -539,13 +637,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7813117492289418576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
+  m_Script: {fileID: 11500000, guid: f7df162cd029d914386ec42d6c38034b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
-  worker: {fileID: 0}
-  isWorkerAvailable: 0
-  isPlayerAvailable: 0
+  stackYOffset: 0.187
+  maxStackCount: 4
+  stackCount: 0
+  casinoResources: []
+  firsStack: {fileID: 5274721340613529291}
 --- !u!1001 &1070024896
 PrefabInstance:
   m_ObjectHideFlags: 0

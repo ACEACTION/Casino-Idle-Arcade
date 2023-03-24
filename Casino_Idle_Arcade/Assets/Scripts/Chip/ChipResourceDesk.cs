@@ -9,6 +9,8 @@ public class ChipResourceDesk : CasinoResourceDesk
     int maxChipIndex;
     int chipIndex;
 
+    [SerializeField] Transform chipSpawnPoint;
+
     private void Start()
     {
         maxChipIndex = Enum.GetValues(typeof(ChipType)).Length - 1;        
@@ -20,6 +22,7 @@ public class ChipResourceDesk : CasinoResourceDesk
     {
         base.AddResourceToStack(stack, stackList);
         Chip chip = MakeChip(GetChipType());
+        chip.transform.position = chipSpawnPoint.position;
         chip.transform.SetParent(stack.firstStack.transform.parent);
         chip.transform.DOLocalMove(stack.firstStack.localPosition, chip.data.addStackSpeed);
         stackList.Add(chip);

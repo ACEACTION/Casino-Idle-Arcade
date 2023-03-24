@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
+using DG.Tweening;
 
 public class Roulette : CasinoGame
 {
     //variables
-    [SerializeField] WorkerCheker workerCheker;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
+    [SerializeField] float getChipDuration;
+    bool hasChip;
+
     int winnerIndex;
-    public bool hasChips;
     bool actCustomerAnimation = false;
     bool choseWinnerPossible = true;
+
+    [SerializeField] WorkerCheker workerCheker;
+    [SerializeField] CasinoGameStack gameStack;
+    [SerializeField] Transform playChipSpot;
+    CasinoResource chip;
+
     private void Start()
     {
         CasinoElementManager.roulettes.Add(this);
@@ -48,8 +56,6 @@ public class Roulette : CasinoGame
             winnerIndex = Random.Range(0, customers.Count);
             foreach (CustomerMovement customer in customers)
             {
-
-
                 if (customers.IndexOf(customer) == winnerIndex) 
                     customer.WinProccess();
                 else 
@@ -65,9 +71,9 @@ public class Roulette : CasinoGame
         dealerCastTime = dealerCastTimeAmount;
         choseWinnerPossible = true;
         actCustomerAnimation = false;
+        hasChip = false;
+        chip = null;
         return base.ResetGame();
-
-
     }
     void ActiveactCustomerAnimation()
     {
@@ -83,8 +89,12 @@ public class Roulette : CasinoGame
 
     private void Update()
     {
-        if((workerCheker.isPlayerAvailable || workerCheker.isWorkerAvailable) && readyToPlay && hasChips)
+        if((workerCheker.isPlayerAvailable 
+            || workerCheker.isWorkerAvailable) 
+            && readyToPlay && gameStack.CanGetResource())
         {
+
+            GetChipFromStack();
 
             castTime -= Time.deltaTime;
             if(castTime <= 0)
@@ -96,5 +106,26 @@ public class Roulette : CasinoGame
                 workerCheker.worker.ActiveActionAnim(true);
             }
         }
+
     }
+
+    
+
+    public void GetChipFromStack()
+    {
+        if (!hasChip)
+        {
+            hasChip = true;
+            chip = gameStack.GetFromGameStack();
+            if (chip)
+            {
+                chip.transform.SetParent(transform);
+                chip.transform.DOLocalJump(
+                    playChipSpot.localPosition
+                   , 2, 1, getChipDuration);
+
+            }
+        }
+    }
+
 }

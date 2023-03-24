@@ -15,6 +15,7 @@ public class CasinoGameStack : MonoBehaviour
     [SerializeField] Transform firsStack;
 
     public bool CanAddStack() => stackCount < maxStackCount;
+    public bool CanGetResource() => stackCount > 0;
 
     public void AddToGameStack(CasinoResource resource)
     {
@@ -23,6 +24,20 @@ public class CasinoGameStack : MonoBehaviour
         resource.transform.DOLocalMove(firsStack.localPosition, resource.data.removeStackSpeed);
         firsStack.position += new Vector3(0, stackYOffset, 0);
         stackCount++;
+    }
+
+    public CasinoResource GetFromGameStack()
+    {
+        if (CanGetResource())
+        {
+            stackCount--;
+            firsStack.position -= new Vector3(0, stackYOffset, 0);
+            CasinoResource resource = casinoResources[casinoResources.Count - 1];
+            casinoResources.RemoveAt(casinoResources.Count - 1);
+            resource.transform.SetParent(null);            
+            return resource;
+        }
+        else return null;
     }
 
 }
