@@ -14,7 +14,7 @@ public class Roulette : CasinoGame
     [SerializeField] float cleaningCd;
     [SerializeField] float cleaningCdAmount;
     [SerializeField] Sweeper sweeper;
-    bool hasChip;
+    public bool hasChip;
    
     int winnerIndex;
     bool actCustomerAnimation = false;
@@ -138,21 +138,19 @@ public class Roulette : CasinoGame
     {
         if((workerCheker.isPlayerAvailable 
             || workerCheker.isWorkerAvailable) 
-            && readyToPlay && gameStack.CanGetResource())
+            && readyToPlay)
         {
-
-            GetChipFromStack();
-
+            GetChipFromStack();            
             castTime -= Time.deltaTime;
-            if(castTime <= 0)
+            if (hasChip && castTime <= 0)
             {
                 PlayGame();
-
             }
             else
             {
                 workerCheker.worker.ActiveActionAnim(true);
             }
+            
         }
         Cleaning();
 
@@ -162,7 +160,7 @@ public class Roulette : CasinoGame
 
     public void GetChipFromStack()
     {
-        if (!hasChip)
+        if (!hasChip && gameStack.CanGetResource())
         {
             hasChip = true;
             chip = gameStack.GetFromGameStack();
