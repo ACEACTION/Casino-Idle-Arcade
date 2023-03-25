@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ba07d877a762d428cfa541f97a64d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableElements: 0000000001000000
+  availableElements: 0000000000000000
 --- !u!4 &6063045
 Transform:
   m_ObjectHideFlags: 0
@@ -611,10 +611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823209786}
     m_Modifications:
-    - target: {fileID: 1045904133, guid: 38478be9cb847724fb286f58d1ceab51, type: 3}
-      propertyPath: delayToReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_RootOrder
@@ -1251,7 +1247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1107396512}
-  m_RootOrder: 9
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &584441649
 PrefabInstance:
@@ -2284,6 +2280,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de1b773f4c94db8499b8b931fa21d027, type: 3}
+--- !u!114 &1150803901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 398272508959528853, guid: 6f619111aff58f94cbb052b279e39270,
+    type: 3}
+  m_PrefabInstance: {fileID: 285653701181260212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1193513457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3983,10 +3991,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823209786}
     m_Modifications:
-    - target: {fileID: 1045904133, guid: 38478be9cb847724fb286f58d1ceab51, type: 3}
-      propertyPath: delayToReset
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_RootOrder
@@ -4111,6 +4115,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 398272508959528853, guid: 6f619111aff58f94cbb052b279e39270,
+        type: 3}
+      propertyPath: workerType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1096540019902770982, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
       propertyPath: m_Name
@@ -4121,6 +4130,11 @@ PrefabInstance:
       propertyPath: cooldown
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3734533504020691514, guid: 6f619111aff58f94cbb052b279e39270,
+        type: 3}
+      propertyPath: workerCheker
+      value: 
+      objectReference: {fileID: 1150803901}
     - target: {fileID: 3734533504020691514, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
       propertyPath: cooldownAmount

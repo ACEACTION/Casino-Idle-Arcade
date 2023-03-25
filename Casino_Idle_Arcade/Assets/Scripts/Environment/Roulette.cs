@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Roulette : CasinoGame
 {
@@ -10,11 +11,16 @@ public class Roulette : CasinoGame
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
+    [SerializeField] float cleaningCd;
+    [SerializeField] float cleaningCdAmount;
+    [SerializeField] Sweeper sweeper;
     bool hasChip;
-
+   
     int winnerIndex;
     bool actCustomerAnimation = false;
     bool choseWinnerPossible = true;
+    public bool isClean = true;
+    public bool isWorkerAvailable = false;
 
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] CasinoGameStack gameStack;
@@ -43,7 +49,6 @@ public class Roulette : CasinoGame
             //game ended
             ChoseWinner();
             StartCoroutine(ResetGame());
-
         }
 
     }
@@ -52,6 +57,7 @@ public class Roulette : CasinoGame
     {
         if (choseWinnerPossible)
         {
+            sweeper.ResetingCardsPoisiton();
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
             foreach (CustomerMovement customer in customers)
@@ -61,19 +67,60 @@ public class Roulette : CasinoGame
                 else 
                     customer.LosePorccess();
             }
+            isClean = false;
+
+
         }
     }
 
+    public void Cleaning()
+    {
+        if (!isClean && isWorkerAvailable)
+        {
+            print("hiiii");
+            cleaningCd -= Time.deltaTime;
+            if(cleaningCd <= 0)
+            {
+                isClean = true;
+                sweeper.Sweep();
+            }
+        }
+    }
 
     public override IEnumerator ResetGame()
     {
+        if (isClean)
+        {
+            cleaningCd = cleaningCdAmount;
+            dealerCastTime = dealerCastTimeAmount;
+            choseWinnerPossible = true;
+            actCustomerAnimation = false;
+            hasChip = false;
+            chip = null;
+            yield return base.ResetGame();
 
-        dealerCastTime = dealerCastTimeAmount;
-        choseWinnerPossible = true;
-        actCustomerAnimation = false;
-        hasChip = false;
-        chip = null;
-        return base.ResetGame();
+        }
+        yield break;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            if (!isClean)
+            {
+                isWorkerAvailable = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isWorkerAvailable = false;
+        }
+
     }
     void ActiveactCustomerAnimation()
     {
@@ -100,12 +147,14 @@ public class Roulette : CasinoGame
             if(castTime <= 0)
             {
                 PlayGame();
+
             }
             else
             {
                 workerCheker.worker.ActiveActionAnim(true);
             }
         }
+        Cleaning();
 
     }
 
