@@ -530,7 +530,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4978187463501947340}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.08
+  m_Radius: 0.17
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -539,7 +539,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.83
+  m_Height: 0.23
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -559,8 +559,8 @@ MonoBehaviour:
   anim: {fileID: 5320856513153801346}
   stats: {fileID: 11400000, guid: ac3bb7d9a176050469411901512231ea, type: 2}
   tableWinner: 0
+  isLeaving: 0
   agent: {fileID: 1791738785}
-  collider: {fileID: 1791738788}
   destination: {fileID: 0}
 --- !u!1 &5106541512157677110
 GameObject:
