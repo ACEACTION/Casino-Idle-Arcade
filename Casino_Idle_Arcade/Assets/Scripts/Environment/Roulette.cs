@@ -11,9 +11,11 @@ public class Roulette : CasinoGame
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
-    [SerializeField] float cleaningCd;
+    public float cleaningCd;
+    public RouletteCleaner cleaner;
     [SerializeField] float cleaningCdAmount;
     [SerializeField] Sweeper sweeper;
+
     bool hasChip;
    
     int winnerIndex;
@@ -27,9 +29,16 @@ public class Roulette : CasinoGame
     [SerializeField] Transform playChipSpot;
     CasinoResource chip;
 
+    private void OnEnable()
+    {
+        WorkerManager.roulettes.Add(this);
+        WorkerManager.AddNewRoulettesToAvailableWorker(this);
+    }
     private void Start()
     {
         CasinoElementManager.roulettes.Add(this);
+        WorkerManager.roulettes.Add(this);
+        WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
 
     public override void PlayGame()
@@ -58,6 +67,7 @@ public class Roulette : CasinoGame
         if (choseWinnerPossible)
         {
             sweeper.ResetingCardsPoisiton();
+            cleaner.cleaningSpot.Add(this.transform);
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
             foreach (CustomerMovement customer in customers)
@@ -77,10 +87,10 @@ public class Roulette : CasinoGame
     {
         if (!isClean && isWorkerAvailable)
         {
-            print("hiiii");
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
             {
+                cleaner.cleaningSpot.Remove(this.transform);
                 isClean = true;
                 sweeper.Sweep();
             }
