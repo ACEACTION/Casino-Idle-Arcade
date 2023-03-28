@@ -79,4 +79,6 @@ public class PlayerMovements : MonoBehaviour
     {
         velocity += anim.deltaPosition * 2f;
     }
+
+
 }

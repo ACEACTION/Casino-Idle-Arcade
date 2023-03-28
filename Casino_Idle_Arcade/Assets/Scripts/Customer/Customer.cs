@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
     bool payedMoney;
     public bool tableWinner;
     public bool isLeaving;
+    [SerializeField] int moneyAmount;
 
     private void OnEnable()
     {
@@ -58,6 +59,13 @@ public class Customer : MonoBehaviour
             money.transform.position = transform.position;
             stackMoney.AddToStack(money);
         }
+    }
+
+    
+    public int Bet(int betUnitPrice)
+    {
+        int betAmount = Random.Range(betUnitPrice / 100, moneyAmount / 100);
+        return betAmount * 100;
     }
 
 }

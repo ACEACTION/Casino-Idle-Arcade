@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
+
+
 
 public class Roulette : CasinoGame
 {
@@ -15,9 +16,15 @@ public class Roulette : CasinoGame
     public RouletteCleaner cleaner;
     [SerializeField] float cleaningCdAmount;
     [SerializeField] Sweeper sweeper;
-
+    [SerializeField] int betUnitPrice;
+    public int betCounter;
+    bool getBet = false;
     bool hasChip;
-   
+    [SerializeField] float maxGetChipCd;
+    float getChipCd;
+    [SerializeField] float playChipSpotOffset;
+    Vector3 playChipSpotDefaultPos;
+
     int winnerIndex;
     bool actCustomerAnimation = false;
     bool choseWinnerPossible = true;
@@ -28,7 +35,8 @@ public class Roulette : CasinoGame
     [SerializeField] CasinoGameStack gameStack;
     [SerializeField] Transform playChipSpot;
     CasinoResource chip;
-
+    List<CasinoResource> chipsOnBet = new List<CasinoResource>();
+    [SerializeField] Roulette_UI roulette_ui;
     private void OnEnable()
     {
         WorkerManager.roulettes.Add(this);
@@ -36,9 +44,18 @@ public class Roulette : CasinoGame
     }
     private void Start()
     {
+        Init();
+
         CasinoElementManager.roulettes.Add(this);
         WorkerManager.roulettes.Add(this);
         WorkerManager.AddNewRoulettesToAvailableWorker(this);
+    }
+
+    void Init()
+    {
+        getChipCd = maxGetChipCd;
+        playChipSpotDefaultPos = playChipSpot.localPosition;
+        roulette_ui.SetFatherPanelState(false);
     }
 
     public override void PlayGame()
@@ -49,12 +66,12 @@ public class Roulette : CasinoGame
         //animation customers = playing card
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        workerCheker.worker.ActiveActionAnim(false);
-
+        workerCheker.worker.ActiveActionAnim(false);        
 
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
         {
+            roulette_ui.SetFatherPanelState(false);
             //game ended
             ChoseWinner();
             StartCoroutine(ResetGame());
@@ -65,7 +82,8 @@ public class Roulette : CasinoGame
     void ChoseWinner()
     {
         if (choseWinnerPossible)
-        {
+        {            
+            
             sweeper.ResetingCardsPoisiton();
             cleaner.cleaningSpot.Add(this.transform);
             choseWinnerPossible = false;
@@ -107,6 +125,10 @@ public class Roulette : CasinoGame
             actCustomerAnimation = false;
             hasChip = false;
             chip = null;
+            getBet = false;
+            betCounter = 0;
+            playChipSpot.localPosition = playChipSpotDefaultPos;            
+
             yield return base.ResetGame();
 
         }
@@ -148,43 +170,91 @@ public class Roulette : CasinoGame
     {
         if((workerCheker.isPlayerAvailable 
             || workerCheker.isWorkerAvailable) 
-            && readyToPlay && gameStack.CanGetResource())
+            && readyToPlay)
         {
-
+            GetBetAmountFromCustomer();
             GetChipFromStack();
 
-            castTime -= Time.deltaTime;
-            if(castTime <= 0)
+            if (hasChip)
             {
-                PlayGame();
+                roulette_ui.SetFatherPanelState(true);
+                roulette_ui.SetPlayingGamePanelState(true);
 
-            }
-            else
-            {
-                workerCheker.worker.ActiveActionAnim(true);
+                castTime -= Time.deltaTime;
+                if (castTime <= 0)
+                {
+                    PlayGame();
+                }
+                else
+                {
+                    workerCheker.worker.ActiveActionAnim(true);
+                }
             }
         }
+
         Cleaning();
 
     }
 
-    
 
+ 
     public void GetChipFromStack()
     {
-        if (!hasChip)
+        if (!hasChip && gameStack.CanGetResource())
         {
-            hasChip = true;
-            chip = gameStack.GetFromGameStack();
-            if (chip)
+            getChipCd -= Time.deltaTime;
+            if (getChipCd <= 0)
             {
-                chip.transform.SetParent(transform);
-                chip.transform.DOLocalJump(
-                    playChipSpot.localPosition
-                   , 2, 1, getChipDuration);
+                chip = gameStack.GetFromGameStack();
+                if (chip)
+                {
+                    chip.transform.SetParent(transform);
+                    chip.transform.DOLocalJump(
+                        playChipSpot.localPosition
+                       , 2, 1, getChipDuration);
+                    playChipSpot.localPosition += new Vector3(0, playChipSpotOffset, 0);
+                    betCounter--;
+                    chipsOnBet.Add(chip);
+                
+                    if (betCounter <= 0)
+                    {
+                        hasChip = true;
+                        roulette_ui.SetFatherPanelState(false);
+                        roulette_ui.SetChipPanelState(false);
+                    }
+                    else 
+                        roulette_ui.SetChipTxt(betCounter.ToString());
+
+                }
+
+                getChipCd = maxGetChipCd;
+
 
             }
+
+
         }
     }
+
+    void GetBetAmountFromCustomer()
+    {
+        if (!getBet)
+        {
+            getBet = true;
+            foreach (Customer customer in customers)
+            {
+                betCounter += customer.Bet(betUnitPrice);
+            }
+
+            betCounter /= 100;
+
+            roulette_ui.SetFatherPanelState(true);
+            roulette_ui.SetChipPanelState(true);
+            roulette_ui.SetPlayingGamePanelState(false);
+            roulette_ui.SetChipTxt(betCounter.ToString());
+        }
+    }
+
+
 
 }
