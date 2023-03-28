@@ -1031,7 +1031,7 @@ PrefabInstance:
     - target: {fileID: 7813117492289418576, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38478be9cb847724fb286f58d1ceab51, type: 3}
@@ -4689,7 +4689,7 @@ PrefabInstance:
     - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
       propertyPath: capacity
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
@@ -4702,6 +4702,11 @@ PrefabInstance:
       propertyPath: sweeperSpot
       value: 
       objectReference: {fileID: 771221604}
+    - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
+        type: 3}
+      propertyPath: capacityAmount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
       propertyPath: cleaningSpot.Array.size
@@ -4771,6 +4776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rouletteCleaner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369466838062271226, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6369466838062271226, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public static class WorkerManager
@@ -12,7 +13,7 @@ public static class WorkerManager
     {
         if (rouletteCleaners.Count != 0)
         {
-            if (rouletteCleaners[0].capacity != 0)
+            if (rouletteCleaners[0].capacity > 0)
             {
                 rouletteCleaners[0].capacity--;
                 rouletteCleaners[0].roulettes.Add(roulette);
@@ -25,15 +26,19 @@ public static class WorkerManager
 
     public static void AddAvaiableRouletteToCleaner()
     {
-
-        for (int i = 0; i < rouletteCleaners[0].capacityAmount; i++)
+        if (rouletteCleaners.Count > 0)
         {
+            for (int i = 0; i < rouletteCleaners[0].capacityAmount; i++)
+            {
+                if (roulettes.Count == 0) return;
 
-           // rouletteCleaners[0].roulettes.Add(roulettes[i]);
-            roulettes[i].cleaner = rouletteCleaners[0];
-            roulettes.Remove(roulettes[i]);
-            rouletteCleaners[0].capacity--;
+                rouletteCleaners[0].roulettes.Add(roulettes[0]);
+                roulettes[0].cleaner = rouletteCleaners[0];
+                Debug.Log(i);
+                roulettes.Remove(roulettes[0]);
+                //rouletteCleaners[0].capacity--;
 
+            }
         }
         if(rouletteCleaners[0].capacity == 0) rouletteCleaners.Remove(rouletteCleaners[0]);
     }

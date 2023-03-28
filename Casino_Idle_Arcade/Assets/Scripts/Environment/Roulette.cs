@@ -48,7 +48,7 @@ public class Roulette : CasinoGame
 
         CasinoElementManager.roulettes.Add(this);
         WorkerManager.roulettes.Add(this);
-        WorkerManager.AddNewRoulettesToAvailableWorker(this);
+      //  WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
 
     void Init()
@@ -85,7 +85,8 @@ public class Roulette : CasinoGame
         {            
             
             sweeper.ResetingCardsPoisiton();
-            cleaner.cleaningSpot.Add(this.transform);
+            if (cleaner != null) cleaner.cleaningSpot.Add(this.transform);
+
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
             foreach (CustomerMovement customer in customers)
@@ -108,7 +109,9 @@ public class Roulette : CasinoGame
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
             {
-                cleaner.cleaningSpot.Remove(this.transform);
+                if(cleaner != null)
+                    cleaner.cleaningSpot.Remove(this.transform);
+
                 isClean = true;
                 sweeper.Sweep();
             }
