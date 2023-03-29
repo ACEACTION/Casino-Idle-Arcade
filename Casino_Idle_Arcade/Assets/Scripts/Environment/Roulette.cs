@@ -38,11 +38,13 @@ public class Roulette : CasinoGame
     CasinoResource chip;
     List<CasinoResource> chipsOnBet = new List<CasinoResource>();
     [SerializeField] Roulette_UI roulette_ui;
+    
     private void OnEnable()
     {
         WorkerManager.roulettes.Add(this);
         WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
+
     private void Start()
     {
         Init();
