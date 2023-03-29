@@ -32,6 +32,37 @@ Transform:
   m_Father: {fileID: 2017056883461357066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45.111122, y: -20.507847, z: -1.4811784}
+--- !u!1 &520938410337251127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5091302058514748046}
+  m_Layer: 0
+  m_Name: First Stack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5091302058514748046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520938410337251127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.099, z: 0.663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5646884684612139894}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603480166621738713
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +494,7 @@ GameObject:
   - component: {fileID: 1791738788}
   - component: {fileID: 1791738785}
   - component: {fileID: 1791738789}
+  - component: {fileID: 534705596332280353}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -484,6 +516,7 @@ Transform:
   m_Children:
   - {fileID: 3669614427928112104}
   - {fileID: 6655266877750039513}
+  - {fileID: 5091302058514748046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -561,8 +594,24 @@ MonoBehaviour:
   tableWinner: 0
   isLeaving: 0
   moneyAmount: 200
+  stack: {fileID: 534705596332280353}
   agent: {fileID: 1791738785}
   destination: {fileID: 0}
+--- !u!114 &534705596332280353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978187463501947340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e784ccfe8925d0d4591f6d8999274382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackYOffset: 0.12
+  firstStack: {fileID: 5091302058514748046}
+  chips: []
 --- !u!1 &5106541512157677110
 GameObject:
   m_ObjectHideFlags: 0

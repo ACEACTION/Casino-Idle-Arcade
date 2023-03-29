@@ -24,6 +24,7 @@ public class Roulette : CasinoGame
     float getChipCd;
     [SerializeField] float playChipSpotOffset;
     Vector3 playChipSpotDefaultPos;
+    [SerializeField] float giveChipsToWinnerDelay = 2f;
 
     int winnerIndex;
     bool actCustomerAnimation = false;
@@ -91,14 +92,26 @@ public class Roulette : CasinoGame
             winnerIndex = Random.Range(0, customers.Count);
             foreach (CustomerMovement customer in customers)
             {
-                if (customers.IndexOf(customer) == winnerIndex) 
+                if (customers.IndexOf(customer) == winnerIndex)
+                { 
                     customer.WinProccess();
-                else 
+                    StartCoroutine(GiveChipsToWinner(customer));
+                }
+                else
                     customer.LosePorccess();
             }
             isClean = false;
 
 
+        }
+    }
+
+    IEnumerator GiveChipsToWinner(Customer customer)
+    {
+        yield return new WaitForSeconds(giveChipsToWinnerDelay);
+        foreach (CasinoResource resource in chipsOnBet)
+        {
+            customer.stack.AddChipToStack(resource);
         }
     }
 
@@ -130,8 +143,9 @@ public class Roulette : CasinoGame
             chip = null;
             getBet = false;
             betCounter = 0;
-            playChipSpot.localPosition = playChipSpotDefaultPos;            
-
+            playChipSpot.localPosition = playChipSpotDefaultPos;
+            chipsOnBet.Clear();
+            
             yield return base.ResetGame();
 
         }

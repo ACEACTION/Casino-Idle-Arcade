@@ -12,6 +12,7 @@ public class Customer : MonoBehaviour
     public bool tableWinner;
     public bool isLeaving;
     [SerializeField] int moneyAmount;
+    public CustomerHandStack stack;
 
     private void OnEnable()
     {
