@@ -9,5 +9,6 @@ public class Cleaner : MonoBehaviour
     public Transform sweeperSpot;
     public int capacity;
     public int capacityAmount;
+    public Animator anim;
 
 }

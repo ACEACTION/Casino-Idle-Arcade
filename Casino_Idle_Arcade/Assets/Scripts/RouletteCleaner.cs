@@ -23,15 +23,35 @@ public class RouletteCleaner : Cleaner
         if (cleaningSpot.Count != 0)
         {
             agent.SetDestination(cleaningSpot[0].transform.position);
-            if(Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+            if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, cleaningSpot[0].transform.rotation, 0.1f);
                 StartCoroutine(MoveToCleaningSpot());
+                anim.SetBool("isWalking", false);
+
+            }
+            else
+            {
+                anim.SetBool("isWalking", true);
+
             }
 
-        }
-        else agent.SetDestination(sweeperSpot.position);
 
+
+        }
+        else
+        {
+            agent.SetDestination(sweeperSpot.position);
+            if(Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+            {
+                anim.SetBool("isWalking", false);
+            }
+            else
+            {
+                anim.SetBool("isWalking", true);
+
+            }
+        }
     }
 
 

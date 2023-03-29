@@ -4427,6 +4427,26 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &1835598863279699248
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311264219757670289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f5d470400ac08a4bbe09e848ee3e576, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3021112645467224844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4683,6 +4703,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1835598863279699248}
+    - target: {fileID: 2754180019144803969, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
+        type: 3}
       propertyPath: agent
       value: 
       objectReference: {fileID: 1835598863279699245}
@@ -4780,7 +4805,7 @@ PrefabInstance:
     - target: {fileID: 6369466838062271226, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6369466838062271226, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
         type: 3}
