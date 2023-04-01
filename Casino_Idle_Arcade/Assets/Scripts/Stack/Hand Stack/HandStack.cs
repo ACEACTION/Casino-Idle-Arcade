@@ -21,17 +21,27 @@ public class HandStack : MonoBehaviour
     public List<CasinoResource> stackList;
     CasinoResourceDesk casinoResource;
     CasinoGameStack casinoGameStack;
+    [SerializeField] Animator anim;
 
     private void Start()
     {
-        
         addStackCd = maxAddStackCd;
     }
 
     private void Update()
     {
+        AddStackResourceWithCd();
+        RemoveFromStackWithCd();
+        SetStackAnimation();
+    }
+
+    bool CanAddStack() => stackCount < maxStackCount;
+    bool CanRemoveStack() => stackCount > 0;
+
+    void AddStackResourceWithCd()
+    {
         if (casinoResource && CanAddStack())
-        {            
+        {
             addStackCd -= Time.deltaTime;
             if (addStackCd < 0)
             {
@@ -39,7 +49,31 @@ public class HandStack : MonoBehaviour
                 addStackCd = maxAddStackCd;
             }
         }
+    }
+    void AddStackResource()
+    {
+        if (casinoResource)
+        {
+            
+            casinoResource.AddResourceToStack(this, stackList);
+            stackCount++;
+            firstStack.transform.position += new Vector3(0, stackYOffset, 0);
+            stackHasResource = true;
+        }
+    }
 
+    void SetStackAnimation()
+    {
+        if (stackHasResource)
+            anim.SetLayerWeight(1, 1);
+        else
+            anim.SetLayerWeight(1, 0);
+
+    }
+
+
+    void RemoveFromStackWithCd()
+    {
         if (casinoGameStack && CanRemoveStack())
         {
             removeStackCd -= Time.deltaTime;
@@ -49,23 +83,7 @@ public class HandStack : MonoBehaviour
                 removeStackCd = maxRemoveStackCd;
             }
         }
-
     }
-
-    bool CanAddStack() => stackCount < maxStackCount;
-    bool CanRemoveStack() => stackCount > 0;
-
-    void AddStackResource()
-    {
-        if (casinoResource)
-        {
-            casinoResource.AddResourceToStack(this, stackList);
-            stackCount++;
-            firstStack.transform.position += new Vector3(0, stackYOffset, 0);
-            stackHasResource = true;
-        }
-    }
-
     void RemoveFromStack()
     {
         if (casinoGameStack && casinoGameStack.CanAddStack())

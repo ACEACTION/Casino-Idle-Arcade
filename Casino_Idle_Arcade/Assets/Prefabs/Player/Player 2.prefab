@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153467833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: -0.188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1680,13 +1680,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Stickman Rig'\n\tTransform 'RightFoot'\n\tTransform
-    'RightHandThumb1'\n\tTransform 'LeftHandPinky1'\n\tTransform 'LeftLeg'\n\tTransform
-    'LeftArm'\n\tTransform 'Stickman Rig'\n\tTransform 'RightShoulder'\n\tTransform
-    'LeftHandMiddle2'\n\tTransform 'RightHandIndex2'\n\tand more ...\n\tFrom animation
-    clip 'mixamo.com'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1732,10 +1726,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1aedd7c0983654aa9e7ed4814945a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationMoveSpeed: 2
+  animationStackMoveSpeed: 4
   rotationSpeed: 90
   rb: {fileID: 6827686337828414988}
   anim: {fileID: 6827686337828414989}
   cameraTransform: {fileID: 0}
+  handStack: {fileID: 1050762510}
 --- !u!114 &1050762510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,12 +1747,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStackCount: 8
   stackCount: 0
-  stackYOffset: 0.187
+  stackYOffset: 0.11
   maxAddStackCd: 0.7
   maxRemoveStackCd: 0.7
   stackHasResource: 0
   firstStack: {fileID: 1153467834}
   stackList: []
+  anim: {fileID: 6827686337828414989}
 --- !u!1 &6058353892825682853
 GameObject:
   m_ObjectHideFlags: 0
