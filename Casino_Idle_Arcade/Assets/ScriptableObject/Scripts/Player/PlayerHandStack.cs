@@ -11,7 +11,7 @@ public class PlayerHandStack : HandStack
     {
         if (stackHasResource)
         {
-
+            
         }
         else
         {

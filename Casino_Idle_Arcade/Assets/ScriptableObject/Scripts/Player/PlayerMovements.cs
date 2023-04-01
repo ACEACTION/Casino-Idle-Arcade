@@ -8,6 +8,8 @@ public class PlayerMovements : MonoBehaviour
 {
 
     //variables
+    [SerializeField] float animationMoveSpeed = 2;
+    [SerializeField] float animationStackMoveSpeed = 4;
     [SerializeField] float rotationSpeed;
     Vector3 movementDir;
     float xDir, zDir;
@@ -20,7 +22,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
-    
+
     public static PlayerMovements Instance;
     private void Awake()
     {
@@ -59,9 +61,8 @@ public class PlayerMovements : MonoBehaviour
 
         anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
         movementDir.Normalize();
-
-
     }
+
     public void RotatePlayerFace()
     {
         if (movementDir != Vector3.zero)
@@ -75,9 +76,15 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    public HandStack handStack;
+    
+
     private void OnAnimatorMove()
     {
-        velocity += anim.deltaPosition * 2f;
+        if (handStack.stackHasResource)
+            velocity += anim.deltaPosition * animationMoveSpeed;
+        else
+            velocity += anim.deltaPosition * animationStackMoveSpeed;
     }
 
 
