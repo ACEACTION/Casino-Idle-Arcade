@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CashierManager : MonoBehaviour
 {
     [SerializeField] int slotMachinePayment;
     [SerializeField] int tablePayment;
     [SerializeField] WorkerCheker workerCheker;
+    [SerializeField] Slider slider;
 
 
 
@@ -24,6 +25,8 @@ public class CashierManager : MonoBehaviour
     Table emptyTable;
     private void Update()
     {
+        //slider.minValue = -cooldown;
+        slider.value = -cooldown;
         //if cashier spot !null
         if ((workerCheker.isPlayerAvailable || workerCheker.isWorkerAvailable)
             && firstCounter.firstCustomer != null)

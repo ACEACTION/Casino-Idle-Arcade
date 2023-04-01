@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CustomerSpawner : MonoBehaviour
 {
-    public  CashierManager cashierManager;
+
+
+    public CashierManager cashierManager;
+
     public  List<CustomerMovement> customersList = new List<CustomerMovement>();
     public CustomerMovement cs;
     public static CustomerSpawner instance;

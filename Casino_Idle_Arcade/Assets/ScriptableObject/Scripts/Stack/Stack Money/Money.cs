@@ -6,12 +6,14 @@ public class Money : MonoBehaviour
 {
     [SerializeField] float goToPlayerTime;
     bool goToPlayer;
-
+    
 
     private void Update()
     {
         if (goToPlayer)
         {
+            
+
             transform.position = 
                 Vector3.MoveTowards(transform.position, 
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0), 

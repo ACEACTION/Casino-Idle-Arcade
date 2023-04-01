@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 using DG.Tweening;
-
-
+using UnityEngine.UI;
 
 public class Roulette : CasinoGame
 {
     //variables
+    [SerializeField] Slider slider;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
@@ -50,8 +50,6 @@ public class Roulette : CasinoGame
         Init();
 
         CasinoElementManager.roulettes.Add(this);
-        WorkerManager.roulettes.Add(this);
-      //  WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
 
     void Init()
@@ -63,7 +61,6 @@ public class Roulette : CasinoGame
 
     public override void PlayGame()
     {
-        
         base.PlayGame();
 
         //animation customers = playing card
