@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Money : MonoBehaviour
 {
-    [SerializeField] float goToPlayerTime;
+
+    [SerializeField] MoneyData data;
     bool goToPlayer;
     
 
@@ -17,12 +18,13 @@ public class Money : MonoBehaviour
             transform.position = 
                 Vector3.MoveTowards(transform.position, 
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0), 
-                goToPlayerTime * Time.deltaTime);
+                data.goToPlayerTime * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, 
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
+                GameManager.AddMoney(data.moneyPrice);
                 StackMoneyPool.Instance.OnReleaseMoney(this);
             }
         }

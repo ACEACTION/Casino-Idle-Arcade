@@ -7,12 +7,12 @@ public class CustomerHandStack : MonoBehaviour
 {
     // variables
     [SerializeField] float stackYOffset;
-
+    public int stackCounter;
     // references
     [SerializeField] Transform firstStack;
     [SerializeField] List<CasinoResource> chips = new List<CasinoResource>();
 
-
+    public bool HasStack() => stackCounter > 0;
 
     public void AddChipToStack(CasinoResource chip)
     {
@@ -20,11 +20,13 @@ public class CustomerHandStack : MonoBehaviour
         chip.transform.SetParent(transform);
         chip.transform.DOLocalMove(firstStack.localPosition, .7f);
         firstStack.position += new Vector3(0, stackYOffset, 0);
+        stackCounter++;
     }
 
     public void RemoveFromStack()
     {
-        
+        stackCounter--;
+
     }
 
 }

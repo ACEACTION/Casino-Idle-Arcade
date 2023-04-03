@@ -51,10 +51,11 @@ public class StackMoney : MonoBehaviour
     public void AddToStack(Money money)
     {
         money.transform.SetParent(slots[stackCounter].transform);
-        money.transform.DOLocalMove(Vector3.zero, moneyMoveSpeed)
-            .SetEase(moneyMoveEase);        
+        money.transform.DOLocalJump(Vector3.zero, 2, 1, moneyMoveSpeed).SetEase(moneyMoveEase);
+        money.transform.DORotate(new Vector3(0, Random.Range(-20, 20), 0), 1, RotateMode.FastBeyond360);
         moneyList.Add(money);
         stackCounter++;
+        
         if (stackCounter == slots.Count) stackCounter = 0;
     }
 

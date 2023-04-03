@@ -20,8 +20,16 @@ public class CustomerMovement : Customer
             if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, dir.rotation, 0.1f);
-                anim.SetBool("idle", true);
-                anim.SetBool("isWalking", false);
+                if (stack.HasStack())
+                {
+                    anim.SetBool("idlecarry", true);
+                    anim.SetBool("walkcarry", false);
+                }
+                else
+                {
+                    anim.SetBool("idle", true);
+                    anim.SetBool("isWalking", false);
+                }
             }
         }
     }
@@ -29,7 +37,14 @@ public class CustomerMovement : Customer
 
     public void SetMove(Transform ts)
     {
-        anim.SetBool("isWalking", true);
+        if (stack.HasStack())
+        {
+            anim.SetBool("walkcarry", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
         destination = ts;
 
     }

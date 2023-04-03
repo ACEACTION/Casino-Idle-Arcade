@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CashierManager : MonoBehaviour
 {
-    [SerializeField] int slotMachinePayment;
-    [SerializeField] int tablePayment;
+    [SerializeField] int jackPotPayment;
+    [SerializeField] int roulettePayment;
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] Slider slider;
 
@@ -22,7 +22,6 @@ public class CashierManager : MonoBehaviour
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
-    Table emptyTable;
     private void Update()
     {
         //slider.minValue = -cooldown;
@@ -36,6 +35,8 @@ public class CashierManager : MonoBehaviour
             {
                 if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
                 {
+                    firstCounter.firstCustomer.PayMoney(stackMoney, 
+                        GetPayment(firstCounter.firstCustomer.elementType));
                     cooldown = cooldownAmount;
                 }
             }
@@ -64,6 +65,20 @@ public class CashierManager : MonoBehaviour
         {
             playerIsCashier = false;
             
+        }
+    }
+
+
+    public int GetPayment(ElementsType type)
+    {
+        switch (type)
+        {
+            case ElementsType.roulette:
+                return roulettePayment;
+            case ElementsType.jackpot:
+                return jackPotPayment;
+            default:
+                return 1;
         }
     }
 
