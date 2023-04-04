@@ -58,7 +58,6 @@ public class Roulette : CasinoGame
     {
         getChipCd = maxGetChipCd;
         playChipSpotDefaultPos = playChipSpot.localPosition;
-        roulette_ui.SetFatherPanelState(false);
     }
 
     public override void PlayGame()
@@ -73,7 +72,6 @@ public class Roulette : CasinoGame
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
         {
-            roulette_ui.SetFatherPanelState(false);
             //game ended
             ChoseWinner();
             StartCoroutine(ResetGame());
@@ -215,8 +213,6 @@ public class Roulette : CasinoGame
 
             if (hasChip)
             {
-                roulette_ui.SetFatherPanelState(true);
-                roulette_ui.SetPlayingGamePanelState(true);
 
                 castTime -= Time.deltaTime;
                 if (workerCheker.isPlayerAvailable && canChangeCamera)
@@ -264,7 +260,6 @@ public class Roulette : CasinoGame
                     if (betCounter <= 0)
                     {
                         hasChip = true;
-                        roulette_ui.SetFatherPanelState(false);
                         roulette_ui.SetChipPanelState(false);
                     }
                     else 
@@ -293,9 +288,7 @@ public class Roulette : CasinoGame
 
             betCounter /= 100;
 
-            roulette_ui.SetFatherPanelState(true);
             roulette_ui.SetChipPanelState(true);
-            roulette_ui.SetPlayingGamePanelState(false);
             roulette_ui.SetChipTxt(betCounter.ToString());
         }
     }

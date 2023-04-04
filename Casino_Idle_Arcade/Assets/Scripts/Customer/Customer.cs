@@ -8,7 +8,6 @@ public class Customer : MonoBehaviour
     public ElementsType elementType;
     public Animator anim;
     public CustomerData stats;
-    bool payedMoney;
     public bool tableWinner;
     public bool isLeaving;
     [SerializeField] int moneyAmount;
@@ -46,16 +45,15 @@ public class Customer : MonoBehaviour
 
     void SetElementType()
     {
-        elementType = CasinoManager.instance.availableElements[Random.Range(0, CasinoManager.instance.availableElements.Count)];
-
+        elementType = CasinoManager.instance.availableElements
+            [Random.Range(0, CasinoManager.instance.availableElements.Count)];
     }
 
-    public void PayMoney(StackMoney stackMoney, int amount)
+    public IEnumerator PayMoney(StackMoney stackMoney, int amount)
     {
-        if (payedMoney) return;
-
         for (int i = 0; i < amount; i++)
         {
+            yield return new WaitForSeconds(.1f);
             Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
             stackMoney.AddToStack(money);
