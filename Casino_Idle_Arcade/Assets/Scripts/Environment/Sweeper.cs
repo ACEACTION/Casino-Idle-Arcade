@@ -11,6 +11,7 @@ public class Sweeper : MonoBehaviour
     Vector3[] path;
     [SerializeField] Transform targetPosition;
     Quaternion targetRotation;
+    [SerializeField] ParticleSystem cardEffect;
     private void Start()
     {
                 path = new Vector3[] {
@@ -41,6 +42,8 @@ public class Sweeper : MonoBehaviour
         sequence.OnComplete(() =>
         {
             sortedCards.SetActive(true);
+            cardEffect.gameObject.SetActive(true);
+            cardEffect.Play();
             foreach (Transform objectToSweep in objectsToSweep)
             {
                 objectToSweep.gameObject.SetActive(false);
@@ -57,6 +60,7 @@ public class Sweeper : MonoBehaviour
 
             objectsToSweep[i].DOMove(objectsStartingPos[i].position,1f);
         }
+
 
     }
 }
