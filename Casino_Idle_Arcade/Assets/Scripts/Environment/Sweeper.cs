@@ -42,6 +42,7 @@ public class Sweeper : MonoBehaviour
         sequence.OnComplete(() =>
         {
             sortedCards.SetActive(true);
+            ScalingSortedCards();
             cardEffect.gameObject.SetActive(true);
             cardEffect.Play();
             foreach (Transform objectToSweep in objectsToSweep)
@@ -60,7 +61,11 @@ public class Sweeper : MonoBehaviour
 
             objectsToSweep[i].DOMove(objectsStartingPos[i].position,1f);
         }
+    }
 
 
+    void ScalingSortedCards()
+    {
+        sortedCards.transform.DOShakeScale(0.5f, 1.2f);
     }
 }
