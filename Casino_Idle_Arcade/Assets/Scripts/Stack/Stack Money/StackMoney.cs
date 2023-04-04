@@ -52,7 +52,7 @@ public class StackMoney : MonoBehaviour
     {
         money.transform.SetParent(slots[stackCounter].transform);
         money.transform.DOLocalJump(Vector3.zero, 2, 1, moneyMoveSpeed).SetEase(moneyMoveEase);
-        money.transform.DORotate(new Vector3(0, Random.Range(-20, 20), 0), 1, RotateMode.FastBeyond360);
+        money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
         moneyList.Add(money);
         stackCounter++;
         

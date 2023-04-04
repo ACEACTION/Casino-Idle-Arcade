@@ -9,9 +9,11 @@ public class Roulette : CasinoGame
 {
     //variables
     [SerializeField] Slider slider;
+    [SerializeField] ParticleSystem[] confetti;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
+    bool canChangeCamera;
     public float cleaningCd;
     public RouletteCleaner cleaner;
     [SerializeField] float cleaningCdAmount;
@@ -75,6 +77,12 @@ public class Roulette : CasinoGame
             //game ended
             ChoseWinner();
             StartCoroutine(ResetGame());
+
+            if (workerCheker.isPlayerAvailable && !canChangeCamera)
+            {
+                canChangeCamera = true;
+                CinemachineManager.instance.ChangeCam();
+            }
         }
 
     }
@@ -82,8 +90,14 @@ public class Roulette : CasinoGame
     void ChoseWinner()
     {
         if (choseWinnerPossible)
-        {            
-            
+        {
+            for (int i = 0; i < confetti.Length; i++)
+            {
+
+                confetti[i].gameObject.SetActive(true);
+                confetti[i].Play();
+            }
+;
             sweeper.ResetingCardsPoisiton();
             if (cleaner != null) cleaner.cleaningSpot.Add(this.transform);
 
@@ -159,6 +173,8 @@ public class Roulette : CasinoGame
             {
                 isWorkerAvailable = true;
             }
+
+            canChangeCamera = true;
         }
     }
 
@@ -167,6 +183,12 @@ public class Roulette : CasinoGame
         if (other.gameObject.CompareTag("Player"))
         {
             isWorkerAvailable = false;
+            canChangeCamera = false;
+            if(CinemachineManager.instance.isNormalCam)
+                CinemachineManager.instance.ChangeCam();
+
+
+
         }
 
     }
@@ -197,9 +219,16 @@ public class Roulette : CasinoGame
                 roulette_ui.SetPlayingGamePanelState(true);
 
                 castTime -= Time.deltaTime;
+                if (workerCheker.isPlayerAvailable && canChangeCamera)
+                {
+                    canChangeCamera = false;
+                    CinemachineManager.instance.ChangeCam();
+                }
                 if (castTime <= 0)
                 {
+
                     PlayGame();
+
                 }
                 else
                 {
@@ -213,7 +242,7 @@ public class Roulette : CasinoGame
     }
 
 
- 
+
     public void GetChipFromStack()
     {
         if (!hasChip && gameStack.CanGetResource())
