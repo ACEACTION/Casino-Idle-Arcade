@@ -7,20 +7,23 @@ public class Money : MonoBehaviour
 
     [SerializeField] MoneyData data;
     bool goToPlayer;
-    
+    Vector3 defaultScale;
+
+    private void Start()
+    {
+       defaultScale = transform.localScale;       
+    }    
 
     private void Update()
     {
         if (goToPlayer)
         {
-            
-
-            transform.position = 
-                Vector3.MoveTowards(transform.position, 
-                PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0), 
+            transform.position =
+                Vector3.MoveTowards(transform.position,
+                PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0),
                 data.goToPlayerTime * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, 
+            if (Vector3.Distance(transform.position,
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
@@ -28,6 +31,8 @@ public class Money : MonoBehaviour
                 StackMoneyPool.Instance.OnReleaseMoney(this);
             }
         }
+        else
+            transform.localScale = defaultScale;
     }
 
     public void SetGoToPlayer()

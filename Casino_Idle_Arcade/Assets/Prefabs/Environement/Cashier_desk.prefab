@@ -82,10 +82,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 355283679}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -2
+  m_MinValue: -1
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -2
+  m_Value: -1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -724,8 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd84a80278350b4194decec88231ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotMachinePayment: 3
-  tablePayment: 5
+  jackPotPayment: 3
+  roulettePayment: 2
   workerCheker: {fileID: 398272508959528853}
   slider: {fileID: 286379138}
   customerSpots:
@@ -734,8 +734,8 @@ MonoBehaviour:
   - {fileID: 285653702859748021}
   - {fileID: 285653702346433739}
   - {fileID: 285653702177605073}
-  cooldown: 2
-  cooldownAmount: 2
+  cooldown: 1
+  cooldownAmount: 1
   firstCounter: {fileID: 285653701028799908}
   stackMoney: {fileID: 7292628815658343613}
   cashierAvailabe: 0
@@ -764,30 +764,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 323241000623256988}
     m_Modifications:
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Size.x
-      value: 1.4594121
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Size.y
-      value: 1.1275432
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Size.z
-      value: 1.4352989
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Center.x
-      value: 0.31459308
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Center.y
-      value: -0.1862284
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344687349, guid: 8947c5f3ffbc4fd4d832faeb88823157, type: 3}
-      propertyPath: m_Center.z
-      value: 0.4737606
-      objectReference: {fileID: 0}
     - target: {fileID: 7404559637013153672, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
+
 public class StackMoneyPool : MonoBehaviour
 {
     [SerializeField] Money moneyPrefab;
@@ -33,6 +34,8 @@ public class StackMoneyPool : MonoBehaviour
     private void OnGet(Money obj)
     {
         obj.gameObject.SetActive(true);
+        //obj.transform.DOScale(moneyPrefab.transform.localScale, 0);
+        //obj.transform.localScale = moneyPrefab.transform.localScale;
     }
 
     private Money CreateMoney()

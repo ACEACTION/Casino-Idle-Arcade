@@ -53,9 +53,10 @@ public class Customer : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(0f);
             Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
+            money.transform.eulerAngles = new Vector3(0, 0, 0);            
             stackMoney.AddToStack(money);
         }
     }

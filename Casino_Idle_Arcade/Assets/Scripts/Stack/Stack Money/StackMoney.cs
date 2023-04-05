@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class StackMoney : MonoBehaviour
 {
+    [Header("Stack")]
     [SerializeField] int xSize = 5; // the size of the 3D array in x
     [SerializeField] int ySize = 5; // the size of the 3D array in y
     [SerializeField] int zSize = 5; // the size of the 3D array in z
@@ -15,8 +16,18 @@ public class StackMoney : MonoBehaviour
     [SerializeField] Ease moneyMoveEase;
     [SerializeField] float goToPlayerDelay;
     public int stackCounter;
+    bool isPlayer;
 
+    [Header("Loot")]
+    [SerializeField] float lootMinYOffset;
+    [SerializeField] float lootMaxYOffset;
+    [SerializeField] float lootXOffset;
+    [SerializeField] float lootZOffset;
+    [SerializeField] float lootMoveUpDuration;
+    [SerializeField] float lootRotDuration;
+    [SerializeField] float lootScaleDuration;
 
+    [Header("References")]
     [SerializeField] StackMoneySlot prefab; // the prefab to create
     [SerializeField] List<StackMoneySlot> slots;
     [SerializeField] List<Money> moneyList;
@@ -50,14 +61,58 @@ public class StackMoney : MonoBehaviour
 
     public void AddToStack(Money money)
     {
-        money.transform.SetParent(slots[stackCounter].transform);
-        money.transform.DOLocalJump(Vector3.zero, 2, 1, moneyMoveSpeed).SetEase(moneyMoveEase);
-        money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
-        moneyList.Add(money);
-        stackCounter++;
-        
-        if (stackCounter == slots.Count) stackCounter = 0;
+
+        if (!isPlayer)
+        {
+            money.transform.SetParent(slots[stackCounter].transform);
+            //money.transform.DOLocalJump(Vector3.zero, 2, 1, moneyMoveSpeed).SetEase(moneyMoveEase);
+            money.transform.DOLocalMove(Vector3.zero, moneyMoveSpeed).SetEase(moneyMoveEase);
+            money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
+            moneyList.Add(money);
+            stackCounter++;
+            if (stackCounter == slots.Count) stackCounter = slots.Count - 1;
+        }
+        else
+        {
+            money.SetGoToPlayer();
+        }
     }
+
+
+   
+
+
+    private void Update()
+    {
+        if (isPlayer)
+        {
+            foreach (Money money in moneyList)
+            {
+                money.transform.DOMove(money.transform.position + GetRandomLootOffset(), lootMoveUpDuration)
+                    .OnComplete(() =>
+                    {
+                        money.SetGoToPlayer();
+                    });
+                    
+                money.transform.DORotate(new Vector3(Random.Range(0, 360),
+                    Random.Range(0, 360),
+                    Random.Range(0, 360)), lootRotDuration);
+
+                money.transform.DOScale(.4f, lootScaleDuration);
+            }
+            stackCounter = 0;
+            moneyList.Clear();
+        }
+    }
+
+    Vector3 GetRandomLootOffset()
+    {
+        return new Vector3
+            (Random.Range(-lootXOffset, lootXOffset),
+            Random.Range(lootMinYOffset, lootMaxYOffset),
+            Random.Range(-lootZOffset, lootZOffset));
+    }
+
 
     public void GetFromStack()
     {
@@ -79,7 +134,16 @@ public class StackMoney : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GetFromStack();
+            isPlayer = true;
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isPlayer = false;
         }
     }
 
