@@ -8,6 +8,7 @@ public class PlayerMovements : MonoBehaviour
 {
 
     //variables
+    public ParticleSystem lootEffect;
     [SerializeField] float animationMoveSpeed = 2;
     [SerializeField] float animationStackMoveSpeed = 4;
     [SerializeField] float rotationSpeed;
