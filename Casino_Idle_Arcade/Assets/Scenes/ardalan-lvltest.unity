@@ -2152,6 +2152,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 608804593}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &618193120 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986709071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &628698004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4211,6 +4217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyTxt: {fileID: 1929809399}
+  moneyIcon: {fileID: 618193120}
 --- !u!1001 &1903008151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4218,6 +4225,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818797529}
     m_Modifications:
+    - target: {fileID: 6403252182514069273, guid: 38478be9cb847724fb286f58d1ceab51,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_RootOrder
@@ -4647,6 +4659,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 3111766854431767082, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 256.491
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854431767082, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 88.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854431767082, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854431767082, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.61792
+      objectReference: {fileID: 0}
     - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4659,13 +4691,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111766854486918107, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3111766855115948664, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
@@ -4681,13 +4738,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 55417e796e5d4374c897a4ec2230b22a,
+      objectReference: {fileID: 11400000, guid: 003e6c6cd2ae5f94381f862877275aa2,
         type: 2}
     - target: {fileID: 3111766855115948664, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7871740445667387886, guid: 55417e796e5d4374c897a4ec2230b22a,
+      objectReference: {fileID: -7871740445667387886, guid: 003e6c6cd2ae5f94381f862877275aa2,
         type: 2}
     - target: {fileID: 3111766855115948664, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
