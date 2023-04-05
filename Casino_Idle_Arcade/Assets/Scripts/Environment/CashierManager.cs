@@ -22,15 +22,21 @@ public class CashierManager : MonoBehaviour
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
-    private void Update()
+
+    private void Start()
     {
-        //slider.minValue = -cooldown;
-        slider.value = -cooldown;
+        slider.maxValue = cooldownAmount;
+        cooldown = cooldownAmount;
+    }
+
+    private void Update()
+    {        
         //if cashier spot !null
         if ((workerCheker.isPlayerAvailable || workerCheker.isWorkerAvailable)
-            && firstCounter.firstCustomer != null)
+            && firstCounter.nextCustomer)
         {
             cooldown -= Time.deltaTime;
+            slider.value += Time.deltaTime;
             if (cooldown <= 0)
             {
                 if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
@@ -38,9 +44,10 @@ public class CashierManager : MonoBehaviour
                     StartCoroutine(firstCounter.firstCustomer.PayMoney(stackMoney, 
                         GetPayment(firstCounter.firstCustomer.elementType)));
                     cooldown = cooldownAmount;
+                    slider.value = 0;
+                    firstCounter.nextCustomer = false;
                 }
-            }
-        
+            }        
         }
 
     }

@@ -6,8 +6,8 @@ using UnityEngine;
 public class CashierFirstTransform : MonoBehaviour
 {
 
+    public bool nextCustomer;
     public CustomerMovement firstCustomer;
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +17,7 @@ public class CashierFirstTransform : MonoBehaviour
             if (!other.gameObject.GetComponent<CustomerMovement>().isLeaving)
             {
                 firstCustomer = other.gameObject.GetComponent<CustomerMovement>();
+                nextCustomer = true;
             }
         }
     }
