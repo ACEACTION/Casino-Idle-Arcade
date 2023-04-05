@@ -27,6 +27,8 @@ public class Money : MonoBehaviour
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
+                PlayerMovements.Instance.lootEffect.gameObject.SetActive(true);
+                PlayerMovements.Instance.lootEffect.Play();
                 GameManager.AddMoney(data.moneyPrice);
                 StackMoneyPool.Instance.OnReleaseMoney(this);
             }
