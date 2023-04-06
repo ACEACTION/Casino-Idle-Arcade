@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Pool;
-
+using DG.Tweening;
 
 public class StackMoneyPool : MonoBehaviour
 {
@@ -34,8 +34,6 @@ public class StackMoneyPool : MonoBehaviour
     private void OnGet(Money obj)
     {
         obj.gameObject.SetActive(true);
-        //obj.transform.DOScale(moneyPrefab.transform.localScale, 0);
-        //obj.transform.localScale = moneyPrefab.transform.localScale;
     }
 
     private Money CreateMoney()
@@ -47,6 +45,7 @@ public class StackMoneyPool : MonoBehaviour
 
     public void OnReleaseMoney(Money money)
     {
+        money.transform.DOKill();
         pool.Release(money);
     }
 
