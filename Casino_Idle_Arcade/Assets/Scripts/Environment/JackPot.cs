@@ -7,6 +7,10 @@ public class JackPot : CasinoGame
 {
     [Range(0, 1)]
     [SerializeField] float winProbAbility;
+
+    [SerializeField] StackMoney moneySpot;
+    [SerializeField] JackpotMoneyStack[] stacks;
+
     private void Start()
     {
         CasinoElementManager.jackPots.Add(this);
@@ -56,6 +60,8 @@ public class JackPot : CasinoGame
         {
             customers[0].SetLosingAnimation(true);
         }
+
+        stacks[Random.Range(0, stacks.Length)].MakeMoney();
         
     }
 

@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 7558025492306801531}
   - component: {fileID: 2710459379509837936}
   m_Layer: 0
-  m_Name: Jackpot_01
+  m_Name: Jackpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -364,6 +364,9 @@ Transform:
   - {fileID: 7622086767294717060}
   - {fileID: 4908320871057322870}
   - {fileID: 1380959919}
+  - {fileID: 7928741721422673349}
+  - {fileID: 5039046520432654202}
+  - {fileID: 8453057382074323111}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -469,6 +472,11 @@ MonoBehaviour:
   delayToReset: 6
   readyToPlay: 0
   winProbAbility: 0
+  moneySpot: {fileID: 0}
+  stacks:
+  - {fileID: 4819044581189985159}
+  - {fileID: 7567851712269017400}
+  - {fileID: 6460248682400220901}
 --- !u!1 &8305385470526626664
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,3 +560,279 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1638525982062588867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7691326297396350370}
+    m_Modifications:
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_Name
+      value: Jackpot Money Stack 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: jackpot
+      value: 
+      objectReference: {fileID: 2710459379509837936}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38b26f6c140233f4ea95dea6f3bdd0ed, type: 3}
+--- !u!4 &5039046520432654202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638525982062588867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7567851712269017400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638525982062588867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9549d84d330c2404cad20124c151e6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &2746129559170602014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7691326297396350370}
+    m_Modifications:
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_Name
+      value: Jackpot Money Stack 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: jackpot
+      value: 
+      objectReference: {fileID: 2710459379509837936}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38b26f6c140233f4ea95dea6f3bdd0ed, type: 3}
+--- !u!114 &6460248682400220901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 2746129559170602014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9549d84d330c2404cad20124c151e6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8453057382074323111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 2746129559170602014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4421391589217104252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7691326297396350370}
+    m_Modifications:
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_Name
+      value: Jackpot Money Stack 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: jackpot
+      value: 
+      objectReference: {fileID: 2710459379509837936}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38b26f6c140233f4ea95dea6f3bdd0ed, type: 3}
+--- !u!114 &4819044581189985159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9204055516781138683, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4421391589217104252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9549d84d330c2404cad20124c151e6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7928741721422673349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4421391589217104252}
+  m_PrefabAsset: {fileID: 0}

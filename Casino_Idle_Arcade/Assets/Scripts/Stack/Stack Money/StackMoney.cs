@@ -18,16 +18,8 @@ public class StackMoney : MonoBehaviour
     public int stackCounter;
     bool isPlayer;
 
-    [Header("Loot")]
-    [SerializeField] float lootMinYOffset;
-    [SerializeField] float lootMaxYOffset;
-    [SerializeField] float lootXOffset;
-    [SerializeField] float lootZOffset;
-    [SerializeField] float lootMoveUpDuration;
-    [SerializeField] float lootRotDuration;
-    [SerializeField] float lootScaleDuration;
-
     [Header("References")]
+    [SerializeField] LootMoneyData data;
     [SerializeField] StackMoneySlot prefab; // the prefab to create
     [SerializeField] List<StackMoneySlot> slots;
     [SerializeField] List<Money> moneyList;
@@ -88,7 +80,7 @@ public class StackMoney : MonoBehaviour
         {
             foreach (Money money in moneyList)
             {
-                money.transform.DOMove(money.transform.position + GetRandomLootOffset(), lootMoveUpDuration)
+                money.transform.DOMove(money.transform.position + GetRandomLootOffset(), data.lootMoveUpDuration)
                     .OnComplete(() =>
                     {
                         money.SetGoToPlayer();
@@ -96,9 +88,9 @@ public class StackMoney : MonoBehaviour
                     
                 money.transform.DORotate(new Vector3(Random.Range(0, 360),
                     Random.Range(0, 360),
-                    Random.Range(0, 360)), lootRotDuration);
+                    Random.Range(0, 360)), data.lootRotDuration);
 
-                money.transform.DOScale(.4f, lootScaleDuration);
+                money.transform.DOScale(.4f, data.lootScaleDuration);
             }
             stackCounter = 0;
             moneyList.Clear();
@@ -108,9 +100,9 @@ public class StackMoney : MonoBehaviour
     Vector3 GetRandomLootOffset()
     {
         return new Vector3
-            (Random.Range(-lootXOffset, lootXOffset),
-            Random.Range(lootMinYOffset, lootMaxYOffset),
-            Random.Range(-lootZOffset, lootZOffset));
+            (Random.Range(-data.lootXOffset, data.lootXOffset),
+            Random.Range(data.lootMinYOffset, data.lootMaxYOffset),
+            Random.Range(-data.lootZOffset, data.lootZOffset));
     }
 
 

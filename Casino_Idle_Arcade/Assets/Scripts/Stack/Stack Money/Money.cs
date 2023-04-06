@@ -9,10 +9,19 @@ public class Money : MonoBehaviour
     bool goToPlayer;
     Vector3 defaultScale;
 
+    private void Awake()
+    {
+       defaultScale = transform.localScale;               
+    }
+
     private void Start()
     {
-       defaultScale = transform.localScale;       
-    }    
+    }
+
+    private void OnEnable()
+    {
+        transform.localScale = defaultScale;
+    }
 
     private void Update()
     {
@@ -31,8 +40,7 @@ public class Money : MonoBehaviour
                 StackMoneyPool.Instance.OnReleaseMoney(this);
             }
         }
-        else
-            transform.localScale = defaultScale;
+        
     }
 
     public void SetGoToPlayer()
