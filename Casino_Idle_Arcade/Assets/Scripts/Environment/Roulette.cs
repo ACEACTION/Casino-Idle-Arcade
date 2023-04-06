@@ -60,6 +60,7 @@ public class Roulette : CasinoGame
         playChipSpotDefaultPos = playChipSpot.localPosition;
     }
 
+    bool payedMoney = true;
     public override void PlayGame()
     {
         base.PlayGame();
@@ -67,14 +68,16 @@ public class Roulette : CasinoGame
         //animation customers = playing card
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        workerCheker.worker.ActiveActionAnim(false);        
+        workerCheker.worker.ActiveActionAnim(false);
 
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
         {
             //game ended
             ChoseWinner();
+            PayMoney();   
             StartCoroutine(ResetGame());
+
 
             if (workerCheker.isPlayerAvailable && !canChangeCamera)
             {
@@ -85,6 +88,14 @@ public class Roulette : CasinoGame
 
     }
 
+    void PayMoney()
+    {
+        if (payedMoney)
+        {
+            payedMoney = false;
+            stacks[Random.Range(0, stacks.Length)].MakeMoney();
+        }
+    }
     void ChoseWinner()
     {
         if (choseWinnerPossible)
@@ -156,7 +167,8 @@ public class Roulette : CasinoGame
             betCounter = 0;
             playChipSpot.localPosition = playChipSpotDefaultPos;
             chipsOnBet.Clear();
-            
+            payedMoney = true;
+
             yield return base.ResetGame();
 
         }

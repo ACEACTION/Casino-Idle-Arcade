@@ -8,8 +8,9 @@ public class CasinoGame : CasinoElement
     public float castTime;
     public float castTimeAmount;
     public float delayToReset;
-
     public bool readyToPlay;
+    public CasinoGameMoneyStack[] stacks;
+
     public override void CustomerHasArrived()
     {
         base.CustomerHasArrived();
