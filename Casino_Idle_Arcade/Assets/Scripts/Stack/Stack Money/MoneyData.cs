@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/MoneyData")]
-public class MoneyData : ScriptableObject
+public class MoneyData : CasinoResourceData
 {
     public int moneyPrice;
+    public float moneyGoToCustomerFromDeskTime;
     public float goToPlayerTime;
 }

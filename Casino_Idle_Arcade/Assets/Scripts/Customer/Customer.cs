@@ -9,11 +9,13 @@ public class Customer : MonoBehaviour
     public Animator anim;
     public CustomerData stats;
     public ParticleSystem[] confetti;
+    public bool isWinning = false;
     public bool tableWinner;
     public bool isLeaving;
     public ParticleSystem[] happyEmojies, sadEmojies;
     [SerializeField] int moneyAmount;
     public CustomerHandStack stack;
+    public ChipDesk chipDesk = null;
 
     private void OnEnable()
     {
@@ -68,6 +70,17 @@ public class Customer : MonoBehaviour
     {
         int betAmount = Random.Range(betUnitPrice / 100, moneyAmount / 100);
         return betAmount * 100;
+    }
+
+    public void SetChipDesk() => chipDesk = ChipDeskManager.FindNearestChipDesk(transform);
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // customer go to get cash from chips
+        if (chipDesk && other.gameObject .Equals (chipDesk.gameObject))
+        {
+            stack.RemoveFromStack(chipDesk);
+        }
     }
 
 }

@@ -11,6 +11,7 @@ public class CustomerMovement : Customer
     public Transform destination;
     int happyEmojiIndex;
 
+
     private void Update()
     {
         dir = destination;
@@ -32,8 +33,7 @@ public class CustomerMovement : Customer
                 }
             }
         }
-    }
-
+    }    
 
     public void SetMove(Transform ts)
     {
@@ -74,7 +74,9 @@ public class CustomerMovement : Customer
     public void WinningAnimationEvent()
     {
         isLeaving = true;
-        SetMove(ChipDeskManager.FindNearestChipDesk(transform).customerSpot);
+        isWinning = true;
+        SetChipDesk();
+        SetMove(chipDesk.customerSpot);
     }
     public void LosingAnimationEvent()
     {
@@ -82,18 +84,18 @@ public class CustomerMovement : Customer
         SetMove(ExitPosition.instance.customerSpot);
     }
 
+    public void ExitCasino() => SetMove(ExitPosition.instance.customerSpot);
 
     public void Leave()
     {
         if (tableWinner)
         {
-            SetMove(ChipDeskManager.FindNearestChipDesk(transform).customerSpot);
+            SetMove(chipDesk.customerSpot);
         }
         else
         {
             //if bar is open
             SetMove(ExitPosition.instance.customerSpot);
-
         }
     }
 
@@ -110,5 +112,14 @@ public class CustomerMovement : Customer
     public void disablePlayingAnim()
     {
         anim.SetBool("isPlayingCard", false);
+    }    
+
+
+    public void ReleaseCustomer()
+    {
+        stack.ReleaseResources();
+        CustomerPool.instance.OnReleaseCustomer(this);
+
     }
+
 }

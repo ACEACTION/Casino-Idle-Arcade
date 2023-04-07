@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CasinoResource : MonoBehaviour
-{
-    public ChipData data;
-
-
-    public virtual void ReleasResource() { }
-
+{       
+    public CasinoResourceData data;
+    public virtual void ReleasResource() { }    
 }

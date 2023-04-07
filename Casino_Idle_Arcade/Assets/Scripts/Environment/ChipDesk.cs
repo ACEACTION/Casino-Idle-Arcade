@@ -15,4 +15,14 @@ public class ChipDesk : MonoBehaviour
     public float cooldownAmount;
     public Customer customer;
     public Transform customerSpot;
+    public Transform chipPoint;
+    public Transform moneySpawnPoint;
+
+    public Money GiveMoney()
+    {
+        Money money = StackMoneyPool.Instance.pool.Get();
+        money.transform.position = moneySpawnPoint.position;
+        return money;
+    }
+
 }
