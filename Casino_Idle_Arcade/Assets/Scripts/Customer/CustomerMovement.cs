@@ -61,7 +61,7 @@ public class CustomerMovement : Customer
     public void WinningAnimationEvent()
     {
         isLeaving = true;
-        SetMove(ChipDesk.instance.customerSpot);
+        SetMove(ChipDeskManager.FindNearestChipDesk(transform).customerSpot);
     }
     public void LosingAnimationEvent()
     {
@@ -74,7 +74,7 @@ public class CustomerMovement : Customer
     {
         if (tableWinner)
         {
-            SetMove(ChipDesk.instance.customerSpot);
+            SetMove(ChipDeskManager.FindNearestChipDesk(transform).customerSpot);
         }
         else
         {

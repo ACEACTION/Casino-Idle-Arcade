@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ChipDesk : MonoBehaviour
 {
-    public static ChipDesk instance;
 
-
-    private void Awake()
+    private void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        ChipDeskManager.chipDeskList.Add(this);
     }
+
 
     [SerializeField] float cooldown;
     public float cooldownAmount;
