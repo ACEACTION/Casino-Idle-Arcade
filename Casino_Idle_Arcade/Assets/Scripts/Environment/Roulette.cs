@@ -34,6 +34,7 @@ public class Roulette : CasinoGame
     public bool isWorkerAvailable = false;
 
     [SerializeField] WorkerCheker workerCheker;
+    [SerializeField] RouletteWorkerCheker rwc;
     [SerializeField] CasinoGameStack gameStack;
     [SerializeField] Transform playChipSpot;
     CasinoResource chip;
@@ -67,7 +68,7 @@ public class Roulette : CasinoGame
         //animation customers = playing card
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        workerCheker.worker.ActiveActionAnim(false);
+        rwc.worker.ActiveActionAnim(false);
 
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
@@ -78,9 +79,9 @@ public class Roulette : CasinoGame
             StartCoroutine(ResetGame());
 
 
-            if (workerCheker.isPlayerAvailable && !workerCheker.canChangeCamera)
+            if (rwc.isPlayerAvailable && !rwc.canChangeCamera)
             {
-                workerCheker.canChangeCamera = true;
+                rwc.canChangeCamera = true;
                 CinemachineManager.instance.ChangeCam();
             }
         }
@@ -133,7 +134,7 @@ public class Roulette : CasinoGame
 
     public void Cleaning()
     {
-        if (!isClean && (isWorkerAvailable || workerCheker.isPlayerAvailable))
+        if (!isClean && (rwc.isCleanerAvailabe || rwc.isPlayerAvailable))
         {
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
@@ -171,26 +172,12 @@ public class Roulette : CasinoGame
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            if (!isClean)
-            {
-                isWorkerAvailable = true;
-            }
 
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isWorkerAvailable = false;
 
-
-
-
-        }
 
     }
     void ActiveactCustomerAnimation()
@@ -207,8 +194,8 @@ public class Roulette : CasinoGame
 
     private void Update()
     {
-        if((workerCheker.isPlayerAvailable 
-            || workerCheker.isWorkerAvailable) 
+        if((rwc.isPlayerAvailable 
+            || rwc.isDealerAvailabe) 
             && readyToPlay)
         {
             GetBetAmountFromCustomer();
@@ -218,9 +205,9 @@ public class Roulette : CasinoGame
             {
 
                 castTime -= Time.deltaTime;
-                if (workerCheker.isPlayerAvailable && workerCheker.canChangeCamera)
+                if (rwc.isPlayerAvailable && rwc.canChangeCamera)
                 {
-                    workerCheker.canChangeCamera = false;
+                    rwc.canChangeCamera = false;
                     CinemachineManager.instance.ChangeCam();
                 }
                 if (castTime <= 0)
@@ -231,7 +218,7 @@ public class Roulette : CasinoGame
                 }
                 else
                 {
-                    workerCheker.worker.ActiveActionAnim(true);
+                    rwc.worker.ActiveActionAnim(true);
                 }
             }
         }

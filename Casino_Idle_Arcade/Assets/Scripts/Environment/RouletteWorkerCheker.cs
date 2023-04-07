@@ -2,28 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class WorkerCheker : MonoBehaviour
+public class RouletteWorkerCheker : WorkerCheker
 {
-    public WorkerType workerType;
-    public Worker worker;
-    public bool isDealerAvailabe;
-    public bool isPlayerAvailable;
+    public Roulette roullete;
+    public bool isCleanerAvailabe;
     public bool canChangeCamera;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.gameObject.CompareTag(workerType.ToString()))
+        if(roullete.cleaner != null)
         {
-            isDealerAvailabe = true;
-            worker = other.gameObject.GetComponent<Worker>();
+            if (other.gameObject.Equals(roullete.cleaner.gameObject))
+            {
+                isCleanerAvailabe = true;
+            }
         }
+
+
 
         if (other.gameObject.CompareTag("Player"))
         {
-            isPlayerAvailable = true;
             canChangeCamera = true;
 
         }
@@ -31,13 +30,21 @@ public class WorkerCheker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (roullete.cleaner != null)
+        {
+            if (other.gameObject.Equals(roullete.cleaner.gameObject))
+            {
+                isCleanerAvailabe = false;
+            }
+        }
+
         if (other.gameObject.CompareTag("Player"))
         {
-            isPlayerAvailable = false;
             canChangeCamera = false;
             if (CinemachineManager.instance.isNormalCam)
                 CinemachineManager.instance.ChangeCam();
 
         }
     }
+
 }

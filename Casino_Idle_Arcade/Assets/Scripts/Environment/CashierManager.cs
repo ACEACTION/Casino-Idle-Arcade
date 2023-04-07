@@ -32,7 +32,7 @@ public class CashierManager : MonoBehaviour
     private void Update()
     {        
         //if cashier spot !null
-        if ((workerCheker.isPlayerAvailable || workerCheker.isWorkerAvailable)
+        if ((workerCheker.isPlayerAvailable || workerCheker.isDealerAvailabe)
             && firstCounter.nextCustomer)
         {
             cooldown -= Time.deltaTime;
