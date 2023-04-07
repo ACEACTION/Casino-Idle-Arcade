@@ -41,8 +41,8 @@ public class CashierManager : MonoBehaviour
             {
                 if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
                 {
-                    StartCoroutine(firstCounter.firstCustomer.PayMoney(stackMoney, 
-                        GetPayment(firstCounter.firstCustomer.elementType)));
+                    firstCounter.firstCustomer.PayMoney(stackMoney, 
+                        GetPayment(firstCounter.firstCustomer.elementType));
                     cooldown = cooldownAmount;
                     slider.value = 0;
                     firstCounter.nextCustomer = false;

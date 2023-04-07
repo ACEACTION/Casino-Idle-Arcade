@@ -49,11 +49,11 @@ public class Customer : MonoBehaviour
             [Random.Range(0, CasinoManager.instance.availableElements.Count)];
     }
 
-    public IEnumerator PayMoney(StackMoney stackMoney, int amount)
+    public void PayMoney(StackMoney stackMoney, int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            yield return new WaitForSeconds(0f);
+           // yield return new WaitForSeconds(0f);
             Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
             money.transform.eulerAngles = new Vector3(0, 0, 0);            
