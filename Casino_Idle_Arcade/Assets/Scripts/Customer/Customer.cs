@@ -8,8 +8,10 @@ public class Customer : MonoBehaviour
     public ElementsType elementType;
     public Animator anim;
     public CustomerData stats;
+    public ParticleSystem[] confetti;
     public bool tableWinner;
     public bool isLeaving;
+    public ParticleSystem[] happyEmojies, sadEmojies;
     [SerializeField] int moneyAmount;
     public CustomerHandStack stack;
 
