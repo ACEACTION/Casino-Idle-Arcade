@@ -9,7 +9,6 @@ public class Roulette : CasinoGame
 {
     //variables
     [SerializeField] Slider slider;
-    [SerializeField] ParticleSystem[] confetti;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
@@ -79,9 +78,9 @@ public class Roulette : CasinoGame
             StartCoroutine(ResetGame());
 
 
-            if (workerCheker.isPlayerAvailable && !canChangeCamera)
+            if (workerCheker.isPlayerAvailable && !workerCheker.canChangeCamera)
             {
-                canChangeCamera = true;
+                workerCheker.canChangeCamera = true;
                 CinemachineManager.instance.ChangeCam();
             }
         }
@@ -100,12 +99,7 @@ public class Roulette : CasinoGame
     {
         if (choseWinnerPossible)
         {
-            for (int i = 0; i < confetti.Length; i++)
-            {
 
-                confetti[i].gameObject.SetActive(true);
-                confetti[i].Play();
-            }
 ;
             sweeper.ResetingCardsPoisiton();
             if (cleaner != null) cleaner.cleaningSpot.Add(this.transform);
@@ -139,7 +133,7 @@ public class Roulette : CasinoGame
 
     public void Cleaning()
     {
-        if (!isClean && isWorkerAvailable)
+        if (!isClean && (isWorkerAvailable || workerCheker.isPlayerAvailable))
         {
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
@@ -184,7 +178,6 @@ public class Roulette : CasinoGame
                 isWorkerAvailable = true;
             }
 
-            canChangeCamera = true;
         }
     }
 
@@ -193,9 +186,7 @@ public class Roulette : CasinoGame
         if (other.gameObject.CompareTag("Player"))
         {
             isWorkerAvailable = false;
-            canChangeCamera = false;
-            if(CinemachineManager.instance.isNormalCam)
-                CinemachineManager.instance.ChangeCam();
+
 
 
 
@@ -227,9 +218,9 @@ public class Roulette : CasinoGame
             {
 
                 castTime -= Time.deltaTime;
-                if (workerCheker.isPlayerAvailable && canChangeCamera)
+                if (workerCheker.isPlayerAvailable && workerCheker.canChangeCamera)
                 {
-                    canChangeCamera = false;
+                    workerCheker.canChangeCamera = false;
                     CinemachineManager.instance.ChangeCam();
                 }
                 if (castTime <= 0)

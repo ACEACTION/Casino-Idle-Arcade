@@ -9,7 +9,7 @@ public class CustomerMovement : Customer
     Transform dir;
     [SerializeField] NavMeshAgent agent;
     public Transform destination;
-
+    int happyEmojiIndex;
 
     private void Update()
     {
@@ -50,10 +50,23 @@ public class CustomerMovement : Customer
     }
     public void WinProccess()
     {
+        for (int i = 0; i < confetti.Length; i++)
+        {
+            confetti[i].gameObject.SetActive(true);
+            confetti[i].Play();
+        }
+        happyEmojiIndex = Random.Range(0, happyEmojies.Length);
+        happyEmojies[happyEmojiIndex].gameObject.SetActive(true);
+        happyEmojies[happyEmojiIndex].Play();
+        
         SetWinningAnimation(true);
     }
     public void LosePorccess()
     {
+        happyEmojiIndex = Random.Range(0, sadEmojies.Length);
+        sadEmojies[happyEmojiIndex].gameObject.SetActive(true);
+        sadEmojies[happyEmojiIndex].Play();
+
         SetLosingAnimation(true);
     }
 
