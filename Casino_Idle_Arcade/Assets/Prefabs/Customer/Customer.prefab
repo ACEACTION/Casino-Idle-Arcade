@@ -603,6 +603,7 @@ MonoBehaviour:
   confetti:
   - {fileID: 1036959060953330450}
   - {fileID: 2293259719700001972}
+  isWinning: 0
   tableWinner: 0
   isLeaving: 0
   happyEmojies:
@@ -616,6 +617,7 @@ MonoBehaviour:
   - {fileID: 3055856691086178533}
   moneyAmount: 200
   stack: {fileID: 534705596332280353}
+  chipDesk: {fileID: 0}
   agent: {fileID: 1791738785}
   destination: {fileID: 0}
 --- !u!114 &534705596332280353
@@ -630,10 +632,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e784ccfe8925d0d4591f6d8999274382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackYOffset: 0.12
   stackCounter: 0
+  data: {fileID: 11400000, guid: 258052489ddbfa340ba23100986728f8, type: 2}
   firstStack: {fileID: 5091302058514748046}
   chips: []
+  cmovement: {fileID: 1791738789}
 --- !u!1 &5106541512157677110
 GameObject:
   m_ObjectHideFlags: 0

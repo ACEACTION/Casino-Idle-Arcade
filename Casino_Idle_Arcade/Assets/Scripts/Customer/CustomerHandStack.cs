@@ -6,27 +6,64 @@ using DG.Tweening;
 public class CustomerHandStack : MonoBehaviour
 {
     // variables
-    [SerializeField] float stackYOffset;
+    
     public int stackCounter;
     // references
+    [SerializeField] CustomerHandStackData data;    
     [SerializeField] Transform firstStack;
-    [SerializeField] List<CasinoResource> chips = new List<CasinoResource>();
+    [SerializeField] List<CasinoResource> resources = new List<CasinoResource>();
+    [SerializeField] CustomerMovement cmovement;
 
     public bool HasStack() => stackCounter > 0;
 
     public void AddChipToStack(CasinoResource chip)
     {
-        chips.Add(chip);
+        resources.Add(chip);
         chip.transform.SetParent(transform);
         chip.transform.DOLocalMove(firstStack.localPosition, .7f);
-        firstStack.position += new Vector3(0, stackYOffset, 0);
+        firstStack.position += new Vector3(0, data.stackYOffset, 0);
         stackCounter++;
     }
 
-    public void RemoveFromStack()
-    {
-        stackCounter--;
 
+    public void RemoveFromStack(ChipDesk chipDesk)
+    {
+        StartCoroutine(RemoveWithDelay(chipDesk));
+    }
+
+    IEnumerator RemoveWithDelay(ChipDesk chipDesk)
+    {
+        for (int i = 0; i < resources.Count; i++)
+        {
+            stackCounter--;
+            firstStack.position -= new Vector3(0, data.stackYOffset, 0);
+            yield return new WaitForSeconds(data.removeChipDelay);
+            resources[i].transform.SetParent(chipDesk.transform);
+            resources[i].transform.DOLocalMove(Vector3.zero, data.removeChipToDesk).OnComplete(() =>
+            {
+                resources[i].ReleasResource();
+            });
+
+        }
+
+        resources.Clear();
+
+        // stack money in customer hand
+        Money money = chipDesk.GiveMoney();
+        money.transform.SetParent(firstStack);
+        money.transform.localScale += new Vector3(.1f, .1f, .1f);
+        money.transform.DOLocalMove(Vector3.zero, money.moneyData.moneyGoToCustomerFromDeskTime);
+        stackCounter++;
+        cmovement.ExitCasino();
+    }    
+
+    public void ReleaseResources()
+    {
+        foreach (CasinoResource r in resources)
+        {
+            r.ReleasResource();
+        }
     }
 
 }
+

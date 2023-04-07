@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7404559637013153672}
   - component: {fileID: 7404559637013153673}
-  - component: {fileID: 7404559637013153679}
   - component: {fileID: 1344687349}
   m_Layer: 0
   m_Name: Stack Money
@@ -60,20 +59,6 @@ MonoBehaviour:
   prefab: {fileID: 4216526649544879068, guid: 9dcd64db5be18144cbfc1d2ce63ba385, type: 3}
   slots: []
   moneyList: []
---- !u!114 &7404559637013153679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404559637013153674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0394f6fc789036643b0b1bcd881c6197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyPrefab: {fileID: 1227564165776897044, guid: b51d0693a331c3344874742cd55d177f,
-    type: 3}
 --- !u!65 &1344687349
 BoxCollider:
   m_ObjectHideFlags: 0

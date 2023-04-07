@@ -18,7 +18,7 @@ public class ExitPosition : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Customer"))
         {
-            CustomerPool.instance.OnReleaseCustomer(other.gameObject.GetComponent<CustomerMovement>());
+            other.gameObject.GetComponent<CustomerMovement>().ReleaseCustomer();
         }
     }
 }
