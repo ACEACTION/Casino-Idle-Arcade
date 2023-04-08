@@ -635,7 +635,7 @@ MonoBehaviour:
   stackCounter: 0
   data: {fileID: 11400000, guid: 258052489ddbfa340ba23100986728f8, type: 2}
   firstStack: {fileID: 5091302058514748046}
-  chips: []
+  resources: []
   cmovement: {fileID: 1791738789}
 --- !u!1 &5106541512157677110
 GameObject:
@@ -1163,6 +1163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConfettiBlastRainbow
       objectReference: {fileID: 0}
+    - target: {fileID: 129898, guid: 97a15e88d0026154baeb163f3a9cd77e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 420096, guid: 97a15e88d0026154baeb163f3a9cd77e, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1251,6 +1255,10 @@ PrefabInstance:
     - target: {fileID: 165102, guid: 26c0ae0d6d812ae4590cf00cd2a7af12, type: 3}
       propertyPath: m_Name
       value: ConfettiDirectionalRainbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 165102, guid: 26c0ae0d6d812ae4590cf00cd2a7af12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443126, guid: 26c0ae0d6d812ae4590cf00cd2a7af12, type: 3}
       propertyPath: m_RootOrder

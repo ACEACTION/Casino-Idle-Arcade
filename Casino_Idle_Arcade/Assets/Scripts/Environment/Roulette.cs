@@ -68,7 +68,7 @@ public class Roulette : CasinoGame
         //animation customers = playing card
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        rwc.worker.ActiveActionAnim(false);
+        workerCheker.worker.ActiveActionAnim(false);
 
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
@@ -79,7 +79,7 @@ public class Roulette : CasinoGame
             StartCoroutine(ResetGame());
 
 
-            if (rwc.isPlayerAvailable && !rwc.canChangeCamera)
+            if (workerCheker.isPlayerAvailable && !rwc.canChangeCamera)
             {
                 rwc.canChangeCamera = true;
                 CinemachineManager.instance.ChangeCam();
@@ -134,7 +134,7 @@ public class Roulette : CasinoGame
 
     public void Cleaning()
     {
-        if (!isClean && (rwc.isCleanerAvailabe || rwc.isPlayerAvailable))
+        if (!isClean && (rwc.isCleanerAvailabe || workerCheker.isPlayerAvailable))
         {
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
@@ -194,8 +194,8 @@ public class Roulette : CasinoGame
 
     private void Update()
     {
-        if((rwc.isPlayerAvailable 
-            || rwc.isDealerAvailabe) 
+        if((workerCheker.isPlayerAvailable 
+            || workerCheker.isDealerAvailabe) 
             && readyToPlay)
         {
             GetBetAmountFromCustomer();
@@ -205,7 +205,7 @@ public class Roulette : CasinoGame
             {
 
                 castTime -= Time.deltaTime;
-                if (rwc.isPlayerAvailable && rwc.canChangeCamera)
+                if (workerCheker.isPlayerAvailable && rwc.canChangeCamera)
                 {
                     rwc.canChangeCamera = false;
                     CinemachineManager.instance.ChangeCam();
@@ -218,7 +218,7 @@ public class Roulette : CasinoGame
                 }
                 else
                 {
-                    rwc.worker.ActiveActionAnim(true);
+                    workerCheker.worker.ActiveActionAnim(true);
                 }
             }
         }

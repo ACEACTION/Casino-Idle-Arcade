@@ -10,7 +10,6 @@ public class WorkerCheker : MonoBehaviour
     public Worker worker;
     public bool isDealerAvailabe;
     public bool isPlayerAvailable;
-    public bool canChangeCamera;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +23,6 @@ public class WorkerCheker : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayerAvailable = true;
-            canChangeCamera = true;
 
         }
     }
@@ -34,9 +32,6 @@ public class WorkerCheker : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayerAvailable = false;
-            canChangeCamera = false;
-            if (CinemachineManager.instance.isNormalCam)
-                CinemachineManager.instance.ChangeCam();
 
         }
     }
