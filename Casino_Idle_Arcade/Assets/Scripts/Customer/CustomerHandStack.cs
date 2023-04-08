@@ -14,6 +14,11 @@ public class CustomerHandStack : MonoBehaviour
     [SerializeField] List<CasinoResource> resources = new List<CasinoResource>();
     [SerializeField] CustomerMovement cmovement;
 
+    private void Start()
+    {
+        data.firstStackPos = firstStack.localPosition;
+    }
+
     public bool HasStack() => stackCounter > 0;
 
     public void AddChipToStack(CasinoResource chip)
@@ -53,6 +58,7 @@ public class CustomerHandStack : MonoBehaviour
         money.transform.SetParent(firstStack);
         money.transform.localScale += new Vector3(.1f, .1f, .1f);
         money.transform.DOLocalMove(Vector3.zero, money.moneyData.moneyGoToCustomerFromDeskTime);
+        resources.Add(money);
         stackCounter++;
         cmovement.ExitCasino();
     }    
@@ -60,9 +66,14 @@ public class CustomerHandStack : MonoBehaviour
     public void ReleaseResources()
     {
         foreach (CasinoResource r in resources)
-        {
+        {     
             r.ReleasResource();
         }
+
+        stackCounter = 0;
+        firstStack.localPosition = data.firstStackPos;
+        resources.Clear();
+
     }
 
 }

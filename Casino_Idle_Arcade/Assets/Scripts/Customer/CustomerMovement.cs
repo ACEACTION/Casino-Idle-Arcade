@@ -9,7 +9,7 @@ public class CustomerMovement : Customer
     Transform dir;
     [SerializeField] NavMeshAgent agent;
     public Transform destination;
-    int happyEmojiIndex;
+    int emojiIndex;
 
 
     private void Update()
@@ -55,17 +55,17 @@ public class CustomerMovement : Customer
             confetti[i].gameObject.SetActive(true);
             confetti[i].Play();
         }
-        happyEmojiIndex = Random.Range(0, happyEmojies.Length);
-        happyEmojies[happyEmojiIndex].gameObject.SetActive(true);
-        happyEmojies[happyEmojiIndex].Play();
+        emojiIndex = Random.Range(0, happyEmojies.Length);
+        happyEmojies[emojiIndex].gameObject.SetActive(true);
+        happyEmojies[emojiIndex].Play();
         
         SetWinningAnimation(true);
     }
     public void LosePorccess()
     {
-        happyEmojiIndex = Random.Range(0, sadEmojies.Length);
-        sadEmojies[happyEmojiIndex].gameObject.SetActive(true);
-        sadEmojies[happyEmojiIndex].Play();
+        emojiIndex = Random.Range(0, sadEmojies.Length);
+        sadEmojies[emojiIndex].gameObject.SetActive(true);
+        sadEmojies[emojiIndex].Play();
 
         SetLosingAnimation(true);
     }
@@ -118,6 +118,18 @@ public class CustomerMovement : Customer
     public void ReleaseCustomer()
     {
         stack.ReleaseResources();
+        anim.SetBool("idlecarry", false);
+        anim.SetBool("walkcarry", false);
+        anim.SetBool("sadWalking", false);
+        anim.Play("idle");
+        chipDesk = null;
+        isWinning = false;
+
+        foreach (ParticleSystem emoji in sadEmojies)
+        {
+            emoji.Stop();
+        }
+
         CustomerPool.instance.OnReleaseCustomer(this);
 
     }
