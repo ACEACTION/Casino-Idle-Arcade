@@ -35,7 +35,6 @@ public static class WorkerManager
                 rouletteCleaners[0].roulettes.Add(roulettes[0]);
                 roulettes[0].cleaner = rouletteCleaners[0];
                 roulettes.Remove(roulettes[0]);
-                Debug.Log(roulettes.Count);
                 rouletteCleaners[0].capacity--;
 
             }
