@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class Roulette : CasinoGame
 {
     //variables
-    [SerializeField] Slider slider;
+    [SerializeField] ParticleSystem cleaningParticle;
+    [SerializeField] Slider cleaningSlider;
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
@@ -43,6 +44,7 @@ public class Roulette : CasinoGame
     
     private void OnEnable()
     {
+        
         WorkerManager.roulettes.Add(this);
         WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
@@ -56,6 +58,7 @@ public class Roulette : CasinoGame
 
     void Init()
     {
+        cleaningSlider.minValue = -cleaningCdAmount;
         getChipCd = maxGetChipCd;
         playChipSpotDefaultPos = playChipSpot.localPosition;
     }
@@ -118,6 +121,8 @@ public class Roulette : CasinoGame
                     customer.LosePorccess();
             }
             isClean = false;
+            cleaningSlider.gameObject.SetActive(true);
+            cleaningSlider.transform.DOShakeScale(0.5f, 0.03f);
 
 
         }
@@ -136,6 +141,7 @@ public class Roulette : CasinoGame
     {
         if (!isClean && (rwc.isCleanerAvailabe || workerCheker.isPlayerAvailable))
         {
+            cleaningSlider.value = -cleaningCd;
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
             {
@@ -143,6 +149,9 @@ public class Roulette : CasinoGame
                     cleaner.cleaningSpot.Remove(this.transform);
 
                 isClean = true;
+                cleaningParticle.gameObject.SetActive(true);
+                cleaningParticle.Play();
+                cleaningSlider.gameObject.SetActive(false);
                 sweeper.Sweep();
             }
         }
@@ -163,6 +172,7 @@ public class Roulette : CasinoGame
             playChipSpot.localPosition = playChipSpotDefaultPos;
             chipsOnBet.Clear();
             payedMoney = true;
+
 
             yield return base.ResetGame();
 
