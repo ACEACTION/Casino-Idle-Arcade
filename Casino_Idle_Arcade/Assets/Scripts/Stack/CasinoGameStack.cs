@@ -7,7 +7,7 @@ using DG.Tweening;
 public class CasinoGameStack : MonoBehaviour
 {
     // variables
-    [SerializeField] float stackYOffset;
+    [SerializeField] CasinoGameStackData data;
     [SerializeField] int maxStackCount;
     [SerializeField] int stackCount;
 
@@ -22,8 +22,9 @@ public class CasinoGameStack : MonoBehaviour
     {
         casinoResources.Add(resource);
         resource.transform.SetParent(firsStack.transform.parent);
-        resource.transform.DOLocalMove(firsStack.localPosition, resource.data.removeStackSpeed);
-        firsStack.position += new Vector3(0, stackYOffset, 0);
+        resource.transform.DOLocalMove(firsStack.localPosition, 
+            data.addResourceToStackTime);
+        firsStack.position += new Vector3(0, data.stackYOffset, 0);
         stackCount++;
     }
 
@@ -32,7 +33,7 @@ public class CasinoGameStack : MonoBehaviour
         if (CanGetResource())
         {
             stackCount--;
-            firsStack.position -= new Vector3(0, stackYOffset, 0);
+            firsStack.position -= new Vector3(0, data.stackYOffset, 0);
             CasinoResource resource = casinoResources[casinoResources.Count - 1];
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);            

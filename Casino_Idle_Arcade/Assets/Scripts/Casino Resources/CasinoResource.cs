@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class CasinoResource : MonoBehaviour
 {       
-    public CasinoResourceData data;
+    //public CasinoResourceData data;
     public virtual void ReleasResource() { }    
 }

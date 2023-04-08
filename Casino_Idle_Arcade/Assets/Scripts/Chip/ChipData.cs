@@ -8,7 +8,7 @@ public enum ChipType
 }
 
 [CreateAssetMenu(menuName = "Data/Chip Data")]
-public class ChipData : CasinoResourceData
+public class ChipData : ScriptableObject
 {
     
 }
