@@ -21,11 +21,13 @@ public class CasinoGameStack : MonoBehaviour
     public void AddToGameStack(CasinoResource resource)
     {
         casinoResources.Add(resource);
-        resource.transform.SetParent(firsStack.transform.parent);
-        resource.transform.DOLocalMove(firsStack.localPosition, 
-            data.addResourceToStackTime);
-        firsStack.position += new Vector3(0, data.stackYOffset, 0);
         stackCount++;
+        resource.transform.SetParent(firsStack.transform.parent);
+        resource.transform.DOLocalMove(firsStack.localPosition,
+            data.addResourceToStackTime).OnComplete(() =>
+            {
+            });
+        firsStack.position += new Vector3(0, data.stackYOffset, 0);
     }
 
     public CasinoResource GetFromGameStack()

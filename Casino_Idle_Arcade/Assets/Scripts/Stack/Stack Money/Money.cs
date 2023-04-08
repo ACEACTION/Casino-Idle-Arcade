@@ -26,7 +26,7 @@ public class Money : CasinoResource
     public override void ReleasResource()
     {
         base.ReleasResource();
-        StackMoneyPool.Instance.pool.Get();
+        StackMoneyPool.Instance.OnReleaseMoney(this);
     }
 
     private void Update()
