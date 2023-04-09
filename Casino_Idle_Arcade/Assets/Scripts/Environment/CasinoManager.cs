@@ -10,13 +10,12 @@ public enum ElementsType
 public class CasinoManager : MonoBehaviour
 {
     public static CasinoManager instance;
-
     public List<ElementsType> availableElements = new List<ElementsType>();
 
     private void Awake()
     {
         QualitySettings.vSyncCount = 0;
-       // Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         if (instance == null)
         {
             instance = this;
