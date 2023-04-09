@@ -15,7 +15,9 @@ public class CasinoManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        if (instance == null)
         {
             instance = this;
         }
