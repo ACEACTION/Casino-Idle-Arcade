@@ -5,11 +5,6 @@ using UnityEngine;
 public class ChipDesk : MonoBehaviour
 {
 
-    private void Start()
-    {
-        ChipDeskManager.chipDeskList.Add(this);
-    }
-
 
     [SerializeField] float cooldown;
     public float cooldownAmount;
@@ -17,6 +12,12 @@ public class ChipDesk : MonoBehaviour
     public Transform customerSpot;
     public Transform chipPoint;
     public Transform moneySpawnPoint;
+    public StackMoney stackMoney;
+
+    private void Start()
+    {
+        ChipDeskManager.chipDeskList.Add(this);
+    }
 
     public Money GiveMoney()
     {
@@ -24,5 +25,7 @@ public class ChipDesk : MonoBehaviour
         money.transform.position = moneySpawnPoint.position;
         return money;
     }
+
+
 
 }

@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b8afdf193b9934da5f40e2e621af6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextCustomer: 0
   firstCustomer: {fileID: 0}
 --- !u!1 &285653701183829180
 GameObject:
@@ -755,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workerType: 1
   worker: {fileID: 0}
-  isWorkerAvailable: 0
+  isDealerAvailabe: 0
   isPlayerAvailable: 0
 --- !u!1001 &285653702164519732
 PrefabInstance:
@@ -819,6 +820,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7404559637013153673, guid: 8947c5f3ffbc4fd4d832faeb88823157,
+        type: 3}
+      propertyPath: lootData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e84e9e6c0a238446bafc6ca9ccaa7d3,
+        type: 2}
+    - target: {fileID: 7404559637013153673, guid: 8947c5f3ffbc4fd4d832faeb88823157,
+        type: 3}
+      propertyPath: stackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cbdfb71e39198c4aa72d079e645e4a6,
+        type: 2}
     - target: {fileID: 7404559637013153674, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: m_Name

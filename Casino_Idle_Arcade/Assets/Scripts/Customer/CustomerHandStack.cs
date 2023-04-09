@@ -54,13 +54,7 @@ public class CustomerHandStack : MonoBehaviour
         resources.Clear();
 
         // stack money in customer hand
-        Money money = chipDesk.GiveMoney();
-        money.transform.SetParent(firstStack);
-        money.transform.localScale += new Vector3(.1f, .1f, .1f);
-        money.transform.DOLocalMove(Vector3.zero, money.moneyData.moneyGoToCustomerFromDeskTime);
-        resources.Add(money);
-        stackCounter++;
-        cmovement.ExitCasino();
+        GetMoneyFromChipDesk(chipDesk);
     }    
 
     public void ReleaseResources()
@@ -74,6 +68,29 @@ public class CustomerHandStack : MonoBehaviour
         firstStack.localPosition = data.firstStackPos;
         resources.Clear();
 
+    }
+
+    void GetMoneyFromChipDesk(ChipDesk chipDesk)
+    {
+        Money money = chipDesk.GiveMoney();
+        money.transform.SetParent(firstStack);
+        money.transform.localScale += new Vector3(.1f, .1f, .1f);
+        money.transform.
+            DOLocalMove(Vector3.zero, 
+            money.moneyData.moneyGoToCustomerFromDeskTime)
+            .OnComplete(() =>
+            {
+                GiveMoneyToChipDesk(chipDesk);
+            });
+        resources.Add(money);
+        stackCounter++;
+        cmovement.ExitCasino();
+    }
+
+
+    void GiveMoneyToChipDesk(ChipDesk chipDesk)
+    {
+        cmovement.PayMoney(chipDesk.stackMoney, 1);
     }
 
 }

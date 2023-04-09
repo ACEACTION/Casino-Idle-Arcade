@@ -19,7 +19,8 @@ public class StackMoney : MonoBehaviour
     bool isPlayer;
 
     [Header("References")]
-    [SerializeField] LootMoneyData data;
+    [SerializeField] StackMoneyData stackData;
+    [SerializeField] LootMoneyData lootData;
     [SerializeField] StackMoneySlot prefab; // the prefab to create
     [SerializeField] List<StackMoneySlot> slots;
     [SerializeField] List<Money> moneyList;
@@ -80,7 +81,7 @@ public class StackMoney : MonoBehaviour
         {
             foreach (Money money in moneyList)
             {
-                money.transform.DOMove(money.transform.position + GetRandomLootOffset(), data.lootMoveUpDuration)
+                money.transform.DOMove(money.transform.position + GetRandomLootOffset(), lootData.lootMoveUpDuration)
                     .OnComplete(() =>
                     {
                         money.SetGoToPlayer();
@@ -88,9 +89,9 @@ public class StackMoney : MonoBehaviour
                     
                 money.transform.DORotate(new Vector3(Random.Range(0, 360),
                     Random.Range(0, 360),
-                    Random.Range(0, 360)), data.lootRotDuration);
+                    Random.Range(0, 360)), lootData.lootRotDuration);
 
-                money.transform.DOScale(.4f, data.lootScaleDuration);
+                money.transform.DOScale(.4f, lootData.lootScaleDuration);
             }
             stackCounter = 0;
             moneyList.Clear();
@@ -100,9 +101,9 @@ public class StackMoney : MonoBehaviour
     Vector3 GetRandomLootOffset()
     {
         return new Vector3
-            (Random.Range(-data.lootXOffset, data.lootXOffset),
-            Random.Range(data.lootMinYOffset, data.lootMaxYOffset),
-            Random.Range(-data.lootZOffset, data.lootZOffset));
+            (Random.Range(-lootData.lootXOffset, lootData.lootXOffset),
+            Random.Range(lootData.lootMinYOffset, lootData.lootMaxYOffset),
+            Random.Range(-lootData.lootZOffset, lootData.lootZOffset));
     }
 
 
