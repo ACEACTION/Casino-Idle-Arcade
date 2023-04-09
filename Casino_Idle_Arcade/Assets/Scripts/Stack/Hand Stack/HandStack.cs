@@ -53,8 +53,7 @@ public class HandStack : MonoBehaviour
     void AddStackResource()
     {
         if (casinoResource)
-        {
-            
+        {            
             casinoResource.AddResourceToStack(this, stackList);
             stackCount++;
             firstStack.transform.position += new Vector3(0, stackYOffset, 0);
