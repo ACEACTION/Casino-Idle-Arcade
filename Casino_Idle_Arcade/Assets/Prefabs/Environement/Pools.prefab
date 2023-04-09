@@ -121,6 +121,57 @@ Transform:
   m_Children:
   - {fileID: 6466430032696483835}
   - {fileID: 5605966889996605577}
+  - {fileID: 2795264681428186547}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7063677615275424821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2795264681428186547}
+  - component: {fileID: 3363898136813525372}
+  m_Layer: 0
+  m_Name: Chip Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2795264681428186547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063677615275424821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6466430033251393120}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3363898136813525372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063677615275424821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1551be4b00c6349b3299e8d47bef10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redChipPrefab: {fileID: 4927721362680808726, guid: 0b20114110e2b784ebd48e40b0409866,
+    type: 3}
+  greenChipPrefab: {fileID: 4927721362680808726, guid: 8f912a229118a424c99f1079845e0e0d,
+    type: 3}
+  blueChipPrefab: {fileID: 4927721362680808726, guid: dc831cdb82a837c479ae3b0fc2c36f13,
+    type: 3}

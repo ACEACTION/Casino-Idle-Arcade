@@ -23,6 +23,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
+    public HandStack handStack;
 
     public static PlayerMovements Instance;
     private void Awake()
@@ -77,7 +78,6 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    public HandStack handStack;
     
 
     private void OnAnimatorMove()

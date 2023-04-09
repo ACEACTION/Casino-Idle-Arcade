@@ -31,6 +31,66 @@ Transform:
   m_Father: {fileID: 3074993292511161795}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1819179664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819179665}
+  - component: {fileID: 1819179667}
+  - component: {fileID: 1819179666}
+  m_Layer: 0
+  m_Name: Casino Resource Desk
+  m_TagString: Casino Resource
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819179665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819179664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 1.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3074993292511161795}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819179667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819179664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee88bfcf6fea63f4ab0c05d682a70bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 8883d978dbfaf5e43a649cddcca208a9, type: 2}
+  chipSpawnPoint: {fileID: 6253469733874846448}
+--- !u!65 &1819179666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819179664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1641501535568939382
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,12 +166,10 @@ GameObject:
   - component: {fileID: 4244570936445621932}
   - component: {fileID: 1107396513}
   - component: {fileID: 1107396515}
-  - component: {fileID: 1107396516}
-  - component: {fileID: 1107396517}
   - component: {fileID: 1107396514}
   m_Layer: 0
   m_Name: ChipDesk
-  m_TagString: Casino Resource
+  m_TagString: Chip Desk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -125,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 2442994677094709113}
   m_LocalRotation: {x: 0, y: 0.702799, z: 0, w: 0.7113885}
   m_LocalPosition: {x: -7.742, y: 0, z: -16.301}
-  m_LocalScale: {x: 0.82625175, y: 0.82625175, z: 0.82625175}
+  m_LocalScale: {x: 0.8262518, y: 0.82625175, z: 0.8262518}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3955897444547196656}
@@ -150,6 +208,7 @@ Transform:
   - {fileID: 6978138535184255133}
   - {fileID: 1481630293088279080}
   - {fileID: 508974095756231561}
+  - {fileID: 1819179665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 89.304, z: 0}
@@ -235,38 +294,6 @@ MonoBehaviour:
   chipPoint: {fileID: 1481630293088279080}
   moneySpawnPoint: {fileID: 508974095756231561}
   stackMoney: {fileID: 6978138535184255132}
---- !u!114 &1107396516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2442994677094709113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee88bfcf6fea63f4ab0c05d682a70bc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 8883d978dbfaf5e43a649cddcca208a9, type: 2}
-  chipSpawnPoint: {fileID: 6253469733874846448}
---- !u!114 &1107396517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2442994677094709113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e1551be4b00c6349b3299e8d47bef10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redChipPrefab: {fileID: 4927721362680808726, guid: 0b20114110e2b784ebd48e40b0409866,
-    type: 3}
-  greenChipPrefab: {fileID: 4927721362680808726, guid: 8f912a229118a424c99f1079845e0e0d,
-    type: 3}
-  blueChipPrefab: {fileID: 4927721362680808726, guid: dc831cdb82a837c479ae3b0fc2c36f13,
-    type: 3}
 --- !u!54 &1107396514
 Rigidbody:
   m_ObjectHideFlags: 0
