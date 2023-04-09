@@ -38,13 +38,13 @@ public class CustomerHandStack : MonoBehaviour
 
     IEnumerator RemoveWithDelay(ChipDesk chipDesk)
     {
-        for (int i = 0; i < resources.Count; i++)
+        for (int i = resources.Count - 1; i >= 0; i--)
         {
             stackCounter--;
             firstStack.position -= new Vector3(0, data.stackYOffset, 0);
             yield return new WaitForSeconds(data.removeChipDelay);
             resources[i].transform.SetParent(chipDesk.transform);
-            resources[i].transform.DOLocalMove(Vector3.zero, data.removeChipToDesk).OnComplete(() =>
+            resources[i].transform.DOLocalMove(Vector3.zero, data.removeChipToDeskTime).OnComplete(() =>
             {
                 resources[i].ReleasResource();
             });

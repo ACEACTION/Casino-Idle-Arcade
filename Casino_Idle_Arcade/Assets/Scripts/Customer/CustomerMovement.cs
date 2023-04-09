@@ -39,6 +39,7 @@ public class CustomerMovement : Customer
     {
         if (stack.HasStack())
         {
+            anim.SetBool("idlecarry", false);
             anim.SetBool("walkcarry", true);
         }
         else

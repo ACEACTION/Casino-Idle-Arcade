@@ -7,7 +7,7 @@ public class CustomerHandStackData : ScriptableObject
 {
     public float stackYOffset;
     public float removeChipDelay;
-    public float removeChipToDesk;
+    public float removeChipToDeskTime;
     public float moneyFromDeskDuration;
     public Vector3 firstStackPos;
 }
