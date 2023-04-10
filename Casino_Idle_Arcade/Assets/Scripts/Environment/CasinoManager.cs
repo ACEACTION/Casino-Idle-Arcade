@@ -10,7 +10,6 @@ public enum ElementsType
 public class CasinoManager : MonoBehaviour
 {
     public static CasinoManager instance;
-
     public List<ElementsType> availableElements = new List<ElementsType>();
 
     private void Awake()
