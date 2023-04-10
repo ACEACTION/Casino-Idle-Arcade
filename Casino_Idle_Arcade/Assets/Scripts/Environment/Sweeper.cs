@@ -8,6 +8,7 @@ public class Sweeper : MonoBehaviour
     public Transform[] objectsToSweep;
     public Transform[] objectsStartingPos;
     [SerializeField] GameObject sortedCards;
+    [SerializeField] GameObject rouletteModel;
     Vector3[] path;
     [SerializeField] Transform targetPosition;
     Quaternion targetRotation;
@@ -43,6 +44,7 @@ public class Sweeper : MonoBehaviour
         {
             sortedCards.SetActive(true);
             ScalingSortedCards();
+            rouletteModel.transform.DOShakeScale(0.5f, 0.15f);
             cardEffect.gameObject.SetActive(true);
             cardEffect.Play();
             foreach (Transform objectToSweep in objectsToSweep)

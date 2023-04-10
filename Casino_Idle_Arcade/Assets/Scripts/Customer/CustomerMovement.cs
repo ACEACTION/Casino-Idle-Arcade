@@ -126,10 +126,23 @@ public class CustomerMovement : Customer
         chipDesk = null;
         isWinning = false;
 
+        // deactive particles
         foreach (ParticleSystem emoji in sadEmojies)
         {
-            emoji.Stop();
+            emoji.gameObject.SetActive(false);
         }
+
+
+        foreach (ParticleSystem emoji in happyEmojies)
+        {
+            emoji.gameObject.SetActive(false);
+        }
+
+        foreach (ParticleSystem emoji in confetti)
+        {
+            emoji.gameObject.SetActive(false);
+        }
+
 
         CustomerPool.instance.OnReleaseCustomer(this);
 

@@ -8,6 +8,8 @@ public class Money : CasinoResource
     bool goToPlayer;
     Vector3 defaultScale;
 
+    [SerializeField] ParticleSystem effect;
+
     private void Awake()
     {
        defaultScale = transform.localScale;               
@@ -15,19 +17,27 @@ public class Money : CasinoResource
 
     private void Start()
     {
-
     }
 
     private void OnEnable()
     {
-        transform.localScale = defaultScale;
+        transform.localScale = defaultScale;        
     }
 
     public override void ReleasResource()
     {
         base.ReleasResource();
+        effect.gameObject.SetActive(false);
+        effect.Stop();
         StackMoneyPool.Instance.OnReleaseMoney(this);
     }
+
+    public void ActiveEffect()
+    {
+        effect.gameObject.SetActive(true);
+        effect.Play();
+    }
+
 
     private void Update()
     {
@@ -44,7 +54,7 @@ public class Money : CasinoResource
                 goToPlayer = false;
 
                 GameManager.AddMoney(moneyData.moneyPrice);
-                StackMoneyPool.Instance.OnReleaseMoney(this);
+                ReleasResource();
             }
         }        
     }

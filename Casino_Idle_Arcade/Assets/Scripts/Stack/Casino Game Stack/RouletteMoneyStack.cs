@@ -15,6 +15,7 @@ public class RouletteMoneyStack : CasinoGameMoneyStack
         money.transform.SetParent(transform);
         money.transform.DOLocalMove(GetMoneyTargetPos(), 1f);
         money.transform.DORotate(new Vector3(0, Random.Range(100, 360), 0), 1);
+        money.ActiveEffect();
     }
 
 }
