@@ -42,12 +42,14 @@ public class PlayerMovements : MonoBehaviour
     void Update()
     {
         Move();
-        RotatePlayerFace();
+       // RotatePlayerFace();
 
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
+        RotatePlayerFace();
+
         rb.position = velocity;
     }
     private void Move()
