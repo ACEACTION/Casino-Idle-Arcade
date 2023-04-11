@@ -24,6 +24,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
     public HandStack handStack;
+    [SerializeField] CharacterController controller;
 
     public static PlayerMovements Instance;
     private void Awake()
@@ -42,20 +43,12 @@ public class PlayerMovements : MonoBehaviour
     void Update()
     {
         Move();
-       // RotatePlayerFace();
-
+        RotatePlayerFace();             
     }
 
-    private void LateUpdate()
-    {
-        RotatePlayerFace();
 
-        rb.position = velocity;
-    }
     private void Move()
     {
-        //xDir = Input.GetAxis("Horizontal");
-        //zDir = Input.GetAxis("Vertical");
 
         xDir = Joystick.Instance.Horizontal + Input.GetAxis("Horizontal");
         zDir = Joystick.Instance.Vertical + Input.GetAxis("Vertical");
@@ -65,6 +58,7 @@ public class PlayerMovements : MonoBehaviour
 
         anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
         movementDir.Normalize();
+        controller.Move(velocity * Time.deltaTime);
     }
 
     public void RotatePlayerFace()
@@ -85,9 +79,11 @@ public class PlayerMovements : MonoBehaviour
     private void OnAnimatorMove()
     {
         if (handStack.stackHasResource)
-            velocity += anim.deltaPosition * animationMoveSpeed;
+            velocity = anim.deltaPosition * animationMoveSpeed;
         else
-            velocity += anim.deltaPosition * animationStackMoveSpeed;
+            velocity = anim.deltaPosition * animationStackMoveSpeed;
+
+        //velocity = anim.deltaPosition;
     }
 
 
