@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -16,6 +17,7 @@ public class PlayerMovements : MonoBehaviour
     float xDir, zDir;
     float inputMagnitude;
     Vector3 velocity;
+    float gravity = -19.8f;
     float speed;
 
 
@@ -43,9 +45,9 @@ public class PlayerMovements : MonoBehaviour
     void Update()
     {
         Move();
-        RotatePlayerFace();             
+        RotatePlayerFace();
     }
-
+    
 
     private void Move()
     {
@@ -58,6 +60,7 @@ public class PlayerMovements : MonoBehaviour
 
         anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
         movementDir.Normalize();
+        velocity.y += gravity * Time.deltaTime * 10f;
         controller.Move(velocity * Time.deltaTime);
     }
 
