@@ -5353,17 +5353,17 @@ PrefabInstance:
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: 38478be9cb847724fb286f58d1ceab51,
         type: 3}
@@ -5663,6 +5663,10 @@ PrefabInstance:
     - target: {fileID: 19813282, guid: 4e410a35a255ee3419b094f1aac14727, type: 3}
       propertyPath: CollisionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19813282, guid: 4e410a35a255ee3419b094f1aac14727, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e410a35a255ee3419b094f1aac14727, type: 3}

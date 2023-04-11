@@ -43,7 +43,7 @@ public class Roulette : CasinoGame
     
     private void OnEnable()
     {
-        transform.DOScale(1f, 0.5f).OnComplete(() => { transform.DOShakeScale(0.5f, 0.15f); });
+        transform.DOShakeScale(1f, 0.5f);
         WorkerManager.roulettes.Add(this);
         WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
