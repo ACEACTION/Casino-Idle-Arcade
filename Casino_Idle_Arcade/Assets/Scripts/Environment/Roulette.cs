@@ -70,7 +70,12 @@ public class Roulette : CasinoGame
         //animation customers = playing card
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        workerCheker.worker.ActiveActionAnim(false);
+        workerCheker.worker?.ActiveActionAnim(false);
+
+        if (workerCheker.isPlayerAvailable)
+        {         
+            CinemachineManager.instance.ZoomIn();
+        }        
 
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
@@ -79,13 +84,7 @@ public class Roulette : CasinoGame
             ChoseWinner();
             PayMoney();   
             StartCoroutine(ResetGame());
-
-
-            if (workerCheker.isPlayerAvailable && !rwc.canChangeCamera)
-            {
-                rwc.canChangeCamera = true;
-                CinemachineManager.instance.ChangeCam();
-            }
+            CinemachineManager.instance.ZoomOut();
         }
 
     }
@@ -214,11 +213,6 @@ public class Roulette : CasinoGame
             {
 
                 castTime -= Time.deltaTime;
-                if (workerCheker.isPlayerAvailable && rwc.canChangeCamera)
-                {
-                    rwc.canChangeCamera = false;
-                    CinemachineManager.instance.ChangeCam();
-                }
                 if (castTime <= 0)
                 {
 
@@ -227,7 +221,7 @@ public class Roulette : CasinoGame
                 }
                 else
                 {
-                    workerCheker.worker.ActiveActionAnim(true);
+                    workerCheker.worker?.ActiveActionAnim(true);
                 }
             }
         }

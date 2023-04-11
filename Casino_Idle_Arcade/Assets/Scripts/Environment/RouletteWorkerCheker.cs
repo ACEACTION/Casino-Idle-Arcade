@@ -40,7 +40,7 @@ public class RouletteWorkerCheker : WorkerCheker
 
         if (other.gameObject.CompareTag("Player"))
         {
-            canChangeCamera = false;
+            CinemachineManager.instance.ZoomOut();
             if (CinemachineManager.instance.isNormalCam)
                 CinemachineManager.instance.ChangeCam();
 

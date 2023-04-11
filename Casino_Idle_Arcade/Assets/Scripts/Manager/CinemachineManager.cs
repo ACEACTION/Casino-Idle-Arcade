@@ -32,4 +32,17 @@ public class CinemachineManager : MonoBehaviour
         isNormalCam = !isNormalCam;
 
     }
+
+    public void ZoomIn()
+    {
+        normalCamera.Priority = 0;
+        zoomCam.Priority = 1;
+    }
+
+    public void ZoomOut()
+    {
+        normalCamera.Priority = 1;
+        zoomCam.Priority = 0;
+    }
+
 }
