@@ -21,4 +21,11 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
     }
+
+
+    private void Start()
+    {
+        GameManager.totalMoney += 2000;
+
+    }
 }

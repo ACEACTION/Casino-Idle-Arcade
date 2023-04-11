@@ -17,7 +17,6 @@ public class BuyAreaController : MonoBehaviour
     private void Start()
     {
         priceText.text = price.ToString();
-        GameManager.totalMoney += 2000;
     }
     private void Update()
     {
