@@ -17,11 +17,11 @@ public class HandStack : MonoBehaviour
     public bool stackHasResource;
 
     // references
+    [SerializeField] Animator anim;
     public Transform firstStack;
     public List<CasinoResource> stackList;
     CasinoResourceDesk casinoResource;
     CasinoGameStack casinoGameStack;
-    [SerializeField] Animator anim;
 
     private void Start()
     {
@@ -56,7 +56,7 @@ public class HandStack : MonoBehaviour
         {            
             casinoResource.AddResourceToStack(this, stackList);
             stackCount++;
-            firstStack.transform.position += new Vector3(0, stackYOffset, 0);
+            firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
             stackHasResource = true;
         }
     }
@@ -90,7 +90,7 @@ public class HandStack : MonoBehaviour
             casinoGameStack.AddToGameStack(stackList[stackList.Count - 1]);
             stackList.RemoveAt(stackList.Count - 1);
             stackCount--;
-            firstStack.transform.position -= new Vector3(0, stackYOffset, 0);
+            firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
 
             stackHasResource = CanRemoveStack();
         }
