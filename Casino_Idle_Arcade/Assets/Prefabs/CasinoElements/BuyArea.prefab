@@ -78,8 +78,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -350,9 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8277dbec7f03d364eb03949a4b76d44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 500
-  cooldown: 0.1
-  cooldownAmount: 0.1
+  price: 200
+  priceAmount: 500
+  cooldown: 0.01
+  cooldownAmount: 0.01
   buyedElement: {fileID: 0}
   priceText: {fileID: 1266910043023292563}
   buildEffect: {fileID: 0}

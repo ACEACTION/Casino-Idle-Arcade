@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2600802570009534491
 Transform:
   m_ObjectHideFlags: 0
@@ -41,15 +41,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2600802570009534491}
     m_Modifications:
-    - target: {fileID: 377857689, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6512955979253760735, guid: e51e497a9e31e1640b57e326a648bec7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.949
-      objectReference: {fileID: 0}
     - target: {fileID: 7432650612723773418, guid: e51e497a9e31e1640b57e326a648bec7,
         type: 3}
       propertyPath: m_RootOrder
@@ -109,11 +100,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Roulette Table
-      objectReference: {fileID: 0}
-    - target: {fileID: 7813117492289418576, guid: e51e497a9e31e1640b57e326a648bec7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
@@ -231,34 +217,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
-      propertyPath: price
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
-        type: 3}
-      propertyPath: cooldown
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
-        type: 3}
       propertyPath: buildEffect
       value: 
       objectReference: {fileID: 2600802570447642240}
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
-      propertyPath: priceAmount
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
-        type: 3}
       propertyPath: buyedElement
       value: 
       objectReference: {fileID: 8852848689562116643}
-    - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
-        type: 3}
-      propertyPath: cooldownAmount
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_RootOrder
