@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowFollowController : MonoBehaviour
+public class TutorialManager : MonoBehaviour
 {
     [SerializeField] float followCamTime;
     [SerializeField] Vector3 camOffset;
@@ -26,7 +26,6 @@ public class ArrowFollowController : MonoBehaviour
     [SerializeField] GameObject chipDesk;   
     [SerializeField] Roulette roulette;
     [SerializeField] HandStack playerHandStack;
-
     private void Start()
     {
 
@@ -127,7 +126,9 @@ public class ArrowFollowController : MonoBehaviour
         {
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
-            GameManager.completeTutorial = true;            
+            GameManager.completeTutorial = true;
+            PriorityManager.Instance.gameObject.SetActive(true);
+            PriorityManager.Instance.elements[0].SetActive(true);            
         }
     }
 

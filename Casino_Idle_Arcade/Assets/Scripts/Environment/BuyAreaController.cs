@@ -41,7 +41,12 @@ public class BuyAreaController : MonoBehaviour
                 priceText.transform.DOShakeScale(0.5f, 0.1f).OnComplete(() =>
                 { priceText.transform.DOScale(1f, 0f);  });
                 GameManager.totalMoney -= (GameManager.totalMoney * 2) / 100;
+                if(price <= 100)
+                {
+                    
+                }
                 cooldown = cooldownAmount;
+                Money_UI.Instance.SetMoneyTxt();
 
             }
 
@@ -49,6 +54,7 @@ public class BuyAreaController : MonoBehaviour
         }
         if(price <= 0)
         {
+            PriorityManager.Instance.OpenNextPriority();
             buyedElement.SetActive(true);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();

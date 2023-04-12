@@ -11,8 +11,12 @@ public class JackPot : CasinoGame
     private void Start()
     {
         CasinoElementManager.jackPots.Add(this);
+        
+        if (!CasinoManager.instance.availableElements.Contains(ElementsType.jackpot))
+        {
+            CasinoManager.instance.availableElements.Add(ElementsType.jackpot);
+        }
     }
-
 
     private void Update()
     {

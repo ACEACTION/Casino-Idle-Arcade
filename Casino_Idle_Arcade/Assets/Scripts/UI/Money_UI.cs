@@ -18,16 +18,14 @@ public class Money_UI : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-
-        SetMoneyTxt();
-
+        if (Instance == null) Instance = this;        
     }
 
     private void Start()
     {
         iconDefaultScale = moneyIcon.transform.localScale;
         defaultMoneyIconColor = moneyIcon.color;
+        SetMoneyTxt();
     }
 
     public void SetMoneyTxt()
