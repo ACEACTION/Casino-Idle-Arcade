@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,8 +11,10 @@ public class JackPot : CasinoGame
     
     private void Start()
     {
+
         CasinoElementManager.jackPots.Add(this);
-        
+        transform.DOShakeScale(1f, 0.5f);
+
         if (!CasinoManager.instance.availableElements.Contains(ElementsType.jackpot))
         {
             CasinoManager.instance.availableElements.Add(ElementsType.jackpot);

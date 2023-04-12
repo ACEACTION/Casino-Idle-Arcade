@@ -8,25 +8,27 @@ using TMPro;
 
 public class BuyAreaController : MonoBehaviour
 {
-    public float price;
+    public int price;
+    public float priceAmount;
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
     [SerializeField] float cooldownAmount;
     [SerializeField] GameObject buyedElement;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] ParticleSystem buildEffect;
-
+    float sud;
     private void Start()
     {
         priceText.text = price.ToString();
     }
     private void Update()
     {
-        if (price > 0 && isPlayerAvailabe && GameManager.totalMoney >0 ) 
+        if (price > 0 && isPlayerAvailabe && GameManager.totalMoney > 0 ) 
         {
             cooldown -= Time.deltaTime;
             if (cooldown <= 0)
             {
+                cooldown = cooldownAmount;
 
                 Money money = StackMoneyPool.Instance.pool.Get();
                 money.transform.position = PlayerMovements.Instance.transform.position;
@@ -36,23 +38,26 @@ public class BuyAreaController : MonoBehaviour
                 {
                    StackMoneyPool.Instance.OnReleaseMoney(money);
                 });
-                price -= (GameManager.totalMoney * 2) / 100;
+
+                price--;
+                GameManager.totalMoney--;
                 priceText.text = price.ToString();
+               // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
                 priceText.transform.DOShakeScale(0.5f, 0.1f).OnComplete(() =>
                 { priceText.transform.DOScale(1f, 0f);  });
-                GameManager.totalMoney -= (GameManager.totalMoney * 2) / 100;
-                if(price <= 100)
+
+                if(GameManager.totalMoney <= 100)
                 {
-                    
+                    price -= GameManager.totalMoney;
+                    GameManager.totalMoney = 0;
                 }
-                cooldown = cooldownAmount;
                 Money_UI.Instance.SetMoneyTxt();
 
             }
 
 
         }
-        if(price <= 0)
+        if (price <= 0)
         {
             PriorityManager.Instance.OpenNextPriority();
             buyedElement.SetActive(true);
