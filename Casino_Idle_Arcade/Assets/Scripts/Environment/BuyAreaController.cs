@@ -29,6 +29,7 @@ public class BuyAreaController : MonoBehaviour
             if (cooldown <= 0)
             {
                 cooldown = cooldownAmount;
+                price--;
 
                 Money money = StackMoneyPool.Instance.pool.Get();
                 money.transform.position = PlayerMovements.Instance.transform.position;
@@ -39,18 +40,14 @@ public class BuyAreaController : MonoBehaviour
                    StackMoneyPool.Instance.OnReleaseMoney(money);
                 });
 
-                price--;
+               // price--;
                 GameManager.totalMoney--;
                 priceText.text = price.ToString();
                // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
                 priceText.transform.DOShakeScale(0.5f, 0.1f).OnComplete(() =>
                 { priceText.transform.DOScale(1f, 0f);  });
 
-                if(GameManager.totalMoney <= 100)
-                {
-                    price -= GameManager.totalMoney;
-                    GameManager.totalMoney = 0;
-                }
+
                 Money_UI.Instance.SetMoneyTxt();
 
             }
