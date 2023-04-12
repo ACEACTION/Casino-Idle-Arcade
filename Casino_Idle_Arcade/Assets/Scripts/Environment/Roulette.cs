@@ -20,7 +20,7 @@ public class Roulette : CasinoGame
     [SerializeField] int betUnitPrice;
     public int betCounter;
     bool getBet = false;
-    bool hasChip;
+    public bool hasChip;
     [SerializeField] float maxGetChipCd;
     float getChipCd;
     [SerializeField] float playChipSpotOffset;

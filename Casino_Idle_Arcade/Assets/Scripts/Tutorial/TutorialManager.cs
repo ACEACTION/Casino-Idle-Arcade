@@ -5,9 +5,10 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] float followCamTime;
+    [SerializeField] float chipDeskTime;
     [SerializeField] Vector3 camOffset;
     float cashierTime;
-
+    float getChipTime;
     bool followArrow = true;
     bool changeCam = true;
 
@@ -32,6 +33,7 @@ public class TutorialManager : MonoBehaviour
         if (!GameManager.completeTutorial)
         { 
             cashierTime = cashierManager.cooldownAmount * roulette.maxGameCapacity + 2f;
+            getChipTime = playerHandStack.maxAddStackCd * playerHandStack.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
         }
@@ -105,17 +107,17 @@ public class TutorialManager : MonoBehaviour
     {
         if (getChip && playerHandStack.stackHasResource)
         {
-            Joystick.Instance.ResetJoystick();
-            Joystick.Instance.gameObject.SetActive(false);
-            if (!playerHandStack.CanAddStack())
+
+            chipDeskTime -= Time.deltaTime;
+
+            if (chipDeskTime <= 0)
             {
                 objs.RemoveAt(0);
                 getChip = false;
-                Joystick.Instance.gameObject.SetActive(true);
                 carryChip = true;
                 changeCam = true;
                 ChangeCamera();
-            }
+            }  
         }
     }
 

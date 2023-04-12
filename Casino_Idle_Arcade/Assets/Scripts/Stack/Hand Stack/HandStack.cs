@@ -7,10 +7,10 @@ public class HandStack : MonoBehaviour
 {       
 
     // variables
-    [SerializeField] int maxStackCount;
+    public int maxStackCount;
     [SerializeField] int stackCount;
     [SerializeField] float stackYOffset;
-    [SerializeField] float maxAddStackCd;
+    public float maxAddStackCd;
     float addStackCd;
     [SerializeField] float maxRemoveStackCd;
     float removeStackCd;
@@ -20,8 +20,8 @@ public class HandStack : MonoBehaviour
     [SerializeField] Animator anim;
     public Transform firstStack;
     public List<CasinoResource> stackList;
-    CasinoResourceDesk casinoResource;
-    public CasinoGameStack casinoGameStack;
+    public CasinoResourceDesk casinoResource;
+    CasinoGameStack casinoGameStack;
 
     private void Start()
     {
