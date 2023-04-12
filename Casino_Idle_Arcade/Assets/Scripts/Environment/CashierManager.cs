@@ -6,7 +6,7 @@ public class CashierManager : MonoBehaviour
 {
     [SerializeField] int jackPotPayment;
     [SerializeField] int roulettePayment;
-    [SerializeField] WorkerCheker workerCheker;
+    public WorkerCheker workerCheker;
     [SerializeField] Slider slider;
 
 
@@ -14,7 +14,7 @@ public class CashierManager : MonoBehaviour
     public List<Transform> customerSpots = new List<Transform>();
 
     [SerializeField] float cooldown;
-    [SerializeField] float cooldownAmount;
+    public float cooldownAmount;
 
     [SerializeField] CashierFirstTransform firstCounter;
     [SerializeField] StackMoney stackMoney;

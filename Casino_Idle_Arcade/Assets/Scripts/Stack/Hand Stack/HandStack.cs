@@ -21,7 +21,7 @@ public class HandStack : MonoBehaviour
     public Transform firstStack;
     public List<CasinoResource> stackList;
     CasinoResourceDesk casinoResource;
-    CasinoGameStack casinoGameStack;
+    public CasinoGameStack casinoGameStack;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class HandStack : MonoBehaviour
         SetStackAnimation();
     }
 
-    bool CanAddStack() => stackCount < maxStackCount;
+    public bool CanAddStack() => stackCount < maxStackCount;
     bool CanRemoveStack() => stackCount > 0;
 
     void AddStackResourceWithCd()

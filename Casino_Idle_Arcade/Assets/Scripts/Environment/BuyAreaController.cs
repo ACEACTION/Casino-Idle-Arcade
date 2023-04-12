@@ -5,12 +5,14 @@ using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class BuyAreaController : MonoBehaviour
 {
     public float price;
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
     [SerializeField] float cooldownAmount;
+    [SerializeField] GameObject buyedElement;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] ParticleSystem buildEffect;
 
@@ -47,7 +49,7 @@ public class BuyAreaController : MonoBehaviour
         }
         if(price <= 0)
         {
-            transform.parent.transform.GetChild(0).gameObject.SetActive(true);
+            buyedElement.SetActive(true);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
             Destroy(this.gameObject);

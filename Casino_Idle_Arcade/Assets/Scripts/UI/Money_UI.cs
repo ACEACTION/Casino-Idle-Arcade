@@ -19,6 +19,9 @@ public class Money_UI : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
+
+        SetMoneyTxt();
+
     }
 
     private void Start()

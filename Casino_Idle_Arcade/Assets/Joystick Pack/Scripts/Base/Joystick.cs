@@ -17,6 +17,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             Instance = this;
     }
 
+    public void ResetJoystick() => input = Vector2.zero;
+    
+
     public float HandleRange
     {
         get { return handleRange; }
