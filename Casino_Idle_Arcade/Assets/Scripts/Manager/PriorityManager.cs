@@ -16,7 +16,7 @@ public class PriorityManager : MonoBehaviour
 
     public void OpenNextPriority()
     {
-        if (!GameManager.completeTutorial) return;
+        if (!GameManager.isCompleteTutorial) return;
 
         elements.RemoveAt(0);
         if (elements.Count != 0)

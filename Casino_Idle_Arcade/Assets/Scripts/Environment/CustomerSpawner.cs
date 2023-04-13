@@ -25,7 +25,7 @@ public class CustomerSpawner : MonoBehaviour
     public Transform spawnPoint; 
     void Start()
     {
-        if (GameManager.completeTutorial)
+        if (GameManager.isCompleteTutorial)
             SpawnCustomers();
     }
 

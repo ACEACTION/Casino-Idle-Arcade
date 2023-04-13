@@ -4,28 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CashierManager : MonoBehaviour
 {
-    [SerializeField] int jackPotPayment;
-    [SerializeField] int roulettePayment;
-    public WorkerCheker workerCheker;
-    [SerializeField] Slider slider;
 
 
-
-    public List<Transform> customerSpots = new List<Transform>();
-
-    [SerializeField] float cooldown;
-    public float cooldownAmount;
-
-    [SerializeField] CashierFirstTransform firstCounter;
-    [SerializeField] StackMoney stackMoney;
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
+    [SerializeField] float cooldown;
+
+    public CashierData data;
+    public List<Transform> customerSpots = new List<Transform>();
+    public WorkerCheker workerCheker;
+    [SerializeField] Slider slider;
+    [SerializeField] Image firstCustomerGameIcon;
+    [SerializeField] CashierFirstTransform firstCounter;
+    [SerializeField] StackMoney stackMoney;
 
     private void Start()
     {
-        slider.maxValue = cooldownAmount;
-        cooldown = cooldownAmount;
+        cooldown = data.cooldownAmount;
+        slider.maxValue = cooldown;
     }
 
     private void Update()
@@ -36,15 +33,20 @@ public class CashierManager : MonoBehaviour
         {
             cooldown -= Time.deltaTime;
             slider.value += Time.deltaTime;
+
+            firstCustomerGameIcon.gameObject.SetActive(true);
+            firstCustomerGameIcon.sprite = 
+                data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
             if (cooldown <= 0)
             {
                 if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
                 {
                     firstCounter.firstCustomer.PayMoney(stackMoney, 
-                        GetPayment(firstCounter.firstCustomer.elementType));
-                    cooldown = cooldownAmount;
+                        data.GetPayment(firstCounter.firstCustomer.elementType));
+                    cooldown = data.cooldownAmount;
                     slider.value = 0;
                     firstCounter.nextCustomer = false;
+                    firstCustomerGameIcon.gameObject.SetActive(false);
                 }
             }        
         }
@@ -71,20 +73,6 @@ public class CashierManager : MonoBehaviour
         {
             playerIsCashier = false;
             
-        }
-    }
-
-
-    public int GetPayment(ElementsType type)
-    {
-        switch (type)
-        {
-            case ElementsType.roulette:
-                return roulettePayment;
-            case ElementsType.jackpot:
-                return jackPotPayment;
-            default:
-                return 1;
         }
     }
 

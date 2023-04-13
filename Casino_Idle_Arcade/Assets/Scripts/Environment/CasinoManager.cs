@@ -9,9 +9,11 @@ public enum ElementsType
 }
 public class CasinoManager : MonoBehaviour
 {
-    public static CasinoManager instance;
+    [SerializeField] bool isCompleteTutorial;
+    [SerializeField] GameObject tutorialManager;
     public List<ElementsType> availableElements = new List<ElementsType>();
 
+    public static CasinoManager instance;
     private void Awake()
     {
         QualitySettings.vSyncCount = 0;
@@ -22,6 +24,14 @@ public class CasinoManager : MonoBehaviour
         }
 
         GameManager.totalMoney += 900;
+
+        if (isCompleteTutorial)
+        {
+            GameManager.isCompleteTutorial = true;
+            tutorialManager.SetActive(false);
+        }
+        else
+            tutorialManager.SetActive(true);
     }
 
 }

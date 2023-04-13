@@ -30,9 +30,9 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
 
-        if (!GameManager.completeTutorial)
+        if (!GameManager.isCompleteTutorial)
         { 
-            cashierTime = cashierManager.cooldownAmount * roulette.maxGameCapacity + 2f;
+            cashierTime = cashierManager.data.cooldownAmount * roulette.maxGameCapacity + 2f;
             getChipTime = playerHandStack.maxAddStackCd * playerHandStack.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
         //arrowRenderer.SetPositions(
         //    PlayerMovements.Instance.transform.position, worldMousePosition);
 
-        if (GameManager.completeTutorial) return;
+        if (GameManager.isCompleteTutorial) return;
 
         MakeFirstRoulette();
         ShowCashier();
@@ -128,7 +128,7 @@ public class TutorialManager : MonoBehaviour
         {
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
-            GameManager.completeTutorial = true;
+            GameManager.isCompleteTutorial = true;
             PriorityManager.Instance.gameObject.SetActive(true);
             PriorityManager.Instance.elements[0].SetActive(true);            
         }
