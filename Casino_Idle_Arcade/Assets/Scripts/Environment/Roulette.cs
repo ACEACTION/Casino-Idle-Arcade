@@ -176,6 +176,8 @@ public class Roulette : CasinoGame
             chipsOnBet.Clear();
             payedMoney = true;
             gameSlider.value = 0;
+            cleaningSlider.value = -cleaningCdAmount;
+
             gameSlider.gameObject.SetActive(false);
 
             yield return base.ResetGame();

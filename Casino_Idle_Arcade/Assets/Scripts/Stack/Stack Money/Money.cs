@@ -48,11 +48,11 @@ public class Money : CasinoResource
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0),
                 moneyData.goToPlayerTime * Time.deltaTime);
 
+
             if (Vector3.Distance(transform.position,
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
-
                 GameManager.AddMoney(moneyData.moneyPrice);
                 ReleasResource();
             }
