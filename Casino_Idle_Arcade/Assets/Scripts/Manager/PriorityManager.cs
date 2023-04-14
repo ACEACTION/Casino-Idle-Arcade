@@ -18,9 +18,11 @@ public class PriorityManager : MonoBehaviour
     {
         if (!GameManager.isCompleteTutorial) return;
 
-        elements.RemoveAt(0);
         if (elements.Count != 0)
-            elements[0].gameObject.SetActive(true); 
+        {
+            elements[0].gameObject.SetActive(true);
+            elements.RemoveAt(0);
+        }
     }
 
 

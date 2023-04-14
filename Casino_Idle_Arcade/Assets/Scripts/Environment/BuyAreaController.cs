@@ -9,8 +9,8 @@ using Unity.VisualScripting;
 
 public class BuyAreaController : MonoBehaviour
 {
+    [SerializeField] bool activeBoughtElement;
     public int price;
-    public float priceAmount;
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
     [SerializeField] float cooldownAmount;
@@ -20,7 +20,7 @@ public class BuyAreaController : MonoBehaviour
 
     float remainingTime;
     int paymentAmount = 0;
-    public int a;
+    int remainingPayment;
     private void Start()
     {
         priceText.text = price.ToString();
@@ -44,7 +44,7 @@ public class BuyAreaController : MonoBehaviour
                 });
                 paymentAmount = Mathf.Min(paymentAmount + Random.Range(12, 63), GameManager.totalMoney);
                 GameManager.totalMoney -= paymentAmount;
-                a = price - paymentAmount;
+                remainingPayment = price - paymentAmount;
                 price -= paymentAmount;
 
 
@@ -54,10 +54,10 @@ public class BuyAreaController : MonoBehaviour
                 { priceText.transform.DOScale(1f, 0f);  });
 
 
-                if (a < 0)
+                if (remainingPayment < 0)
                 {
 
-                    GameManager.totalMoney += -a;
+                    GameManager.totalMoney += -remainingPayment;
 
                 }
 
@@ -72,7 +72,7 @@ public class BuyAreaController : MonoBehaviour
         if (price <= 0)
         {
             PriorityManager.Instance.OpenNextPriority();
-            buyedElement.SetActive(true);
+            buyedElement.SetActive(activeBoughtElement);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
             Destroy(this.gameObject);

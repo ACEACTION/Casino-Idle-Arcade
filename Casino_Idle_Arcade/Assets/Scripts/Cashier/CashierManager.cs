@@ -15,6 +15,7 @@ public class CashierManager : MonoBehaviour
     public List<Transform> customerSpots = new List<Transform>();
     public WorkerCheker workerCheker;
     [SerializeField] Slider slider;
+    [SerializeField] GameObject firstCustomerGameIconParent;
     [SerializeField] Image firstCustomerGameIcon;
     [SerializeField] CashierFirstTransform firstCounter;
     [SerializeField] StackMoney stackMoney;
@@ -48,7 +49,7 @@ public class CashierManager : MonoBehaviour
             cooldown -= Time.deltaTime;
             slider.value += Time.deltaTime;
 
-            firstCustomerGameIcon.gameObject.SetActive(true);
+            firstCustomerGameIconParent.SetActive(true);
             firstCustomerGameIcon.sprite = 
                 data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
             if (cooldown <= 0)
@@ -60,7 +61,7 @@ public class CashierManager : MonoBehaviour
                     cooldown = data.cooldownAmount;
                     slider.value = 0;
                     firstCounter.nextCustomer = false;
-                    firstCustomerGameIcon.gameObject.SetActive(false);
+                    firstCustomerGameIconParent.gameObject.SetActive(false);
                 }
             }        
         }
