@@ -11,6 +11,7 @@ public class CasinoManager : MonoBehaviour
 {
     [SerializeField] bool isCompleteTutorial;
     [SerializeField] GameObject tutorialManager;
+    public int moneytest;
     public List<ElementsType> availableElements = new List<ElementsType>();
 
     public static CasinoManager instance;
@@ -23,7 +24,7 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-        GameManager.totalMoney += 900;
+        GameManager.totalMoney += 10340;
 
         if (isCompleteTutorial)
         {
@@ -32,6 +33,11 @@ public class CasinoManager : MonoBehaviour
         }
         else
             tutorialManager.SetActive(true);
+    }
+
+    private void Update()
+    {
+        moneytest = GameManager.totalMoney;
     }
 
 }

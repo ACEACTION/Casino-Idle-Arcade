@@ -5,6 +5,7 @@ using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class BuyAreaController : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class BuyAreaController : MonoBehaviour
     [SerializeField] GameObject buyedElement;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] ParticleSystem buildEffect;
-    float sud;
+
+    float remainingTime;
+    int paymentAmount = 0;
+    public int a;
     private void Start()
     {
         priceText.text = price.ToString();
@@ -29,7 +33,6 @@ public class BuyAreaController : MonoBehaviour
             if (cooldown <= 0)
             {
                 cooldown = cooldownAmount;
-                price--;
 
                 Money money = StackMoneyPool.Instance.pool.Get();
                 money.transform.position = PlayerMovements.Instance.transform.position;
@@ -39,16 +42,28 @@ public class BuyAreaController : MonoBehaviour
                 {
                    StackMoneyPool.Instance.OnReleaseMoney(money);
                 });
+                paymentAmount = Mathf.Min(paymentAmount + Random.Range(12, 63), GameManager.totalMoney);
+                GameManager.totalMoney -= paymentAmount;
+                a = price - paymentAmount;
+                price -= paymentAmount;
 
-               // price--;
-                GameManager.totalMoney--;
-                priceText.text = price.ToString();
-               // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
+
+
+                // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
                 priceText.transform.DOShakeScale(0.5f, 0.1f).OnComplete(() =>
                 { priceText.transform.DOScale(1f, 0f);  });
 
 
+                if (a < 0)
+                {
+
+                    GameManager.totalMoney += -a;
+
+                }
+
                 Money_UI.Instance.SetMoneyTxt();
+
+                priceText.text = price.ToString();
 
             }
 
