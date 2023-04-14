@@ -90,7 +90,7 @@ public class CustomerHandStack : MonoBehaviour
 
     void GiveMoneyToChipDesk(ChipDesk chipDesk)
     {
-        cmovement.PayMoney(chipDesk.stackMoney, 1);
+        cmovement.PayMoney(chipDesk.stackMoney, 1, MoneyType.chipDeskMoney);
     }
 
 }

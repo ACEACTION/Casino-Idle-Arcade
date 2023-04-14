@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Money : CasinoResource
 {
+    int moneyAmount;
     public MoneyData moneyData;
     bool goToPlayer;
     Vector3 defaultScale;
@@ -29,6 +31,7 @@ public class Money : CasinoResource
         base.ReleasResource();
         effect.gameObject.SetActive(false);
         effect.Stop();
+        transform.DOKill();
         StackMoneyPool.Instance.OnReleaseMoney(this);
     }
 
@@ -38,6 +41,8 @@ public class Money : CasinoResource
         effect.Play();
     }
 
+    public void SetMoneyAmount(MoneyType type) 
+        => moneyAmount = moneyData.GetMoneyAmount(type);
 
     private void Update()
     {
@@ -52,8 +57,7 @@ public class Money : CasinoResource
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
-
-                GameManager.AddMoney(moneyData.moneyPrice);
+                GameManager.AddMoney(moneyAmount);
                 ReleasResource();
             }
         }        
