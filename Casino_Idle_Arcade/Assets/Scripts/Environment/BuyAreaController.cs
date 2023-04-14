@@ -42,7 +42,7 @@ public class BuyAreaController : MonoBehaviour
                 {
                    StackMoneyPool.Instance.OnReleaseMoney(money);
                 });
-                paymentAmount = Mathf.Min(paymentAmount + Random.Range(12, 63), GameManager.totalMoney);
+                paymentAmount = Mathf.Min(paymentAmount + Random.Range(5, 12), GameManager.totalMoney);
                 GameManager.totalMoney -= paymentAmount;
                 remainingPayment = price - paymentAmount;
                 price -= paymentAmount;
@@ -50,8 +50,8 @@ public class BuyAreaController : MonoBehaviour
 
 
                 // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
-                priceText.transform.DOShakeScale(0.5f, 0.1f).OnComplete(() =>
-                { priceText.transform.DOScale(1f, 0f);  });
+                priceText.transform.DOShakeScale(0.2f, 0.3f).OnComplete(() =>
+                { priceText.transform.DOScale(0.6f, 0f);  });
 
 
                 if (remainingPayment < 0)

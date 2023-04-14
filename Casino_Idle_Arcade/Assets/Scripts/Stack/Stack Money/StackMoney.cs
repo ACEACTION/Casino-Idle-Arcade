@@ -120,6 +120,7 @@ public class StackMoney : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayer = true;
+
         }
     }
 

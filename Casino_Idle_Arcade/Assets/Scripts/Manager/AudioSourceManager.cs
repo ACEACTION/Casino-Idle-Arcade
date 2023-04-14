@@ -5,7 +5,12 @@ using UnityEngine;
 public class AudioSourceManager : MonoBehaviour
 {
     [SerializeField] AudioClip[] pickUpCashSfx;
-    [SerializeField] AudioSource audioScr;
+    [SerializeField] AudioClip[] placeChipSfx;
+    [SerializeField] AudioClip receptionSfx;
+    [SerializeField] AudioClip musicBg;
+    [SerializeField] AudioClip rouletteGamePlaySfx;
+
+    public AudioSource audioScr;
 
     //singletoon
     public static AudioSourceManager Instance;
@@ -14,6 +19,7 @@ public class AudioSourceManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        
     }
 
     public void PlayCashPickupSfx()
