@@ -10,7 +10,7 @@ public class NoEntry : MonoBehaviour
     public GameObject[] transparentPlanes;
 
     [SerializeField] BuyAreaController area;
-
+    [SerializeField] GameObject chipDesk;
 
 
 
@@ -19,7 +19,7 @@ public class NoEntry : MonoBehaviour
         if (isBought && area.price <= 0)
         {
             isBought = false;
-
+            chipDesk.SetActive(true);
             transparentPlanes[0].transform.DOMoveX(transform.position.x + 30f, 3f).OnComplete(()=> { this.gameObject.SetActive(false); });
             transparentPlanes[1].transform.DOMoveX(transform.position.x - 30f, 3f);
 
