@@ -40,7 +40,8 @@ public class Roulette : CasinoGame
     CasinoResource chip;
     List<CasinoResource> chipsOnBet = new List<CasinoResource>();
     [SerializeField] Roulette_UI roulette_ui;
-    
+    [SerializeField] Slider gameSlider;
+
     private void OnEnable()
     {
         transform.DOShakeScale(1f, 0.5f);
@@ -60,6 +61,7 @@ public class Roulette : CasinoGame
         cleaningSlider.minValue = -cleaningCdAmount;
         getChipCd = maxGetChipCd;
         playChipSpotDefaultPos = playChipSpot.localPosition;
+        gameSlider.maxValue = dealerCastTimeAmount;
     }
 
     bool payedMoney = true;
@@ -75,8 +77,10 @@ public class Roulette : CasinoGame
         if (workerCheker.isPlayerAvailable)
         {         
             CinemachineManager.instance.ZoomIn();
-        }        
+        }
 
+        gameSlider.gameObject?.SetActive(true);
+        gameSlider.value += Time.deltaTime;
         dealerCastTime -= Time.deltaTime;
         if(dealerCastTime <= 0)
         {
@@ -85,6 +89,7 @@ public class Roulette : CasinoGame
             PayMoney();   
             StartCoroutine(ResetGame());
             CinemachineManager.instance.ZoomOut();
+            gameSlider.gameObject.SetActive(false);
         }
 
     }
@@ -170,7 +175,8 @@ public class Roulette : CasinoGame
             playChipSpot.localPosition = playChipSpotDefaultPos;
             chipsOnBet.Clear();
             payedMoney = true;
-
+            gameSlider.value = 0;
+            gameSlider.gameObject.SetActive(false);
 
             yield return base.ResetGame();
 
@@ -211,13 +217,10 @@ public class Roulette : CasinoGame
 
             if (hasChip)
             {
-
                 castTime -= Time.deltaTime;
                 if (castTime <= 0)
                 {
-
                     PlayGame();
-
                 }
                 else
                 {

@@ -26,7 +26,21 @@ public class CashierManager : MonoBehaviour
     }
 
     private void Update()
-    {        
+    {
+
+        //if (player != null && cooldown == 0)
+        //{
+        //    timePassed += Time.deltaTime;
+        //    if (timePassed >= maxTimePassed)
+        //    {
+
+        //    }
+        //}
+        //else if (cooldown > 0)
+        //{
+        //    cooldown -= Time.deltaTime;            
+        //}
+
         //if cashier spot !null
         if ((workerCheker.isPlayerAvailable || workerCheker.isDealerAvailabe)
             && firstCounter.nextCustomer)
