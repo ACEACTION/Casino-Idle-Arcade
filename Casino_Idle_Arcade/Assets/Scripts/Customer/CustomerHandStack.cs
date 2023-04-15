@@ -43,7 +43,7 @@ public class CustomerHandStack : MonoBehaviour
             stackCounter--;
             firstStack.position -= new Vector3(0, data.stackYOffset, 0);
             yield return new WaitForSeconds(data.removeChipDelay);
-            resources[i].transform.SetParent(chipDesk.transform);
+            resources[i].transform.SetParent(chipDesk.chipSpawnPoint);
             resources[i].transform.DOLocalMove(Vector3.zero, data.removeChipToDeskTime).OnComplete(() =>
             {
                 resources[i].ReleasResource();

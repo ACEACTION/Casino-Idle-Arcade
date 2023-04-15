@@ -608,12 +608,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f19e69ab98d354c8ed6e48d05e7087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  cooldownAmount: 0
   customer: {fileID: 0}
   customerSpot: {fileID: 584209947}
   chipPoint: {fileID: 1481630293088279080}
   moneySpawnPoint: {fileID: 508974095756231561}
+  chipSpawnPoint: {fileID: 6253469733874846448}
   stackMoney: {fileID: 6978138535184255132}
 --- !u!54 &1107396514
 Rigidbody:
@@ -2247,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 7404559637013153672, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.79
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: 7404559637013153672, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
@@ -2257,7 +2256,7 @@ PrefabInstance:
     - target: {fileID: 7404559637013153672, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.95
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 7404559637013153672, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
@@ -2356,7 +2355,7 @@ PrefabInstance:
     - target: {fileID: 8214785476660993338, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
@@ -2413,8 +2412,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.0068027973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.4166559
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2425258fa5a96d440acdd85c8113883e, type: 3}
+--- !u!198 &5439164808572129549 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4141917808555838514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5439164808572129551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
@@ -2428,6 +2473,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3074993292511161795}
     m_Modifications:
+    - target: {fileID: 4212549161694478143, guid: 2674760a9c09dd74f89a663c08d0ac1a,
+        type: 3}
+      propertyPath: waveEffec
+      value: 
+      objectReference: {fileID: 5439164808572129549}
     - target: {fileID: 7901792871529528683, guid: 2674760a9c09dd74f89a663c08d0ac1a,
         type: 3}
       propertyPath: m_Name

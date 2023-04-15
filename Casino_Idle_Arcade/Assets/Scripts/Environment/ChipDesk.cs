@@ -8,6 +8,7 @@ public class ChipDesk : MonoBehaviour
     public Transform customerSpot;
     public Transform chipPoint;
     public Transform moneySpawnPoint;
+    public Transform chipSpawnPoint;
     public StackMoney stackMoney;
 
     private void Start()
