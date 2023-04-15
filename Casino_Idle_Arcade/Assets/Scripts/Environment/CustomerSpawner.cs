@@ -6,12 +6,14 @@ public class CustomerSpawner : MonoBehaviour
 {
 
 
-    public CashierManager cashierManager;
+    public CashierManager[] cashierManager;
 
-    public  List<CustomerMovement> customersList = new List<CustomerMovement>();
+    public int counter = 0;
     public CustomerMovement cs;
     public static CustomerSpawner instance;
     public int maxCustomer;
+
+    public bool cmChanger;
     public void Awake()
     {
         if(instance == null)
@@ -37,23 +39,42 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnObject()
     {
-        if (customersList.Count < maxCustomer)
+        if (counter < maxCustomer)
         {
             //Getting from CustomerPool
-            cs = CustomerPool.instance.customerPool.Get();
-            cs.isLeaving = false;
-            customersList.Add(cs);
+
+            if (cashierManager[0] != null && cmChanger &&  cashierManager[0].customersList.Count < cashierManager[0].maxCapacity)
+            {
+                cs = CustomerPool.instance.customerPool.Get();
+                cs.isLeaving = false;
+                cashierManager[0].customersList.Add(cs);
+                cs.SetMove(cashierManager[0].customerSpots[cashierManager[0].customersList.IndexOf(cs)]);
+                counter++;
+
+            }
+            if (cashierManager[1] != null && !cmChanger && cashierManager[1].customersList.Count < cashierManager[1].maxCapacity)
+            {
+                cs = CustomerPool.instance.customerPool.Get();
+                cs.isLeaving = false;
+                cashierManager[1].customersList.Add(cs);
+                cs.SetMove(cashierManager[1].customerSpots[cashierManager[1].customersList.IndexOf(cs)]);
+                counter++;
+
+
+            }
             cs.transform.position = spawnPoint.position;
-            var i = customersList.IndexOf(cs);
-            cs.SetMove(cashierManager.customerSpots[i]);
+            cmChanger = !cmChanger;
+
         }
-        
+
     }
-    public  void AllCustomerInLineMoveForward()
+
+
+    public  void AllCustomerInLineMoveForward(CashierManager cashiermanager)
     {
-        for (int i = 0; i < customersList.Count; i++)
+        for (int i = 0; i < cashiermanager.customersList.Count; i++)
         {
-            customersList[i].SetMove(cashierManager.customerSpots[i]);
+            cashiermanager.customersList[i].SetMove(cashiermanager.customerSpots[i]);  
         }
     }
 
