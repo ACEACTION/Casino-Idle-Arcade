@@ -9,7 +9,9 @@ public class CashierManager : MonoBehaviour
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
+    public int maxCapacity = 5;
     [SerializeField] float cooldown;
+    public List<CustomerMovement> customersList = new List<CustomerMovement>();
 
     public CashierData data;
     public List<Transform> customerSpots = new List<Transform>();

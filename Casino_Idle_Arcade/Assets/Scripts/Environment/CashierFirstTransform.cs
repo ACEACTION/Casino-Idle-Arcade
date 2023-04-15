@@ -8,7 +8,7 @@ public class CashierFirstTransform : MonoBehaviour
 
     public bool nextCustomer;
     public CustomerMovement firstCustomer;
-
+    [SerializeField] CashierManager cashierManager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Customer"))
@@ -17,6 +17,7 @@ public class CashierFirstTransform : MonoBehaviour
             if (!other.gameObject.GetComponent<CustomerMovement>().isLeaving)
             {
                 firstCustomer = other.gameObject.GetComponent<CustomerMovement>();
+                firstCustomer.fCustomer = true;
                 nextCustomer = true;
             }
         }
@@ -28,11 +29,15 @@ public class CashierFirstTransform : MonoBehaviour
         {
             if (other.gameObject.Equals(firstCustomer.gameObject))
             {
-                CustomerSpawner.instance.customersList.Remove(firstCustomer);
-                CustomerSpawner.instance.AllCustomerInLineMoveForward();
+                cashierManager.customersList.Remove(firstCustomer);
+                CustomerSpawner.instance.AllCustomerInLineMoveForward(cashierManager);
+                CustomerSpawner.instance.counter--;
                 firstCustomer = null;
 
             }
+
+;
         }
+
     }
 }

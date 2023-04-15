@@ -330,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextCustomer: 0
   firstCustomer: {fileID: 0}
+  cashierManager: {fileID: 3734533504020691514}
 --- !u!1 &285653701183829180
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +630,9 @@ MonoBehaviour:
   cashierAvailabe: 0
   playerIsCashier: 0
   tableIndex: 0
+  maxCapacity: 5
   cooldown: 0.5
+  customersList: []
   data: {fileID: 11400000, guid: a607a62d18c70444da8e2ed700b686ff, type: 2}
   customerSpots:
   - {fileID: 285653701028799931}
@@ -941,6 +944,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 323241000623256988}
     m_Modifications:
+    - target: {fileID: 4212549161694478143, guid: 2674760a9c09dd74f89a663c08d0ac1a,
+        type: 3}
+      propertyPath: waveEffec
+      value: 
+      objectReference: {fileID: 6004551582804674342}
     - target: {fileID: 7901792871529528683, guid: 2674760a9c09dd74f89a663c08d0ac1a,
         type: 3}
       propertyPath: m_Name
@@ -1001,6 +1009,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7901792871529528686, guid: 2674760a9c09dd74f89a663c08d0ac1a,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.0068027973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901792871529528686, guid: 2674760a9c09dd74f89a663c08d0ac1a,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2674760a9c09dd74f89a663c08d0ac1a, type: 3}
 --- !u!4 &8231926962336511390 stripped
@@ -1024,7 +1042,7 @@ PrefabInstance:
     - target: {fileID: 8214785476660993338, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
@@ -1081,11 +1099,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214785478212117960, guid: 2425258fa5a96d440acdd85c8113883e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.37526274
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2425258fa5a96d440acdd85c8113883e, type: 3}
 --- !u!4 &6004551582804674340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2401742447261489689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6004551582804674342 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8214785476660993343, guid: 2425258fa5a96d440acdd85c8113883e,
     type: 3}
   m_PrefabInstance: {fileID: 2401742447261489689}
   m_PrefabAsset: {fileID: 0}
@@ -1556,7 +1620,7 @@ PrefabInstance:
     - target: {fileID: 7342186189009566832, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7342186189009566832, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}
@@ -1566,7 +1630,7 @@ PrefabInstance:
     - target: {fileID: 7342186189009566832, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.74
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 7342186189009566832, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}
@@ -1626,7 +1690,7 @@ PrefabInstance:
     - target: {fileID: 7975734050851776202, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7975734050851776202, guid: a602c9b7fbf94e4478dadda770321068,
         type: 3}

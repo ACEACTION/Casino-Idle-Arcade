@@ -9,6 +9,7 @@ public class CustomerMovement : Customer
     Transform dir;
     [SerializeField] NavMeshAgent agent;
     public Transform destination;
+    public bool fCustomer;
     int emojiIndex;
 
 
