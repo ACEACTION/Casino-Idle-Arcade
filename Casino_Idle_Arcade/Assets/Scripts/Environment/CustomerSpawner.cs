@@ -52,6 +52,7 @@ public class CustomerSpawner : MonoBehaviour
                 counter++;
 
             }
+
             if (cashierManager[1] != null && !cmChanger && cashierManager[1].customersList.Count < cashierManager[1].maxCapacity)
             {
                 cs = CustomerPool.instance.customerPool.Get();
