@@ -31,10 +31,7 @@ public class CasinoGame : CasinoElement
         castTime = castTimeAmount;
         customers.Clear();
         customerCounter = 0;
-        foreach (CasinoElementSpot spots in elementSpots)
-        {
-            spots.customer = null;
-        }
-
+        SetNullElementSpotsCustomer();
     }
+
 }

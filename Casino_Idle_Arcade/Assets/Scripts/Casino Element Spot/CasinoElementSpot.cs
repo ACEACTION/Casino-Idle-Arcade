@@ -8,14 +8,12 @@ public class CasinoElementSpot : MonoBehaviour
     public CustomerMovement customer;
 
 
-
     public bool IsEmptySpot() => customer == null;
 
     private void OnTriggerEnter(Collider other)
     {
         if (customer != null)
         {
-
             if (other.gameObject.Equals(customer.gameObject))
             {
                 gi.CustomerHasArrived();

@@ -26,6 +26,7 @@ public class CashierManager : MonoBehaviour
     {
         cooldown = data.cooldownAmount;
         slider.maxValue = cooldown;
+        CustomerSpawner.instance.maxCustomer += 5;
     }
 
     private void Update()

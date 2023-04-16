@@ -130,7 +130,7 @@ public class TutorialManager : MonoBehaviour
             arrowRenderer.gameObject.SetActive(false);
             GameManager.isCompleteTutorial = true;
             PriorityManager.Instance.gameObject.SetActive(true);
-            PriorityManager.Instance.elements[0].SetActive(true);            
+            //PriorityManager.Instance.elements[0].SetActive(true);
         }
     }
 

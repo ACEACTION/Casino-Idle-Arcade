@@ -38,7 +38,7 @@ public class Roulette : CasinoGame
     [SerializeField] CasinoGameStack gameStack;
     [SerializeField] Transform playChipSpot;
     CasinoResource chip;
-    List<CasinoResource> chipsOnBet = new List<CasinoResource>();
+    public List<CasinoResource> chipsOnBet = new List<CasinoResource>();
     [SerializeField] Roulette_UI roulette_ui;
     [SerializeField] Slider gameSlider;
 
@@ -52,7 +52,6 @@ public class Roulette : CasinoGame
     private void Start()
     {
         Init();
-
         CasinoElementManager.roulettes.Add(this);
     }
 
@@ -292,5 +291,24 @@ public class Roulette : CasinoGame
     }
 
 
+    public override void UpgradeElements()
+    {
+        base.UpgradeElements();
+
+        cleaningCd = cleaningCdAmount;
+        dealerCastTime = dealerCastTimeAmount;
+        choseWinnerPossible = true;
+        actCustomerAnimation = false;
+        //hasChip = false;
+        //chip = null;
+        //getBet = false;
+        //betCounter = 0;
+        //playChipSpot.localPosition = playChipSpotDefaultPos;
+        //chipsOnBet.Clear();
+        payedMoney = true;
+        gameSlider.value = 0;
+        cleaningSlider.value = -cleaningCdAmount;
+        gameSlider.gameObject.SetActive(false);
+    }
 
 }

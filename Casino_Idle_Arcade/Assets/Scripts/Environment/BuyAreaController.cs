@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 public class BuyAreaController : MonoBehaviour
 {
     [SerializeField] bool activeBoughtElement;
+    [SerializeField] bool destroyAfterBought = true;
     public int price;
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
@@ -56,9 +57,7 @@ public class BuyAreaController : MonoBehaviour
 
                 if (remainingPayment < 0)
                 {
-
                     GameManager.totalMoney += -remainingPayment;
-
                 }
 
                 Money_UI.Instance.SetMoneyTxt();
@@ -71,11 +70,14 @@ public class BuyAreaController : MonoBehaviour
         }
         if (price <= 0)
         {
-            PriorityManager.Instance.OpenNextPriority();
+            //PriorityManager.Instance.OpenNextPriority();
             buyedElement.SetActive(activeBoughtElement);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
-            Destroy(this.gameObject);
+            AudioSourceManager.Instance.PlayBuyAreaSfx();
+
+            if (destroyAfterBought)
+                Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)

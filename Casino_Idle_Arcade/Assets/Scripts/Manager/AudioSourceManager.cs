@@ -9,6 +9,7 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip receptionSfx;
     [SerializeField] AudioClip musicBg;
     [SerializeField] AudioClip rouletteGamePlaySfx;
+    [SerializeField] AudioClip buyAreaSfx;
 
     public AudioSource audioScr;
 
@@ -22,8 +23,10 @@ public class AudioSourceManager : MonoBehaviour
         
     }
 
-    public void PlayCashPickupSfx()
-    {
-        audioScr.PlayOneShot(pickUpCashSfx[Random.Range(0, pickUpCashSfx.Length)]);
-    }
+    public void PlayCashPickupSfx() => PlaySfx(buyAreaSfx);
+
+    public void PlayBuyAreaSfx() => PlaySfx(buyAreaSfx);
+
+    public void PlaySfx(AudioClip sfx) => audioScr.PlayOneShot(sfx);
+
 }

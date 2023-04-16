@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PriorityManager : MonoBehaviour
 {
-    public List<GameObject> elements;
-    public List<int> priorityIndex;
+    public List<PrioritySlot> prioritySlots;
+    public int priorityCount;
+    public bool completePriority;
 
     public static PriorityManager Instance;
     private void Awake()
@@ -16,15 +17,28 @@ public class PriorityManager : MonoBehaviour
 
     public void OpenNextPriority()
     {
-        if (!GameManager.isCompleteTutorial) return;
+        if (completePriority || !GameManager.isCompleteTutorial) return;
+        
+        priorityCount++;
+        SetPrioritySlotState(true);
 
-        if (elements.Count != 0)
+        if (priorityCount == prioritySlots.Count - 1) completePriority = true;
+
+    }
+
+    void SetPrioritySlotState(bool state)
+    {
+        foreach (GameObject e in prioritySlots[priorityCount].elements)
         {
-            elements[0].gameObject.SetActive(true);
-            elements.RemoveAt(0);
+            e.SetActive(state);
         }
     }
 
+}
 
 
+[System.Serializable]
+public class PrioritySlot
+{
+    public List<GameObject> elements = new List<GameObject>();
 }
