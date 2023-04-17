@@ -18,6 +18,7 @@ public class BuyAreaController : MonoBehaviour
     [SerializeField] GameObject buyedElement;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] ParticleSystem buildEffect;
+    [SerializeField] PriorityManager priorityManager;
 
     float remainingTime;
     int paymentAmount = 0;
@@ -71,6 +72,7 @@ public class BuyAreaController : MonoBehaviour
         if (price <= 0)
         {
             //PriorityManager.Instance.OpenNextPriority();
+            priorityManager.OpenNext();
             buyedElement.SetActive(activeBoughtElement);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();

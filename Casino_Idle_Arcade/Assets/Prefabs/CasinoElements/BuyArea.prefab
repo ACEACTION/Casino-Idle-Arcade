@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 456379073593410445}
   - component: {fileID: 1266910042970184984}
   - component: {fileID: 1266910042970184981}
+  - component: {fileID: 3899756762945589852}
   m_Layer: 0
   m_Name: BuyArea
   m_TagString: Roulette
@@ -381,6 +382,22 @@ MonoBehaviour:
   buyedElement: {fileID: 0}
   priceText: {fileID: 1266910043023292563}
   buildEffect: {fileID: 0}
+  priorityManager: {fileID: 3899756762945589852}
+--- !u!114 &3899756762945589852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113769500172788312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396aaab7e91c7a43a7649fc22b0d840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prioritySlots: []
+  priorityCount: 0
+  completePriority: 0
 --- !u!1 &2810553776741198211
 GameObject:
   m_ObjectHideFlags: 0

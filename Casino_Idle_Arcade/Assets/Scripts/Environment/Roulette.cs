@@ -44,7 +44,7 @@ public class Roulette : CasinoGame
 
     private void OnEnable()
     {
-        transform.DOShakeScale(1f, 0.5f);
+        //transform.DOShakeScale(1f, 0.5f);
         WorkerManager.roulettes.Add(this);
         WorkerManager.AddNewRoulettesToAvailableWorker(this);
     }
@@ -309,6 +309,7 @@ public class Roulette : CasinoGame
         gameSlider.value = 0;
         cleaningSlider.value = -cleaningCdAmount;
         gameSlider.gameObject.SetActive(false);
+        transform.DOShakeScale(1f, 0.5f);
     }
 
 }
