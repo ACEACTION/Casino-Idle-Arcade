@@ -32,10 +32,9 @@ public class CasinoElement : MonoBehaviour
         //}
     }
 
-    public virtual void CustomerHasArrived()
-    {
-        
-    }
+    public virtual void CustomerHasArrived() { }
+
+    public virtual void CustomerLeft() { }
 
     public void SendCustomerToElement(CustomerMovement customer)
     {
