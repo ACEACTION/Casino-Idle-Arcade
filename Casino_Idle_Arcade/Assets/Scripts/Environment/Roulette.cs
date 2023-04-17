@@ -107,7 +107,7 @@ public class Roulette : CasinoGame
         {
 
 ;
-            sweeper.ResetingCardsPoisiton();
+            sweeper.MessCards();
             if (cleaner != null) cleaner.cleaningSpot.Add(this.transform);
 
             choseWinnerPossible = false;
