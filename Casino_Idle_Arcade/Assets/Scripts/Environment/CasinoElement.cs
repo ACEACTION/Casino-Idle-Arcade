@@ -84,11 +84,13 @@ public class CasinoElement : MonoBehaviour
 
     IEnumerator UpgradeProcess()
     {
-        SetNullElementSpotsCustomer();
         upgradeModels[upgradeIndex].SetActive(false);
+
         upgradeIndex++;
         upgradeModels[upgradeIndex].SetActive(true);
+
         maxGameCapacity = upgradeCapacity[upgradeIndex];
+        SetNullElementSpotsCustomer();
 
         yield return new WaitForSeconds(.7f);
 

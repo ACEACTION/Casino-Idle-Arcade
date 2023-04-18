@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Sweeper : MonoBehaviour
 {
-    [SerializeField] ParticleSystem cardEffect;
+    [SerializeField] ParticleSystem dustEffect;
+
     public Animator cardsAnim;
 
     public void Sweep()
@@ -19,4 +20,12 @@ public class Sweeper : MonoBehaviour
         cardsAnim.SetBool("isClean", false);
         cardsAnim.SetBool("isMessy", true);
     }
+
+
+    public void PlayDustEffect()
+    {
+        dustEffect.gameObject.SetActive(true);
+        dustEffect.Play();
+    }
+
 }
