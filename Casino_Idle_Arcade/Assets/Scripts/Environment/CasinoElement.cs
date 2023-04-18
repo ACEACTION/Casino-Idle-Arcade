@@ -32,10 +32,9 @@ public class CasinoElement : MonoBehaviour
         //}
     }
 
-    public virtual void CustomerHasArrived()
-    {
-        
-    }
+    public virtual void CustomerHasArrived() { }
+
+    public virtual void CustomerLeft() { }
 
     public void SendCustomerToElement(CustomerMovement customer)
     {
@@ -95,7 +94,7 @@ public class CasinoElement : MonoBehaviour
 
         //spotController.ResetElementSpot();        
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         foreach (CustomerMovement cm in customers)
         {
             SendCustomerToSpot(cm);

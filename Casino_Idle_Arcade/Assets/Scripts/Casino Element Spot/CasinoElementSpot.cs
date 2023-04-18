@@ -23,7 +23,10 @@ public class CasinoElementSpot : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //
+        if (customer != null && other.gameObject.Equals(customer.gameObject))
+        {
+            gi.CustomerLeft();            
+        }
     }
 
     

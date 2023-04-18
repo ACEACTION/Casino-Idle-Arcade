@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -310,6 +310,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxStackCount
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
+        type: 3}
+      propertyPath: animationMoveSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
+        type: 3}
+      propertyPath: animationStackMoveSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8841590631143330191, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
@@ -5048,7 +5058,7 @@ PrefabInstance:
     - target: {fileID: 2538317234349891826, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4998564737197550271, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
@@ -5609,6 +5619,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 260548855824718125, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}
+      propertyPath: priorityObjs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 260548855824718125, guid: b202501fd647b7a4b8b7bc6d538531ca,
+        type: 3}
       propertyPath: prioritySlots.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -5620,7 +5635,7 @@ PrefabInstance:
     - target: {fileID: 2113769499082899863, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2600802570009534490, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}

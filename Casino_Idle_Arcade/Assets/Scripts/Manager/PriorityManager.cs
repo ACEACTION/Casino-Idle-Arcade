@@ -13,21 +13,10 @@ public class PriorityManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
-    }
+    }    
 
 
     public void OpenNextPriority()
-    {
-        if (completePriority || !GameManager.isCompleteTutorial) return;
-        
-        priorityCount++;
-        SetPrioritySlotState(true);
-
-        if (priorityCount == prioritySlots.Count - 1) completePriority = true;
-    }
-
-
-    public void OpenNext()
     {
         if (!GameManager.isCompleteTutorial) return;
         SetPrioritySlotState(true);
@@ -35,10 +24,6 @@ public class PriorityManager : MonoBehaviour
 
     void SetPrioritySlotState(bool state)
     {
-        //for (int i = 0; i < prioritySlots[0].elements.Count; i++)
-        //{
-                
-        //}
         foreach (GameObject e in priorityObjs)
         {
             e.SetActive(state);

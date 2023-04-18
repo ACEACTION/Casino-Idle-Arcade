@@ -91,7 +91,6 @@ public class CashierManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerIsCashier = false;
-            
         }
     }
 
