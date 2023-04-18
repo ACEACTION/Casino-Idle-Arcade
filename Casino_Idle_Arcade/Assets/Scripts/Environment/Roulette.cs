@@ -147,9 +147,7 @@ public class Roulette : CasinoGame
             cleaningCd -= Time.deltaTime;
             if(cleaningCd <= 0)
             {
-                if(cleaner != null)
-                    cleaner.cleaningSpot.Remove(this.transform);
-
+               
                 CleanProcess();
             }
         }
@@ -157,6 +155,9 @@ public class Roulette : CasinoGame
 
     public void CleanProcess()
     {
+        if (cleaner != null)
+            cleaner.cleaningSpot.Remove(this.transform);
+
         isClean = true;
         cleaningParticle.gameObject.SetActive(true);
         cleaningParticle.Play();

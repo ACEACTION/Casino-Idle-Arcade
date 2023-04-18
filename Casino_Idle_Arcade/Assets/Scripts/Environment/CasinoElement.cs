@@ -94,7 +94,7 @@ public class CasinoElement : MonoBehaviour
 
         //spotController.ResetElementSpot();        
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         foreach (CustomerMovement cm in customers)
         {
             SendCustomerToSpot(cm);
