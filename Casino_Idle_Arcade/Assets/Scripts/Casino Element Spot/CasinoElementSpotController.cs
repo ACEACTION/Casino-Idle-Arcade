@@ -9,7 +9,7 @@ public class CasinoElementSpotController : MonoBehaviour
     
     private void Start()
     {
-        casinoElement.SeSpotController(this);
+        
     }
 
     public void ResetElementSpot()

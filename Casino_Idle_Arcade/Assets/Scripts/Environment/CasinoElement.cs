@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +11,10 @@ public class CasinoElement : MonoBehaviour
     [SerializeField] int[] upgradeCapacity;
     [SerializeField] GameObject[] upgradeModels;
     public List<CustomerMovement> customers = new List<CustomerMovement>();
-    public CasinoElementSpotController spotController;    
+    public List<CasinoElementSpot> spotList;
+    public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
 
-    public bool HasCapacity() =>  customers.Count < maxGameCapacity;    
-    
+    public bool HasCapacity() =>  customers.Count < maxGameCapacity;        
 
 
     public void AddToCustomerList(CustomerMovement customer) => customers.Add(customer);
@@ -56,66 +55,44 @@ public class CasinoElement : MonoBehaviour
 
     public CasinoElementSpot GetEmptySpot()
     {
-        foreach (CasinoElementSpot spot in spotController.elementSpots)
+        foreach (CasinoElementSpot spot in spotList)
         {
             if (spot.IsEmptySpot()) return spot;
         }
         return null;
     }
 
-    public void SeSpotController(CasinoElementSpotController controller)
-    {
-        spotController = controller;
-    }
-
     public void SetNullElementSpotsCustomer()
     {
-        foreach (CasinoElementSpot spot in spotController.elementSpots)
+        foreach (CasinoElementSpot spot in spotList)
         {
             spot.customer = null;
         }
     }
 
 
+    
 
     public virtual void UpgradeElements()
-    {        
-        StartCoroutine(UpgradeProcess());
-    }
-
-    IEnumerator UpgradeProcess()
-    {
+    {                
         upgradeModels[upgradeIndex].SetActive(false);
-
         upgradeIndex++;
         upgradeModels[upgradeIndex].SetActive(true);
-
         maxGameCapacity = upgradeCapacity[upgradeIndex];
-        SetNullElementSpotsCustomer();
 
-        yield return new WaitForSeconds(.7f);
-
-        //spotController.ResetElementSpot();        
-
-        yield return new WaitForSeconds(1f);
-        foreach (CustomerMovement cm in customers)
+        foreach (CasinoElementSpot spot in elementSpotSlots[upgradeIndex].elementSpots)
         {
-            SendCustomerToSpot(cm);
+            spot.gameObject.SetActive(true);
+            spotList.Add(spot);
         }
-
-        customerCounter = 0;
-
-        //foreach (CasinoElementSpot spot in spotController.elementSpots)
-        //{
-        //    spot.gameObject.SetActive(false);
-        //    spot.gameObject.SetActive(true);
-        //}
-        
-        spotController.ResetElementSpot();        
-
 
     }
 
+    
 }
 
-
+[System.Serializable]
+public class CasinoElementSpotSlot
+{
+    public List<CasinoElementSpot> elementSpots = new List<CasinoElementSpot>();
+}
