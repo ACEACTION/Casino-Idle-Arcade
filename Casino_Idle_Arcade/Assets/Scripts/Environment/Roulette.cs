@@ -148,17 +148,24 @@ public class Roulette : CasinoGame
 
             if (cleaningCd <= 0)
             {
-                if(cleaner != null)
-                    cleaner.cleaningSpot.Remove(this.transform);
-
-                isClean = true;
-                cleaningParticle.gameObject.SetActive(true);
-                cleaningParticle.Play();
-                cleaningSlider.gameObject.SetActive(false);
-                sweeper.Sweep();
+               
+                CleanProcess();
             }
         }
     }
+
+    public void CleanProcess()
+    {
+        if (cleaner != null)
+            cleaner.cleaningSpot.Remove(this.transform);
+
+        isClean = true;
+        cleaningParticle.gameObject.SetActive(true);
+        cleaningParticle.Play();
+        cleaningSlider.gameObject.SetActive(false);
+        sweeper.Sweep();
+    }
+
 
     public override IEnumerator ResetGame()
     {
@@ -297,21 +304,29 @@ public class Roulette : CasinoGame
     {
         base.UpgradeElements();
 
-        cleaningCd = cleaningCdAmount;
-        dealerCastTime = dealerCastTimeAmount;
-        choseWinnerPossible = true;
-        actCustomerAnimation = false;
-        //hasChip = false;
-        //chip = null;
-        //getBet = false;
-        //betCounter = 0;
-        //playChipSpot.localPosition = playChipSpotDefaultPos;
-        //chipsOnBet.Clear();
-        payedMoney = true;
-        gameSlider.value = 0;
-        cleaningSlider.value = -cleaningCdAmount;
-        gameSlider.gameObject.SetActive(false);
-        transform.DOShakeScale(1f, 0.5f);
+        if (dealerCastTime <= 0)
+        {
+            CleanProcess();
+            StartCoroutine(ResetGame());
+        }
+        else
+        {
+            cleaningCd = cleaningCdAmount;
+            dealerCastTime = dealerCastTimeAmount;
+            choseWinnerPossible = true;
+            actCustomerAnimation = false;
+            //hasChip = false;
+            //chip = null;
+            //getBet = false;
+            //betCounter = 0;
+            //playChipSpot.localPosition = playChipSpotDefaultPos;
+            //chipsOnBet.Clear();
+            payedMoney = true;
+            gameSlider.value = 0;
+            cleaningSlider.value = -cleaningCdAmount;
+            gameSlider.gameObject.SetActive(false);
+            transform.DOShakeScale(1f, 0.5f);
+        }
     }
 
 }

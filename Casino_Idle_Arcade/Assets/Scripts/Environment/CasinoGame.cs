@@ -19,6 +19,13 @@ public class CasinoGame : CasinoElement
         readyToPlay = customerCounter == maxGameCapacity;
     }
 
+    public override void CustomerLeft()
+    {
+        base.CustomerLeft();
+        customerCounter--;
+    }
+
+
     public virtual void PlayGame()
     {
 

@@ -72,7 +72,7 @@ public class BuyAreaController : MonoBehaviour
         if (price <= 0)
         {
             //PriorityManager.Instance.OpenNextPriority();
-            priorityManager.OpenNext();
+            priorityManager.OpenNextPriority();
             buyedElement.SetActive(activeBoughtElement);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
