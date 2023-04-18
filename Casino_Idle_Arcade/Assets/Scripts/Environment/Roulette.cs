@@ -311,6 +311,7 @@ public class Roulette : CasinoGame
         }
         else
         {
+            readyToPlay = false;
             cleaningCd = cleaningCdAmount;
             dealerCastTime = dealerCastTimeAmount;
             choseWinnerPossible = true;
