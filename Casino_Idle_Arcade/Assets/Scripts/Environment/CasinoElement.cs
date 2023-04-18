@@ -12,9 +12,11 @@ public class CasinoElement : MonoBehaviour
     [SerializeField] int[] upgradeCapacity;
     [SerializeField] GameObject[] upgradeModels;
     public List<CustomerMovement> customers = new List<CustomerMovement>();
-    public CasinoElementSpotController spotController;
+    public CasinoElementSpotController spotController;    
+
+    public bool HasCapacity() =>  customers.Count < maxGameCapacity;    
     
-    public bool HasCapacity() =>  customers.Count < maxGameCapacity;
+
 
     public void AddToCustomerList(CustomerMovement customer) => customers.Add(customer);
 
@@ -45,7 +47,6 @@ public class CasinoElement : MonoBehaviour
     void SendCustomerToSpot(CustomerMovement customer)
     {
         CasinoElementSpot spot = GetEmptySpot();
-
         if (spot != null)
         {
             customer.SetMove(spot.transform);
@@ -69,9 +70,9 @@ public class CasinoElement : MonoBehaviour
 
     public void SetNullElementSpotsCustomer()
     {
-        foreach (CasinoElementSpot spots in spotController.elementSpots)
+        foreach (CasinoElementSpot spot in spotController.elementSpots)
         {
-            spots.customer = null;
+            spot.customer = null;
         }
     }
 

@@ -7,7 +7,6 @@ public class CasinoElementSpot : MonoBehaviour
     [SerializeField] CasinoElement gi;
     public CustomerMovement customer;
 
-
     public bool IsEmptySpot() => customer == null;
 
     private void OnTriggerEnter(Collider other)
@@ -16,7 +15,7 @@ public class CasinoElementSpot : MonoBehaviour
         {
             if (other.gameObject.Equals(customer.gameObject))
             {
-                gi.CustomerHasArrived();
+                gi.CustomerHasArrived();                
             }
         }
     }
@@ -25,7 +24,7 @@ public class CasinoElementSpot : MonoBehaviour
     {
         if (customer != null && other.gameObject.Equals(customer.gameObject))
         {
-            gi.CustomerLeft();            
+            gi.CustomerLeft();
         }
     }
 

@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CashierManager : MonoBehaviour
 {
-
-
     public bool cashierAvailabe;
     public bool playerIsCashier;
     public int tableIndex = 0;
@@ -21,6 +19,8 @@ public class CashierManager : MonoBehaviour
     [SerializeField] Image firstCustomerGameIcon;
     [SerializeField] CashierFirstTransform firstCounter;
     [SerializeField] StackMoney stackMoney;
+
+    public CasinoElement casinoElement;    
 
     private void Start()
     {
@@ -49,25 +49,32 @@ public class CashierManager : MonoBehaviour
         if ((workerCheker.isPlayerAvailable || workerCheker.isDealerAvailabe)
             && firstCounter.nextCustomer)
         {
-            cooldown -= Time.deltaTime;
-            slider.value += Time.deltaTime;
+
 
             firstCustomerGameIconParent.SetActive(true);
             firstCustomerGameIcon.sprite = 
                 data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
-            if (cooldown <= 0)
+
+            casinoElement = CasinoElementManager.CanSendCustomerToElement(firstCounter.firstCustomer);
+            if (casinoElement)
             {
-                if (CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer))
+                cooldown -= Time.deltaTime;
+                slider.value += Time.deltaTime;
+                if (cooldown <= 0)
                 {
-                    firstCounter.firstCustomer.PayMoney(stackMoney, 
-                        data.GetPayment(firstCounter.firstCustomer.elementType),
-                        MoneyType.receptionMoney);
-                    cooldown = data.cooldownAmount;
-                    slider.value = 0;
-                    firstCounter.nextCustomer = false;
-                    firstCustomerGameIconParent.gameObject.SetActive(false);
+                    firstCounter.firstCustomer.PayMoney(stackMoney,
+                            data.GetPayment(firstCounter.firstCustomer.elementType),
+                            MoneyType.receptionMoney);
+                    //CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer);
+                    //StartCoroutine(CasinoElementManager.Delay());
+                    casinoElement.SendCustomerToElement(firstCounter.firstCustomer);
+                    casinoElement = null;
+                        cooldown = data.cooldownAmount;
+                        slider.value = 0;
+                        firstCounter.nextCustomer = false;
+                        firstCustomerGameIconParent.gameObject.SetActive(false);                    
                 }
-            }        
+            }
         }
 
     }
