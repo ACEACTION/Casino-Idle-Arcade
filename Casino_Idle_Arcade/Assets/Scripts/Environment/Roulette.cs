@@ -145,7 +145,8 @@ public class Roulette : CasinoGame
         {
             cleaningSlider.value = -cleaningCd;
             cleaningCd -= Time.deltaTime;
-            if(cleaningCd <= 0)
+
+            if (cleaningCd <= 0)
             {
                 if(cleaner != null)
                     cleaner.cleaningSpot.Remove(this.transform);
@@ -163,6 +164,7 @@ public class Roulette : CasinoGame
     {
         if (isClean)
         {
+            AudioSourceManager.Instance.PlayShineSfx();
             cleaningCd = cleaningCdAmount;
             dealerCastTime = dealerCastTimeAmount;
             choseWinnerPossible = true;
