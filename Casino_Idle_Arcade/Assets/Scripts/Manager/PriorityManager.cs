@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PriorityManager : MonoBehaviour
 {
-    public List<PrioritySlot> prioritySlots;
     public List<GameObject> priorityObjs;
     public int priorityCount;
     public bool completePriority;
@@ -26,7 +25,7 @@ public class PriorityManager : MonoBehaviour
     {
         foreach (GameObject e in priorityObjs)
         {
-            e.SetActive(state);
+            e?.SetActive(state);
         }
     }
 }

@@ -61,6 +61,8 @@ public class Roulette : CasinoGame
         getChipCd = maxGetChipCd;
         playChipSpotDefaultPos = playChipSpot.localPosition;
         gameSlider.maxValue = dealerCastTimeAmount;
+        ShakeRoulette();
+
     }
 
     bool payedMoney = true;
@@ -326,8 +328,12 @@ public class Roulette : CasinoGame
             gameSlider.value = 0;
             cleaningSlider.value = -cleaningCdAmount;
             gameSlider.gameObject.SetActive(false);
-            transform.DOShakeScale(1f, 0.5f);
+            ShakeRoulette();
         }
     }
+    void ShakeRoulette()
+    {
+        transform.DOShakeScale(1f, 0.5f);
 
+    }
 }
