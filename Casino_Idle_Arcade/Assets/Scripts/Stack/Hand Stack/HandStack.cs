@@ -56,6 +56,7 @@ public class HandStack : MonoBehaviour
         {            
             casinoResource.AddResourceToStack(this, stackList);
             stackCount++;
+            AudioSourceManager.Instance.PlayPoPSfx();
             firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
             stackHasResource = true;
         }
