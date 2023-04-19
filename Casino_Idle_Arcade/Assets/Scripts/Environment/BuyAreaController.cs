@@ -20,7 +20,9 @@ public class BuyAreaController : MonoBehaviour
     [SerializeField] ParticleSystem buildEffect;
     [SerializeField] PriorityManager priorityManager;
 
-    float remainingTime;
+    public float maxPlayerWaitingCd;
+    float playerWaitingCd;
+
     int paymentAmount = 0;
     int remainingPayment;
     float defaultScale;
@@ -29,47 +31,52 @@ public class BuyAreaController : MonoBehaviour
     {
         priceText.text = price.ToString();
         defaultScale = transform.localScale.x;
+        playerWaitingCd = maxPlayerWaitingCd;
     }
     private void Update()
     {
         if (price > 0 && isPlayerAvailabe && GameManager.totalMoney > 0 ) 
         {
-            cooldown -= Time.deltaTime;
-            if (cooldown <= 0)
+            if (playerWaitingCd <= 0)
             {
-                cooldown = cooldownAmount;
-
-                Money money = StackMoneyPool.Instance.pool.Get();
-                money.transform.position = PlayerMovements.Instance.transform.position;
-                money.transform.eulerAngles = new Vector3(Random.Range(0,359), 0, Random.Range(0, 359));
-                money.transform.DORotate(Vector3.zero,0.5f);
-                money.transform.DOJump(transform.position + new Vector3(Random.Range(-0.2f ,0.2f), 0,Random.Range(-0.2f ,0.2f)), 2f, 1, .5f).OnComplete(() =>
+                cooldown -= Time.deltaTime;
+                if (cooldown <= 0)
                 {
-                   StackMoneyPool.Instance.OnReleaseMoney(money);
-                });
-                paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.totalMoney);
-                GameManager.totalMoney -= paymentAmount;
-                remainingPayment = price - paymentAmount;
-                price -= paymentAmount;
+                    cooldown = cooldownAmount;                    
+
+                    Money money = StackMoneyPool.Instance.pool.Get();
+                    money.transform.position = PlayerMovements.Instance.transform.position;
+                    money.transform.eulerAngles = new Vector3(Random.Range(0, 359), 0, Random.Range(0, 359));
+                    money.transform.DORotate(Vector3.zero, 0.5f);
+                    money.transform.DOJump(transform.position + new Vector3(Random.Range(-0.2f, 0.2f), 0, Random.Range(-0.2f, 0.2f)), 2f, 1, .5f).OnComplete(() =>
+                    {
+                        StackMoneyPool.Instance.OnReleaseMoney(money);
+                    });
+                    paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.totalMoney);
+                    GameManager.totalMoney -= paymentAmount;
+                    remainingPayment = price - paymentAmount;
+                    price -= paymentAmount;
 
 
 
-                // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
-                priceText.transform.DOShakeScale(0.2f, 0.3f).OnComplete(() =>
-                { priceText.transform.DOScale(0.6f, 0f);  });
+                    // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
+                    priceText.transform.DOShakeScale(0.2f, 0.3f).OnComplete(() =>
+                    { priceText.transform.DOScale(0.6f, 0f); });
 
 
-                if (remainingPayment < 0)
-                {
-                    GameManager.totalMoney += -remainingPayment;
+                    if (remainingPayment < 0)
+                    {
+                        GameManager.totalMoney += -remainingPayment;
+                    }
+
+                    Money_UI.Instance.SetMoneyTxt();
+
+                    priceText.text = price.ToString();
+
                 }
-
-                Money_UI.Instance.SetMoneyTxt();
-
-                priceText.text = price.ToString();
-
             }
-
+            else 
+                playerWaitingCd -= Time.deltaTime;
 
         }
         if (price <= 0)
@@ -90,15 +97,10 @@ public class BuyAreaController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             transform.DOScale(defaultScale + .4f, 0.5f);
-            StartCoroutine(SetIsPlayerAvailable());
+            isPlayerAvailabe = true;
         }
     }
 
-    IEnumerator SetIsPlayerAvailable()
-    {
-        yield return new WaitForSeconds(.5f);
-        isPlayerAvailabe = true;
-    }
 
 
 
@@ -107,8 +109,8 @@ public class BuyAreaController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             transform.DOScale(defaultScale, 0.5f);
-
             isPlayerAvailabe = false;
+            playerWaitingCd = maxPlayerWaitingCd;
         }
     }
 }

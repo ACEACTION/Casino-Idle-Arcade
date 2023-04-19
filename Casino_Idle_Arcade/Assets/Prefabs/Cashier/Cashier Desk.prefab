@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 1096540019902770982, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1544400279471462529, guid: 6f619111aff58f94cbb052b279e39270,
         type: 3}
@@ -428,6 +428,11 @@ PrefabInstance:
       propertyPath: buyedElement
       value: 
       objectReference: {fileID: 5576909701481894669}
+    - target: {fileID: 5582725648096078406, guid: ec6c21e3132efb24db57942df4d2bfb1,
+        type: 3}
+      propertyPath: maxPlayerWaitingCd
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec6c21e3132efb24db57942df4d2bfb1, type: 3}
 --- !u!4 &2914456504668863048 stripped
@@ -462,6 +467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: destroyAfterBought
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2434795847963098261, guid: b4fe40986fd3b9c4aacca544c229fdf3,
+        type: 3}
+      propertyPath: maxPlayerWaitingCd
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2756370722293651810, guid: b4fe40986fd3b9c4aacca544c229fdf3,
         type: 3}
@@ -522,6 +532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Buy Cashier Desk
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245767387326825432, guid: b4fe40986fd3b9c4aacca544c229fdf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3339577437064429452, guid: b4fe40986fd3b9c4aacca544c229fdf3,
         type: 3}
