@@ -44,4 +44,7 @@ public class CasinoGameStack : MonoBehaviour
         else return null;
     }
 
+    public void SetMaxStackCount(int levelIndex)
+        => maxStackCount = data.maxStackCountLevel[levelIndex];
+
 }

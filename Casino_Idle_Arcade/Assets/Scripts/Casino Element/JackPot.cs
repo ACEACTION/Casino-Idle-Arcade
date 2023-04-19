@@ -63,7 +63,7 @@ public class JackPot : CasinoGame
         {
             customers[0].SetLosingAnimation(true);
         }
-        stacks[Random.Range(0, stacks.Length)].MakeMoney();
+        moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
         
     }
 

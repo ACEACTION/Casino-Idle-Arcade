@@ -24,7 +24,7 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-        GameManager.totalMoney += 50000;
+        GameManager.totalMoney += 400;
 
         if (isCompleteTutorial)
         {

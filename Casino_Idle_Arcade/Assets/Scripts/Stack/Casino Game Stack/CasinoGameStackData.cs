@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Casino Game Stack Data")]
 public class CasinoGameStackData : ScriptableObject
 {
+    public int[] maxStackCountLevel;
     public float stackYOffset;
     public float addResourceToStackTime;
 }

@@ -23,9 +23,12 @@ public class BuyAreaController : MonoBehaviour
     float remainingTime;
     int paymentAmount = 0;
     int remainingPayment;
+    float defaultScale;
+
     private void Start()
     {
         priceText.text = price.ToString();
+        defaultScale = transform.localScale.x;
     }
     private void Update()
     {
@@ -44,7 +47,7 @@ public class BuyAreaController : MonoBehaviour
                 {
                    StackMoneyPool.Instance.OnReleaseMoney(money);
                 });
-                paymentAmount = Mathf.Min(paymentAmount + Random.Range(5, 12), GameManager.totalMoney);
+                paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.totalMoney);
                 GameManager.totalMoney -= paymentAmount;
                 remainingPayment = price - paymentAmount;
                 price -= paymentAmount;
@@ -86,12 +89,16 @@ public class BuyAreaController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.DOScale(1.2f, 0.5f);
-            isPlayerAvailabe = true;
-
+            transform.DOScale(defaultScale + .4f, 0.5f);
+            StartCoroutine(SetIsPlayerAvailable());
         }
     }
 
+    IEnumerator SetIsPlayerAvailable()
+    {
+        yield return new WaitForSeconds(.5f);
+        isPlayerAvailabe = true;
+    }
 
 
 
@@ -99,7 +106,7 @@ public class BuyAreaController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.DOScale(1f, 0.5f);
+            transform.DOScale(defaultScale, 0.5f);
 
             isPlayerAvailabe = false;
         }

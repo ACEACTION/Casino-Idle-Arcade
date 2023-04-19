@@ -9,7 +9,7 @@ public class CasinoGame : CasinoElement
     public float castTimeAmount;
     public float delayToReset;
     public bool readyToPlay;
-    public CasinoGameMoneyStack[] stacks;
+    public CasinoGameMoneyStack[] moneyStacks;
 
     public override void CustomerHasArrived()
     {

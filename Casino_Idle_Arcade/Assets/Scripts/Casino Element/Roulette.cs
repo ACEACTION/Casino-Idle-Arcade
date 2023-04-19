@@ -12,6 +12,7 @@ public class Roulette : CasinoGame
     [SerializeField] float dealerCastTime;
     [SerializeField] float dealerCastTimeAmount;
     [SerializeField] float getChipDuration;
+
     bool canChangeCamera;
     public float cleaningCd;
     public RouletteCleaner cleaner;
@@ -33,6 +34,7 @@ public class Roulette : CasinoGame
     public bool isClean = true;
     public bool isWorkerAvailable = false;
 
+    [SerializeField] RouletteData data;
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] RouletteWorkerCheker rwc;
     [SerializeField] CasinoGameStack gameStack;
@@ -62,7 +64,7 @@ public class Roulette : CasinoGame
         playChipSpotDefaultPos = playChipSpot.localPosition;
         gameSlider.maxValue = dealerCastTimeAmount;
         ShakeRoulette();
-
+        gameStack.SetMaxStackCount(upgradeIndex);
     }
 
     bool payedMoney = true;
@@ -100,7 +102,12 @@ public class Roulette : CasinoGame
         if (payedMoney)
         {
             payedMoney = false;
-            stacks[Random.Range(0, stacks.Length)].MakeMoney();
+            int moneyAmount = Random.Range(data.moneyAmountLevel[upgradeIndex],
+                data.moneyAmountLevel[upgradeIndex] + 2);
+            for (int i = 0; i < moneyAmount; i++)
+            {
+                moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
+            }
         }
     }
     void ChoseWinner()
@@ -295,7 +302,6 @@ public class Roulette : CasinoGame
             }
 
             betCounter /= 100;
-
             roulette_ui.SetChipPanelState(true);
             roulette_ui.SetChipTxt(betCounter.ToString());
         }
@@ -330,10 +336,11 @@ public class Roulette : CasinoGame
             gameSlider.gameObject.SetActive(false);
             ShakeRoulette();
         }
+
+        gameStack.SetMaxStackCount(upgradeIndex);
     }
     void ShakeRoulette()
     {
         transform.DOShakeScale(1f, 0.5f);
-
     }
 }
