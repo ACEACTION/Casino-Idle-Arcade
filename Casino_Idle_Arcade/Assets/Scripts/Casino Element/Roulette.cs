@@ -90,7 +90,7 @@ public class Roulette : CasinoGame
             //game ended
             ChoseWinner();
             PayMoney();   
-            StartCoroutine(ResetGame());
+            //StartCoroutine(ResetGame());
             CinemachineManager.instance.ZoomOut();
             gameSlider.gameObject.SetActive(false);
         }
@@ -173,6 +173,7 @@ public class Roulette : CasinoGame
         cleaningParticle.Play();
         cleaningSlider.gameObject.SetActive(false);
         sweeper.Sweep();
+        StartCoroutine(ResetGame());
     }
 
 
