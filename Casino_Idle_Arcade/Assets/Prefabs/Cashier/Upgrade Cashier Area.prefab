@@ -191,11 +191,13 @@ MonoBehaviour:
   activeBoughtElement: 1
   destroyAfterBought: 0
   price: 50
-  cooldown: 0.2
-  cooldownAmount: 0.2
+  cooldown: 0.05
+  cooldownAmount: 0.05
   buyedElement: {fileID: 0}
   priceText: {fileID: 6573857272030777588}
   buildEffect: {fileID: 0}
+  priorityManager: {fileID: 0}
+  maxPlayerWaitingCd: 0
 --- !u!114 &638580450378798878
 MonoBehaviour:
   m_ObjectHideFlags: 0

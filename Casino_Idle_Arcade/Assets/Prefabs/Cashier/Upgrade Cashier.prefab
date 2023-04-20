@@ -191,12 +191,13 @@ MonoBehaviour:
   activeBoughtElement: 1
   destroyAfterBought: 1
   price: 50
-  cooldown: 0.2
-  cooldownAmount: 0.2
+  cooldown: 0.05
+  cooldownAmount: 0.05
   buyedElement: {fileID: 0}
   priceText: {fileID: 5582725648014725056}
   buildEffect: {fileID: 0}
   priorityManager: {fileID: 3990181563510237068}
+  maxPlayerWaitingCd: 0
 --- !u!114 &3990181563510237068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396aaab7e91c7a43a7649fc22b0d840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prioritySlots: []
   priorityObjs: []
   priorityCount: 0
   completePriority: 0
