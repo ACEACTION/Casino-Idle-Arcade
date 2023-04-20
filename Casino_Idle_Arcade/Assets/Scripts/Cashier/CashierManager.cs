@@ -15,7 +15,6 @@ public class CashierManager : MonoBehaviour
     public List<Transform> customerSpots = new List<Transform>();
     public WorkerCheker workerCheker;
     [SerializeField] Slider slider;
-    [SerializeField] GameObject firstCustomerGameIconParent;
     [SerializeField] Image firstCustomerGameIcon;
     [SerializeField] CashierFirstTransform firstCounter;
     [SerializeField] StackMoney stackMoney;
@@ -32,26 +31,12 @@ public class CashierManager : MonoBehaviour
     private void Update()
     {
 
-        //if (player != null && cooldown == 0)
-        //{
-        //    timePassed += Time.deltaTime;
-        //    if (timePassed >= maxTimePassed)
-        //    {
-
-        //    }
-        //}
-        //else if (cooldown > 0)
-        //{
-        //    cooldown -= Time.deltaTime;            
-        //}
-
-        //if cashier spot !null
         if ((workerCheker.isPlayerAvailable || workerCheker.isDealerAvailabe)
             && firstCounter.nextCustomer)
         {
 
 
-            firstCustomerGameIconParent.SetActive(true);
+            firstCustomerGameIcon.gameObject.SetActive(true);
             firstCustomerGameIcon.sprite = 
                 data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
 
@@ -65,14 +50,13 @@ public class CashierManager : MonoBehaviour
                     firstCounter.firstCustomer.PayMoney(stackMoney,
                             data.GetPayment(firstCounter.firstCustomer.elementType),
                             MoneyType.receptionMoney);
-                    //CasinoElementManager.SendCustomerToElement(firstCounter.firstCustomer);
-                    //StartCoroutine(CasinoElementManager.Delay());
+                 
                     casinoElement.SendCustomerToElement(firstCounter.firstCustomer);
                     casinoElement = null;
-                        cooldown = data.cooldownAmount;
-                        slider.value = 0;
-                        firstCounter.nextCustomer = false;
-                        firstCustomerGameIconParent.gameObject.SetActive(false);                    
+                    cooldown = data.cooldownAmount;
+                    slider.value = 0;
+                    firstCounter.nextCustomer = false;
+                    firstCustomerGameIcon.gameObject.SetActive(false);
                 }
             }
         }
