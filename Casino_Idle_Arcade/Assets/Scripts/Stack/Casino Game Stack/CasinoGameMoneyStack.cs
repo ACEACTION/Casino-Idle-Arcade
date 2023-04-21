@@ -7,10 +7,12 @@ public class CasinoGameMoneyStack : MonoBehaviour
 {
     [SerializeField] float dropMoneyOffset;
     public bool isPlayer;
+    public int totalMoney;
 
     public LootMoneyData data;
     public CasinoElement element;
     public List<Money> moneyList = new List<Money>();
+    [SerializeField] StackMoneyCanvas stackMoneyCanvas;
 
     public virtual void MakeMoney() {}
     
@@ -63,7 +65,15 @@ public class CasinoGameMoneyStack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
+        {
             isPlayer = true;
+            
+            if (totalMoney > 0)
+            {
+                stackMoneyCanvas.AddMoneyText(totalMoney);
+                totalMoney = 0;
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)

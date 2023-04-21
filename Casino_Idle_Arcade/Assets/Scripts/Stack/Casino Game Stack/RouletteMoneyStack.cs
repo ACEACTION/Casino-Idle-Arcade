@@ -22,6 +22,7 @@ public class RouletteMoneyStack : CasinoGameMoneyStack
             .7f).SetLoops(-1, LoopType.Yoyo);
         money.SetMoneyAmount(MoneyType.rouletteMoney);
         money.ActiveEffect();
+        totalMoney += money.moneyAmount;
     }
 
 }

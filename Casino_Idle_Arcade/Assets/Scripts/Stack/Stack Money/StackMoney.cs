@@ -8,6 +8,7 @@ public class StackMoney : MonoBehaviour
     [Header("Stack")]    
     public int stackCounter;
     bool isPlayer;
+    public int totalMoney;
 
     [Header("References")]
     [SerializeField] StackMoneyData stackData;
@@ -15,7 +16,7 @@ public class StackMoney : MonoBehaviour
     [SerializeField] StackMoneySlot prefab; // the prefab to create
     [SerializeField] List<StackMoneySlot> slots;
     [SerializeField] List<Money> moneyList;
-
+    [SerializeField] StackMoneyCanvas stackMoneyCanvas;
 
     private void Start()
     {
@@ -55,6 +56,7 @@ public class StackMoney : MonoBehaviour
             money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
             moneyList.Add(money);
             stackCounter++;
+            totalMoney += money.moneyAmount;
             if (stackCounter == slots.Count) stackCounter = slots.Count - 1;
         }
         else
@@ -101,7 +103,7 @@ public class StackMoney : MonoBehaviour
 
     public void GetFromStack()
     {
-        stackCounter = 0;
+        stackCounter = 0;        
         StartCoroutine(GoToPlayer());
     }
 
@@ -112,15 +114,25 @@ public class StackMoney : MonoBehaviour
             yield return new WaitForSeconds(stackData.goToPlayerDelay);
             moneyList[i].SetGoToPlayer();
         }
+
+       
         moneyList.Clear();
     }
 
+    bool showMoney = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayer = true;
 
+            if (totalMoney > 0)
+            {
+                showMoney = false;
+                stackMoneyCanvas.AddMoneyText(totalMoney);
+                totalMoney = 0;
+
+            }
         }
     }
 
@@ -128,7 +140,7 @@ public class StackMoney : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
+        {            
             isPlayer = false;
         }
     }

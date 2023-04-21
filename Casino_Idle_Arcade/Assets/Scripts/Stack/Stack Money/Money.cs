@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Money : CasinoResource
 {
-    int moneyAmount;
+    public int moneyAmount;
     public MoneyData moneyData;
     bool goToPlayer;
     Vector3 defaultScale;
