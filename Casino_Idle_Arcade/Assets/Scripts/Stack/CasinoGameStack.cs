@@ -13,20 +13,21 @@ public class CasinoGameStack : MonoBehaviour
 
     // references
     [SerializeField] List<CasinoResource> casinoResources = new List<CasinoResource>();
-    [SerializeField] Transform firsStack;
+    [SerializeField] Transform firsStack;    
 
     public bool CanAddStack() => stackCount < maxStackCount;
-    public bool CanGetResource() => stackCount > 0;
+    public bool CanGetResource() => casinoResources.Count > 0;
 
     public void AddToGameStack(CasinoResource resource)
     {
-        casinoResources.Add(resource);
         stackCount++;
         resource.transform.SetParent(firsStack.transform.parent);
         resource.transform.DOLocalMove(firsStack.localPosition,
             data.addResourceToStackTime).OnComplete(() =>
             {
+                casinoResources.Add(resource);
             });
+
         firsStack.position += new Vector3(0, data.stackYOffset, 0);
     }
 

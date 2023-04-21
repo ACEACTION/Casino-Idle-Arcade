@@ -8,5 +8,6 @@ public class CasinoResource : MonoBehaviour
     public virtual void ReleasResource()
     {
         transform.SetParent(null);
-    }    
+
+    }
 }
