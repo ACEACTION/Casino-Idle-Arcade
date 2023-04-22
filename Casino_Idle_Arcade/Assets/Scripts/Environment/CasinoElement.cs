@@ -5,6 +5,7 @@ using UnityEngine;
 public class CasinoElement : MonoBehaviour
 {
 
+    public ElementsType elementType; 
     public int upgradeIndex;
     public int maxGameCapacity;
     public int customerCounter;
@@ -13,7 +14,6 @@ public class CasinoElement : MonoBehaviour
     public List<CustomerMovement> customers = new List<CustomerMovement>();
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
-     
     
     
 
