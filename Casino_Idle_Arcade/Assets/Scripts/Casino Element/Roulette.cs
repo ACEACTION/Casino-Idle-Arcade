@@ -91,7 +91,7 @@ public class Roulette : CasinoGame
         {
             //game ended
             ChoseWinner();
-            PayMoney();   
+            PayMoney();
             //StartCoroutine(ResetGame());
             //CinemachineManager.instance.ZoomOut();
             gameSlider.gameObject.SetActive(false);

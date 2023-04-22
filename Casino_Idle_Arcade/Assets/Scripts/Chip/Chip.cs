@@ -7,9 +7,19 @@ public class Chip : CasinoResource
 {
     public ChipType chipType;
 
-    public override void ReleasResource()
+    public override void ReleaseResource()
     {
-        base.ReleasResource();
+        base.ReleaseResource();
         ChipPool.Instance.OnReleaseChip(this, chipType);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (releaseResource && other.gameObject.CompareTag("Chip Release"))
+        {
+            ReleaseResource();
+        }
+    }
+
 }

@@ -36,15 +36,16 @@ public class CashierManager : MonoBehaviour
         {
 
 
-            slider.gameObject?.SetActive(true);
-            firstCustomerGameIcon.gameObject.SetActive(true);
-/*            firstCustomerGameIcon.sprite = 
-                data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
-*/
+            
 
             casinoElement = CasinoElementManager.CanSendCustomerToElement();
             if (casinoElement)
             {
+                slider.gameObject?.SetActive(true);
+                firstCustomerGameIcon.gameObject.SetActive(true);
+                firstCustomerGameIcon.sprite = 
+                       data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
+
                 cooldown -= Time.deltaTime;
                 slider.value += Time.deltaTime;
                 if (cooldown <= 0)

@@ -5,41 +5,12 @@ using DG.Tweening;
 
 public class Test : MonoBehaviour
 {
-    public float areaCost = 500;
-    public bool player;
-    public float maxCooldown;
-    float cooldown = 1.0f;
-    bool areaBought = false;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.CompareTag("Player"))
-        {
-            player = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            player = false;
-        }
-    }
-
-    private void Start()
-    {
-        cooldown = maxCooldown;
-    }
-
-    public int a;
+    public CasinoResource casinoResource;
     private void Update()
     {
-        if (player)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            areaCost = Mathf.Lerp(areaCost, 0, cooldown);
-            a = Mathf.FloorToInt(areaCost);
+            casinoResource.ReleaseResource();
         }
     }
 }

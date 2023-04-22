@@ -95,7 +95,7 @@ public class BuyAreaController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.DOScale(defaultScale + .4f, 0.5f);
+            transform.DOScale(defaultScale + .2f, 0.5f);
             isPlayerAvailabe = true;
         }
     }

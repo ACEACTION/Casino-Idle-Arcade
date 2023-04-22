@@ -26,9 +26,9 @@ public class Money : CasinoResource
         transform.localScale = defaultScale;        
     }
 
-    public override void ReleasResource()
+    public override void ReleaseResource()
     {
-        base.ReleasResource();
+        base.ReleaseResource();
         effect.gameObject.SetActive(false);
         effect.Stop();
         transform.DOKill();
@@ -58,7 +58,7 @@ public class Money : CasinoResource
             {
                 goToPlayer = false;
                 GameManager.AddMoney(moneyAmount);
-                ReleasResource();
+                ReleaseResource();
             }
         }        
     }

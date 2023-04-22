@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CasinoResource : MonoBehaviour
-{       
+{
     //public CasinoResourceData data;
-    public virtual void ReleasResource()
+    public bool releaseResource;
+
+    public virtual void ReleaseResource()
     {
         transform.SetParent(null);
-
+        releaseResource = false;
     }
 }
