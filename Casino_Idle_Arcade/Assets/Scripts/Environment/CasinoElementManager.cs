@@ -10,8 +10,10 @@ public static class CasinoElementManager
 
     public static List<CasinoElement> jackPots = new List<CasinoElement>();
 
+    public static List<CasinoElement> allCasinoElements = new List<CasinoElement>();
+
     //static List<CasinoElement> elements = new List<CasinoElement>();
-    static CasinoElement casinoElement;
+    public static CasinoElement element;
     public static List<CasinoElement> FindListByCasinoType(CustomerMovement customer)
     {
         switch (customer.elementType)
@@ -24,17 +26,21 @@ public static class CasinoElementManager
         return null;
     }
   
-    public static CasinoElement CanSendCustomerToElement(CustomerMovement customer)
+    public static CasinoElement FindCasinoElement()
     {
-        List<CasinoElement> elements = FindListByCasinoType(customer);
-        foreach (CasinoElement element in elements)
+        foreach (CasinoElement element in allCasinoElements)
         {
             if (element.HasCapacity())
-            {                
                 return element;
-            }
         }
+
         return null;
+
+    }
+
+    public static CasinoElement CanSendCustomerToElement()
+    {
+        return FindCasinoElement();
     }  
 
 }

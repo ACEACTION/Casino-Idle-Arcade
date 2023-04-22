@@ -26,14 +26,15 @@ public class RouletteCleaner : Cleaner
             if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, cleaningSpot[0].transform.rotation, 0.1f);
-                StartCoroutine(MoveToCleaningSpot());
+                //StartCoroutine(MoveToCleaningSpot());
                 anim.SetBool("isWalking", false);
+                agent.speed = 0;
 
             }
             else
             {
                 anim.SetBool("isWalking", true);
-
+                agent.speed = workerData.moveSpeed;
             }
 
 
@@ -59,13 +60,11 @@ public class RouletteCleaner : Cleaner
     {
         if (isCleaning)
         {
-
             isCleaning = false;
             agent.speed = 0;
             yield return new WaitForSeconds(cleaningSpot[0].GetComponent<Roulette>().cleaningCd);
             isCleaning = true;
             agent.speed = workerData.moveSpeed;
-
 
         }
     }

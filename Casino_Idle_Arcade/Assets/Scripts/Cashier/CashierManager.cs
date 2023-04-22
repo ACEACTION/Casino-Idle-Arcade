@@ -36,11 +36,13 @@ public class CashierManager : MonoBehaviour
         {
 
 
+            slider.gameObject?.SetActive(true);
             firstCustomerGameIcon.gameObject.SetActive(true);
             firstCustomerGameIcon.sprite = 
                 data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
 
-            casinoElement = CasinoElementManager.CanSendCustomerToElement(firstCounter.firstCustomer);
+
+            casinoElement = CasinoElementManager.CanSendCustomerToElement();
             if (casinoElement)
             {
                 cooldown -= Time.deltaTime;
@@ -57,6 +59,7 @@ public class CashierManager : MonoBehaviour
                     slider.value = 0;
                     firstCounter.nextCustomer = false;
                     firstCustomerGameIcon.gameObject.SetActive(false);
+                    slider.gameObject.SetActive(false);
                 }
             }
         }

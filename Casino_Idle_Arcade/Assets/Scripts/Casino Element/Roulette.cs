@@ -55,6 +55,8 @@ public class Roulette : CasinoGame
     {
         Init();
         CasinoElementManager.roulettes.Add(this);
+        CasinoElementManager.allCasinoElements.Add(this);
+
     }
 
     void Init()
@@ -117,7 +119,7 @@ public class Roulette : CasinoGame
 
 ;
             sweeper.MessCards();
-            if (cleaner != null) cleaner.cleaningSpot.Add(this.transform);
+            if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
 
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
@@ -166,7 +168,7 @@ public class Roulette : CasinoGame
     public void CleanProcess()
     {
         if (cleaner != null)
-            cleaner.cleaningSpot.Remove(this.transform);
+            cleaner.cleaningSpot.Remove(rwc.transform);
 
         isClean = true;
         cleaningParticle.gameObject.SetActive(true);

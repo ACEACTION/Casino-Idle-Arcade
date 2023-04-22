@@ -14,6 +14,8 @@ public class CasinoElement : MonoBehaviour
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
      
+    
+    
 
     public bool HasCapacity() =>  customers.Count < maxGameCapacity;        
 
@@ -24,14 +26,15 @@ public class CasinoElement : MonoBehaviour
 
     private void Start()
     {
-
         // **********Load Data**************
-        
+
         // load upgradeIndex
         //if (upgradeIndex < upgradeModels.Length - 1)
         //{
         //    upgradePriority.ActiveUpgradeController(upgradeIndex);
         //}
+
+
     }
 
     public virtual void CustomerHasArrived() { }

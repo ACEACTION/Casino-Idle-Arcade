@@ -11,7 +11,7 @@ public class JackPot : CasinoGame
     
     private void Start()
     {
-
+        CasinoElementManager.allCasinoElements.Add(this);
         CasinoElementManager.jackPots.Add(this);
         transform.DOShakeScale(1f, 0.5f);
 
