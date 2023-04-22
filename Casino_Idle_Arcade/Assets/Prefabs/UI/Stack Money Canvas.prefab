@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1918488086339459827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 935159602072627133}
+  defaultPos: {x: 0, y: 0, z: 0}
   easeType: 30
   activeDuration: 0.4
 --- !u!1 &5625393126505970510
@@ -198,8 +199,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: $1500
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a238c7e522e6a647a0cebdedf2f4b8e, type: 2}
+  m_sharedMaterial: {fileID: -3776679951372440944, guid: 1a238c7e522e6a647a0cebdedf2f4b8e,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
