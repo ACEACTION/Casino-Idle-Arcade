@@ -67,7 +67,7 @@ public class HandStack : MonoBehaviour
         if (stackHasResource)
             anim.SetLayerWeight(1, 1);
         else
-            anim.SetLayerWeight(1, 0.01f);
+            anim.SetLayerWeight(1, 0.1f);
 
     }
 
