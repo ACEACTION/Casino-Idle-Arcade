@@ -81,7 +81,7 @@ public class Roulette : CasinoGame
 
         if (workerCheker.isPlayerAvailable)
         {         
-            CinemachineManager.instance.ZoomIn();
+           // CinemachineManager.instance.ZoomIn();
         }
 
         gameSlider.gameObject?.SetActive(true);
@@ -93,7 +93,7 @@ public class Roulette : CasinoGame
             ChoseWinner();
             PayMoney();   
             //StartCoroutine(ResetGame());
-            CinemachineManager.instance.ZoomOut();
+            //CinemachineManager.instance.ZoomOut();
             gameSlider.gameObject.SetActive(false);
         }
 
