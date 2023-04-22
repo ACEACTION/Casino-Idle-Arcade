@@ -29,7 +29,7 @@ public class StackMoneyCanvas : MonoBehaviour
 
     public void AddMoneyText(int moneyAmount)
     {
-        moneyText.text = string.Concat("$", moneyAmount.ToString());
+        moneyText.text = string.Concat("+ $", moneyAmount.ToString());
         moneyText.gameObject.SetActive(true);
         moneyText.transform.DOScale(defaultScale, activeDuration).SetEase(easeType)
         .OnComplete(() =>
