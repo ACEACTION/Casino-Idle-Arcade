@@ -17,6 +17,10 @@ public class RouletteCleaner : Cleaner
     private void Start()
     {
         agent.speed = workerData.moveSpeed;
+        foreach (var roulette in roulettes)
+        {
+            roulette.CallCleaner();
+        }
     }
     private void Update()
     {

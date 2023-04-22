@@ -346,4 +346,12 @@ public class Roulette : CasinoGame
     {
         transform.DOShakeScale(1f, 0.5f);
     }
+
+    public void CallCleaner()
+    {
+        if(!isClean)
+        {
+            if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
+        }
+    }
 }
