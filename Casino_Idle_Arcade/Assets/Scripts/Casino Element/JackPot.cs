@@ -6,20 +6,26 @@ using UnityEngine;
 
 public class JackPot : CasinoGame
 {
-    [Range(0, 1)]
-    [SerializeField] float winProbAbility;
+    [SerializeField] JackpotData data;
+    
+    float winProbability;
     
     private void Start()
     {
         CasinoElementManager.allCasinoElements.Add(this);
         CasinoElementManager.jackPots.Add(this);
-        transform.DOShakeScale(1f, 0.5f);
+        
 
         if (!CasinoManager.instance.availableElements.Contains(ElementsType.jackpot))
         {
             CasinoManager.instance.availableElements.Add(ElementsType.jackpot);
         }
+        ShakeElement();
+        SetWinProbability();
+        SetCastTime();
     }
+        
+    void ShakeElement() => transform.DOShakeScale(1f, 0.5f);
 
     private void Update()
     {
@@ -37,7 +43,7 @@ public class JackPot : CasinoGame
     }
 
 
-    bool CustomerIsWinning() => Random.value < winProbAbility;
+    bool CustomerIsWinning() => Random.value < winProbability;
 
    
     public override void PlayGame()
@@ -63,9 +69,34 @@ public class JackPot : CasinoGame
         {
             customers[0].SetLosingAnimation(true);
         }
-        moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
-        
+
+        CustomerPayedMoney();        
     }
 
+    void CustomerPayedMoney()
+    {
+        int moneyAmount = Random.Range(data.moneyAmountUpgradeLevel[upgradeIndex],
+                data.moneyAmountUpgradeLevel[upgradeIndex] + 2);
+        for (int i = 0; i < moneyAmount; i++)
+        {
+            moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
+        }
+    }
+
+    public override void UpgradeElements()
+    {
+        base.UpgradeElements();
+        SetWinProbability();
+        SetCastTime();
+        ShakeElement();
+    }
+
+
+    void SetCastTime()
+    {
+        castTimeAmount = data.playGameTime[upgradeIndex];
+        castTime = castTimeAmount;
+    }
+    void SetWinProbability() => winProbability = data.winProbabilityUpgradeLevel[upgradeIndex];
 
 }
