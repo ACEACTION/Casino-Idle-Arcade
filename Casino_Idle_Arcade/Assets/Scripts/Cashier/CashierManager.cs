@@ -26,6 +26,7 @@ public class CashierManager : MonoBehaviour
         cooldown = data.cooldownAmount;
         slider.maxValue = cooldown;
         CustomerSpawner.instance.maxCustomer += 5;
+        slider.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -33,10 +34,7 @@ public class CashierManager : MonoBehaviour
 
         if ((workerCheker.isPlayerAvailable || workerCheker.isDealerAvailabe)
             && firstCounter.nextCustomer)
-        {
-
-
-            
+        {            
 
             casinoElement = CasinoElementManager.CanSendCustomerToElement();
             if (casinoElement)
@@ -44,7 +42,7 @@ public class CashierManager : MonoBehaviour
                 slider.gameObject?.SetActive(true);
                 firstCustomerGameIcon.gameObject.SetActive(true);
                 firstCustomerGameIcon.sprite = 
-                       data.GetCasinoGameIcon(firstCounter.firstCustomer.elementType);
+                       data.GetCasinoGameIcon(casinoElement.elementType);
 
                 cooldown -= Time.deltaTime;
                 slider.value += Time.deltaTime;
