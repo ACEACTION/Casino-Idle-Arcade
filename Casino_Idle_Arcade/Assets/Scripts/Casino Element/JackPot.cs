@@ -63,11 +63,11 @@ public class JackPot : CasinoGame
     {
         if(CustomerIsWinning())
         {
-            customers[0].SetWinningAnimation(true);
+            customers[0].WinProccess();
         }
         else
         {
-            customers[0].SetLosingAnimation(true);
+            customers[0].LosePorccess();
         }
 
         CustomerPayedMoney();        
