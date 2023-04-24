@@ -7,7 +7,8 @@ using UnityEngine;
 public class JackPot : CasinoGame
 {
     [SerializeField] JackpotData data;
-    
+    [SerializeField] Animator animator;
+    bool canPlayAnim = true;
     float winProbability;
     
     private void Start()
@@ -49,14 +50,24 @@ public class JackPot : CasinoGame
     public override void PlayGame()
     {
         base.PlayGame();
-
-        //customers[0].SetPlayingJackPotAnimation(true);
-        customers[0].SetPlayingCardAnimation(true);
+        if (canPlayAnim)
+        {
+            canPlayAnim = false;
+            animator.SetTrigger("isPlayed");
+        }
+        customers[0].SetPlayingJackPotAnimation(true);
+    }
+    public void DisableJackPotAnim()
+    {
+        animator.ResetTrigger("isPlayed");   
     }
 
     public override IEnumerator ResetGame()
     {
+        canPlayAnim = true;
+
         return base.ResetGame();
+
     }
 
     public void EndGame()
@@ -70,7 +81,7 @@ public class JackPot : CasinoGame
             customers[0].LosePorccess();
         }
 
-        CustomerPayedMoney();        
+        CustomerPayedMoney();
     }
 
     void CustomerPayedMoney()
