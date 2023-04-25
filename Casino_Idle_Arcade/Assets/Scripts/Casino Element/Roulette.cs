@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class Roulette : CasinoGame
 {
     //variables
+    [SerializeField] GameObject staticBalls;
+    [SerializeField] GameObject animatedBalls;
     [SerializeField] float dealerCastTime;
+    [SerializeField] Animator anim;
+
     public float cleaningCd;
     public int betCounter;
     bool getBet = false;
@@ -66,9 +70,12 @@ public class Roulette : CasinoGame
 
         //animation customers = playing card
         ActiveactCustomerAnimation();
+        anim.SetBool("isSpining", true);
         //setting dealer animation to idle
         workerCheker.worker?.ActiveActionAnim(false);
 
+        staticBalls.SetActive(false);
+        animatedBalls.SetActive(true);
         if (workerCheker.isPlayerAvailable)
         {         
            // CinemachineManager.instance.ZoomIn();
@@ -82,6 +89,10 @@ public class Roulette : CasinoGame
             //game ended
             ChoseWinner();
             PayMoney();
+            staticBalls.SetActive(true);
+            animatedBalls.SetActive(false);
+            anim.SetBool("isSpining", false);
+
             //StartCoroutine(ResetGame());
             //CinemachineManager.instance.ZoomOut();
             gameSlider.gameObject.SetActive(false);
@@ -336,5 +347,5 @@ public class Roulette : CasinoGame
         transform.DOShakeScale(1f, 0.5f);
     }
 
-    
+
 }
