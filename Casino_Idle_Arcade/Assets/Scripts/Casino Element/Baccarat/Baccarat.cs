@@ -308,11 +308,9 @@ public class Baccarat : CasinoGame
         {
             CleanProcess();
             StartCoroutine(ResetGame());
-            print("1");
         }
         else
         {
-            print("2");
             readyToPlay = false;
             cleaningCd = data.cleaningCdAmount;
             dealerCastTime = data.dealerCastTimeAmount;
