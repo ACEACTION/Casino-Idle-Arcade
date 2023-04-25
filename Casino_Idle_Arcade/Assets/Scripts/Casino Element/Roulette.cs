@@ -7,10 +7,7 @@ using UnityEngine.UI;
 public class Roulette : CasinoGame
 {
     //variables
-    [SerializeField] GameObject staticBalls;
-    [SerializeField] GameObject animatedBalls;
     [SerializeField] float dealerCastTime;
-    [SerializeField] Animator anim;
 
     public float cleaningCd;
     public int betCounter;
@@ -24,9 +21,10 @@ public class Roulette : CasinoGame
     public bool isWorkerAvailable = false;
     bool payedMoney = true;
 
-
+    [SerializeField] GameObject[] gameBalls;
     [SerializeField] RouletteData data;
     [SerializeField] Sweeper sweeper;
+    [SerializeField] Animator anim;
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] Slider cleaningSlider;    
     [SerializeField] ParticleSystem cleaningParticle;
@@ -36,6 +34,8 @@ public class Roulette : CasinoGame
     public List<CasinoResource> chipsOnBet = new List<CasinoResource>();
     [SerializeField] CasinoChipGame_UI roulette_ui;
     [SerializeField] Slider gameSlider;
+    [SerializeField] GameObject staticBalls;
+    [SerializeField] GameObject animatedBalls;
 
     private void OnEnable()
     {
@@ -62,6 +62,8 @@ public class Roulette : CasinoGame
         gameStack.SetMaxStackCount(upgradeIndex);
         cleaningCd = data.cleaningCdAmount;
         dealerCastTime = data.dealerCastTimeAmount;
+
+        SetGameBalls();
     }
 
     public override void PlayGame()
@@ -341,11 +343,18 @@ public class Roulette : CasinoGame
         }
 
         gameStack.SetMaxStackCount(upgradeIndex);
+        SetGameBalls();
     }
     void ShakeRoulette()
     {
         transform.DOShakeScale(1f, 0.5f);
     }
 
+
+    void SetGameBalls()
+    {
+        staticBalls = gameBalls[upgradeIndex];
+        animatedBalls = gameBalls[upgradeIndex];
+    }
 
 }

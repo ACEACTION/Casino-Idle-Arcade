@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RouletteSpiner : MonoBehaviour
 {
-    [SerializeField] GameObject staticBalls;
-    [SerializeField] GameObject animatedBalls;
+    public GameObject staticBalls;
+    public GameObject animatedBalls;
     public void RouletteSpinerAnimBeginning()
     {
         staticBalls.SetActive(false);
