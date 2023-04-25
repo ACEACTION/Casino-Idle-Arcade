@@ -21,7 +21,7 @@ public class CustomerHandStack : MonoBehaviour
 
     public bool HasStack() => stackCounter > 0;
 
-    public void AddChipToStack(CasinoResource chip)
+    public void AddResourceToStack(CasinoResource chip)
     {
         resources.Add(chip);
         chip.transform.SetParent(transform);

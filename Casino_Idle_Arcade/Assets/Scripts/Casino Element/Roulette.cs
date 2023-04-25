@@ -152,7 +152,7 @@ public class Roulette : CasinoGame
         yield return new WaitForSeconds(data.giveChipsToWinnerDelay);
         foreach (CasinoResource resource in chipsOnBet)
         {
-            customer.stack.AddChipToStack(resource);
+            customer.stack.AddResourceToStack(resource);
         }
     }
 

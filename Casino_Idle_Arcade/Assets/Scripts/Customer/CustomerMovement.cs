@@ -11,7 +11,7 @@ public class CustomerMovement : Customer
     public Transform destination;
     public bool fCustomer;
     int emojiIndex;
-
+    public bool dontGoToChipDesk;
 
     private void Update()
     {
@@ -52,15 +52,7 @@ public class CustomerMovement : Customer
     }
     public void WinProccess()
     {
-        for (int i = 0; i < confetti.Length; i++)
-        {
-            confetti[i].gameObject.SetActive(true);
-            confetti[i].Play();
-        }
-        emojiIndex = Random.Range(0, happyEmojies.Length);
-        happyEmojies[emojiIndex].gameObject.SetActive(true);
-        happyEmojies[emojiIndex].Play();
-        
+        ShowHappy();
         SetWinningAnimation(true);
     }
     public void LosePorccess()
@@ -72,13 +64,38 @@ public class CustomerMovement : Customer
         SetLosingAnimation(true);
     }
 
+    void ShowHappy()
+    {
+        for (int i = 0; i < confetti.Length; i++)
+        {
+            confetti[i].gameObject.SetActive(true);
+            confetti[i].Play();
+        }
+        emojiIndex = Random.Range(0, happyEmojies.Length);
+        happyEmojies[emojiIndex].gameObject.SetActive(true);
+        happyEmojies[emojiIndex].Play();
+    }
+
+    public void WinJackpotProcess()
+    {
+        ShowHappy();
+        SetWinningAnimation(true);
+        Invoke("Leave", 4);
+    }
+
+    
+
+
     //should be edited after this to add more chipdesk from manager
     public void WinningAnimationEvent()
     {
-        isLeaving = true;
-        isWinning = true;
-        SetChipDesk();
-        SetMove(chipDesk.customerSpot);
+        if (!dontGoToChipDesk)
+        {
+            isLeaving = true;
+            isWinning = true;
+            SetChipDesk();
+            SetMove(chipDesk.customerSpot);
+        }
     }
     public void LosingAnimationEvent()
     {
@@ -130,7 +147,7 @@ public class CustomerMovement : Customer
         anim.Play("idle");
         chipDesk = null;
         isWinning = false;
-
+        dontGoToChipDesk = false;
         // deactive particles
         foreach (ParticleSystem emoji in sadEmojies)
         {
