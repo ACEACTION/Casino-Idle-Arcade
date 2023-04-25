@@ -21,7 +21,7 @@ public class Roulette : CasinoGame
     public bool isWorkerAvailable = false;
     bool payedMoney = true;
 
-    [SerializeField] GameObject[] gameBalls;
+    [SerializeField] RouletteSpiner[] gameBalls;
     [SerializeField] RouletteData data;
     [SerializeField] Sweeper sweeper;
     [SerializeField] Animator anim;
@@ -36,6 +36,8 @@ public class Roulette : CasinoGame
     [SerializeField] Slider gameSlider;
     [SerializeField] GameObject staticBalls;
     [SerializeField] GameObject animatedBalls;
+
+
 
     private void OnEnable()
     {
@@ -63,7 +65,7 @@ public class Roulette : CasinoGame
         cleaningCd = data.cleaningCdAmount;
         dealerCastTime = data.dealerCastTimeAmount;
 
-        SetGameBalls();
+        SetGameBalls(true, false);
     }
 
     public override void PlayGame()
@@ -76,8 +78,8 @@ public class Roulette : CasinoGame
         //setting dealer animation to idle
         workerCheker.worker?.ActiveActionAnim(false);
 
-        staticBalls.SetActive(false);
-        animatedBalls.SetActive(true);
+        staticBalls?.SetActive(false);
+        animatedBalls?.SetActive(true);
         if (workerCheker.isPlayerAvailable)
         {         
            // CinemachineManager.instance.ZoomIn();
@@ -91,8 +93,8 @@ public class Roulette : CasinoGame
             //game ended
             ChoseWinner();
             PayMoney();
-            staticBalls.SetActive(true);
-            animatedBalls.SetActive(false);
+            staticBalls?.SetActive(true);
+            animatedBalls?.SetActive(false);
             anim.SetBool("isSpining", false);
 
             //StartCoroutine(ResetGame());
@@ -163,7 +165,6 @@ public class Roulette : CasinoGame
 
             if (cleaningCd <= 0)
             {
-               
                 CleanProcess();
             }
         }
@@ -321,6 +322,7 @@ public class Roulette : CasinoGame
         {
             CleanProcess();
             StartCoroutine(ResetGame());
+            SetGameBalls(true, false);
         }
         else
         {
@@ -340,10 +342,10 @@ public class Roulette : CasinoGame
             cleaningSlider.value = -data.cleaningCdAmount;
             gameSlider.gameObject.SetActive(false);
             ShakeRoulette();
+            SetGameBalls(false, true);
         }
 
         gameStack.SetMaxStackCount(upgradeIndex);
-        SetGameBalls();
     }
     void ShakeRoulette()
     {
@@ -351,10 +353,12 @@ public class Roulette : CasinoGame
     }
 
 
-    void SetGameBalls()
+    void SetGameBalls(bool staticBallState, bool animatedBallsState)
     {
-        staticBalls = gameBalls[upgradeIndex];
-        animatedBalls = gameBalls[upgradeIndex];
+        staticBalls = gameBalls[upgradeIndex].staticBalls;
+        staticBalls.SetActive(staticBallState);
+        animatedBalls = gameBalls[upgradeIndex].animatedBalls;
+        animatedBalls.SetActive(animatedBallsState);
     }
 
 }

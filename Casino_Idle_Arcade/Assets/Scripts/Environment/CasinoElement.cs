@@ -15,27 +15,13 @@ public class CasinoElement : MonoBehaviour
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
     
-    
 
     public bool HasCapacity() =>  customers.Count < maxGameCapacity;        
 
 
     public void AddToCustomerList(CustomerMovement customer) => customers.Add(customer);
 
-    public void RemoveFromCustomerList(CustomerMovement customer) => customers.Remove(customer);
-
-    private void Start()
-    {
-        // **********Load Data**************
-
-        // load upgradeIndex
-        //if (upgradeIndex < upgradeModels.Length - 1)
-        //{
-        //    upgradePriority.ActiveUpgradeController(upgradeIndex);
-        //}
-
-
-    }
+    public void RemoveFromCustomerList(CustomerMovement customer) => customers.Remove(customer);    
 
     public virtual void CustomerHasArrived() { }
 
@@ -98,5 +84,7 @@ public class CasinoElement : MonoBehaviour
 [System.Serializable]
 public class CasinoElementSpotSlot
 {
+
+
     public List<CasinoElementSpot> elementSpots = new List<CasinoElementSpot>();
 }
