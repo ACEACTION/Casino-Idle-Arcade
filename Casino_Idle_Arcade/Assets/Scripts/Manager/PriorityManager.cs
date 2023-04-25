@@ -5,14 +5,6 @@ using UnityEngine;
 public class PriorityManager : MonoBehaviour
 {
     public List<GameObject> priorityObjs;
-    public int priorityCount;
-    public bool completePriority;
-
-    public static PriorityManager Instance;
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-    }    
 
 
     public void OpenNextPriority()

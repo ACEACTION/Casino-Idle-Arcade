@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class Roulette : CasinoGame
+public class Baccarat : CasinoGame
 {
     //variables
     [SerializeField] float dealerCastTime;
     public float cleaningCd;
     public int betCounter;
     bool getBet = false;
-    public bool hasChip;    
+    public bool hasChip;
     float getChipCd;
 
     int winnerIndex;
@@ -24,7 +24,7 @@ public class Roulette : CasinoGame
     [SerializeField] RouletteData data;
     [SerializeField] Sweeper sweeper;
     [SerializeField] WorkerCheker workerCheker;
-    [SerializeField] Slider cleaningSlider;    
+    [SerializeField] Slider cleaningSlider;
     [SerializeField] ParticleSystem cleaningParticle;
     [SerializeField] CasinoGameStack gameStack;
     [SerializeField] Transform playChipSpot;
@@ -70,14 +70,14 @@ public class Roulette : CasinoGame
         workerCheker.worker?.ActiveActionAnim(false);
 
         if (workerCheker.isPlayerAvailable)
-        {         
-           // CinemachineManager.instance.ZoomIn();
+        {
+            // CinemachineManager.instance.ZoomIn();
         }
 
         gameSlider.gameObject?.SetActive(true);
         gameSlider.value += Time.deltaTime;
         dealerCastTime -= Time.deltaTime;
-        if(dealerCastTime <= 0)
+        if (dealerCastTime <= 0)
         {
             //game ended
             ChoseWinner();
@@ -107,7 +107,7 @@ public class Roulette : CasinoGame
         if (choseWinnerPossible)
         {
 
-;
+            ;
             sweeper.MessCards();
             if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
 
@@ -116,7 +116,7 @@ public class Roulette : CasinoGame
             foreach (CustomerMovement customer in customers)
             {
                 if (customers.IndexOf(customer) == winnerIndex)
-                { 
+                {
                     customer.WinProccess();
                     StartCoroutine(GiveChipsToWinner(customer));
                 }
@@ -130,7 +130,6 @@ public class Roulette : CasinoGame
 
         }
     }
-
 
     IEnumerator GiveChipsToWinner(Customer customer)
     {
@@ -150,7 +149,7 @@ public class Roulette : CasinoGame
 
             if (cleaningCd <= 0)
             {
-               
+
                 CleanProcess();
             }
         }
@@ -221,8 +220,8 @@ public class Roulette : CasinoGame
 
     private void Update()
     {
-        if((workerCheker.isPlayerAvailable 
-            || workerCheker.isDealerAvailabe) 
+        if ((workerCheker.isPlayerAvailable
+            || workerCheker.isDealerAvailabe)
             && readyToPlay)
         {
             GetBetAmountFromCustomer();
@@ -265,13 +264,13 @@ public class Roulette : CasinoGame
                     playChipSpot.localPosition += new Vector3(0, data.playChipSpotOffset, 0);
                     betCounter--;
                     chipsOnBet.Add(chip);
-                
+
                     if (betCounter <= 0)
                     {
                         hasChip = true;
                         roulette_ui.SetChipPanelState(false);
                     }
-                    else 
+                    else
                         roulette_ui.SetChipTxt(betCounter.ToString());
 
                 }
@@ -304,13 +303,16 @@ public class Roulette : CasinoGame
     {
         base.UpgradeElements();
 
+
         if (dealerCastTime <= 0)
         {
             CleanProcess();
             StartCoroutine(ResetGame());
+            print("1");
         }
         else
         {
+            print("2");
             readyToPlay = false;
             cleaningCd = data.cleaningCdAmount;
             dealerCastTime = data.dealerCastTimeAmount;
@@ -336,5 +338,4 @@ public class Roulette : CasinoGame
         transform.DOShakeScale(1f, 0.5f);
     }
 
-    
 }

@@ -6,7 +6,7 @@ public class RouletteCleaner : Cleaner
 {
     [SerializeField] NavMeshAgent agent;
     public bool isCleaning = true;
-    public List<Roulette> roulettes = new List<Roulette>();
+    public List<CasinoGame> roulettes = new List<CasinoGame>();
 
     private void OnEnable()
     {

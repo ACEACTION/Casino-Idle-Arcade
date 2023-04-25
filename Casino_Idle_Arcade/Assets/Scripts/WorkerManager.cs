@@ -6,10 +6,10 @@ using UnityEngine;
 public static class WorkerManager
 {
     public static List<RouletteCleaner> rouletteCleaners = new List<RouletteCleaner>();
-    public static List<Roulette> roulettes = new List<Roulette>();
+    public static List<CasinoGame> roulettes = new List<CasinoGame>();
 
 
-    public static void AddNewRoulettesToAvailableWorker(Roulette roulette)
+    public static void AddNewRoulettesToAvailableWorker(CasinoGame roulette)
     {
         if (rouletteCleaners.Count != 0)
         {
