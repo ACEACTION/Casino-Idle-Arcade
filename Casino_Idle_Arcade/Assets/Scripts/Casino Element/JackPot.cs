@@ -38,7 +38,7 @@ public class JackPot : CasinoGame
             {
                 //end game
                 EndGame();
-                StartCoroutine( ResetGame());
+                StartCoroutine(ResetGame());
             }
         }
     }
@@ -74,7 +74,9 @@ public class JackPot : CasinoGame
     {
         if(CustomerIsWinning())
         {
-            customers[0].WinProccess();
+            customers[0].dontGoToChipDesk = true;            
+            customers[0].WinJackpotProcess();
+            StartCoroutine(GiveMoneyToCustomer());
         }
         else
         {
@@ -82,6 +84,15 @@ public class JackPot : CasinoGame
         }
 
         CustomerPayedMoney();
+    }
+
+
+    IEnumerator GiveMoneyToCustomer()
+    {
+        yield return new WaitForSeconds(.7f);
+        Money money = StackMoneyPool.Instance.pool.Get();
+        money.transform.position = transform.position;
+        customers[0].stack.AddResourceToStack(money);
     }
 
     void CustomerPayedMoney()
