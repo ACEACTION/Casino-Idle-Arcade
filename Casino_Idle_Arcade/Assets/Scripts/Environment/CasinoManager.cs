@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum ElementsType
 {
-    roulette, jackpot, bar
+    roulette, jackpot, baccarat,bar
 }
 public class CasinoManager : MonoBehaviour
 {

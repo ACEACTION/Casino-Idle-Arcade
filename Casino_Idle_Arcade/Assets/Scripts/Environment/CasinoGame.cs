@@ -10,6 +10,9 @@ public class CasinoGame : CasinoElement
     public float delayToReset;
     public bool readyToPlay;
     public CasinoGameMoneyStack[] moneyStacks;
+    public RouletteCleaner cleaner;
+    public RouletteWorkerCheker rwc;
+    public bool isClean = true;
 
     public override void CustomerHasArrived()
     {
@@ -40,5 +43,11 @@ public class CasinoGame : CasinoElement
         customerCounter = 0;
         SetNullElementSpotsCustomer();
     }
-
+    public void CallCleaner()
+    {
+        if (!isClean)
+        {
+            if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
+        }
+    }
 }

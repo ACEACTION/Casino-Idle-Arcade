@@ -33,9 +33,7 @@ public static class CasinoElementManager
             if (element.HasCapacity())
                 return element;
         }
-
         return null;
-
     }
 
     public static CasinoElement CanSendCustomerToElement()

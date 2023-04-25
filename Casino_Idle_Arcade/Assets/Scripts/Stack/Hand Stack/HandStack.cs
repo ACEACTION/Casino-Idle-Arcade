@@ -105,7 +105,7 @@ public class HandStack : MonoBehaviour
             casinoResource = other.GetComponent<CasinoResourceDesk>();
         }
 
-        if (other.gameObject.CompareTag("Roulette"))
+        if (other.gameObject.CompareTag("Casino Chip Game"))
         {
             casinoGameStack = other.GetComponent<CasinoGameStack>();
         }
@@ -119,7 +119,7 @@ public class HandStack : MonoBehaviour
             casinoResource = null;
         }
 
-        if (other.gameObject.CompareTag("Roulette"))
+        if (other.gameObject.CompareTag("Casino Chip Game"))
         {
             casinoGameStack = null;
         }

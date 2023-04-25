@@ -129,7 +129,7 @@ public class TutorialManager : MonoBehaviour
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
             GameManager.isCompleteTutorial = true;
-            PriorityManager.Instance.gameObject.SetActive(true);
+            //PriorityManager.Instance.gameObject.SetActive(true);
             //PriorityManager.Instance.elements[0].SetActive(true);
         }
     }
