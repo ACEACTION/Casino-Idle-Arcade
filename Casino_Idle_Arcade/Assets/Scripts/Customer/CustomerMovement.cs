@@ -114,8 +114,12 @@ public class CustomerMovement : Customer
     public void disablePlayingAnim()
     {
         anim.SetBool("isPlayingCard", false);
-    }    
+    }
 
+    public void DisalbeJackPotPlayingAnim()
+    {
+        anim.SetBool("isPlayingJackPot", false);
+    }
 
     public void ReleaseCustomer()
     {

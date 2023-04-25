@@ -26,6 +26,12 @@ public class Customer : MonoBehaviour
     {
         anim.SetBool("isPlayingCard", state);
     }
+    public void SetJackPotPlayingAnim(bool state)
+    {
+        anim.SetBool("isPlayingJackPot", state);
+    }
+
+
 
     public void SetPlayingJackPotAnimation(bool state)
     {
