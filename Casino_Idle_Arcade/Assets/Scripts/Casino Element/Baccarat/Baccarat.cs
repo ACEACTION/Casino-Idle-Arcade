@@ -125,7 +125,7 @@ public class Baccarat : CasinoGame
             }
             isClean = false;
             cleaningSlider.gameObject.SetActive(true);
-            cleaningSlider.transform.DOShakeScale(0.5f, 0.03f);
+            //cleaningSlider.transform.DOShakeScale(0.5f, 0.03f);
 
 
         }
