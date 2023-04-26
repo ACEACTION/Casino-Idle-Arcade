@@ -24,14 +24,10 @@ public class ChipResourceDesk : CasinoResourceDesk
     {
         base.AddResourceToStack(stack, stackList);
         Chip chip = MakeChip(GetChipType());
-        //chip.transform.SetParent(chipSpawnPoint);
-        chip.transform.SetParent(stack.firstStack.transform.parent);
         chip.transform.position = chipSpawnPoint.position;
-        //chip.transform.localPosition = Vector3.zero;
-        //chip.transform.localPosition = stack.firstStack.localPosition;
-        chip.transform.DOLocalMove(stack.firstStack.localPosition, data.addResourceToDeskTime);                
+        chip.transform.SetParent(stack.firstStack.transform.parent);
+        chip.transform.DOLocalMove(stack.firstStack.localPosition, data.addResourceToDeskTime);
         stackList.Add(chip);
-
     }
 
     ChipType GetChipType()

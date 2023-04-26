@@ -13,13 +13,20 @@ public class Chip : CasinoResource
         ChipPool.Instance.OnReleaseChip(this, chipType);
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (releaseResource && other.gameObject.CompareTag("Chip Release"))
         {
-            ReleaseResource();
+            StartCoroutine(Delay());
         }
     }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3f);
+        ReleaseResource();            
+    }
+
+
 
 }
