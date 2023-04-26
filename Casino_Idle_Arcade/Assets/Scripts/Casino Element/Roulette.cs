@@ -56,7 +56,8 @@ public class Roulette : CasinoGame
 
     void Init()
     {
-        cleaningSlider.minValue = -data.cleaningCdAmount;
+        //cleaningSlider.minValue = -data.cleaningCdAmount;
+        cleaningSlider.maxValue = data.cleaningCdAmount;
         getChipCd = data.maxGetChipCd;
         data.playChipSpotDefaultPos = playChipSpot.localPosition;
         gameSlider.maxValue = data.dealerCastTimeAmount;
@@ -64,7 +65,7 @@ public class Roulette : CasinoGame
         gameStack.SetMaxStackCount(upgradeIndex);
         cleaningCd = data.cleaningCdAmount;
         dealerCastTime = data.dealerCastTimeAmount;
-
+        
         SetGameBalls(true, false);
     }
 
@@ -160,7 +161,7 @@ public class Roulette : CasinoGame
     {
         if (!isClean && (rwc.isCleanerAvailabe || workerCheker.isPlayerAvailable))
         {
-            cleaningSlider.value = -cleaningCd;
+            cleaningSlider.value += Time.deltaTime;
             cleaningCd -= Time.deltaTime;
 
             if (cleaningCd <= 0)
@@ -339,7 +340,7 @@ public class Roulette : CasinoGame
             //chipsOnBet.Clear();
             payedMoney = true;
             gameSlider.value = 0;
-            cleaningSlider.value = -data.cleaningCdAmount;
+            cleaningSlider.value = 0;
             gameSlider.gameObject.SetActive(false);
             ShakeRoulette();
             SetGameBalls(false, true);
