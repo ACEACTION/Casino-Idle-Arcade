@@ -116,7 +116,7 @@ public class Baccarat : CasinoGame
         if (choseWinnerPossible)
         {
 
-            sweeper.MessCards();
+           // sweeper.MessCards();
             if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
 
             choseWinnerPossible = false;
@@ -130,6 +130,10 @@ public class Baccarat : CasinoGame
                 }
                 else
                     customer.LosePorccess();
+            }
+            foreach (CustomerMovement cs in customers)
+            {
+                cs.SetCustomerCardsActiveState(false);
             }
             isClean = false;
             cleaningSlider.gameObject.SetActive(true);
@@ -272,7 +276,12 @@ public class Baccarat : CasinoGame
         {
             givingCard = true;
             workerCheker.worker?.ActiveActionAnim(true);
-            cardAnim.SetBool("isMessy", true);
+            sweeper.MessCards();
+            foreach(CustomerMovement cs in customers)
+            {
+                cs.SetCustomerCardsActiveState(true);
+            }
+
         }
     }
 

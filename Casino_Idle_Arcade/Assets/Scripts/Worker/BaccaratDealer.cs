@@ -6,8 +6,8 @@ public class BaccaratDealer : Worker
 {
     public override void ActiveActionAnim(bool state)
     {
-        base.ActiveActionAnim(state);
         anim.SetBool("isPlayingCard", state);
+        base.ActiveActionAnim(state);
     }
 
 
