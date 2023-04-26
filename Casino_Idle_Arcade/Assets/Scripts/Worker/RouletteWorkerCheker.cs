@@ -19,12 +19,9 @@ public class RouletteWorkerCheker : WorkerCheker
             }
         }
 
-
-
         if (other.gameObject.CompareTag("Player"))
         {
             canChangeCamera = true;
-
         }
     }
 

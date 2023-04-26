@@ -9,18 +9,27 @@ public class Baccarat : CasinoGame
     //variables
     [SerializeField] float dealerCastTime;
     public float cleaningCd;
+    public bool isWorkerAvailable = false;
+
+    [Header("Chip Process")]
     public int betCounter;
     bool getBet = false;
     public bool hasChip;
     float getChipCd;
 
+    [Header("Win Process")]
     int winnerIndex;
     bool actCustomerAnimation = false;
     bool choseWinnerPossible = true;
-    public bool isWorkerAvailable = false;
     bool payedMoney = true;
 
+    [Header("Card Process")]
+    [SerializeField] float givingCardCd;
+    [SerializeField] float givingCardCdAmount;
+    [SerializeField] bool givingCard;
+    [SerializeField] Animator cardAnim;
 
+    [Header("References")]
     [SerializeField] RouletteData data;
     [SerializeField] Sweeper sweeper;
     [SerializeField] WorkerCheker workerCheker;
@@ -107,7 +116,6 @@ public class Baccarat : CasinoGame
         if (choseWinnerPossible)
         {
 
-            ;
             sweeper.MessCards();
             if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
 
@@ -190,6 +198,10 @@ public class Baccarat : CasinoGame
 
             gameSlider.gameObject.SetActive(false);
 
+            // baccarat reset
+            givingCardCd = givingCardCdAmount;
+            givingCard = false;
+
             yield return base.ResetGame();
 
         }
@@ -204,8 +216,8 @@ public class Baccarat : CasinoGame
     private void OnTriggerExit(Collider other)
     {
 
-
     }
+
     void ActiveactCustomerAnimation()
     {
         if (!actCustomerAnimation)
@@ -218,6 +230,7 @@ public class Baccarat : CasinoGame
         }
     }
 
+  
     private void Update()
     {
         if ((workerCheker.isPlayerAvailable
@@ -229,23 +242,41 @@ public class Baccarat : CasinoGame
 
             if (hasChip)
             {
-                castTime -= Time.deltaTime;
                 if (castTime <= 0)
                 {
-                    PlayGame();
+                    GiveCardToCustomers();
+                    if (givingCardCd <= 0)
+                    {
+                        PlayGame();
+                    }
+                    else
+                    {
+                        givingCardCd -= Time.deltaTime;
+                    }
                 }
                 else
                 {
-                    workerCheker.worker?.ActiveActionAnim(true);
+                    castTime -= Time.deltaTime;
                 }
             }
         }
 
         Cleaning();
+    }
+    
+    
 
+    void GiveCardToCustomers()
+    {
+        if (!givingCard)
+        {
+            givingCard = true;
+            workerCheker.worker?.ActiveActionAnim(true);
+            cardAnim.SetBool("isMessy", true);
+        }
     }
 
-
+    
 
     public void GetChipFromStack()
     {

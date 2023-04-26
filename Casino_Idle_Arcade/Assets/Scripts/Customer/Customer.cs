@@ -16,6 +16,8 @@ public class Customer : MonoBehaviour
     [SerializeField] int moneyAmount;
     public CustomerHandStack stack;
     public ChipDesk chipDesk = null;
+    [SerializeField] GameObject[] customerCards;
+
 
     private void OnEnable()
     {
@@ -30,8 +32,6 @@ public class Customer : MonoBehaviour
     {
         anim.SetBool("isPlayingJackPot", state);
     }
-
-
 
     public void SetPlayingJackPotAnimation(bool state)
     {
@@ -89,5 +89,16 @@ public class Customer : MonoBehaviour
             stack.RemoveFromStack(chipDesk);
         }
     }
+
+
+    public void SetCustomerCardsActiveState(bool state)
+    {
+        foreach (GameObject card in customerCards)
+        {
+            card.gameObject.SetActive(state);
+        }
+    }
+
+    public Vector3 GetCustomerCardPos() => customerCards[1].transform.position;
 
 }
