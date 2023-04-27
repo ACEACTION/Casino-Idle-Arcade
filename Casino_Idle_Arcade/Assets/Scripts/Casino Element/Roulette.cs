@@ -142,7 +142,7 @@ public class Roulette : CasinoGame
             }
             isClean = false;
             cleaningSlider.gameObject.SetActive(true);
-            cleaningSlider.transform.DOShakeScale(0.5f, 0.03f);
+            //cleaningSlider.transform.DOShakeScale(0.5f, 0.03f);
 
 
         }
@@ -351,7 +351,7 @@ public class Roulette : CasinoGame
     }
     void ShakeRoulette()
     {
-        transform.DOShakeScale(1f, 0.5f);
+         GetModel().DOShakeScale(1f, 0.5f);
     }
 
 

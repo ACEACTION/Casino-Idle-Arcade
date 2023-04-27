@@ -374,7 +374,7 @@ public class Baccarat : CasinoGame
     }
     void ShakeRoulette()
     {
-        transform.DOShakeScale(1f, 0.5f);
+        GetModel().DOShakeScale(1f, 0.5f);
     }
 
 }

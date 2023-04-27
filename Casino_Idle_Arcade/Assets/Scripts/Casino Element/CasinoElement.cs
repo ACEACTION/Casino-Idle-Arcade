@@ -79,6 +79,8 @@ public class CasinoElement : MonoBehaviour
     }
 
     
+    public Transform GetModel() => upgradeModels[upgradeIndex].transform;
+
 }
 
 [System.Serializable]
