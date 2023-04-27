@@ -348,6 +348,9 @@ public class Roulette : CasinoGame
         }
 
         gameStack.SetMaxStackCount(upgradeIndex);
+        staticBalls?.SetActive(true);
+        animatedBalls?.SetActive(false);
+        anim.SetBool("isSpining", false);
     }
     void ShakeRoulette()
     {
