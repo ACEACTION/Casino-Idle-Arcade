@@ -32,10 +32,12 @@ public class RouletteCleaner : Cleaner
                 transform.rotation = Quaternion.Slerp(transform.rotation, cleaningSpot[0].transform.rotation, 0.1f);
                 StartCoroutine(MoveToCleaningSpot());
                 anim.SetBool("isWalking", false);
+                anim.SetBool("isCleaning", true);
 
             }
             else
             {
+                anim.SetBool("isCleaning", false);
                 anim.SetBool("isWalking", true);
                 agent.speed = workerData.moveSpeed;
             }
@@ -57,7 +59,11 @@ public class RouletteCleaner : Cleaner
             }
         }
     }
+    public void DisableCleaningAnim()
+    {
+        anim.SetBool("isCleaning", false);
 
+    }
 
     IEnumerator MoveToCleaningSpot()
     {
