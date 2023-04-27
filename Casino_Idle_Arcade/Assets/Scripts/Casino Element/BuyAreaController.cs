@@ -56,15 +56,11 @@ public class BuyAreaController : MonoBehaviour
                     GameManager.totalMoney -= paymentAmount;
                     remainingPayment = price - paymentAmount;
                     price -= paymentAmount;
-
+                    AudioSourceManager.Instance.PlayFushSfx();
 
                     // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
-                    priceText.transform.DOScale
-                        (priceText.transform.localScale.x + 0.2f, 0.3f).OnComplete(() =>
 
-                    { priceText.transform.DOScale(0.6f, 0f); });
-
-
+                    
                     if (remainingPayment < 0)
                     {
                         GameManager.totalMoney += -remainingPayment;
@@ -98,6 +94,8 @@ public class BuyAreaController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             transform.DOScale(defaultScale + .2f, 0.5f);
+            priceText.transform.DOScale
+            (priceText.transform.localScale.x + 0.1f, 0.3f);
             isPlayerAvailabe = true;
         }
     }
@@ -112,6 +110,8 @@ public class BuyAreaController : MonoBehaviour
             transform.DOScale(defaultScale, 0.5f);
             isPlayerAvailabe = false;
             playerWaitingCd = maxPlayerWaitingCd;
+            priceText.transform.DOScale(0.6f, 0f);
+        
         }
     }
 }

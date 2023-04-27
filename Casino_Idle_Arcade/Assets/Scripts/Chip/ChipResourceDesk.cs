@@ -28,7 +28,8 @@ public class ChipResourceDesk : CasinoResourceDesk
         chip.transform.SetParent(stack.firstStack.transform.parent);
         chip.transform.DOLocalMove(stack.firstStack.localPosition, 
             data.addResourceToDeskTime)
-            .OnComplete(() => { chip.transform.DOShakeScale(0.1f, 0.3f); });
+            .OnComplete(() => { chip.transform.DOShakeScale(0.1f, 0.3f).
+                OnComplete(() => { chip.transform.DOScale(0.5827846f, 0.1f); }); });
         stackList.Add(chip);
     }
 

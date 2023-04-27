@@ -14,7 +14,7 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip musicBg;
     [SerializeField] AudioClip rouletteGamePlaySfx;
     [SerializeField] AudioClip buyAreaSfx;
-
+    [SerializeField] AudioClip fushSfx;
     public AudioSource audioScr;
 
     //singletoon
@@ -27,6 +27,7 @@ public class AudioSourceManager : MonoBehaviour
         
     }
 
+    public void PlayFushSfx() => PlaySfx(fushSfx);
     public void PlayCashPickupSfx() => PlaySfx(buyAreaSfx);
     public void PlayPoPSfx() => PlaySfx(popSfx);
 

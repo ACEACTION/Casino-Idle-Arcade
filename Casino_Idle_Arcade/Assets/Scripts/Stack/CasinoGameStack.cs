@@ -16,7 +16,7 @@ public class CasinoGameStack : MonoBehaviour
     [SerializeField] Transform firsStack;
     [SerializeField] TextMeshPro stackTxt;
     [SerializeField] Transform resourceIcon;
-
+    [SerializeField] Transform ground;
     private void Start()
     {
         data.iconDefaultScale = resourceIcon.localScale.x;
@@ -35,7 +35,7 @@ public class CasinoGameStack : MonoBehaviour
         resource.transform.DOLocalMove(firsStack.localPosition,
             data.addResourceToStackTime).OnComplete(() =>
             {
-                resource.transform.DOShakeScale(0.1f, 0.3f);
+                resource.transform.DOShakeScale(0.1f, 0.3f).OnComplete(() => { resource.transform.DOScale(0.67f, 0.1f); });
                 casinoResources.Add(resource);
             });
 
@@ -44,8 +44,8 @@ public class CasinoGameStack : MonoBehaviour
 
         if (stackCount == 1)
         {
-            resourceIcon.DOScale(.01f, 1f);
-            transform.DOScale(data.stackDefaultScale, 1);
+           // resourceIcon.DOScale(.01f, 1f);
+            ground.DOScale(data.stackDefaultScale, 1);
         }
     }
 
@@ -73,8 +73,8 @@ public class CasinoGameStack : MonoBehaviour
     {
         if (!CanGetResource())
         {
-            resourceIcon.DOScale(data.iconDefaultScale, .7f);
-            transform.DOScale(data.stackDefaultScale + .2f, 1);
+            //resourceIcon.DOScale(data.iconDefaultScale, .7f);
+            ground.DOScale(data.stackDefaultScale + .2f, 1);
         }
     }
 
