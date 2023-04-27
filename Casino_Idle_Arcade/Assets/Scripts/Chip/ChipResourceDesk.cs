@@ -26,7 +26,9 @@ public class ChipResourceDesk : CasinoResourceDesk
         Chip chip = MakeChip(GetChipType());
         chip.transform.position = chipSpawnPoint.position;
         chip.transform.SetParent(stack.firstStack.transform.parent);
-        chip.transform.DOLocalMove(stack.firstStack.localPosition, data.addResourceToDeskTime);
+        chip.transform.DOLocalMove(stack.firstStack.localPosition, 
+            data.addResourceToDeskTime)
+            .OnComplete(() => { chip.transform.DOShakeScale(0.1f, 0.3f); });
         stackList.Add(chip);
     }
 

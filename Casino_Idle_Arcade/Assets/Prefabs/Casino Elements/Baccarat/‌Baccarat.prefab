@@ -44,10 +44,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8576449024947259654}
     m_Modifications:
+    - target: {fileID: 2099776685026852351, guid: b0da0d1f8cd9d094daa211e2a6155034,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7823684971198609024, guid: b0da0d1f8cd9d094daa211e2a6155034,
         type: 3}
       propertyPath: m_Name
       value: Baccarat Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823684971198609024, guid: b0da0d1f8cd9d094daa211e2a6155034,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7823684971198609025, guid: b0da0d1f8cd9d094daa211e2a6155034,
         type: 3}
@@ -104,6 +114,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7823684971892961774, guid: b0da0d1f8cd9d094daa211e2a6155034,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0da0d1f8cd9d094daa211e2a6155034, type: 3}
 --- !u!114 &8576449025447624068 stripped
@@ -139,6 +154,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
+      propertyPath: price
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
       propertyPath: buildEffect
       value: 
       objectReference: {fileID: 8576449024512138611}
@@ -170,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -180,7 +200,7 @@ PrefabInstance:
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -225,13 +245,13 @@ PrefabInstance:
     - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: priorityObjs.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: priorityObjs.Array.data[0]
       value: 
-      objectReference: {fileID: 880355791739130632}
+      objectReference: {fileID: 0}
     - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: priorityObjs.Array.data[1]
