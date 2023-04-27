@@ -15,9 +15,13 @@ public class CasinoGameStack : MonoBehaviour
     [SerializeField] List<CasinoResource> casinoResources = new List<CasinoResource>();
     [SerializeField] Transform firsStack;
     [SerializeField] TextMeshPro stackTxt;
+    [SerializeField] Transform resourceIcon;
 
     private void Start()
     {
+        data.iconDefaultScale = resourceIcon.localScale.x;
+        data.stackDefaultScale = transform.localScale.x;
+        ShowEmptyStack();
         SetStackTxt();
     }
 
@@ -37,6 +41,12 @@ public class CasinoGameStack : MonoBehaviour
 
         firsStack.position += new Vector3(0, data.stackYOffset, 0);
         SetStackTxt();
+
+        if (stackCount == 1)
+        {
+            resourceIcon.DOScale(.01f, 1f);
+            transform.DOScale(data.stackDefaultScale, 1);
+        }
     }
 
     public CasinoResource GetFromGameStack()
@@ -49,9 +59,23 @@ public class CasinoGameStack : MonoBehaviour
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);
             SetStackTxt();
+
+            ShowEmptyStack();
             return resource;
         }
-        else return null;
+        else
+        {
+            return null;
+        }
+    }
+
+    void ShowEmptyStack()
+    {
+        if (!CanGetResource())
+        {
+            resourceIcon.DOScale(data.iconDefaultScale, .7f);
+            transform.DOScale(data.stackDefaultScale + .2f, 1);
+        }
     }
 
     public void SetMaxStackCount(int levelIndex)
