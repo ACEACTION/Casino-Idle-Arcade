@@ -9,11 +9,10 @@ public class CashierData : ScriptableObject
     [SerializeField] int roulettePayment;       
     public float cooldownAmount;
 
-    [SerializeField] Sprite rouletteIcon;
-    [SerializeField] Sprite jackpotIcon;
-    [SerializeField] Sprite barIcon;
+    [SerializeField] Sprite[] icons;
 
 
+    public Sprite GetIcon(ElementsType type) => icons[(int)type];
 
     public int GetPayment(ElementsType type)
     {
@@ -26,23 +25,6 @@ public class CashierData : ScriptableObject
             default:
                 return 1;
         }
-    }
-
-
-    public Sprite GetCasinoGameIcon(ElementsType type)
-    {
-        switch (type) 
-        {
-            case ElementsType.roulette:
-                return rouletteIcon;
-            case ElementsType.jackpot:
-                return jackpotIcon;
-            case ElementsType.bar:
-                return barIcon;
-            default:
-                return null;
-        }
-
     }
 
 }

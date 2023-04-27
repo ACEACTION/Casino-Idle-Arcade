@@ -41,8 +41,11 @@ public class CashierManager : MonoBehaviour
             {
                 slider.gameObject?.SetActive(true);
                 firstCustomerGameIcon.gameObject.SetActive(true);
-                firstCustomerGameIcon.sprite = 
-                       data.GetCasinoGameIcon(casinoElement.elementType);
+                //firstCustomerGameIcon.sprite = 
+                //       data.GetCasinoGameIcon(casinoElement.elementType);
+
+                firstCustomerGameIcon.sprite = data.GetIcon(casinoElement.elementType);
+
 
                 cooldown -= Time.deltaTime;
                 slider.value += Time.deltaTime;

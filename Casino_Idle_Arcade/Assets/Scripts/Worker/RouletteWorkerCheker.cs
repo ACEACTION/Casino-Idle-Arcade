@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RouletteWorkerCheker : WorkerCheker
 {
-    public Roulette roullete;
+    public CasinoGame casinoGame;
     public bool isCleanerAvailabe;
     public bool canChangeCamera;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(roullete.cleaner != null)
+        if(casinoGame.cleaner != null)
         {
-            if (other.gameObject.Equals(roullete.cleaner.gameObject))
+            if (other.gameObject.Equals(casinoGame.cleaner.gameObject))
             {
                 isCleanerAvailabe = true;
             }
@@ -27,9 +27,9 @@ public class RouletteWorkerCheker : WorkerCheker
 
     private void OnTriggerExit(Collider other)
     {
-        if (roullete.cleaner != null)
+        if (casinoGame.cleaner != null)
         {
-            if (other.gameObject.Equals(roullete.cleaner.gameObject))
+            if (other.gameObject.Equals(casinoGame.cleaner.gameObject))
             {
                 isCleanerAvailabe = false;
             }

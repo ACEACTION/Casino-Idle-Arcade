@@ -93,9 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6833665153260882376}
+  - component: {fileID: 5560653423933644229}
+  - component: {fileID: 5734252292216447915}
   m_Layer: 0
   m_Name: 'Casino Game Stack '
-  m_TagString: Untagged
+  m_TagString: Casino Chip Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18
@@ -118,6 +120,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5560653423933644229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738030376016027934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 3.6669147, z: 1.2}
+  m_Center: {x: 0, y: 1.3334587, z: -0}
+--- !u!114 &5734252292216447915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738030376016027934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7df162cd029d914386ec42d6c38034b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
+  maxStackCount: 8
+  stackCount: 0
+  casinoResources: []
+  firsStack: {fileID: 3789802534729096377}
+  stackTxt: {fileID: 4145636500856202826}
 --- !u!1 &5073328682164463501
 GameObject:
   m_ObjectHideFlags: 0

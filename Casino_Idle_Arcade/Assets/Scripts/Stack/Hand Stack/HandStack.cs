@@ -92,7 +92,7 @@ public class HandStack : MonoBehaviour
             stackList.RemoveAt(stackList.Count - 1);
             stackCount--;
             firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
-
+            AudioSourceManager.Instance.PlayPoPSfx();
             stackHasResource = CanRemoveStack();
         }
     }

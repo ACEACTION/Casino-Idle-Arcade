@@ -23,7 +23,7 @@ public class Roulette : CasinoGame
 
     [SerializeField] RouletteSpiner[] gameBalls;
     [SerializeField] RouletteData data;
-    [SerializeField] Sweeper sweeper;
+    //[SerializeField] Sweeper sweeper;
     [SerializeField] Animator anim;
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] Slider cleaningSlider;    
@@ -124,7 +124,8 @@ public class Roulette : CasinoGame
         {
 
 ;
-            sweeper.MessCards();
+            //sweeper.MessCards();
+
             if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
 
             choseWinnerPossible = false;
@@ -180,7 +181,7 @@ public class Roulette : CasinoGame
         cleaningParticle.gameObject.SetActive(true);
         cleaningParticle.Play();
         cleaningSlider.gameObject.SetActive(false);
-        sweeper.Sweep();
+        //sweeper.Sweep();
         StartCoroutine(ResetGame());
     }
 
