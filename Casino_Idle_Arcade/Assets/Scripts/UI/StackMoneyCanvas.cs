@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class StackMoneyCanvas : MonoBehaviour
 {
+    [SerializeField] GameObject moneyPanel;
     [SerializeField] TextMeshProUGUI moneyText;
     Vector3 defaultScale;
     public Vector3 defaultPos;
@@ -21,20 +22,20 @@ public class StackMoneyCanvas : MonoBehaviour
 
     void ResetTxt()
     {
-        moneyText.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        moneyText.transform.localPosition = defaultPos;
-        moneyText.gameObject.SetActive(false);
+        moneyPanel.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        moneyPanel.transform.localPosition = defaultPos;
+        moneyPanel.SetActive(false);
     }
 
 
     public void AddMoneyText(int moneyAmount)
     {
-        moneyText.text = string.Concat("+ $", moneyAmount.ToString());
-        moneyText.gameObject.SetActive(true);
-        moneyText.transform.DOScale(defaultScale, activeDuration).SetEase(easeType)
+        moneyText.text = string.Concat("+", moneyAmount.ToString());
+        moneyPanel.SetActive(true);
+        moneyPanel.transform.DOScale(defaultScale, activeDuration).SetEase(easeType)
         .OnComplete(() =>
         {
-            moneyText.transform.DOLocalMoveY(.7f, .7f).SetEase(easeType).OnComplete(() =>
+            moneyPanel.transform.DOLocalMoveY(.7f, .7f).SetEase(easeType).OnComplete(() =>
             {
                 StartCoroutine(DeactiveTxt());
             });

@@ -59,7 +59,9 @@ public class BuyAreaController : MonoBehaviour
 
 
                     // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
-                    priceText.transform.DOShakeScale(0.2f, 0.3f).OnComplete(() =>
+                    priceText.transform.DOScale
+                        (priceText.transform.localScale.x + 0.2f, 0.3f).OnComplete(() =>
+
                     { priceText.transform.DOScale(0.6f, 0f); });
 
 
