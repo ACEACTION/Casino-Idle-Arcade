@@ -6,30 +6,30 @@ public class RouletteCleaner : Cleaner
 {
     [SerializeField] NavMeshAgent agent;
     public bool isCleaning = true;
-    public List<CasinoGame> roulettes = new List<CasinoGame>();
+    public List<CasinoGame> casinoGames = new List<CasinoGame>();
 
     private void OnEnable()
     {
         WorkerManager.rouletteCleaners.Add(this);
-        WorkerManager.AddAvaiableRouletteToCleaner();
+        WorkerManager.AddAvaiableCasinoGamesToCleaner();
 
     }
     private void Start()
     {
         agent.speed = workerData.moveSpeed;
-        foreach (var roulette in roulettes)
+        foreach (var casinoGame in casinoGames)
         {
-            roulette.CallCleaner();
+            casinoGame.CallCleaner();
         }
     }
     private void Update()
     {
-        if (cleaningSpot.Count != 0)
+        if (destinationPoinst.Count != 0)
         {
-            agent.SetDestination(cleaningSpot[0].transform.position);
+            agent.SetDestination(destinationPoinst[0].transform.position);
             if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, cleaningSpot[0].transform.rotation, 0.1f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, destinationPoinst[0].transform.rotation, 0.1f);
                 StartCoroutine(MoveToCleaningSpot());
                 anim.SetBool("isWalking", false);
                 anim.SetBool("isCleaning", true);
@@ -71,7 +71,7 @@ public class RouletteCleaner : Cleaner
         {
             isCleaning = false;
             agent.speed = 0;
-            yield return new WaitForSeconds(cleaningSpot[0].transform.parent.GetComponent<Roulette>().cleaningCd);
+            yield return new WaitForSeconds(destinationPoinst[0].transform.parent.GetComponent<Roulette>().cleaningCd);
             isCleaning = true;
             agent.speed = workerData.moveSpeed;
 

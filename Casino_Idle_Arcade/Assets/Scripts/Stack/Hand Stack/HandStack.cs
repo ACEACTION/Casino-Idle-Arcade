@@ -126,4 +126,5 @@ public class HandStack : MonoBehaviour
 
     }
 
+    public int GetStackCount() => stackCount;
 }

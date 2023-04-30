@@ -10,7 +10,10 @@ public class CasinoGame : CasinoElement
     public float delayToReset;
     public bool readyToPlay;
     public CasinoGameMoneyStack[] moneyStacks;
+    public CasinoGameStack gameStack;
+
     public RouletteCleaner cleaner;
+    public ChipDeliverer chipDeliverer;
     public RouletteWorkerCheker rwc;
     public bool isClean = true;
 
@@ -47,7 +50,7 @@ public class CasinoGame : CasinoElement
     {
         if (!isClean)
         {
-            if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
+            if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
         }
     }
 }

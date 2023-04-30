@@ -85,4 +85,13 @@ public class CasinoGameStack : MonoBehaviour
     }
 
     void SetStackTxt() => stackTxt.text = string.Concat(stackCount.ToString(), "/", maxStackCount);
+
+    public int GetStackCount() => stackCount;
+
+
+
+    public int GetMaxStackCount() => maxStackCount;
+
+
+
 }

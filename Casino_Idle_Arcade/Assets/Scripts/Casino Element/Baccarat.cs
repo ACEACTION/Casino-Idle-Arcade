@@ -35,7 +35,6 @@ public class Baccarat : CasinoGame
     [SerializeField] WorkerCheker workerCheker;
     [SerializeField] Slider cleaningSlider;
     [SerializeField] ParticleSystem cleaningParticle;
-    [SerializeField] CasinoGameStack gameStack;
     [SerializeField] Transform playChipSpot;
     CasinoResource chip;
     public List<CasinoResource> chipsOnBet = new List<CasinoResource>();
@@ -45,8 +44,9 @@ public class Baccarat : CasinoGame
     private void OnEnable()
     {
         //transform.DOShakeScale(1f, 0.5f);
-        WorkerManager.roulettes.Add(this);
-        WorkerManager.AddNewRoulettesToAvailableWorker(this);
+        WorkerManager.casinoGamesForCleaners.Add(this);
+        WorkerManager.casinoGamesForDeliverer.Add(this);
+        WorkerManager.AddNewCasinoGamesToAvailabeCleaners(this);
     }
 
     private void Start()
@@ -118,7 +118,7 @@ public class Baccarat : CasinoGame
         {
 
            // sweeper.MessCards();
-            if (cleaner != null) cleaner.cleaningSpot.Add(rwc.transform);
+            if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
 
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
@@ -171,7 +171,7 @@ public class Baccarat : CasinoGame
     public void CleanProcess()
     {
         if (cleaner != null)
-            cleaner.cleaningSpot.Remove(rwc.transform);
+            cleaner.destinationPoinst.Remove(rwc.transform);
 
         isClean = true;
         cleaningParticle.gameObject.SetActive(true);
