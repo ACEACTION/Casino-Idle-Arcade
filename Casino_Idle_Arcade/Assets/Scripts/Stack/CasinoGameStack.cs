@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using System;
 
 public class CasinoGameStack : MonoBehaviour
 {
@@ -93,5 +94,9 @@ public class CasinoGameStack : MonoBehaviour
     public int GetMaxStackCount() => maxStackCount;
 
 
-
+    public bool StackIsEmpty()
+    {
+        return stackCount == 0;
+        print("isempyty");
+    }
 }

@@ -40,9 +40,11 @@ public class Roulette : CasinoGame
 
     private void OnEnable()
     {
-        //transform.DOShakeScale(1f, 0.5f);
+
         WorkerManager.casinoGamesForCleaners.Add(this);
+        WorkerManager.casinoGamesForDeliverer.Add(this);
         WorkerManager.AddNewCasinoGamesToAvailabeCleaners(this);
+        WorkerManager.AddGamesToDeliverer(this);
     }
 
     private void Start()

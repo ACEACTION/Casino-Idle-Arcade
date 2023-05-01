@@ -31,15 +31,19 @@ public class ChipDeliverer : Cleaner
 
         WorkerManager.chipDeliverers.Add(this);
         WorkerManager.AddAvailableGamesToDeliverer();
-        
+        agent.speed = workerData.moveSpeed;
+        waitingCd = waitingCdAmount;
+        state = State.waiting;
+
+        foreach (var casinoGame in casinoGames)
+        {
+            casinoGame.CallDeliverer();
+        }
     }
 
 
     private void Start()
     {
-        agent.speed = workerData.moveSpeed;
-        waitingCd = waitingCdAmount;
-        state = State.waiting;
 
     }
 
@@ -108,14 +112,13 @@ public class ChipDeliverer : Cleaner
 
                     if (Vector3.Distance(transform.position, closestChipDesk.position) >= 2f)
                     {
-                        print("ridam man toye in vaz");
-                        collider.enabled = false;
+                      //  collider.enabled = false;
                     }
 
 
                 if (Vector3.Distance(handStack.transform.position, casinoGamesPoses[0].transform.position) < 2f)
                 {
-                    collider.enabled = true;
+                  //  collider.enabled = true;
 
 
                     agent.speed = workerData.moveSpeed;

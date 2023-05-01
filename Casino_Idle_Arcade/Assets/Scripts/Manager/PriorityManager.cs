@@ -23,8 +23,4 @@ public class PriorityManager : MonoBehaviour
 }
 
 
-[System.Serializable]
-public class PrioritySlot
-{
-    public List<GameObject> elements = new List<GameObject>();
-}
+

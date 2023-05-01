@@ -75,7 +75,7 @@ public class HandStack : MonoBehaviour
 
     void RemoveFromStackWithCd()
     {
-        if (casinoGameStack && CanRemoveStack() && collider.enabled == true)
+        if (casinoGameStack && CanRemoveStack())
         {
             removeStackCd -= Time.deltaTime;
             if (removeStackCd < 0)
@@ -117,6 +117,7 @@ public class HandStack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Casino Resource"))
         {
+            print("hiiii");
             casinoResource = null;
         }
 

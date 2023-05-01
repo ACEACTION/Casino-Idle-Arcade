@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8841590631143330191, guid: 64cb50dfb151a7f479063f08b9a4bac5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64cb50dfb151a7f479063f08b9a4bac5, type: 3}
 --- !u!1 &25996293
@@ -618,18 +623,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6610571, y: 1, z: 4.874091}
   m_Center: {x: -8.281998, y: 0, z: -4.3554564}
---- !u!114 &64056688 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8576449025447624068, guid: e028d1d22e9bdb3479cb265a98bb060c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8576449024730037146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2077d42ff645c64a8892faa92c6c2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &67594918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2327,7 +2320,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bca07c95327ef38478c2cc2971b0d326,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080223373455195913, guid: bca07c95327ef38478c2cc2971b0d326,
         type: 3}
@@ -2825,6 +2818,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2036004495}
     m_Modifications:
+    - target: {fileID: 1819179666, guid: aa08791c44b18d74f8abe7938bb139cd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8778193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819179666, guid: aa08791c44b18d74f8abe7938bb139cd, type: 3}
+      propertyPath: m_Size.z
+      value: 1.4501358
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819179666, guid: aa08791c44b18d74f8abe7938bb139cd, type: 3}
+      propertyPath: m_Center.x
+      value: -0.036630273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819179666, guid: aa08791c44b18d74f8abe7938bb139cd, type: 3}
+      propertyPath: m_Center.z
+      value: 0.03989011
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064954334121342268, guid: aa08791c44b18d74f8abe7938bb139cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2442994677094709113, guid: aa08791c44b18d74f8abe7938bb139cd,
         type: 3}
       propertyPath: m_Name
@@ -2948,18 +2962,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &678848086 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8576449025447624068, guid: e028d1d22e9bdb3479cb265a98bb060c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1144116364}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2077d42ff645c64a8892faa92c6c2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &733626866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6344417440169934598, guid: 06ec3301dababc4449bb3f32ea525e8b,
@@ -4096,27 +4098,13 @@ MonoBehaviour:
   stackCount: 0
   stackYOffset: 0.14
   maxAddStackCd: 0.2
-  collider: {fileID: 874744457}
+  collider: {fileID: 874744461}
   maxRemoveStackCd: 0.1
   stackHasResource: 0
   anim: {fileID: 874744455}
   firstStack: {fileID: 223840224}
   stackList: []
   casinoResource: {fileID: 0}
---- !u!136 &874744457
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 874744453}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.66
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!54 &874744458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4140,7 +4128,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874744453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd4e7ac54ff3db14f85d812015f73c30, type: 3}
   m_Name: 
@@ -4151,19 +4139,17 @@ MonoBehaviour:
   capacity: 3
   capacityAmount: 3
   anim: {fileID: 874744455}
-  state: 0
+  state: 1
   destination: {fileID: 0}
   agent: {fileID: 874744460}
   handStack: {fileID: 874744456}
   stopingRadius: 3
-  collider: {fileID: 874744457}
-  waitingCd: 0
+  collider: {fileID: 874744461}
+  waitingCd: 3
   waitingCdAmount: 3
   isDelivering: 1
   casinoGames: []
-  casinoGamesPoses:
-  - {fileID: 64056688}
-  - {fileID: 678848086}
+  casinoGamesPoses: []
   closestChipDesk: {fileID: 312358703}
 --- !u!195 &874744460
 NavMeshAgent:
@@ -4174,7 +4160,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 874744453}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.29
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -4187,6 +4173,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &874744461
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874744453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.7762549
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &886721044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8576449024947259649, guid: e028d1d22e9bdb3479cb265a98bb060c,
@@ -5090,7 +5090,7 @@ PrefabInstance:
     - target: {fileID: 8576449024947259649, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8576449024947259654, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
@@ -5150,7 +5150,7 @@ PrefabInstance:
     - target: {fileID: 8576449025447624070, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e028d1d22e9bdb3479cb265a98bb060c, type: 3}

@@ -53,4 +53,13 @@ public class CasinoGame : CasinoElement
             if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
         }
     }
+
+    public void CallDeliverer()
+    {
+
+        if (gameStack.StackIsEmpty())
+        {
+            if(chipDeliverer != null) chipDeliverer.casinoGamesPoses.Add(this);
+        }
+    }
 }
