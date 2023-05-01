@@ -11,6 +11,7 @@ public class HandStack : MonoBehaviour
     [SerializeField] int stackCount;
     [SerializeField] float stackYOffset;
     public float maxAddStackCd;
+    [SerializeField] CapsuleCollider collider;
     float addStackCd;
     [SerializeField] float maxRemoveStackCd;
     float removeStackCd;
@@ -74,7 +75,7 @@ public class HandStack : MonoBehaviour
 
     void RemoveFromStackWithCd()
     {
-        if (casinoGameStack && CanRemoveStack())
+        if (casinoGameStack && CanRemoveStack() && collider.enabled == true)
         {
             removeStackCd -= Time.deltaTime;
             if (removeStackCd < 0)

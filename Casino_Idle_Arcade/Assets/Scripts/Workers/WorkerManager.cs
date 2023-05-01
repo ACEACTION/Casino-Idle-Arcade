@@ -13,7 +13,7 @@ public static class WorkerManager
 
     public static void AddGamesToDeliverer(CasinoGame casinoGame)
     {
-        if (rouletteCleaners.Count != 0)
+        if (chipDeliverers.Count != 0)
         {
             if (chipDeliverers[0].capacity > 0)
             {

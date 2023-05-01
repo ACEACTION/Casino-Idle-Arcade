@@ -276,41 +276,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: stackYOffset
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: maxAddStackCd
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: maxStackCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: maxRemoveStackCd
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: animationMoveSpeed
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: animationStackMoveSpeed
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 8535106362512023907, guid: 64cb50dfb151a7f479063f08b9a4bac5,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.08
-      objectReference: {fileID: 0}
     - target: {fileID: 8841590631143330191, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
       propertyPath: m_Name
@@ -2983,6 +2948,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678848086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576449025447624068, guid: e028d1d22e9bdb3479cb265a98bb060c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144116364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2077d42ff645c64a8892faa92c6c2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &733626866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6344417440169934598, guid: 06ec3301dababc4449bb3f32ea525e8b,
@@ -4115,10 +4092,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ab80ad2c6c460469e26b1029185164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStackCount: 22
+  maxStackCount: 12
   stackCount: 0
   stackYOffset: 0.14
   maxAddStackCd: 0.2
+  collider: {fileID: 874744457}
   maxRemoveStackCd: 0.1
   stackHasResource: 0
   anim: {fileID: 874744455}
@@ -4168,18 +4146,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerData: {fileID: 11400000, guid: e8767a04cb054d14c93a5cdf5280a788, type: 2}
-  destinationPoinst:
-  - {fileID: 259879580}
+  destinationPoinst: []
   sweeperSpot: {fileID: 1748168150}
   capacity: 3
   capacityAmount: 3
   anim: {fileID: 874744455}
+  state: 0
+  destination: {fileID: 0}
   agent: {fileID: 874744460}
   handStack: {fileID: 874744456}
-  waitingCdAmount: 2
+  stopingRadius: 3
+  collider: {fileID: 874744457}
+  waitingCd: 0
+  waitingCdAmount: 3
   isDelivering: 1
-  casinoGames:
+  casinoGames: []
+  casinoGamesPoses:
   - {fileID: 64056688}
+  - {fileID: 678848086}
   closestChipDesk: {fileID: 312358703}
 --- !u!195 &874744460
 NavMeshAgent:
@@ -4197,7 +4181,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -5106,7 +5090,7 @@ PrefabInstance:
     - target: {fileID: 8576449024947259649, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8576449024947259654, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
@@ -5166,7 +5150,7 @@ PrefabInstance:
     - target: {fileID: 8576449025447624070, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e028d1d22e9bdb3479cb265a98bb060c, type: 3}

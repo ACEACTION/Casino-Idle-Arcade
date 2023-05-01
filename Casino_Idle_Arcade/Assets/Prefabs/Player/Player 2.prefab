@@ -1081,7 +1081,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.95, z: 0}
+  m_Center: {x: 0, y: 1.08, z: 0}
 --- !u!136 &8535106362512023902
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1129,8 +1129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootEffect: {fileID: 0}
-  animationMoveSpeed: 100
-  animationStackMoveSpeed: 100
+  animationMoveSpeed: 110
+  animationStackMoveSpeed: 110
   rotationSpeed: 90
   rb: {fileID: 8535106362512023903}
   anim: {fileID: 8535106362512023909}
@@ -1149,11 +1149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ab80ad2c6c460469e26b1029185164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStackCount: 6
+  maxStackCount: 12
   stackCount: 0
-  stackYOffset: 0.11
-  maxAddStackCd: 0.05
-  maxRemoveStackCd: 0.05
+  stackYOffset: 0.14
+  maxAddStackCd: 0.1
+  collider: {fileID: 8535106362512023902}
+  maxRemoveStackCd: 0.1
   stackHasResource: 0
   anim: {fileID: 8535106362512023909}
   firstStack: {fileID: 8535106362433505745}

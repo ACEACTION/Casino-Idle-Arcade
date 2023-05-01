@@ -47,6 +47,7 @@ public class Baccarat : CasinoGame
         WorkerManager.casinoGamesForCleaners.Add(this);
         WorkerManager.casinoGamesForDeliverer.Add(this);
         WorkerManager.AddNewCasinoGamesToAvailabeCleaners(this);
+        WorkerManager.AddGamesToDeliverer(this);
     }
 
     private void Start()

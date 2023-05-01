@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum State
+{
+    waiting, Delivering
+}
 public class ChipDeliverer : Cleaner
 {
+
+    public State state;
+    public Transform destination;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] HandStack handStack;
-    float waitingCd;
+    [SerializeField] float stopingRadius;
+    [SerializeField] CapsuleCollider collider;
+    public float waitingCd;
     [SerializeField] float waitingCdAmount;
 
     public bool isDelivering = true;
     public List<CasinoGame> casinoGames = new List<CasinoGame>();
+    public List<CasinoGame> casinoGamesPoses = new List<CasinoGame>();
+
 
     [SerializeField] Transform closestChipDesk;
     private void OnEnable()
@@ -27,85 +39,120 @@ public class ChipDeliverer : Cleaner
     {
         agent.speed = workerData.moveSpeed;
         waitingCd = waitingCdAmount;
+        state = State.waiting;
+
     }
 
 
     private void Update()
     {
-        if (casinoGames .Count != 0)
+        //check if deliverer waited for order
+        if(state == State.waiting)
         {
-            if(handStack.GetStackCount() <= 0)
+            anim.SetBool("isDelivering", false);
+
+            //check if there is any order
+            if (casinoGamesPoses.Count > 0)
             {
-
-                agent.SetDestination(closestChipDesk.position);
-                anim.SetBool("isDelivering", true);
-
-                if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+                //check if we already have enough chips in deliverers hand
+                if(handStack.GetStackCount() >= casinoGamesPoses[0].gameStack.GetMaxStackCount())
                 {
-                    anim.SetBool("isDelivering", false);
+                    //directly move the deliverer to the table it needs
+                    destination = casinoGamesPoses[0].transform;
                 }
+                else
+                {
+                    //we should move the deliverer towards chipdesk first
+                    destination = closestChipDesk;
+                }
+
+                state = State.Delivering;
             }
-            else if(handStack.GetStackCount() <= handStack.maxStackCount && handStack.GetStackCount() >=0)
+        }
+        if(state == State.Delivering)
+        {
+            agent.SetDestination(destination.position);
+            anim.SetBool("isDelivering", true);
+
+            if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
             {
+                //deliverer arrives to destination
+
+                anim.SetBool("isDelivering", false);
+                agent.speed = 0;
                 waitingCd -= Time.deltaTime;
                 if (waitingCd <= 0)
                 {
-                    anim.SetBool("isDelivering", true);
-                    agent.SetDestination(casinoGames[0].transform.position);
-                    if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+                    agent.speed = workerData.moveSpeed;
+                    //time to move to the next position
+                    if (destination == closestChipDesk)
                     {
+                        destination = casinoGamesPoses[0].transform;
+                        agent.SetDestination(destination.position);
+
+                    }
+
+                    else
+                    {
+                        destination = sweeperSpot;
+                    }
+
+                    waitingCd = waitingCdAmount;
+
+                }
+
+
+            }
+                if (casinoGamesPoses.Count > 0 &&  destination == casinoGamesPoses[0].transform)
+                {
+
+                    if (Vector3.Distance(transform.position, closestChipDesk.position) >= 2f)
+                    {
+                        print("ridam man toye in vaz");
+                        collider.enabled = false;
+                    }
+
+
+                if (Vector3.Distance(handStack.transform.position, casinoGamesPoses[0].transform.position) < 2f)
+                {
+                    collider.enabled = true;
+
+
+                    agent.speed = workerData.moveSpeed;
+
+                    waitingCd -= Time.deltaTime;
+
+                    if (waitingCd <= 0)
+                    {
+
+                        waitingCd = waitingCdAmount;
+                        destination = sweeperSpot;
+                    }
+                    casinoGamesPoses.RemoveAt(0);
+
+
+                }
+            }
+
+                if (destination == sweeperSpot)
+                {
+                    if (Vector3.Distance(transform.position, sweeperSpot.position) <= 1f)
+                    {
+                        state = State.waiting;
+                        agent.speed = workerData.moveSpeed;
                         anim.SetBool("isDelivering", false);
 
-                        if (casinoGames[0].gameStack.GetStackCount() >=
-                            casinoGames[0].gameStack.GetMaxStackCount())
-                        {
-                            casinoGames.RemoveAt(0);
-                            anim.SetBool("isDelivering", true);
-                            agent.SetDestination(sweeperSpot.position);
-                            if (Vector3.Distance(transform.position, sweeperSpot.position) <= agent.stoppingDistance)
-                            {
-                                anim.SetBool("isDelivering", false);
-
-                            }
-                        }
                     }
-                }
-            }
 
-        }
+                // agent.SetDestination(destination.position);
 
-    }
-
-    public void GoPickupChip()
-    {
-        agent.SetDestination(closestChipDesk.position);
-        anim.SetBool("isDelivering", true);
-        if (Vector3.Distance(transform.position, closestChipDesk.position) <= agent.stoppingDistance)
-        {
-            
-            //arrived to chipdesk
-            if(handStack.GetStackCount() >= handStack.maxStackCount)
-            {
-                //chips become full
-                agent.SetDestination(casinoGames[0].transform.position);
-                if (handStack.GetStackCount() > 0)
-                {
-                    //staying there till
-                    if(casinoGames[0].gameStack.GetStackCount() >= casinoGames[0].gameStack.GetMaxStackCount())
-                    {
-
-                        agent.SetDestination(sweeperSpot.position);
-
-                        if(Vector3.Distance(transform.position, sweeperSpot.position) <= agent.stoppingDistance)
-                        {
-                            anim.SetBool("isDelivering", false);
-
-                        }
-                    }
                 }
 
             }
-
         }
-    }
+
+
+
+
 }
+
