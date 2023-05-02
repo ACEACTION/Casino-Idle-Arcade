@@ -117,7 +117,6 @@ public class HandStack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Casino Resource"))
         {
-            print("hiiii");
             casinoResource = null;
         }
 
