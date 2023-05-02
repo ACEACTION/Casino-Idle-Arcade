@@ -11,7 +11,7 @@ public class CasinoGameStack : MonoBehaviour
     [SerializeField] CasinoGameStackData data;
     [SerializeField] int maxStackCount;
     [SerializeField] int stackCount;
-
+    [SerializeField] CasinoGame game;
     // references
     [SerializeField] List<CasinoResource> casinoResources = new List<CasinoResource>();
     [SerializeField] Transform firsStack;
@@ -60,7 +60,10 @@ public class CasinoGameStack : MonoBehaviour
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);
             SetStackTxt();
-
+            if (StackIsEmpty())
+            {
+                game.chipDeliverer.casinoGamesPoses.Add(game);
+            }
             ShowEmptyStack();
             return resource;
         }
@@ -97,6 +100,5 @@ public class CasinoGameStack : MonoBehaviour
     public bool StackIsEmpty()
     {
         return stackCount == 0;
-        print("isempyty");
     }
 }

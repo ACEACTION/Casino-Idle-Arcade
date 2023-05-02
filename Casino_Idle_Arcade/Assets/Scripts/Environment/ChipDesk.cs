@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,10 +37,16 @@ public class ChipDesk : MonoBehaviour
 
     IEnumerator ReleaseChipsWithDelay()
     {
-        foreach (CasinoResource resource in releaseChipList)
+/*        foreach (CasinoResource resource in releaseChipList)
         {
             yield return new WaitForSeconds(5f);
             resource.ReleaseResource();
+        }*/
+
+        for(int i = 0; i < releaseChipList.Count; i++)
+        {
+            yield return new WaitForSeconds(5f);
+            releaseChipList[i].ReleaseResource();
         }
     }
 
