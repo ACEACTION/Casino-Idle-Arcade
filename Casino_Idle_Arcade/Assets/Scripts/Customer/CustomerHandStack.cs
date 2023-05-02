@@ -21,22 +21,22 @@ public class CustomerHandStack : MonoBehaviour
 
     public bool HasStack() => stackCounter > 0;
 
-    public void AddResourceToStack(CasinoResource chip)
+    public void AddResourceToStack(CasinoResource resource)
     {
-        resources.Add(chip);
-        chip.transform.SetParent(transform);
-        chip.transform.DOLocalMove(firstStack.localPosition, .7f);
+        resources.Add(resource);
+        resource.transform.SetParent(transform);
+        resource.transform.DOLocalMove(firstStack.localPosition, .7f);
         firstStack.position += new Vector3(0, data.stackYOffset, 0);
         stackCounter++;
     }
 
 
-    public void RemoveFromStack(ChipDesk chipDesk)
+    public void RemoveChipsFromStack(ChipDesk chipDesk)
     {
-        StartCoroutine(RemoveWithDelay(chipDesk));
+        StartCoroutine(RemoveChipsWithDelay(chipDesk));
     }
 
-    IEnumerator RemoveWithDelay(ChipDesk chipDesk)
+    IEnumerator RemoveChipsWithDelay(ChipDesk chipDesk)
     {
         for (int i = resources.Count - 1; i >= 0; i--)
         {
@@ -46,9 +46,12 @@ public class CustomerHandStack : MonoBehaviour
             resources[i].transform.SetParent(null);
             resources[i].transform.DOMove(chipDesk.chipSpawnPoint.position, data.removeChipToDeskTime);                
             resources[i].releaseResource = true;
+            chipDesk.AddReleaseChipList(resources[i]);
         }
 
         resources.Clear();
+
+        chipDesk.ReleaseChips();
 
         // stack money in customer hand
         GetMoneyFromChipDesk(chipDesk);
@@ -64,7 +67,6 @@ public class CustomerHandStack : MonoBehaviour
         stackCounter = 0;
         firstStack.localPosition = data.firstStackPos;
         resources.Clear();
-
     }
 
     void GetMoneyFromChipDesk(ChipDesk chipDesk)

@@ -11,6 +11,9 @@ public class ChipDesk : MonoBehaviour
     public Transform chipSpawnPoint;
     public StackMoney stackMoney;
 
+    [HideInInspector] public List<CasinoResource> releaseChipList;
+
+
     private void Start()
     {
         ChipDeskManager.chipDeskList.Add(this);
@@ -23,6 +26,21 @@ public class ChipDesk : MonoBehaviour
         return money;
     }
 
+    public void AddReleaseChipList(CasinoResource resource) => releaseChipList.Add(resource);
 
+
+    public void ReleaseChips()
+    {
+        StartCoroutine(ReleaseChipsWithDelay());
+    }
+
+    IEnumerator ReleaseChipsWithDelay()
+    {
+        foreach (CasinoResource resource in releaseChipList)
+        {
+            yield return new WaitForSeconds(5f);
+            resource.ReleaseResource();
+        }
+    }
 
 }

@@ -11,22 +11,6 @@ public class Chip : CasinoResource
     {
         base.ReleaseResource();
         ChipPool.Instance.OnReleaseChip(this, chipType);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (releaseResource && other.gameObject.CompareTag("Chip Release"))
-        {
-            StartCoroutine(Delay());
-        }
-    }
-
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(3f);
-        ReleaseResource();            
-    }
-
-
+    }   
 
 }

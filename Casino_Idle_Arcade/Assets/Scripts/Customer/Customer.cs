@@ -86,7 +86,7 @@ public class Customer : MonoBehaviour
         // customer go to get cash from chips
         if (chipDesk && other.gameObject .Equals (chipDesk.gameObject))
         {
-            stack.RemoveFromStack(chipDesk);
+            stack.RemoveChipsFromStack(chipDesk);
         }
     }
 
