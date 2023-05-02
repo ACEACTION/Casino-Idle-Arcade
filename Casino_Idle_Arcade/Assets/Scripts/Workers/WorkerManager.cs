@@ -18,7 +18,7 @@ public static class WorkerManager
             if (chipDeliverers[0].capacity > 0)
             {
                 chipDeliverers[0].capacity--;
-                chipDeliverers[0].casinoGames.Add(casinoGame);
+                chipDeliverers[0].casinoGamesPoses.Add(casinoGame);
                 casinoGame.chipDeliverer = chipDeliverers[0];
                 casinoGamesForDeliverer.Remove(casinoGame);
             }

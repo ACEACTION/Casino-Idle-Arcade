@@ -112,13 +112,13 @@ public class ChipDeliverer : Cleaner
 
                     if (Vector3.Distance(transform.position, closestChipDesk.position) >= 2f)
                     {
-                      //  collider.enabled = false;
+                        collider.enabled = false;
                     }
 
 
                 if (Vector3.Distance(handStack.transform.position, casinoGamesPoses[0].transform.position) < 2f)
                 {
-                  //  collider.enabled = true;
+                    collider.enabled = true;
 
 
                     agent.speed = workerData.moveSpeed;

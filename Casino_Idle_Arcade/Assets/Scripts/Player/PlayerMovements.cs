@@ -31,6 +31,7 @@ public class PlayerMovements : MonoBehaviour
     public static PlayerMovements Instance;
     private void Awake()
     {
+        print("ouwekrasdfasdf");
         if (Instance == null)
             Instance = this;
     }

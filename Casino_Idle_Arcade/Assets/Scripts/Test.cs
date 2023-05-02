@@ -5,12 +5,27 @@ using DG.Tweening;
 
 public class Test : MonoBehaviour
 {
-    public CasinoResource casinoResource;
-    private void Update()
+    public CasinoResourceDesk casinoResource;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (other.gameObject.CompareTag("Casino Resource"))
         {
-            casinoResource.ReleaseResource();
+            casinoResource = other.GetComponent<CasinoResourceDesk>();
         }
+
+     
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Casino Resource"))
+        {
+            casinoResource = null;
+        }
+
+      
+
     }
 }
