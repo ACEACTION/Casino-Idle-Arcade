@@ -43,14 +43,19 @@ public class CustomerHandStack : MonoBehaviour
             stackCounter--;
             firstStack.position -= new Vector3(0, data.stackYOffset, 0);
             yield return new WaitForSeconds(data.removeChipDelay);
-            resources[i].transform.SetParent(null);
-            resources[i].transform.DOMove(chipDesk.chipSpawnPoint.position, data.removeChipToDeskTime);                
-            resources[i].releaseResource = true;
+            CasinoResource resource = resources[i];
+            resource.transform.SetParent(null);
+            resource.transform.DOMove(chipDesk.chipSpawnPoint.position, data.removeChipToDeskTime)
+                .OnComplete(() =>
+                {
+                    resource.ReleaseResource();
+                });
+            resource.releaseResource = true;
             chipDesk.AddReleaseChipList(resources[i]);
         }
 
         resources.Clear();
-        chipDesk.ReleaseChips();
+        //chipDesk.ReleaseChips();
 
         // stack money in customer hand
         GetMoneyFromChipDesk(chipDesk);
