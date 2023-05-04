@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8336561607668088995
 Transform:
   m_ObjectHideFlags: 0
@@ -107,6 +107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643364049291960857, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
+        type: 3}
+      propertyPath: price
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8643364049291960857, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
         type: 3}
@@ -392,6 +397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8643364049291960857, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
         type: 3}
+      propertyPath: price
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643364049291960857, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
+        type: 3}
       propertyPath: buildEffect
       value: 
       objectReference: {fileID: 4451218074738266852}
@@ -439,7 +449,7 @@ PrefabInstance:
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: cooldown
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -459,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: cooldownAmount
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
