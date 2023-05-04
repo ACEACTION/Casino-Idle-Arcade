@@ -2442,7 +2442,9 @@ MonoBehaviour:
   - {fileID: 9063604446923957655}
   - {fileID: 6664682537995315510}
   - {fileID: 7126347749745303933}
+  gameStack: {fileID: 3620804334466494937}
   cleaner: {fileID: 0}
+  chipDeliverer: {fileID: 0}
   rwc: {fileID: 1770952632}
   isClean: 1
   dealerCastTime: 5
@@ -2459,7 +2461,6 @@ MonoBehaviour:
   workerCheker: {fileID: 1457323630}
   cleaningSlider: {fileID: 308222324}
   cleaningParticle: {fileID: 2594492327729663938}
-  gameStack: {fileID: 3620804334466494937}
   playChipSpot: {fileID: 7283231125557037781}
   chipsOnBet: []
   roulette_ui: {fileID: 1269051063}
@@ -2481,10 +2482,12 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
   maxStackCount: 8
   stackCount: 0
+  game: {fileID: 0}
   casinoResources: []
   firsStack: {fileID: 5274721340613529291}
   stackTxt: {fileID: 4909983666764739640}
   resourceIcon: {fileID: 0}
+  ground: {fileID: 0}
 --- !u!114 &3481900672330427575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6116,6 +6119,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -1.8230481
       objectReference: {fileID: 0}
+    - target: {fileID: 5734252292216447915, guid: 2c0ceae51de313b4686a45aef53894fc,
+        type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 1045904133}
     - target: {fileID: 6833665153260882376, guid: 2c0ceae51de313b4686a45aef53894fc,
         type: 3}
       propertyPath: m_RootOrder
