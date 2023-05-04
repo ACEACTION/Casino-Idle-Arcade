@@ -59,7 +59,6 @@ public class CasinoGame : CasinoElement
 
         if (gameStack.StackIsEmpty())
         {
-            print("miaowefjkalsdfmoasdfasdf");
             if(chipDeliverer != null) chipDeliverer.casinoGamesPoses.Add(this);
         }
     }

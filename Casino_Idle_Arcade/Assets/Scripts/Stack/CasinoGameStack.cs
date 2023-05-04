@@ -60,7 +60,7 @@ public class CasinoGameStack : MonoBehaviour
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);
             SetStackTxt();
-            if (StackIsEmpty() && game.chipDeliverer)
+            if (StackIsEmpty() && game.chipDeliverer != null)
             {                
                 game.chipDeliverer.casinoGamesPoses.Add(game);
             }
@@ -91,7 +91,6 @@ public class CasinoGameStack : MonoBehaviour
     void SetStackTxt() => stackTxt.text = string.Concat(stackCount.ToString(), "/", maxStackCount);
 
     public int GetStackCount() => stackCount;
-
 
 
     public int GetMaxStackCount() => maxStackCount;

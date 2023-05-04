@@ -120,7 +120,8 @@ public class Baccarat : CasinoGame
 
            // sweeper.MessCards();
             if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
-            if (gameStack.StackIsEmpty() && !chipDeliverer) chipDeliverer.casinoGamesPoses.Add(this);
+            if (gameStack.StackIsEmpty() && chipDeliverer != null) 
+                chipDeliverer.casinoGamesPoses.Add(this);
             
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
