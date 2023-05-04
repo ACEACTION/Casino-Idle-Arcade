@@ -11,6 +11,7 @@ public class Chip : CasinoResource
     {
         base.ReleaseResource();
         ChipPool.Instance.OnReleaseChip(this, chipType);
-    }   
+    }
+
 
 }

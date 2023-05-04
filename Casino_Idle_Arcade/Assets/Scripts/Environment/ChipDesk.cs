@@ -43,11 +43,12 @@ public class ChipDesk : MonoBehaviour
             resource.ReleaseResource();
         }*/
 
+        yield return new WaitForSeconds(5f);
         for(int i = 0; i < releaseChipList.Count; i++)
         {
-            yield return new WaitForSeconds(5f);
             releaseChipList[i].ReleaseResource();
         }
+        releaseChipList.Clear();
     }
 
 }

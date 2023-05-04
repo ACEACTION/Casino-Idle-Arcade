@@ -50,7 +50,6 @@ public class CustomerHandStack : MonoBehaviour
         }
 
         resources.Clear();
-
         chipDesk.ReleaseChips();
 
         // stack money in customer hand

@@ -60,8 +60,8 @@ public class CasinoGameStack : MonoBehaviour
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);
             SetStackTxt();
-            if (StackIsEmpty())
-            {
+            if (StackIsEmpty() && game.chipDeliverer)
+            {                
                 game.chipDeliverer.casinoGamesPoses.Add(game);
             }
             ShowEmptyStack();
