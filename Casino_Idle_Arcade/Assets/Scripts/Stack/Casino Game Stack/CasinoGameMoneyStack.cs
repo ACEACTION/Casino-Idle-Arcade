@@ -21,14 +21,13 @@ public class CasinoGameMoneyStack : MonoBehaviour
     public void MoveMoneyToStack(Money money)
     {
         if (stackCounter < stackData.maxStackCounter)
+        {
             money.transform.DOLocalMove(GetMoneyTargetPos(), 1f);
+        }
         else
         {
-            money.transform.DOLocalMove(GetMoneyTargetPos(), 1f)
-                .OnComplete(() =>
-                {
-                    money.ReleaseResource();
-                });
+            
+
         }
         stackCounter++;
     }
@@ -76,6 +75,7 @@ public class CasinoGameMoneyStack : MonoBehaviour
             money.transform.DOScale(.4f, data.lootScaleDuration);
         }
         moneyList.Clear();
+        stackCounter = 0;
     }
 
     private void OnTriggerEnter(Collider other)

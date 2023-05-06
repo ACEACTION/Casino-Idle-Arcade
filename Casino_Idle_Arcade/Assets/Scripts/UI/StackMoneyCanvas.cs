@@ -30,6 +30,7 @@ public class StackMoneyCanvas : MonoBehaviour
 
     public void AddMoneyText(int moneyAmount)
     {
+                                                    
         moneyText.text = string.Concat("+", moneyAmount.ToString());
         moneyPanel.SetActive(true);
         moneyPanel.transform.DOScale(defaultScale, activeDuration).SetEase(easeType)

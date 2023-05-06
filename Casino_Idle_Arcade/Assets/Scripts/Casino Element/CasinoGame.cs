@@ -11,6 +11,7 @@ public class CasinoGame : CasinoElement
     public bool readyToPlay;
     public CasinoGameMoneyStack[] moneyStacks;
     public CasinoGameStack gameStack;
+    public StackMoney stackMoney;
 
     public RouletteCleaner cleaner;
     public ChipDeliverer chipDeliverer;
