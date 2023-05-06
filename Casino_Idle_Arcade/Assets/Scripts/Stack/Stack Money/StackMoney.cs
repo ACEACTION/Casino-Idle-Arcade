@@ -72,6 +72,7 @@ public class StackMoney : MonoBehaviour
 
         if (!isPlayer)
         {
+            totalMoney += money.moneyAmount;
 
             if (stackCounter < slots.Count)
             {                
@@ -88,10 +89,7 @@ public class StackMoney : MonoBehaviour
                     .SetEase(stackData.moneyMoveEase)
                     .OnComplete(() => money.ReleaseResource());
             }
-            totalMoney += money.moneyAmount;
             stackCounter++;
-
-            
 
         }
         else
@@ -139,6 +137,7 @@ public class StackMoney : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isPlayer = true;
+
 
             if (totalMoney > 0)
             {
