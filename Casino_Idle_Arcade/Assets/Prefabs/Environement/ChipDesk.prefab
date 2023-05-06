@@ -645,6 +645,7 @@ MonoBehaviour:
   moneySpawnPoint: {fileID: 508974095756231561}
   chipSpawnPoint: {fileID: 6253469733874846448}
   stackMoney: {fileID: 6978138535184255132}
+  releaseChipList: []
 --- !u!54 &1107396514
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2336,6 +2337,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7404559637013153673, guid: 8947c5f3ffbc4fd4d832faeb88823157,
+        type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 4216526649544879068, guid: 9dcd64db5be18144cbfc1d2ce63ba385,
+        type: 3}
     - target: {fileID: 7404559637013153673, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: lootData

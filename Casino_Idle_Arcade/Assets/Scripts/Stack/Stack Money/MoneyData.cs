@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/MoneyData")]
 public class MoneyData : ScriptableObject
 {
+
     public int receptionMoneyAmount;
     public int rouletteMoneyAmount;
+    public int baccaratMoneyAmount;
     public int jackpotMoneyAmount;
     public int chipDeskMoneyAmount;
     public int barMoneyAmount;
@@ -21,6 +23,8 @@ public class MoneyData : ScriptableObject
                 return receptionMoneyAmount;
             case MoneyType.rouletteMoney:
                 return rouletteMoneyAmount;
+            case MoneyType.baccaratMoney:
+                return baccaratMoneyAmount;
             case MoneyType.jackpotMoney:
                 return jackpotMoneyAmount;
             case MoneyType.chipDeskMoney:
@@ -37,6 +41,7 @@ public enum MoneyType
 {
     receptionMoney, 
     rouletteMoney, 
+    baccaratMoney,
     jackpotMoney, 
     chipDeskMoney, 
     barMoney    

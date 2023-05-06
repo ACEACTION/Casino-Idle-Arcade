@@ -107,10 +107,14 @@ public class Baccarat : CasinoGame
             payedMoney = false;
             int moneyAmount = Random.Range(data.moneyAmountLevel[upgradeIndex],
                 data.moneyAmountLevel[upgradeIndex] + 2);
-            for (int i = 0; i < moneyAmount; i++)
-            {
-                moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
-            }
+
+            customers[winnerIndex].PayMoney(stackMoney, moneyAmount, MoneyType.baccaratMoney);
+
+            //for (int i = 0; i < moneyAmount; i++)
+            //{
+            //    //moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
+                
+            //}
         }
     }
     void ChoseWinner()
