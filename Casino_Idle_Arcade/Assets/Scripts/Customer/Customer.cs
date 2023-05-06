@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    public ElementsType elementType;
+    //public ElementsType elementType;
     public Animator anim;
     public CustomerData stats;
     public ParticleSystem[] confetti;
@@ -20,8 +20,7 @@ public class Customer : MonoBehaviour
 
 
     private void OnEnable()
-    {
-        SetElementType();
+    {      
     }
 
     public void SetPlayingCardAnimation(bool state)
@@ -52,12 +51,6 @@ public class Customer : MonoBehaviour
         anim.SetBool("isLosing", state);
     }
 
-
-    void SetElementType()
-    {
-        elementType = CasinoManager.instance.availableElements
-            [Random.Range(0, CasinoManager.instance.availableElements.Count)];
-    }
 
     public void PayMoney(StackMoney stackMoney, int amount, MoneyType type)
     {
