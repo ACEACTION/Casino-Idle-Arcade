@@ -52,9 +52,11 @@ public class CashierManager : MonoBehaviour
                 if (cooldown <= 0)
                 {
                     firstCounter.firstCustomer.PayMoney(stackMoney,
-                            data.GetPayment(firstCounter.firstCustomer.elementType),
+                            data.GetPayment(casinoElement.elementType),
                             MoneyType.receptionMoney);
-                 
+                                       
+
+
                     casinoElement.SendCustomerToElement(firstCounter.firstCustomer);
                     casinoElement = null;
                     cooldown = data.cooldownAmount;

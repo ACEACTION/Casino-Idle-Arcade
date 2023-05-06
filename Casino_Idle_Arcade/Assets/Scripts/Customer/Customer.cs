@@ -61,6 +61,7 @@ public class Customer : MonoBehaviour
 
     public void PayMoney(StackMoney stackMoney, int amount, MoneyType type)
     {
+        
         for (int i = 0; i < amount; i++)
         {
            // yield return new WaitForSeconds(0f);
@@ -70,6 +71,7 @@ public class Customer : MonoBehaviour
             money.SetMoneyAmount(type);
             stackMoney.AddToStack(money);
         }
+
     }
 
     

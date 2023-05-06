@@ -6,6 +6,7 @@ using UnityEngine;
 public class CashierData : ScriptableObject
 {
     [SerializeField] int jackPotPayment;
+    [SerializeField] int baccaratPayment;
     [SerializeField] int roulettePayment;       
     public float cooldownAmount;
 
@@ -22,6 +23,8 @@ public class CashierData : ScriptableObject
                 return roulettePayment;
             case ElementsType.jackpot:
                 return jackPotPayment;
+            case ElementsType.baccarat:
+                return baccaratPayment;
             default:
                 return 1;
         }
@@ -29,8 +32,3 @@ public class CashierData : ScriptableObject
 
 }
 
-public class CasinoGameIcon
-{
-    public Sprite icon;
-    public ElementsType type;
-}

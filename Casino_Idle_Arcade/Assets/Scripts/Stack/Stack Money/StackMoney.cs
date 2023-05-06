@@ -90,6 +90,9 @@ public class StackMoney : MonoBehaviour
             }
             totalMoney += money.moneyAmount;
             stackCounter++;
+
+            
+
         }
         else
         {
