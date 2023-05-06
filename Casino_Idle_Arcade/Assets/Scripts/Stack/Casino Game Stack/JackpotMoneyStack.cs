@@ -12,8 +12,8 @@ public class JackpotMoneyStack : CasinoGameMoneyStack
         moneyList.Add(money);
         money.transform.position = element.customers[0].transform.position;
         money.transform.SetParent(transform);
-        money.transform.DOLocalMove(GetMoneyTargetPos(), 1f);
         money.transform.DORotate(new Vector3(0, Random.Range(100, 360), 0), 1);
+        MoveMoneyToStack(money);
         money.SetMoneyAmount(MoneyType.jackpotMoney);
         totalMoney += money.moneyAmount;
     }

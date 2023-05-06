@@ -5,10 +5,12 @@ using DG.Tweening;
 
 public class CasinoGameMoneyStack : MonoBehaviour
 {
-    [SerializeField] float dropMoneyOffset;
     public bool isPlayer;
     public int totalMoney;
 
+    public int stackCounter = 0;    
+
+    public CasinoGameMoneyStackData stackData;
     public LootMoneyData data;
     public CasinoElement element;
     public List<Money> moneyList = new List<Money>();
@@ -16,13 +18,27 @@ public class CasinoGameMoneyStack : MonoBehaviour
 
     public virtual void MakeMoney() {}
     
-    
+    public void MoveMoneyToStack(Money money)
+    {
+        if (stackCounter < stackData.maxStackCounter)
+            money.transform.DOLocalMove(GetMoneyTargetPos(), 1f);
+        else
+        {
+            money.transform.DOLocalMove(GetMoneyTargetPos(), 1f)
+                .OnComplete(() =>
+                {
+                    money.ReleaseResource();
+                });
+        }
+        stackCounter++;
+    }
+
 
     public Vector3 GetMoneyTargetPos()
     {        
-        return new Vector3(Random.Range(-dropMoneyOffset, dropMoneyOffset),
+        return new Vector3(Random.Range(-stackData.dropMoneyOffset, stackData.dropMoneyOffset),
             transform.position.y,
-            Random.Range(-dropMoneyOffset, dropMoneyOffset));
+            Random.Range(-stackData.dropMoneyOffset, stackData.dropMoneyOffset));
     }
 
     public Vector3 GetRandomLootOffset()
@@ -81,5 +97,7 @@ public class CasinoGameMoneyStack : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
             isPlayer = false;
     }
+
+
 
 }
