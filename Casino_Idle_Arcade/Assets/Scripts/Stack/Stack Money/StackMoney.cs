@@ -44,31 +44,6 @@ public class StackMoney : MonoBehaviour
     }
 
 
-    public void AddToStack(Money money)
-    {
-
-        if (!isPlayer)
-        {
-            money.transform.SetParent(slots[stackCounter].transform);
-            //money.transform.DOLocalJump(Vector3.zero, 2, 1, moneyMoveSpeed).SetEase(moneyMoveEase);
-            money.transform.DOLocalMove(Vector3.zero, stackData.moneyMoveSpeed)
-                .SetEase(stackData.moneyMoveEase);
-            money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
-            moneyList.Add(money);
-            stackCounter++;
-            totalMoney += money.moneyAmount;
-            if (stackCounter == slots.Count) stackCounter = slots.Count - 1;
-        }
-        else
-        {
-            money.SetGoToPlayer();
-        }
-    }
-
-
-   
-
-
     private void Update()
     {
         if (isPlayer)
@@ -80,7 +55,7 @@ public class StackMoney : MonoBehaviour
                     {
                         money.SetGoToPlayer();
                     });
-                    
+
                 money.transform.DORotate(new Vector3(Random.Range(0, 360),
                     Random.Range(0, 360),
                     Random.Range(0, 360)), lootData.lootRotDuration);
@@ -91,6 +66,42 @@ public class StackMoney : MonoBehaviour
             moneyList.Clear();
         }
     }
+
+    public void AddToStack(Money money)
+    {
+
+        if (!isPlayer)
+        {
+
+            if (stackCounter < slots.Count)
+            {                
+                SetMoneyParent(money.transform, slots[stackCounter].transform);
+                money.transform.DOLocalMove(Vector3.zero, stackData.moneyMoveSpeed)
+                    .SetEase(stackData.moneyMoveEase);
+                money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
+                moneyList.Add(money);
+            }
+            else
+            {                
+                SetMoneyParent(money.transform, slots[slots.Count - 1].transform);
+                money.transform.DOLocalMove(Vector3.zero, stackData.moneyMoveSpeed)
+                    .SetEase(stackData.moneyMoveEase)
+                    .OnComplete(() => money.ReleaseResource());
+            }
+            totalMoney += money.moneyAmount;
+            stackCounter++;
+        }
+        else
+        {
+            money.SetGoToPlayer();
+        }
+    }
+
+                
+    void SetMoneyParent(Transform money, Transform parent) 
+        => money.SetParent(parent);
+
+
 
     Vector3 GetRandomLootOffset()
     {
