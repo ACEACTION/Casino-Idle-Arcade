@@ -21,8 +21,8 @@ public class ChipDeliverer : Cleaner
     [SerializeField] float waitingCdAmount;
 
     public bool isDelivering = true;
-    public List<CasinoGame> casinoGames = new List<CasinoGame>();
-    public List<CasinoGame> casinoGamesPoses = new List<CasinoGame>();
+    public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
+    public List<CasinoGame_ChipGame> casinoGamesPoses = new List<CasinoGame_ChipGame>();
 
 
     [SerializeField] Transform closestChipDesk;

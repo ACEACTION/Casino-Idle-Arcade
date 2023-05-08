@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RouletteWorkerCheker : WorkerCheker
 {
-    public CasinoGame casinoGame;
+    public CasinoGame_ChipGame casinoGame;
     public bool isCleanerAvailabe;
     public bool canChangeCamera;
 

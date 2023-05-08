@@ -12,12 +12,7 @@ public class CasinoGame : CasinoElement
     public CasinoGameMoneyStack[] moneyStacks;
     public CasinoGameStack gameStack;
     public StackMoney stackMoney;
-
-    public RouletteCleaner cleaner;
-    public ChipDeliverer chipDeliverer;
-    public RouletteWorkerCheker rwc;
-    public bool isClean = true;
-
+    
     public override void CustomerHasArrived()
     {
         base.CustomerHasArrived();
@@ -47,20 +42,5 @@ public class CasinoGame : CasinoElement
         customerCounter = 0;
         SetNullElementSpotsCustomer();
     }
-    public void CallCleaner()
-    {
-        if (!isClean)
-        {
-            if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
-        }
-    }
-
-    public void CallDeliverer()
-    {
-
-        if (gameStack.StackIsEmpty())
-        {
-            if(chipDeliverer != null) chipDeliverer.casinoGamesPoses.Add(this);
-        }
-    }
+    
 }
