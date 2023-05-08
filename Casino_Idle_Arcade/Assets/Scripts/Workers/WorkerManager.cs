@@ -6,12 +6,12 @@ using UnityEngine;
 public static class WorkerManager
 {
     public static List<RouletteCleaner> rouletteCleaners = new List<RouletteCleaner>();
-    public static List<CasinoGame> casinoGamesForCleaners = new List<CasinoGame>();
-    public static List<CasinoGame> casinoGamesForDeliverer = new List<CasinoGame>();
+    public static List<CasinoGame_ChipGame> casinoGamesForCleaners = new List<CasinoGame_ChipGame>();
+    public static List<CasinoGame_ChipGame> casinoGamesForDeliverer = new List<CasinoGame_ChipGame>();
 
     public static List<ChipDeliverer> chipDeliverers = new List<ChipDeliverer>();
 
-    public static void AddGamesToDeliverer(CasinoGame casinoGame)
+    public static void AddGamesToDeliverer(CasinoGame_ChipGame casinoGame)
     {
         if (chipDeliverers.Count != 0)
         {
@@ -45,7 +45,7 @@ public static class WorkerManager
         if (chipDeliverers[0].capacity == 0) chipDeliverers.Remove(chipDeliverers[0]);
     }
 
-    public static void AddNewCasinoGamesToAvailabeCleaners(CasinoGame casinoGame)
+    public static void AddNewCasinoGamesToAvailabeCleaners(CasinoGame_ChipGame casinoGame)
     {
         if (rouletteCleaners.Count != 0)
         {

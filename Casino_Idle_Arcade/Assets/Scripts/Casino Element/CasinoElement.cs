@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CasinoElement : MonoBehaviour
 {
@@ -80,7 +81,8 @@ public class CasinoElement : MonoBehaviour
 
     
     public Transform GetModel() => upgradeModels[upgradeIndex].transform;
-
+    public void ShakeModel() => GetModel().DOShakeScale(1f, 0.5f);
+    
 }
 
 [System.Serializable]

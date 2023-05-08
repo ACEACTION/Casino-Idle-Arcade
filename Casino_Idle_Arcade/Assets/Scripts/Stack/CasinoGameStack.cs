@@ -11,7 +11,7 @@ public class CasinoGameStack : MonoBehaviour
     [SerializeField] CasinoGameStackData data;
     [SerializeField] int maxStackCount;
     [SerializeField] int stackCount;
-    [SerializeField] CasinoGame game;
+    [SerializeField] CasinoGame_ChipGame game;
     // references
     [SerializeField] List<CasinoResource> casinoResources = new List<CasinoResource>();
     [SerializeField] Transform firsStack;
