@@ -184,8 +184,8 @@ public class CasinoGame_ChipGame : CasinoGame
             payedMoney = true;
             gameSlider.value = 0;
             cleaningSlider.value = 0;
-
             gameSlider.gameObject.SetActive(false);
+            cleaningSlider.value = 0;
 
             ResetTableGame();
 

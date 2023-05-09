@@ -83,8 +83,7 @@ public class Baccarat : CasinoGame_ChipGame
     
     public override void ResetTableGame()
     {
-        base.ResetTableGame();
-        cleaningSlider.value = 0;
+        base.ResetTableGame();        
         givingCardCd = givingCardCdAmount;
         givingCard = false;
 

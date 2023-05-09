@@ -52,7 +52,7 @@ public class Roulette : CasinoGame_ChipGame
 
     public override void ResetTableGame()
     {
-        cleaningSlider.value = -data.cleaningCdAmount;         
+    
     }
     
     

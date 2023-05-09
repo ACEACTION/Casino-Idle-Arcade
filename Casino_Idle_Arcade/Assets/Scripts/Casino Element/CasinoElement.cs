@@ -88,7 +88,5 @@ public class CasinoElement : MonoBehaviour
 [System.Serializable]
 public class CasinoElementSpotSlot
 {
-
-
     public List<CasinoElementSpot> elementSpots = new List<CasinoElementSpot>();
 }
