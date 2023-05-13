@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &18673297440826336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611262962688017159}
+  m_Layer: 0
+  m_Name: snackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1611262962688017159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18673297440826336}
+  m_LocalRotation: {x: 0.6674247, y: -0.058211114, z: -0.73268646, w: -0.11969283}
+  m_LocalPosition: {x: -0.095, y: 0.038, z: 0.008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7543192053688094901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312420226478069039
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +250,8 @@ Transform:
   m_LocalPosition: {x: 0.00000013012323, y: 0.26492032, z: 0.0000007159506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1611262962688017159}
   m_Father: {fileID: 7977149328117032968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6.166422, y: 0.7705411, z: 4.501671}
@@ -597,9 +629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e6612d44adf4348bdaf5f680422a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 0
   anim: {fileID: 5320856513153801346}
-  stats: {fileID: 11400000, guid: ac3bb7d9a176050469411901512231ea, type: 2}
+  customerData: {fileID: 11400000, guid: ac3bb7d9a176050469411901512231ea, type: 2}
+  snackTransform: {fileID: 1611262962688017159}
   confetti:
   - {fileID: 1036959060953330450}
   - {fileID: 2293259719700001972}
@@ -622,6 +654,7 @@ MonoBehaviour:
   - {fileID: 5397461870033501629}
   - {fileID: 6519320010352005952}
   - {fileID: 8884785291171205905}
+  vendingMachine: {fileID: 0}
   agent: {fileID: 1791738785}
   destination: {fileID: 0}
   fCustomer: 0

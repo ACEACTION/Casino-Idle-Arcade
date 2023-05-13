@@ -8,6 +8,8 @@ public class CustomerMovement : Customer
 {
     Transform dir;
     [SerializeField] NavMeshAgent agent;
+
+    
     public Transform destination;
     public bool fCustomer;
     int emojiIndex;
@@ -61,7 +63,24 @@ public class CustomerMovement : Customer
         sadEmojies[emojiIndex].gameObject.SetActive(true);
         sadEmojies[emojiIndex].Play();
 
-        SetLosingAnimation(true);
+        //check if customer has chance to go 
+        SetDesireRate();
+        if (CustomerWantsVendingMachine())
+        {
+            vendingMachine = vendingMachineManager.CanSendCustomerToVendingMachine();
+            if (vendingMachine)
+            {
+                //there is vending machine available
+
+                vendingMachine.SendCustomerToElement(this);
+                vendingMachine = null;
+
+
+            }
+            else SetLosingAnimation(true);
+
+        }
+        else SetLosingAnimation(true);
     }
 
     void ShowHappy()

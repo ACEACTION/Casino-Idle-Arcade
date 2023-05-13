@@ -9,6 +9,8 @@ public enum CustomerTarget
 [CreateAssetMenu(menuName = "Data/ Customer Data")]
 public class CustomerData : ScriptableObject
 {
-    [SerializeField] float moveSpeed;    
-    
+    [SerializeField] float moveSpeed;
+    [Range(0, 1)]
+    public float vendingMachineDesireRate;
+
 }

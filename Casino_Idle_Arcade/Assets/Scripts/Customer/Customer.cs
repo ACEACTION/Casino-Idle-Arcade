@@ -7,7 +7,10 @@ public class Customer : MonoBehaviour
 {
     //public ElementsType elementType;
     public Animator anim;
-    public CustomerData stats;
+    public CustomerData customerData;
+    public Transform snackTransform;
+    float vendingMachineDesireRate;
+
     public ParticleSystem[] confetti;
     public bool isWinning = false;
     public bool tableWinner;
@@ -17,6 +20,8 @@ public class Customer : MonoBehaviour
     public CustomerHandStack stack;
     public ChipDesk chipDesk = null;
     [SerializeField] GameObject[] customerCards;
+    public VendingMachine vendingMachine;
+
 
 
     private void OnEnable()
@@ -35,6 +40,10 @@ public class Customer : MonoBehaviour
     public void SetPlayingJackPotAnimation(bool state)
     {
         anim.SetBool("isPlayingJackPot", state);
+    }
+    public void SetPlayingVendingMachineAnimation(bool state)
+    {
+        anim.SetBool("isBuyingSnack", state);
     }
 
     public void SetWinningAnimation(bool state)
@@ -85,6 +94,8 @@ public class Customer : MonoBehaviour
         }
     }
 
+    public bool CustomerWantsVendingMachine() => Random.value < vendingMachineDesireRate;
+    public void SetDesireRate() => vendingMachineDesireRate = customerData.vendingMachineDesireRate;
 
     public void SetCustomerCardsActiveState(bool state)
     {
