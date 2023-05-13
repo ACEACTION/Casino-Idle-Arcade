@@ -9,6 +9,7 @@ public static class CasinoElementManager
     public static List<CasinoElement> jackPots = new List<CasinoElement>();
 
     public static List<CasinoElement> allCasinoElements = new List<CasinoElement>();
+
     
   
     public static CasinoElement FindCasinoElement()

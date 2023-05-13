@@ -15,7 +15,7 @@ public class CasinoElementSpot : MonoBehaviour
         {
             if (other.gameObject.Equals(customer.gameObject))
             {
-                gi.CustomerHasArrived();                
+                gi.CustomerHasArrived();
             }
         }
     }
