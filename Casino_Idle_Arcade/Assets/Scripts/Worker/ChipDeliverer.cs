@@ -83,7 +83,6 @@ public class ChipDeliverer : Cleaner
                 //deliverer arrives to destination
 
                 anim.SetBool("isDelivering", false);
-                agent.speed = 0;
                 waitingCd -= Time.deltaTime;
                 if (waitingCd <= 0)
                 {
