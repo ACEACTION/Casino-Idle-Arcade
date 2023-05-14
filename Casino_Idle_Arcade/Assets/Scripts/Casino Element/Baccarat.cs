@@ -41,6 +41,7 @@ public class Baccarat : CasinoGame_ChipGame
             foreach (CustomerMovement cs in customers)
             {
                 cs.SetCustomerCardsActiveState(false);
+                cs.disablePlayingAnim();
             }
         }
 
