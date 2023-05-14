@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 public class VendingMachinePool : MonoBehaviour
 {
-    [SerializeField] Snack snackPrefab;
+    [SerializeField] Snack[] snackPrefab;
 
     public ObjectPool<Snack> snackPool;
 
@@ -41,7 +41,7 @@ public class VendingMachinePool : MonoBehaviour
     private Snack CreateSnack()
     {
         Snack snack =
-            Instantiate(snackPrefab, transform.position, Quaternion.identity);
+            Instantiate(snackPrefab[Random.Range(0,2)], transform.position, Quaternion.identity);
         return snack;
     }
 
