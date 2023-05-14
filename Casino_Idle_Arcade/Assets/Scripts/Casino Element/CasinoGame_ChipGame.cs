@@ -8,7 +8,7 @@ using DG.Tweening;
 public class CasinoGame_ChipGame : CasinoGame
 {
     //variables
-    public float dealerCastTime;
+    public float playCd;
     public float cleaningCd;
     public bool isWorkerAvailable = false;
 
@@ -49,11 +49,12 @@ public class CasinoGame_ChipGame : CasinoGame
         cleaningSlider.maxValue = data.cleaningCdAmount;
         getChipCd = data.maxGetChipCd;
         data.playChipSpotDefaultPos = playChipSpot.localPosition;
-        gameSlider.maxValue = data.dealerCastTimeAmount;
+        SetPlayCd(upgradeIndex);
+        gameSlider.maxValue = playCd;
         ShakeModel();
         gameStack.SetMaxStackCount(upgradeIndex);
         cleaningCd = data.cleaningCdAmount;
-        dealerCastTime = data.dealerCastTimeAmount;
+
     }
 
     public virtual void PayMoney()
@@ -107,9 +108,9 @@ public class CasinoGame_ChipGame : CasinoGame
         workerCheker.worker?.ActiveActionAnim(false);
         gameSlider.gameObject?.SetActive(true);
         gameSlider.value += Time.deltaTime;
-        dealerCastTime -= Time.deltaTime;
+        playCd -= Time.deltaTime;
 
-        if (dealerCastTime <= 0)
+        if (playCd <= 0)
         {
             //game ended
             ChoseWinner();
@@ -172,7 +173,7 @@ public class CasinoGame_ChipGame : CasinoGame
         {
             AudioSourceManager.Instance.PlayShineSfx();
             cleaningCd = data.cleaningCdAmount;
-            dealerCastTime = data.dealerCastTimeAmount;
+            SetPlayCd(upgradeIndex);
             choseWinnerPossible = true;
             actCustomerAnimation = false;
             hasChip = false;
@@ -274,7 +275,7 @@ public class CasinoGame_ChipGame : CasinoGame
     {
         base.UpgradeElements();
 
-        if (dealerCastTime <= 0)
+        if (playCd <= 0)
         {
             CleanProcess();
             StartCoroutine(ResetGame());
@@ -283,7 +284,7 @@ public class CasinoGame_ChipGame : CasinoGame
         {
             readyToPlay = false;
             cleaningCd = data.cleaningCdAmount;
-            dealerCastTime = data.dealerCastTimeAmount;
+            SetPlayCd(upgradeIndex);
             choseWinnerPossible = true;
             actCustomerAnimation = false;
             payedMoney = true;
@@ -291,8 +292,12 @@ public class CasinoGame_ChipGame : CasinoGame
             cleaningSlider.value = 0;
             gameSlider.gameObject.SetActive(false);
             ShakeModel();
-
         }
 
+        gameSlider.maxValue = playCd;
+
     }
+
+    void SetPlayCd(int upgradeIndex) => playCd = data.GetMaxPlayCdLevel(upgradeIndex);
+
 }

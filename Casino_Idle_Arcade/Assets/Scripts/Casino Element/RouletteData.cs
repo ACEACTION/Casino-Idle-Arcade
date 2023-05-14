@@ -7,7 +7,7 @@ public class RouletteData : ScriptableObject
 {
     public int[] moneyAmountLevel;    
 
-    public float dealerCastTimeAmount;
+    [SerializeField] float[] maxPlayCdLevel;
     public float getChipDuration;
     public float cleaningCdAmount;
     public int betUnitPrice;
@@ -17,5 +17,5 @@ public class RouletteData : ScriptableObject
     public float giveChipsToWinnerDelay = 2f;
 
 
-
+    public float GetMaxPlayCdLevel(int upgradeIndex) => maxPlayCdLevel[upgradeIndex];
 }

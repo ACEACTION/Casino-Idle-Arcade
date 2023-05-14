@@ -35,7 +35,7 @@ public class Baccarat : CasinoGame_ChipGame
     {
         base.PlayGame();
 
-        if (dealerCastTime <= 0)
+        if (playCd <= 0)
         {            
             // baccarat
             foreach (CustomerMovement cs in customers)

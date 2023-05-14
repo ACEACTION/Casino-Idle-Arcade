@@ -36,8 +36,9 @@ public class CasinoGameStack : MonoBehaviour
         resource.transform.DOLocalMove(firsStack.localPosition,
             data.addResourceToStackTime).OnComplete(() =>
             {
-                resource.transform.DOShakeScale(0f, 0.0f)
-                .OnComplete(() => { resource.transform.DOScale(0.67f, 0.1f); });
+                //resource.transform.DOShakeScale(0f, 0.0f)
+                //.OnComplete(() => { resource.transform.DOScale(0.67f, 0.1f); });
+                resource.transform.DOScale(0.67f, 0.1f);
                 casinoResources.Add(resource);
             });
 

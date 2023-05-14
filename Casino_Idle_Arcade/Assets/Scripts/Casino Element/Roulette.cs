@@ -41,7 +41,7 @@ public class Roulette : CasinoGame_ChipGame
         animatedBalls?.SetActive(true);
         anim.SetBool("isSpining", true);        
 
-        if(dealerCastTime <= 0)
+        if(playCd <= 0)
         {        
             // roulette animation set off
             staticBalls?.SetActive(true);
@@ -96,7 +96,7 @@ public class Roulette : CasinoGame_ChipGame
     {
         base.UpgradeElements();
 
-        if (dealerCastTime <= 0)
+        if (playCd <= 0)
         {        
             SetGameBalls(true, false);
         }
