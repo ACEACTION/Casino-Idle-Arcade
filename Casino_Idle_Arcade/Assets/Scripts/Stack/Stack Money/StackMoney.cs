@@ -141,6 +141,7 @@ public class StackMoney : MonoBehaviour
 
             if (totalMoney > 0)
             {
+                AudioSourceManager.Instance.PlayCashPickupSfx();
                 showMoney = false;
                 stackMoneyCanvas.AddMoneyText(totalMoney);
                 totalMoney = 0;

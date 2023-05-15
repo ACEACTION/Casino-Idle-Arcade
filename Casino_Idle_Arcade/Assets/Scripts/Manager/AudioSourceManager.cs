@@ -28,7 +28,7 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     public void PlayFushSfx() => PlaySfx(fushSfx);
-    public void PlayCashPickupSfx() => PlaySfx(buyAreaSfx);
+    public void PlayCashPickupSfx() => PlaySfx(pickUpCashSfx[Random.Range(0,pickUpCashSfx.Length)]);
     public void PlayPoPSfx() => PlaySfx(popSfx);
 
     public void PlaySweepSfx() => PlaySfx(sweepSfx);
