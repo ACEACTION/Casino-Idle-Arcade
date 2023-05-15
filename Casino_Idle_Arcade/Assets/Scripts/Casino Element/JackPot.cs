@@ -30,7 +30,7 @@ public class JackPot : CasinoGame
 
     private void Update()
     {
-        if(readyToPlay)
+        if(readyToUse)
         {
             PlayGame();
             castTime -= Time.deltaTime;

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class Snack : CasinoResource
+public class CasinoFood : CasinoResource
 {
     
-
     [SerializeField] SnackData snackData;
     public void MoveSnackToCustomer(Transform destination)
     {

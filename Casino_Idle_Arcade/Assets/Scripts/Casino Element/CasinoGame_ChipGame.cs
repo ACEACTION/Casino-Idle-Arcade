@@ -282,7 +282,7 @@ public class CasinoGame_ChipGame : CasinoGame
         }
         else
         {
-            readyToPlay = false;
+            readyToUse = false;
             cleaningCd = data.cleaningCdAmount;
             SetPlayCd(upgradeIndex);
             choseWinnerPossible = true;

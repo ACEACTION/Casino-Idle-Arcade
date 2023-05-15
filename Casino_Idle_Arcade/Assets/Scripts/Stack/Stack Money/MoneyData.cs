@@ -11,6 +11,7 @@ public class MoneyData : ScriptableObject
     public int baccaratMoneyAmount;
     public int jackpotMoneyAmount;
     public int chipDeskMoneyAmount;
+    public int vendingMoneyAmount;
     public int barMoneyAmount;
     public float moneyGoToCustomerFromDeskTime;
     public float goToPlayerTime;
@@ -31,6 +32,8 @@ public class MoneyData : ScriptableObject
                 return chipDeskMoneyAmount;
             case MoneyType.barMoney:
                 return barMoneyAmount;
+            case MoneyType.vendingMoney:
+                return vendingMoneyAmount;
             default:
                 return 0;
         }
@@ -44,6 +47,7 @@ public enum MoneyType
     baccaratMoney,
     jackpotMoney, 
     chipDeskMoney, 
+    vendingMoney,
     barMoney    
 }
 

@@ -19,20 +19,18 @@ public class CasinoGameStack : ElementStack
     public override void AddToGameStack(CasinoResource resource)
     {
         base.AddToGameStack(resource);
-        
-        resource.transform.SetParent(firsStack.transform.parent);
-        resource.transform.DOLocalJump(firsStack.localPosition, 2, 1,
-            data.addResourceToStackTime).OnComplete(() =>
-            {
-                //resource.transform.DOShakeScale(0f, 0.0f)
-                //.OnComplete(() => { resource.transform.DOScale(0.67f, 0.1f); });
-                resource.transform.DOScale(0.67f, 0.1f);
-                casinoResources.Add(resource);
-            });
 
-        firsStack.position += new Vector3(0, data.stackYOffset, 0);
+        //resource.transform.SetParent(firsStack.transform.parent);
+
+        JumpMoveResource(resource);
+        SetResourceParent(resource.transform, firsStack.transform.parent);
+        firsStack.position += new Vector3(0, data.stackYOffset, 0);        
     }
 
+    public override void CompleteJumpMove(CasinoResource resource)
+    {
+        base.CompleteJumpMove(resource);        
+    }
 
 
     public override void SetDeliverProcess()

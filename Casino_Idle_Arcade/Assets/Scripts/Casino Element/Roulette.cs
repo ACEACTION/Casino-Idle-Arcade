@@ -60,7 +60,7 @@ public class Roulette : CasinoGame_ChipGame
     {
         if((workerCheker.isPlayerAvailable 
             || workerCheker.isDealerAvailabe) 
-            && readyToPlay)
+            && readyToUse)
         {
             GetBetAmountFromCustomer();
             GetChipFromStack();
