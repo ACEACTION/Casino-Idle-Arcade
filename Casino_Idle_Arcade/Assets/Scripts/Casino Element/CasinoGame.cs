@@ -8,7 +8,7 @@ public class CasinoGame : CasinoElement
     public float castTime;
     public float castTimeAmount;
     public float delayToReset;
-    public bool readyToPlay;
+    public bool readyToUse;
     public CasinoGameMoneyStack[] moneyStacks;
     public CasinoGameStack gameStack;
     public StackMoney stackMoney;
@@ -19,7 +19,7 @@ public class CasinoGame : CasinoElement
         base.CustomerHasArrived();
  
         customerCounter++;
-        readyToPlay = customerCounter == maxGameCapacity;
+        readyToUse = customerCounter == maxGameCapacity;
     }
 
     public override void CustomerLeft()
@@ -36,7 +36,7 @@ public class CasinoGame : CasinoElement
 
     public virtual IEnumerator ResetGame()
     {
-        readyToPlay = false;
+        readyToUse = false;
         yield return new WaitForSeconds(delayToReset);
         castTime = castTimeAmount;
         customers.Clear();

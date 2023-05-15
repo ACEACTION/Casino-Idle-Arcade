@@ -10,7 +10,7 @@ public class ElementStack : MonoBehaviour
     [SerializeField] int maxStackCount;
     public int stackCount;
     // references
-    public CasinoGameStackData data;
+    public ElementStackData data;
     public List<CasinoResource> casinoResources = new List<CasinoResource>();
     public Transform firsStack;
     [SerializeField] TextMeshPro stackTxt;
@@ -44,6 +44,21 @@ public class ElementStack : MonoBehaviour
             //resourceIcon.DOScale(data.iconDefaultScale, .7f);
             ground.DOScale(data.stackDefaultScale + .2f, 1);
         }
+    }
+
+    public void SetResourceParent(Transform resource, Transform parent) => resource.parent = parent;
+    public void RotateResource(Transform resource)
+        => resource.DORotate(new Vector3(0, Random.Range(0, 1200), 0), data.duration, RotateMode.FastBeyond360);
+
+    public void JumpMoveResource(CasinoResource resource) 
+        => resource.transform.DOJump(firsStack.position, data.jumpPower, 1,
+            data.duration).OnComplete(() =>
+            {
+                CompleteJumpMove(resource);
+            });
+    public virtual void CompleteJumpMove(CasinoResource resource) 
+    {
+        casinoResources.Add(resource);
     }
 
     public virtual void AddToGameStack(CasinoResource resource)

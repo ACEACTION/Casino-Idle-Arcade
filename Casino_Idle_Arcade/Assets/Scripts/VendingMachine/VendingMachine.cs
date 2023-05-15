@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VendingMachine : CasinoGame
 {
+    [SerializeField] VendingMachineStack stack;
+    bool payedMoney = true;
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class VendingMachine : CasinoGame
 
     private void Update()
     {
-        if (readyToPlay)
+        if (readyToUse && stack.CanGetResource())
         {
             castTime -= Time.deltaTime;
             if(castTime <= 0)
@@ -34,6 +36,7 @@ public class VendingMachine : CasinoGame
 
     public override IEnumerator ResetGame()
     {
+        payedMoney = true;
         return base.ResetGame();
     }
     public override void PlayGame()
@@ -49,17 +52,24 @@ public class VendingMachine : CasinoGame
 
     public void GiveSnackToCustomer()
     {
-        Snack snack = VendingMachinePool.Instance.snackPool.Get();
-        snack.transform.position = transform.position;
-        snack.MoveSnackToCustomer(customers[0].snackTransform);
-        customers[0].stack.AddResourceToStack(snack);
-
-
+        CasinoFood food = (CasinoFood)stack.GetFromGameStack();
+        food.transform.position = transform.position;
+        food.MoveSnackToCustomer(customers[0].snackTransform);
+        customers[0].stack.AddResourceToStack(food);
+        PayMoney();
 
     }
 
     //void ShakeElement() => transform.DOShakeScale(1f, 0.5f);
-
+    public void PayMoney()
+    {
+        if (payedMoney)
+        {
+            payedMoney = false;
+            int moneyAmount = Random.Range(3, 5);
+            customers[0].PayMoney(stackMoney, moneyAmount, MoneyType.vendingMoney);
+        }
+    }
     public override void CustomerHasArrived()
     {
         base.CustomerHasArrived();

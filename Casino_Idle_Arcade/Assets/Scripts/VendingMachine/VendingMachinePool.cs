@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Pool;
 public class VendingMachinePool : MonoBehaviour
 {
-    [SerializeField] Snack[] snackPrefab;
+    [SerializeField] CasinoFood[] casinoFoodPrefabs;
 
-    public ObjectPool<Snack> snackPool;
+    public ObjectPool<CasinoFood> casinoFoodPool;
 
     public static VendingMachinePool Instance;
 
@@ -20,33 +20,33 @@ public class VendingMachinePool : MonoBehaviour
 
     private void Start()
     {
-        snackPool = new ObjectPool<Snack>(
+        casinoFoodPool = new ObjectPool<CasinoFood>(
             CreateSnack, OnGet, OnRelease, OnDestroySnack, false, 100, 100000);
     }
-    private void OnDestroySnack(Snack obj)
+    private void OnDestroySnack(CasinoFood obj)
     {
         Destroy(obj);
     }
 
-    private void OnRelease(Snack obj)
+    private void OnRelease(CasinoFood obj)
     {
         obj.gameObject.SetActive(false);
     }
 
-    private void OnGet(Snack obj)
+    private void OnGet(CasinoFood obj)
     {
         obj.gameObject.SetActive(true);
     }
 
-    private Snack CreateSnack()
+    private CasinoFood CreateSnack()
     {
-        Snack snack =
-            Instantiate(snackPrefab[Random.Range(0,2)], transform.position, Quaternion.identity);
+        CasinoFood snack =
+            Instantiate(casinoFoodPrefabs[Random.Range(0,2)], transform.position, Quaternion.identity);
         return snack;
     }
 
-    public void OnReleaseSnack(Snack snack)
+    public void OnReleaseSnack(CasinoFood snack)
     {
-        snackPool.Release(snack);
+        casinoFoodPool.Release(snack);
     }
 }

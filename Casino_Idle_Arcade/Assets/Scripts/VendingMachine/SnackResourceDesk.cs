@@ -9,13 +9,13 @@ public class SnackResourceDesk : CasinoResourceDesk
     {
         base.AddResourceToStack(stack);
 
-        CasinoResource snack = VendingMachinePool.Instance.snackPool.Get();
-        SetResourcePos(snack.transform);
-        SetResourceParent(snack.transform, stack.firstStack.transform.parent);
-        SetResourceLocalMove(snack.transform, stack.firstStack);
+        CasinoResource food = VendingMachinePool.Instance.casinoFoodPool.Get();
+        SetResourcePos(food.transform);
+        SetResourceParent(food.transform, stack.firstStack.transform.parent);
+        SetResourceLocalMove(food.transform, stack.firstStack);
         
-        AddToStackList(stack.stackList, snack);
-        AddToStackList(stack.vMachineList, snack);
+        AddToStackList(stack.stackList, food);
+        AddToStackList(stack.vMachineList, food);
     }
 
 

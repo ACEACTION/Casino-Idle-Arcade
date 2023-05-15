@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/Casino Game Stack Data")]
-public class CasinoGameStackData : ScriptableObject
+public class ElementStackData : ScriptableObject
 {
     public int[] maxStackCountLevel;
     public float stackYOffset;
-    public float addResourceToStackTime;
+    public float duration;
+    public float jumpPower;
     [HideInInspector] public float iconDefaultScale;
     [HideInInspector] public float stackDefaultScale;
 
