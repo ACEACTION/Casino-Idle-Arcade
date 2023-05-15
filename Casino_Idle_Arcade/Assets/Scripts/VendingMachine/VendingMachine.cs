@@ -14,9 +14,7 @@ public class VendingMachine : CasinoGame
             CasinoManager.instance.availableElements.Add(ElementsType.VendingMachine);
         }
 
-        ShakeElement();
-
-
+        ShakeModel();
     }
 
     private void Update()
@@ -60,7 +58,7 @@ public class VendingMachine : CasinoGame
 
     }
 
-    void ShakeElement() => transform.DOShakeScale(1f, 0.5f);
+    //void ShakeElement() => transform.DOShakeScale(1f, 0.5f);
 
     public override void CustomerHasArrived()
     {

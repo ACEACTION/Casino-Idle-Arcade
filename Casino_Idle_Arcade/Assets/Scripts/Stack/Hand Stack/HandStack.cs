@@ -4,30 +4,36 @@ using UnityEngine;
 
 
 public class HandStack : MonoBehaviour
-{       
+{
 
     // variables
     public int maxStackCount;
     [SerializeField] int stackCount;
     [SerializeField] float stackYOffset;
-    public float maxAddStackCd;    
+    public float maxAddStackCd;
     float addStackCd;
     [SerializeField] float maxRemoveStackCd;
     float removeStackCd;
     public bool stackHasResource;
+    [SerializeField] bool activeMaxTxt;
 
     // references
     [SerializeField] Animator anim;
     public Transform firstStack;
+    Vector3 firsStackOrigin;
     public List<CasinoResource> stackList;
+    public List<CasinoResource> vMachineList;
+    public List<CasinoResource> chipList;
     public CasinoResourceDesk casinoResource;
-    CasinoGameStack casinoGameStack;
+    ElementStack casinoGameStack;
+    public ElementStack vMachineStack;
     [SerializeField] GameObject maxTxt;
 
 
     private void Start()
     {
         addStackCd = maxAddStackCd;
+        firsStackOrigin = firstStack.localPosition;
     }
 
     private void Update()
@@ -55,16 +61,16 @@ public class HandStack : MonoBehaviour
     void AddStackResource()
     {
         if (casinoResource)
-        {            
-            casinoResource.AddResourceToStack(this, stackList);
+        {
+            casinoResource.AddResourceToStack(this);
             stackCount++;
             AudioSourceManager.Instance.PlayPoPSfx();
             firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
             stackHasResource = true;
-                     
-            if (StackIsMax() && maxTxt)
+
+            if (StackIsMax() && activeMaxTxt)
             {
-                maxTxt.SetActive(true);
+                MaxStackText.Instance.SetTextState(true);
             }
         }
     }
@@ -81,7 +87,7 @@ public class HandStack : MonoBehaviour
 
     void RemoveFromStackWithCd()
     {
-        if (casinoGameStack && CanRemoveStack())
+        if ((casinoGameStack || vMachineStack) && CanRemoveStack())
         {
             removeStackCd -= Time.deltaTime;
             if (removeStackCd < 0)
@@ -93,18 +99,46 @@ public class HandStack : MonoBehaviour
     }
     void RemoveFromStack()
     {
-        if (casinoGameStack && casinoGameStack.CanAddStack())
+        if (casinoGameStack && ListHasResource(chipList) && casinoGameStack.CanAddStack())
         {
-            casinoGameStack.AddToGameStack(stackList[stackList.Count - 1]);
-            stackList.RemoveAt(stackList.Count - 1);
-            stackCount--;
-            firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
-            AudioSourceManager.Instance.PlayPoPSfx();
-            stackHasResource = CanRemoveStack();
+            CasinoResource resource = chipList[chipList.Count - 1];
+            RemoveStackProcess(resource);
+            casinoGameStack.AddToGameStack(resource);            
+            chipList.Remove(resource);
 
-            if (maxTxt)
-                maxTxt.SetActive(false);
-            
+        }
+
+        if (vMachineStack && ListHasResource(vMachineList) && vMachineStack.CanAddStack())
+        {
+            CasinoResource resource = vMachineList[vMachineList.Count - 1];
+            RemoveStackProcess(resource);
+            vMachineStack.AddToGameStack(resource);
+            vMachineList.Remove(resource);
+
+        }
+
+    }
+
+    void RemoveStackProcess(CasinoResource resource)
+    {
+        stackList.Remove(resource);
+        stackCount--;
+        firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
+        AudioSourceManager.Instance.PlayPoPSfx();
+        stackHasResource = CanRemoveStack();
+        ResetStackListPos();
+
+        if (activeMaxTxt)
+            MaxStackText.Instance.SetTextState(false);
+    }
+
+    void ResetStackListPos()
+    {
+        firstStack.localPosition = firsStackOrigin;
+        foreach (CasinoResource r in stackList)
+        {
+            r.transform.localPosition = firstStack.localPosition;
+            firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
         }
     }
 
@@ -121,6 +155,11 @@ public class HandStack : MonoBehaviour
             casinoGameStack = other.GetComponent<CasinoGameStack>();
         }
 
+        if (other.gameObject.CompareTag("VendingMachine"))
+        {
+            vMachineStack = other.GetComponent<VendingMachineStack>();
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -135,8 +174,14 @@ public class HandStack : MonoBehaviour
             casinoGameStack = null;
         }
 
+        if (other.gameObject.CompareTag("VendingMachine"))
+        {
+            vMachineStack = null;
+        }
+
     }
 
     public int GetStackCount() => stackCount;
     public bool StackIsMax() => stackCount == maxStackCount;
+    public bool ListHasResource<T>(List<T> list) => list.Count > 0;
 }

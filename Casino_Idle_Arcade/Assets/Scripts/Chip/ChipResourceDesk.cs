@@ -6,12 +6,8 @@ using DG.Tweening;
 
 public class ChipResourceDesk : CasinoResourceDesk
 {
-    [SerializeField] ChipResourceDeskData data; 
     int maxChipIndex;
     int chipIndex;
-
-
-    [SerializeField] Transform chipSpawnPoint;
 
     private void Start()
     {
@@ -20,17 +16,17 @@ public class ChipResourceDesk : CasinoResourceDesk
     }
 
 
-    public override void AddResourceToStack(HandStack stack, List<CasinoResource> stackList)
+    public override void AddResourceToStack(HandStack stack)
     {
-        base.AddResourceToStack(stack, stackList);
+        base.AddResourceToStack(stack);
         Chip chip = MakeChip(GetChipType());
-        chip.transform.position = chipSpawnPoint.position;
-        chip.transform.SetParent(stack.firstStack.transform.parent);
-        chip.transform.DOLocalMove(stack.firstStack.localPosition, 
-            data.addResourceToDeskTime)
-            .OnComplete(() => { chip.transform.DOShakeScale(0.1f, 0.3f).
-                OnComplete(() => { chip.transform.DOScale(0.5827846f, 0.1f); }); });
-        stackList.Add(chip);
+        SetResourcePos(chip.transform);
+        SetResourceParent(chip.transform, stack.firstStack.transform.parent);
+        SetResourceLocalMove(chip.transform, stack.firstStack);
+
+        AddToStackList(stack.stackList, chip);
+        AddToStackList(stack.chipList, chip);
+
     }
 
     ChipType GetChipType()
