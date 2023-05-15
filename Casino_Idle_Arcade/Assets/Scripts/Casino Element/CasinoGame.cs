@@ -13,6 +13,7 @@ public class CasinoGame : CasinoElement
     public CasinoGameStack gameStack;
     public StackMoney stackMoney;
     
+    
     public override void CustomerHasArrived()
     {
         base.CustomerHasArrived();
