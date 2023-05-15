@@ -10,8 +10,7 @@ public class HandStack : MonoBehaviour
     public int maxStackCount;
     [SerializeField] int stackCount;
     [SerializeField] float stackYOffset;
-    public float maxAddStackCd;
-    [SerializeField] CapsuleCollider collider;
+    public float maxAddStackCd;    
     float addStackCd;
     [SerializeField] float maxRemoveStackCd;
     float removeStackCd;
@@ -23,6 +22,8 @@ public class HandStack : MonoBehaviour
     public List<CasinoResource> stackList;
     public CasinoResourceDesk casinoResource;
     CasinoGameStack casinoGameStack;
+    [SerializeField] GameObject maxTxt;
+
 
     private void Start()
     {
@@ -61,6 +62,10 @@ public class HandStack : MonoBehaviour
             firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
             stackHasResource = true;
                      
+            if (StackIsMax() && maxTxt)
+            {
+                maxTxt.SetActive(true);
+            }
         }
     }
 
@@ -96,6 +101,10 @@ public class HandStack : MonoBehaviour
             firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
             AudioSourceManager.Instance.PlayPoPSfx();
             stackHasResource = CanRemoveStack();
+
+            if (maxTxt)
+                maxTxt.SetActive(false);
+            
         }
     }
 
@@ -129,4 +138,5 @@ public class HandStack : MonoBehaviour
     }
 
     public int GetStackCount() => stackCount;
+    public bool StackIsMax() => stackCount == maxStackCount;
 }
