@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -16,26 +17,36 @@ public class TutorialManager : MonoBehaviour
     bool showCashier;
     bool spawnCustomers = true;
     bool getChip;
-    bool carryChip;
+    public bool carryChip;
 
 
     [SerializeField] ArrowRenderer arrowRenderer;
+    [SerializeField] GameObject standArrow;
     [SerializeField] GameObject followCam;
     [SerializeField] List<Transform> objs;
-    [SerializeField] BuyAreaController rouletteBAController;
+    [SerializeField] BuyAreaController baccaratBAController;
     [SerializeField] CashierManager cashierManager;
     [SerializeField] GameObject chipDesk;   
-    [SerializeField] Roulette roulette;
+    [SerializeField] Baccarat baccarat;
     [SerializeField] HandStack playerHandStack;
+    [SerializeField] GameObject secondBaccarat;
     private void Start()
     {
 
         if (!GameManager.isCompleteTutorial)
         { 
-            cashierTime = cashierManager.data.cooldownAmount * roulette.maxGameCapacity + 2f;
+            cashierTime = cashierManager.data.cooldownAmount * baccarat.maxGameCapacity + 2f;
             getChipTime = playerHandStack.maxAddStackCd * playerHandStack.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
+            
+            standArrow.transform.DOMoveY(standArrow.transform.position.y - 2f, 1.5f).SetLoops(-1, LoopType.Yoyo);
+            
+
+        }
+        else
+        {
+            standArrow.SetActive(false);
         }
     }
 
@@ -48,18 +59,22 @@ public class TutorialManager : MonoBehaviour
         //arrowRenderer.SetPositions(
         //    PlayerMovements.Instance.transform.position, worldMousePosition);
 
-        if (GameManager.isCompleteTutorial) return;
 
-        MakeFirstRoulette();
+
+        if (GameManager.isCompleteTutorial) return;
+        
+        MaxStackText.Instance.SetTextState(false);
+
+        MakeFirstBaccarat();
         ShowCashier();
         ChipDeskProcess();
         EndTutorial();
         SetArrowFollow();
     }
 
-    void MakeFirstRoulette()
+    void MakeFirstBaccarat()
     {
-        if (!makeFirstRoulette && rouletteBAController.price <= 0)
+        if (!makeFirstRoulette && baccaratBAController.price <= 0)
         {
             objs.RemoveAt(0);
             makeFirstRoulette = true;
@@ -122,15 +137,16 @@ public class TutorialManager : MonoBehaviour
     }
 
 
+
     void EndTutorial()
     {
-        if (carryChip && roulette.cleaningCd <= 0)
+        if (carryChip && PlayerMovements.Instance.handStack.casinoGameStack)
         {
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
             GameManager.isCompleteTutorial = true;
-            //PriorityManager.Instance.gameObject.SetActive(true);
-            //PriorityManager.Instance.elements[0].SetActive(true);
+            standArrow.SetActive(false);
+            secondBaccarat.SetActive(true);
         }
     }
 
@@ -155,7 +171,8 @@ public class TutorialManager : MonoBehaviour
         followCam.transform.position = objs[0].position + camOffset;
         followCam.SetActive(true);
         Joystick.Instance.ResetJoystick();
-        Joystick.Instance.gameObject.SetActive(false);
+        Joystick.Instance.gameObject.SetActive(false);        
+        standArrow.transform.position = objs[0].position + new Vector3(0, 4, 0);
         yield return new WaitForSeconds(followCamTime);
         followCam.SetActive(false);
         Joystick.Instance.gameObject.SetActive(true);

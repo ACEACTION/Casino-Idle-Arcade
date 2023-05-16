@@ -89,5 +89,5 @@ public class PlayerMovements : MonoBehaviour
         //velocity = anim.deltaPosition;
     }
 
-
+   
 }

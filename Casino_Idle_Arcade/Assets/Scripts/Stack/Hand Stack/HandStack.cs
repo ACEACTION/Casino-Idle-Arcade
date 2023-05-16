@@ -24,9 +24,9 @@ public class HandStack : MonoBehaviour
     public List<CasinoResource> stackList;
     public List<CasinoResource> vMachineList;
     public List<CasinoResource> chipList;
-    public CasinoResourceDesk casinoResource;
-    ElementStack casinoGameStack;
-    public ElementStack vMachineStack;
+    CasinoResourceDesk casinoResource;
+    [HideInInspector] public ElementStack casinoGameStack;
+    ElementStack vMachineStack;
     [SerializeField] GameObject maxTxt;
 
 
