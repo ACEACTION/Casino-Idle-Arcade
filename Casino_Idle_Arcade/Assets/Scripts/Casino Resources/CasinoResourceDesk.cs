@@ -16,7 +16,7 @@ public class CasinoResourceDesk : MonoBehaviour
     public void SetResourcePos(Transform resource) => resource.position = resourceSpawnPoint.position;
     
     public void SetResourceParent(Transform resource, Transform parent) => resource.parent = parent;
-    public void SetResourceLocalMove(Transform resource, Transform targetPos) => resource.DOLocalMove(targetPos.localPosition,
+    public void SetResourceLocalMove(Transform resource, Transform targetPos) => resource.DOLocalJump(targetPos.localPosition, 3, 1,
             data.addResourceToDeskTime)
             .OnComplete(() => {
                 resource.DOShakeScale(0.1f, 0.3f).
