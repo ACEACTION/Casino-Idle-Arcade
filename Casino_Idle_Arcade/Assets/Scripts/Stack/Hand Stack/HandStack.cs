@@ -89,7 +89,7 @@ public class HandStack : MonoBehaviour
 
     void RemoveFromStackWithCd()
     {
-        if ((casinoGameStack || vMachineStack) && CanRemoveStack())
+        if ((casinoGameStack || vMachineStack || isTrash) && CanRemoveStack())
         {
             removeStackCd -= Time.deltaTime;
             if (removeStackCd < 0)
@@ -97,22 +97,7 @@ public class HandStack : MonoBehaviour
                 RemoveFromStack();
                 removeStackCd = maxRemoveStackCd;
             }
-        }
-
-        if (isTrash && CanRemoveStack())
-        {
-            foreach (CasinoResource r in stackList)
-            {
-                r.transform.DOJump(trash.position, 3, 1, .6f)
-                    .OnComplete(() =>
-                    {
-                        r.ReleaseResource();
-                    });
-                RemoveStackProcess(r);
-            }
-            chipList.Clear();
-            vMachineList.Clear();
-        }
+        }        
 
     }
     void RemoveFromStack()
@@ -120,26 +105,36 @@ public class HandStack : MonoBehaviour
         if (casinoGameStack && ListHasResource(chipList) && casinoGameStack.CanAddStack())
         {
             CasinoResource resource = chipList[chipList.Count - 1];
-            RemoveStackProcess(resource);
-            casinoGameStack.AddToGameStack(resource);            
+            RemoveFromStackProcess(resource);
+            casinoGameStack.AddToGameStack(resource);
             chipList.Remove(resource);
-
         }
 
         if (vMachineStack && ListHasResource(vMachineList) && vMachineStack.CanAddStack())
         {
             CasinoResource resource = vMachineList[vMachineList.Count - 1];
-            RemoveStackProcess(resource);
+            RemoveFromStackProcess(resource);
             vMachineStack.AddToGameStack(resource);
             vMachineList.Remove(resource);
-
         }
 
-        
+        if (isTrash)
+        {            
+            CasinoResource resource = stackList[stackList.Count - 1];
+            resource.transform.DOJump(trash.position, 3, 1, .6f)
+                .OnComplete(() =>
+                {
+                    resource.ReleaseResource();
+                });
+
+            chipList.Remove(resource);
+            vMachineList.Remove(resource);
+            RemoveFromStackProcess(resource);
+        }
 
     }
 
-    void RemoveStackProcess(CasinoResource resource)
+    void RemoveFromStackProcess(CasinoResource resource)
     {
         stackList.Remove(resource);
         stackCount--;
