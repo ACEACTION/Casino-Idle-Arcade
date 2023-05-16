@@ -23,6 +23,7 @@ public class StartGame : MonoBehaviour
     {
         defaultCam.SetActive(false);
         mainCanvas.SetActive(false);
+        tutorial.SetActive(false);
         startGame = false;
     }
 
