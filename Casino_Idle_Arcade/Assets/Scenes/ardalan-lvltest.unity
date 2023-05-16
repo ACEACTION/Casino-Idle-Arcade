@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8535106362512023903, guid: 64cb50dfb151a7f479063f08b9a4bac5,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
       propertyPath: maxTxt
@@ -299,17 +304,17 @@ PrefabInstance:
     - target: {fileID: 8535106362512023904, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
       propertyPath: maxStackCount
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
       propertyPath: animationMoveSpeed
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8535106362512023905, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
       propertyPath: animationStackMoveSpeed
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8535106362718684528, guid: 64cb50dfb151a7f479063f08b9a4bac5,
         type: 3}
@@ -418,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 2600802570009534490, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2600802570009534491, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}
@@ -493,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 8852848689562116643, guid: b202501fd647b7a4b8b7bc6d538531ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b202501fd647b7a4b8b7bc6d538531ca, type: 3}
@@ -1478,7 +1483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &247410615
 Transform:
   m_ObjectHideFlags: 0
@@ -6167,7 +6172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1644152063
 Transform:
   m_ObjectHideFlags: 0
