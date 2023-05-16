@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnackResourceDesk : CasinoResourceDesk
+public class CasinoFoodResourceDesk : CasinoResourceDesk
 {
 
     public override void AddResourceToStack(HandStack stack)

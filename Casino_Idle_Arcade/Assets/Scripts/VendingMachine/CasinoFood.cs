@@ -5,7 +5,7 @@ using DG.Tweening;
 public class CasinoFood : CasinoResource
 {
     
-    [SerializeField] SnackData snackData;
+    [SerializeField] CasinoFoodData snackData;
     public void MoveSnackToCustomer(Transform destination)
     {
         transform.DOShakeScale(0.3f, 0.5f).SetDelay(snackData.timeToTravel / 2);

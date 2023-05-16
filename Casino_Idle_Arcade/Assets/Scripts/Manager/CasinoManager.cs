@@ -9,7 +9,7 @@ public enum ElementsType
 }
 public class CasinoManager : MonoBehaviour
 {
-    [SerializeField] bool isCompleteTutorial;
+    public bool isCompleteTutorial;
     [SerializeField] GameObject tutorialManager;
     public int moneytest;
     public List<ElementsType> availableElements = new List<ElementsType>();

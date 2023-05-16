@@ -44,8 +44,11 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        RotatePlayerFace();
+        if (StartGame.Instance.startGame)
+        {
+            Move();
+            RotatePlayerFace();
+        }
     }
     
 
