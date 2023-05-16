@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class HandStack : MonoBehaviour
 {
@@ -16,9 +16,11 @@ public class HandStack : MonoBehaviour
     float removeStackCd;
     public bool stackHasResource;
     [SerializeField] bool activeMaxTxt;
+    bool isTrash;
 
     // references
     [SerializeField] Animator anim;
+    Transform trash;
     public Transform firstStack;
     Vector3 firsStackOrigin;
     public List<CasinoResource> stackList;
@@ -96,6 +98,22 @@ public class HandStack : MonoBehaviour
                 removeStackCd = maxRemoveStackCd;
             }
         }
+
+        if (isTrash && CanRemoveStack())
+        {
+            foreach (CasinoResource r in stackList)
+            {
+                r.transform.DOJump(trash.position, 3, 1, .6f)
+                    .OnComplete(() =>
+                    {
+                        r.ReleaseResource();
+                    });
+                RemoveStackProcess(r);
+            }
+            chipList.Clear();
+            vMachineList.Clear();
+        }
+
     }
     void RemoveFromStack()
     {
@@ -116,6 +134,8 @@ public class HandStack : MonoBehaviour
             vMachineList.Remove(resource);
 
         }
+
+        
 
     }
 
@@ -160,6 +180,12 @@ public class HandStack : MonoBehaviour
             vMachineStack = other.GetComponent<VendingMachineStack>();
         }
 
+        if (other.gameObject.CompareTag("Trash"))
+        {
+            isTrash = true;
+            trash = other.transform;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -179,9 +205,18 @@ public class HandStack : MonoBehaviour
             vMachineStack = null;
         }
 
+        if (other.gameObject.CompareTag("Trash"))
+        {
+            isTrash = false;            
+        }
     }
 
     public int GetStackCount() => stackCount;
+    public void AddMaxStackCounter(int amount)
+    {
+        maxStackCount += amount;
+        MaxStackText.Instance.SetTextState(false);
+    }
     public bool StackIsMax() => stackCount == maxStackCount;
     public bool ListHasResource<T>(List<T> list) => list.Count > 0;
 }
