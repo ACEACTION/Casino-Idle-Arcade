@@ -47,6 +47,12 @@ public class Roulette : CasinoGame_ChipGame
             staticBalls?.SetActive(true);
             animatedBalls?.SetActive(false);
             anim.SetBool("isSpining", false);
+
+            foreach (CustomerMovement cs in customers)
+            {
+                cs.disablePlayingAnim();
+            }
+
         }
     }
 

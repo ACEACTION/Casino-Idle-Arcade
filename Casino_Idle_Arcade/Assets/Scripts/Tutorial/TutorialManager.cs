@@ -27,20 +27,24 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] BuyAreaController baccaratBAController;
     [SerializeField] CashierManager cashierManager;
     [SerializeField] GameObject chipDesk;   
-    [SerializeField] Baccarat baccarat;
+    [SerializeField] Baccarat firstBaccarat;
     [SerializeField] HandStack playerHandStack;
     [SerializeField] GameObject secondBaccarat;
+    [SerializeField] PriorityManager firstPriority_Baccarat;
+
+
     private void Start()
     {
 
         if (!GameManager.isCompleteTutorial)
         { 
-            cashierTime = cashierManager.data.cooldownAmount * baccarat.maxGameCapacity + 2f;
+            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 2f;
             getChipTime = playerHandStack.maxAddStackCd * playerHandStack.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
             
             standArrow.transform.DOMoveY(standArrow.transform.position.y - 2f, 1.5f).SetLoops(-1, LoopType.Yoyo);
+            firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             
 
         }

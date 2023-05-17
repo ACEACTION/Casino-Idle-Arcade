@@ -74,8 +74,6 @@ public class CustomerMovement : Customer
 
                 vendingMachine.SendCustomerToElement(this);
                 vendingMachine = null;
-
-
             }
             else SetLosingAnimation(true);
 
@@ -90,6 +88,7 @@ public class CustomerMovement : Customer
             confetti[i].gameObject.SetActive(true);
             confetti[i].Play();
         }
+
         emojiIndex = Random.Range(0, happyEmojies.Length);
         happyEmojies[emojiIndex].gameObject.SetActive(true);
         happyEmojies[emojiIndex].Play();

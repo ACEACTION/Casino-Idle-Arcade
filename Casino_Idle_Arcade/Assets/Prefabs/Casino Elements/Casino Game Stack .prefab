@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83968787066568197}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.0149999745, z: -0.24955674}
-  m_LocalScale: {x: 0.28653696, y: 0.28653693, z: 0.28653693}
+  m_LocalScale: {x: 0.4790325, y: 0.47903246, z: 0.47903246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1466993828711856360}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &1658346930579281868
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2054906212, guid: 532a840fdd2b9314bb1c6e9c18d2a2c0, type: 3}
+  m_Sprite: {fileID: -188860993, guid: ed56993d324c67d438dce02ed94fed57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,14 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7df162cd029d914386ec42d6c38034b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
   maxStackCount: 8
   stackCount: 0
+  data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
   casinoResources: []
   firsStack: {fileID: 3789802534729096377}
   stackTxt: {fileID: 4145636500856202826}
   resourceIcon: {fileID: 3460389713422256906}
   ground: {fileID: 1466993828711856360}
+  game: {fileID: 0}
 --- !u!1 &5073328682164463501
 GameObject:
   m_ObjectHideFlags: 0
