@@ -77,8 +77,7 @@ public class CasinoGame_ChipGame : CasinoGame
         {
 
             if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
-            if (gameStack.StackIsEmpty() && chipDeliverer != null)
-                chipDeliverer.casinoGamesPoses.Add(this);
+            //CallDeliverer();
 
             choseWinnerPossible = false;
             winnerIndex = Random.Range(0, customers.Count);
@@ -221,12 +220,14 @@ public class CasinoGame_ChipGame : CasinoGame
 
     public void GetChipFromStack()
     {
+
         if (!hasChip && gameStack.CanGetResource())
         {
             getChipCd -= Time.deltaTime;
             if (getChipCd <= 0)
             {
                 chip = gameStack.GetFromGameStack();
+                CallDeliverer();
                 if (chip)
                 {
                     chip.transform.SetParent(transform);

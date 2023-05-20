@@ -29,7 +29,7 @@ public class CasinoGameStack : ElementStack
 
     public override void CompleteJumpMove(CasinoResource resource)
     {
-        base.CompleteJumpMove(resource);        
+        base.CompleteJumpMove(resource);
     }
 
 
@@ -39,6 +39,9 @@ public class CasinoGameStack : ElementStack
         if (StackIsEmpty() && game.chipDeliverer != null)
         {
             game.chipDeliverer.casinoGamesPoses.Add(game);
+            print("miaw");
+
         }
+
     }
 }

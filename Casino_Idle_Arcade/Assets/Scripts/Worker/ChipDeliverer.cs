@@ -129,6 +129,7 @@ public class ChipDeliverer : Cleaner
 
                         waitingCd = waitingCdAmount;
                         destination = sweeperSpot;
+
                     }
                     casinoGamesPoses.RemoveAt(0);
 

@@ -9,6 +9,7 @@ public class Gramaphone : MonoBehaviour
 {
     [SerializeField] int musicCost;
     [SerializeField] AudioClip[] casinoMusics;
+    [SerializeField] ParticleSystem musicVfx;
     [SerializeField] Image bgImage;
     [SerializeField] Slider slider;
     [SerializeField] float waitingCd;
@@ -72,6 +73,8 @@ public class Gramaphone : MonoBehaviour
     {
         if (GameManager.totalMoney >= musicCost)
         {
+            musicVfx.gameObject.SetActive(true);
+            musicVfx.Play();
             // Current clip
             AudioClip clip = AudioSourceBgMusic.Instance.audioSource.clip;
 

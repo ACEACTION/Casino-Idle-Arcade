@@ -41,8 +41,10 @@ public class ElementStack : MonoBehaviour
     {
         if (!CanGetResource())
         {
+
             //resourceIcon.DOScale(data.iconDefaultScale, .7f);
             ground.DOScale(data.stackDefaultScale + .2f, 1);
+
         }
     }
 
@@ -73,6 +75,7 @@ public class ElementStack : MonoBehaviour
 
     public CasinoResource GetFromGameStack()
     {
+
         if (CanGetResource())
         {
             stackCount--;
@@ -82,15 +85,16 @@ public class ElementStack : MonoBehaviour
             resource.transform.SetParent(null);
             SetStackTxt();            
             ShowEmptyStack();
-            SetDeliverProcess();
+
             return resource;
         }
         else
         {
             return null;
         }
+
     }
-  
+
     public virtual void SetDeliverProcess()
     {
         
