@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
+using DG.Tweening;
 
 public class Gramaphone : MonoBehaviour
 {
@@ -25,11 +25,14 @@ public class Gramaphone : MonoBehaviour
     [SerializeField] float coldownToNextMusicAmount;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TextMeshProUGUI musicCostTxt;
+    [SerializeField] Transform playBtn;
+    float playBtnScale;
 
     private void Start()
     {
         slider.maxValue = waitingCdAmount;
         musicCostTxt.text = musicCost.ToString();
+        playBtnScale = playBtn.localScale.x;
     }
 
 
@@ -71,6 +74,12 @@ public class Gramaphone : MonoBehaviour
     //THESE ARE BUTTON ACTION
     public void PlayVariation()
     {
+        playBtn.localScale = new Vector3(playBtnScale, playBtnScale, playBtnScale);
+        playBtn.DOScale(playBtnScale + .1f, .3f).OnComplete(() =>
+        {
+            playBtn.localScale = new Vector3(playBtnScale, playBtnScale, playBtnScale);
+        });
+
         if (GameManager.totalMoney >= musicCost)
         {
             musicVfx.gameObject.SetActive(true);
@@ -89,7 +98,7 @@ public class Gramaphone : MonoBehaviour
             AudioSourceBgMusic.Instance.SetAudioSource(casinoMusics[randomIndex]);
 
             GameManager.totalMoney -= musicCost;
-            
+            Money_UI.Instance.SetTotalMoneyTxt();
             /*PlayMusic(casinoMusics[Random.Range]);
             GameManager.totalMoney -= index;*/
 

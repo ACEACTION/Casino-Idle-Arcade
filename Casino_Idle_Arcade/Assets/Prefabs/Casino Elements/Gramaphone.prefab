@@ -681,7 +681,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1277,7 +1277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.71, y: 0.01}
+  m_AnchoredPosition: {x: 0.71, y: 0.083}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903947556
@@ -1715,9 +1715,10 @@ MonoBehaviour:
   isPlayerAvailbe: 0
   gramaphoneUiCanvas: {fileID: 311607028}
   coldownToNextMusic: 0
-  coldownToNextMusicAmount: 0
+  coldownToNextMusicAmount: 1
   audioSource: {fileID: 6766828808530782361}
   musicCostTxt: {fileID: 1971566836}
+  playBtn: {fileID: 818278232}
 --- !u!1 &4280374871796611983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4622303554859895903
 Transform:
   m_ObjectHideFlags: 0
@@ -2186,7 +2187,7 @@ PrefabInstance:
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: price
-      value: 1
+      value: 840
       objectReference: {fileID: 0}
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -2216,12 +2217,17 @@ PrefabInstance:
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.45589635
+      value: 0.45589998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45589998
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.45589635
+      value: 0.45589998
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -2277,6 +2283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuyArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: priorityObjs.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4139115532069958722, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}

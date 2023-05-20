@@ -64,8 +64,8 @@ public class Roulette : CasinoGame_ChipGame
     
     private void Update()
     {
-        if((workerCheker.isPlayerAvailable 
-            || workerCheker.isDealerAvailabe) 
+        if((employeeChecker.isPlayerAvailable 
+            || employeeChecker.isDealerAvailabe) 
             && readyToUse)
         {
             GetBetAmountFromCustomer();
@@ -80,7 +80,7 @@ public class Roulette : CasinoGame_ChipGame
                 }
                 else
                 {
-                    workerCheker.employee?.ActiveActionAnim(true);
+                    employeeChecker.employee?.ActiveActionAnim(true);
                 }
             }
         }

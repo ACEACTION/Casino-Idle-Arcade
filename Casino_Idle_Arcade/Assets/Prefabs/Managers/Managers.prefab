@@ -235,9 +235,44 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
         type: 3}
+      propertyPath: popSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: a92bca9e4c89c6749aa2ca7f68ef1885, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: fushSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c91e5c737870c0488551a5d9914ca77, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: shineSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cc000ea439f8df43a2f0f8ab549adcc, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: sweepSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 19bf1f57460c21b48bedac520629dd57, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
       propertyPath: buyAreaSfx
       value: 
       objectReference: {fileID: 8300000, guid: a1de7dbe32f30a940ac09fa9ea0add86, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: pickUpCashSfx.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: pickUpCashSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 410e6efbea1c2aa40af32b21f70a91d0, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: pickUpCashSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 71a1b056b1fb2e547b63620b7003831a, type: 3}
     - target: {fileID: 8330105962593634570, guid: 3c36432a253a3b84f8759f3a7aaeef86,
         type: 3}
       propertyPath: m_RootOrder
@@ -293,6 +328,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8330105962593634571, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330105962593634571, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8330105962593634573, guid: 3c36432a253a3b84f8759f3a7aaeef86,
         type: 3}
       propertyPath: m_Name
@@ -320,8 +365,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
         type: 3}
+      propertyPath: defaultMoney
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
+        type: 3}
       propertyPath: isCompleteTutorial
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
+        type: 3}
+      propertyPath: availableElements.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
+        type: 3}
+      propertyPath: availableElements.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
+        type: 3}
+      propertyPath: availableElements.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
+        type: 3}
+      propertyPath: availableElements.Array.data[3]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1199340485684177301, guid: 9d45d07bead0a5046b1fef30101aa29f,
         type: 3}
