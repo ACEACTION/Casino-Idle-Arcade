@@ -1303,9 +1303,9 @@ GameObject:
   - component: {fileID: 3628109666241430336}
   - component: {fileID: 3628109666241430343}
   - component: {fileID: 3628109666241430349}
-  - component: {fileID: 3628109666241430337}
-  - component: {fileID: 3628109666241430338}
   - component: {fileID: 3628109666241430342}
+  - component: {fileID: 3628109666241430337}
+  - component: {fileID: 8076867768632174490}
   m_Layer: 0
   m_Name: ChipDeliverer
   m_TagString: Untagged
@@ -1381,62 +1381,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3628109666241430337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4510578593223243293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd4e7ac54ff3db14f85d812015f73c30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerData: {fileID: 11400000, guid: e8767a04cb054d14c93a5cdf5280a788, type: 2}
-  destinationPoinst: []
-  sweeperSpot: {fileID: 1748168150}
-  capacity: 3
-  capacityAmount: 3
-  anim: {fileID: 3628109666241430349}
-  state: 1
-  destination: {fileID: 0}
-  agent: {fileID: 3628109666241430342}
-  handStack: {fileID: 3628109666241430338}
-  stopingRadius: 3
-  collider: {fileID: 3628109666241430343}
-  waitingCd: 3
-  waitingCdAmount: 3
-  isDelivering: 1
-  casinoGames: []
-  casinoGamesPoses: []
-  closestChipDesk: {fileID: 0}
---- !u!114 &3628109666241430338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4510578593223243293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ab80ad2c6c460469e26b1029185164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxStackCount: 2
-  stackCount: 0
-  stackYOffset: 0.14
-  maxAddStackCd: 0.2
-  maxRemoveStackCd: 0.1
-  stackHasResource: 0
-  activeMaxTxt: 0
-  anim: {fileID: 3628109666241430349}
-  firstStack: {fileID: 3628109666653785642}
-  stackList: []
-  vMachineList: []
-  chipList: []
-  casinoGameStack: {fileID: 0}
-  maxTxt: {fileID: 0}
 --- !u!195 &3628109666241430342
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1459,6 +1403,58 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3628109666241430337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510578593223243293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4e7ac54ff3db14f85d812015f73c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workerData: {fileID: 11400000, guid: e8767a04cb054d14c93a5cdf5280a788, type: 2}
+  destinationPoinst: []
+  sweeperSpot: {fileID: 1748168150}
+  capacity: 3
+  capacityAmount: 3
+  anim: {fileID: 3628109666241430349}
+  state: 1
+  destination: {fileID: 0}
+  agent: {fileID: 3628109666241430342}
+  handStack: {fileID: 8076867768632174490}
+  stopingRadius: 3
+  collider: {fileID: 3628109666241430343}
+  waitingCd: 3
+  waitingCdAmount: 3
+  isDelivering: 1
+  casinoGames: []
+  casinoGamesPoses: []
+  closestChipDesk: {fileID: 0}
+--- !u!114 &8076867768632174490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510578593223243293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49c8140aa2c90a449ea2562debae21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackCount: 0
+  resourcesToStackType: 00000000
+  data: {fileID: 11400000, guid: 6c465caa3f218a04eb518cc845e570a0, type: 2}
+  anim: {fileID: 3628109666241430349}
+  firstStack: {fileID: 3628109666653785642}
+  stackList: []
+  vMachineList: []
+  chipList: []
+  resourceDesk: {fileID: 0}
+  casinoGameStack: {fileID: 0}
 --- !u!1 &4734268777064439067
 GameObject:
   m_ObjectHideFlags: 0

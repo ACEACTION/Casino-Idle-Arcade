@@ -9,11 +9,11 @@ public enum ElementsType
 }
 public class CasinoManager : MonoBehaviour
 {
+    [SerializeField] int defaultMoney;
     public bool isCompleteTutorial;
     [SerializeField] GameObject tutorialManager;
     public int moneytest;
     public List<ElementsType> availableElements = new List<ElementsType>();
-
     public static CasinoManager instance;
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-        GameManager.totalMoney += 300;
+        GameManager.totalMoney += defaultMoney;
 
         if (isCompleteTutorial)
         {

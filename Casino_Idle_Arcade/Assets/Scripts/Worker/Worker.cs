@@ -5,12 +5,14 @@ public enum WorkerType
 {
     RouletteDealer, Receptioner
 }
+
+
 public class Worker : MonoBehaviour
 {
     public Animator anim;
-
     public virtual void ActiveActionAnim(bool state)
     {
 
     }
+
 }

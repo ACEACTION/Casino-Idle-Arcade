@@ -10,6 +10,4 @@ public class BaccaratDealer : Worker
         base.ActiveActionAnim(state);
     }
 
-
-
 }

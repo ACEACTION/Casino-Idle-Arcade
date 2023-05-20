@@ -4,14 +4,13 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum State
+public enum ChipDeliverState
 {
     waiting, Delivering
 }
 public class ChipDeliverer : Cleaner
 {
-
-    public State state;
+    public ChipDeliverState state;
     public Transform destination;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] HandStack handStack;
@@ -33,7 +32,7 @@ public class ChipDeliverer : Cleaner
         WorkerManager.AddAvailableGamesToDeliverer();
         agent.speed = workerData.moveSpeed;
         waitingCd = waitingCdAmount;
-        state = State.waiting;
+        state = ChipDeliverState.waiting;
 
         foreach (var casinoGame in casinoGames)
         {
@@ -51,7 +50,7 @@ public class ChipDeliverer : Cleaner
     private void Update()
     {
         //check if deliverer waited for order
-        if(state == State.waiting)
+        if(state == ChipDeliverState.waiting)
         {
             anim.SetBool("isDelivering", false);
 
@@ -70,10 +69,10 @@ public class ChipDeliverer : Cleaner
                     destination = closestChipDesk;
                 }
 
-                state = State.Delivering;
+                state = ChipDeliverState.Delivering;
             }
         }
-        if(state == State.Delivering)
+        if(state == ChipDeliverState.Delivering)
         {
             agent.SetDestination(destination.position);
             anim.SetBool("isDelivering", true);
@@ -140,7 +139,7 @@ public class ChipDeliverer : Cleaner
                 {
                     if (Vector3.Distance(transform.position, sweeperSpot.position) <= 1f)
                     {
-                        state = State.waiting;
+                        state = ChipDeliverState.waiting;
                         agent.speed = workerData.moveSpeed;
                         anim.SetBool("isDelivering", false);
 

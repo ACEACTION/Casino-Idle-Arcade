@@ -39,7 +39,7 @@ public class TutorialManager : MonoBehaviour
         if (!GameManager.isCompleteTutorial)
         { 
             cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 2f;
-            getChipTime = playerHandStack.maxAddStackCd * playerHandStack.maxStackCount + 2f;
+            getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
             
@@ -124,7 +124,7 @@ public class TutorialManager : MonoBehaviour
 
     void ChipDeskProcess()
     {
-        if (getChip && playerHandStack.stackHasResource)
+        if (getChip && !playerHandStack.StackIsEmpty())
         {
 
             chipDeskTime -= Time.deltaTime;

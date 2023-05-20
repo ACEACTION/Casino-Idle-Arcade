@@ -6,101 +6,100 @@ using DG.Tweening;
 public class HandStack : MonoBehaviour
 {
 
-    // variables
-    public int maxStackCount;
-    [SerializeField] int stackCount;
-    [SerializeField] float stackYOffset;
-    public float maxAddStackCd;
+    // variables    
+    [SerializeField] int stackCount;    
     float addStackCd;
-    [SerializeField] float maxRemoveStackCd;
     float removeStackCd;
-    public bool stackHasResource;
-    [SerializeField] bool activeMaxTxt;
-    bool isTrash;
+    [SerializeField] List<ResourceDeskType> resourcesToStackType;
+
+    // for test
+    int defaultMaxStackCount;
+
 
     // references
+    public HandStackData data;
     [SerializeField] Animator anim;
-    Transform trash;
-    public Transform firstStack;
-    Vector3 firsStackOrigin;
+    public Transform firstStack;    
     public List<CasinoResource> stackList;
     public List<CasinoResource> vMachineList;
     public List<CasinoResource> chipList;
-    CasinoResourceDesk casinoResource;
+    public CasinoResourceDesk resourceDesk;
     [HideInInspector] public ElementStack casinoGameStack;
-    ElementStack vMachineStack;
-    [SerializeField] GameObject maxTxt;
+    ElementStack vMachineStack;    
 
 
     private void Start()
     {
-        addStackCd = maxAddStackCd;
-        firsStackOrigin = firstStack.localPosition;
+        addStackCd = data.maxAddStackCd;
+        data.firsStackOrigin = firstStack.localPosition;
+
+        // for test
+        defaultMaxStackCount = data.maxStackCount;
     }
 
     private void Update()
     {
         AddStackResourceWithCd();
         RemoveFromStackWithCd();
-        SetStackAnimation();
     }
 
-    public bool CanAddStack() => stackCount < maxStackCount;
-    bool CanRemoveStack() => stackCount > 0;
+    public bool CanAddStack() => stackCount < data.maxStackCount;
+    public bool CanRemoveStack() => stackCount > 0;
 
     void AddStackResourceWithCd()
     {
-        if (casinoResource && CanAddStack())
+        if (resourceDesk && CanAddStack())
         {
             addStackCd -= Time.deltaTime;
             if (addStackCd < 0)
             {
                 AddStackResource();
-                addStackCd = maxAddStackCd;
+                addStackCd = data.maxAddStackCd;
             }
         }
     }
-    void AddStackResource()
+    
+    public void AddStackResource()
     {
-        if (casinoResource)
+        if (resourceDesk && resourcesToStackType.Contains(resourceDesk.deskType))
         {
-            casinoResource.AddResourceToStack(this);
-            stackCount++;
-            AudioSourceManager.Instance.PlayPoPSfx();
-            firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
-            stackHasResource = true;
-
-            if (StackIsMax() && activeMaxTxt)
-            {
-                MaxStackText.Instance.SetTextState(true);
-            }
+            AddStackResourceProcess();           
         }
     }
 
-    void SetStackAnimation()
-    {
-        if (stackHasResource)
-            anim.SetLayerWeight(1, 1);
-        else
-            anim.SetLayerWeight(1, 0.01f);
 
+    public virtual void AddStackResourceProcess()
+    {
+        resourceDesk.AddResourceToStack(this);
+        stackCount++;
+        AudioSourceManager.Instance.PlayPoPSfx();
+        firstStack.transform.localPosition += new Vector3(0, data.stackYOffset, 0);
+
+        // set animation
+        anim.SetLayerWeight(1, 1);
     }
 
 
-    void RemoveFromStackWithCd()
+
+    public virtual void RemoveFromStackWithCd()
     {
-        if ((casinoGameStack || vMachineStack || isTrash) && CanRemoveStack())
+        if ((casinoGameStack || vMachineStack) && CanRemoveStack())
         {
-            removeStackCd -= Time.deltaTime;
-            if (removeStackCd < 0)
-            {
-                RemoveFromStack();
-                removeStackCd = maxRemoveStackCd;
-            }
+            RemoveFromStackWithCdProcess();    
         }        
-
     }
-    void RemoveFromStack()
+
+    public void RemoveFromStackWithCdProcess()
+    {
+        removeStackCd -= Time.deltaTime;
+        if (removeStackCd < 0)
+        {
+            RemoveFromStack();
+            removeStackCd = data.maxRemoveStackCd;
+        }
+    }
+
+    public virtual void RemoveFromStack()
     {
         if (casinoGameStack && ListHasResource(chipList) && casinoGameStack.CanAddStack())
         {
@@ -118,51 +117,39 @@ public class HandStack : MonoBehaviour
             vMachineList.Remove(resource);
         }
 
-        if (isTrash)
-        {            
-            CasinoResource resource = stackList[stackList.Count - 1];
-            resource.transform.DOJump(trash.position, 3, 1, .6f)
-                .OnComplete(() =>
-                {
-                    resource.ReleaseResource();
-                });
-
-            chipList.Remove(resource);
-            vMachineList.Remove(resource);
-            RemoveFromStackProcess(resource);
-        }
+        
 
     }
 
-    void RemoveFromStackProcess(CasinoResource resource)
+    public virtual void RemoveFromStackProcess(CasinoResource resource)
     {
         stackList.Remove(resource);
         stackCount--;
-        firstStack.transform.localPosition -= new Vector3(0, stackYOffset, 0);
+        firstStack.transform.localPosition -= new Vector3(0, data.stackYOffset, 0);
         AudioSourceManager.Instance.PlayPoPSfx();
-        stackHasResource = CanRemoveStack();
-        ResetStackListPos();
+        ResetStackListPos();    
+        
+        // set animation
+        if (StackIsEmpty()) anim.SetLayerWeight(1, 0.01f);
 
-        if (activeMaxTxt)
-            MaxStackText.Instance.SetTextState(false);
     }
 
     void ResetStackListPos()
     {
-        firstStack.localPosition = firsStackOrigin;
+        firstStack.localPosition = data.firsStackOrigin;
         foreach (CasinoResource r in stackList)
         {
             r.transform.localPosition = firstStack.localPosition;
-            firstStack.transform.localPosition += new Vector3(0, stackYOffset, 0);
+            firstStack.transform.localPosition += new Vector3(0, data.stackYOffset, 0);
         }
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {        
         if (other.gameObject.CompareTag("Casino Resource"))
         {            
-            casinoResource = other.GetComponent<CasinoResourceDesk>();
+            resourceDesk = other.GetComponent<CasinoResourceDesk>();
         }
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
@@ -175,19 +162,15 @@ public class HandStack : MonoBehaviour
             vMachineStack = other.GetComponent<VendingMachineStack>();
         }
 
-        if (other.gameObject.CompareTag("Trash"))
-        {
-            isTrash = true;
-            trash = other.transform;
-        }
+        
 
     }
 
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Casino Resource"))
         {
-            casinoResource = null;
+            resourceDesk = null;
         }
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
@@ -198,20 +181,22 @@ public class HandStack : MonoBehaviour
         if (other.gameObject.CompareTag("VendingMachine"))
         {
             vMachineStack = null;
-        }
-
-        if (other.gameObject.CompareTag("Trash"))
-        {
-            isTrash = false;            
-        }
+        }        
     }
 
     public int GetStackCount() => stackCount;
     public void AddMaxStackCounter(int amount)
     {
-        maxStackCount += amount;
+        data.maxStackCount += amount;
         MaxStackText.Instance.SetTextState(false);
     }
-    public bool StackIsMax() => stackCount == maxStackCount;
+    public bool StackIsMax() => stackCount == data.maxStackCount;
+    public bool StackIsEmpty() => stackCount == 0;
     public bool ListHasResource<T>(List<T> list) => list.Count > 0;
+
+    private void OnDisable()
+    {
+        data.maxStackCount = defaultMaxStackCount;
+    }
+
 }

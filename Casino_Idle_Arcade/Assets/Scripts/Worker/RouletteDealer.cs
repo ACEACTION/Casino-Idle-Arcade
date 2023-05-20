@@ -9,4 +9,6 @@ public class RouletteDealer : Worker
         base.ActiveActionAnim(state);
         anim.SetBool("isPlayingCard", state);
     }
+
+
 }
