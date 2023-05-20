@@ -684,7 +684,7 @@ MonoBehaviour:
   castTime: 0
   castTimeAmount: 0
   delayToReset: 0
-  readyToPlay: 0
+  readyToUse: 0
   moneyStacks:
   - {fileID: 3740001940926353736}
   - {fileID: 3740001940276389322}
@@ -693,13 +693,13 @@ MonoBehaviour:
   - {fileID: 3740001940305569683}
   gameStack: {fileID: 2524118143236834565}
   stackMoney: {fileID: 3080989930648880632}
-  dealerCastTime: 5
+  playCd: 0
   cleaningCd: 5
   isWorkerAvailable: 0
   betCounter: 0
   hasChip: 0
   cleaner: {fileID: 0}
-  rwc: {fileID: 7823684972411258871}
+  ewc: {fileID: 7823684972411258871}
   isClean: 1
   data: {fileID: 11400000, guid: 08e9c97614d6bc24892bba2debd1b9c9, type: 2}
   sweeper: {fileID: 7823684972886514323}
@@ -1028,8 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
-  worker: {fileID: 5362414222306267077}
+  employeeType: 0
+  employee: {fileID: 5362414222306267077}
   isDealerAvailabe: 0
   isPlayerAvailable: 0
 --- !u!65 &7823684971566432902
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 7823684972411258871}
   - component: {fileID: 7823684972411258870}
   m_Layer: 0
-  m_Name: RWC
+  m_Name: Baccarat Employee Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1574,8 +1574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec073412bd57a246a270673fcd6c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
-  worker: {fileID: 0}
+  employeeType: 0
+  employee: {fileID: 5362414222306267077}
   isDealerAvailabe: 0
   isPlayerAvailable: 0
   casinoGame: {fileID: 7823684971198609026}

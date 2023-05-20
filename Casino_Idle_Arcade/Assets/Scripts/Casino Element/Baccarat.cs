@@ -95,7 +95,7 @@ public class Baccarat : CasinoGame_ChipGame
         if (!givingCard)
         {
             givingCard = true;
-            workerCheker.worker?.ActiveActionAnim(true);
+            workerCheker.employee?.ActiveActionAnim(true);
             sweeper.MessCards();
             foreach(CustomerMovement cs in customers)
             {

@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UpgradeUI : MonoBehaviour
 {
     int upgradeCost = 0;
-
     [SerializeField] Color disableItemBtnColor;
     [SerializeField] Color defaultItemBtnColor;
-        
+    float btnPressedScale; 
+
     [Header("Player Hand Stack")]
     [SerializeField] HandStackData playerStackData;
     [SerializeField] Upgrade_Item playerStackItem;
@@ -18,39 +19,60 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] PlayerData playerData;
     [SerializeField] Upgrade_Item playerMsItem;
     
+    [Header("Worker Move Speed")]
+    [SerializeField] WorkerData workerMoveSpeedData;
+    [SerializeField] Upgrade_Item workerMsItem;
+
     [Header("Worker Hand Stack")]
     [SerializeField] HandStackData workerStackData;
+    [SerializeField] Upgrade_Item workerStaclItem;
 
-
-    [Header("Worker Panel")]
+    [Header("Title & Panels")]
+    [SerializeField] Image playerTitleBg;
+    [SerializeField] GameObject playerPanel;
     [SerializeField] Image workerTitleBg;
     [SerializeField] GameObject workerPanel;
+
 
 
     private void Start()
     {
         defaultItemBtnColor = playerStackItem.item_bg.color;
-        InitPlayerStack();
-        InitPlayerMoveSpeed();
-        InitWorkerPanel();
+        btnPressedScale = playerStackItem.item_btn.transform.localScale.x;
+        OpenPlayerPanel();
     }
 
-    void InitPlayerStack()
+    public void OpenPlayerPanel()
     {
         InitPanel(playerStackData, playerStackItem);
+        InitPanel(playerData, playerMsItem);        
+
+        SetPanelState(true, playerPanel, playerTitleBg);
+        SetPanelState(false, workerPanel, workerTitleBg);
+
+        SetBtnScale(playerTitleBg.transform);
+
     }
 
-    void InitPlayerMoveSpeed()
+    public void OpenWorkerPanel()
     {
-        InitPanel(playerData, playerMsItem);
+        InitPanel(workerStackData, workerStaclItem);
+        InitPanel(workerMoveSpeedData, workerMsItem);
+
+        SetPanelState(false, playerPanel, playerTitleBg);
+        SetPanelState(true, workerPanel, workerTitleBg);
+
+        SetBtnScale(workerTitleBg.transform);
     }
 
-    void InitWorkerPanel()
-    {
-        workerPanel.SetActive(false);
-        SetDisableBtnColor(workerTitleBg);
+    void SetPanelState(bool state, GameObject panel, Image bg)
+    {               
+        panel.SetActive(state);
+        SetBtnColorState(state, bg);
+
     }
 
+ 
     void InitPanel<T>(UpgradeData<T> upgradeData , Upgrade_Item item)
     {
 
@@ -68,34 +90,43 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradePlayerHandStack()
     {
-        if (playerStackData.CanUpgrade())
-        {            
-            upgradeCost = playerStackData.GetUpgradeCost();
-            if (upgradeCost <= GameManager.totalMoney)
-            {
-                playerStackData.SetUgradeValue();
-                GameManager.MinusMoney(upgradeCost);
-
-                CanNextUpgrade(playerStackData, playerStackItem);
-            }
-        }
+        UpgradeProcess(playerStackData, playerStackItem);
     }
 
     public void UpgradePlayerMoveSpeed()
     {
-        if (playerData.CanUpgrade())
+        UpgradeProcess(playerData, playerMsItem);
+    }
+
+    public void UpgradeWorkerHandStack()
+    {
+        UpgradeProcess(workerStackData, workerStaclItem);
+    }
+
+
+
+
+    public void UpgradeWorkerMoveSpeed()
+    {
+        UpgradeProcess(workerMoveSpeedData, workerMsItem);
+        WorkerManager.SetAgentMoveSpeed();
+    }
+
+    public void UpgradeProcess<T>(UpgradeData<T> upgradeData, Upgrade_Item item)
+    {
+        SetBtnScale(item.item_btn.transform);
+        if (upgradeData.CanUpgrade())
         {
-            upgradeCost = playerData.GetUpgradeCost();
+            upgradeCost = upgradeData.GetUpgradeCost();
             if (upgradeCost <= GameManager.totalMoney)
             {
-                playerData.SetUgradeValue();
+                upgradeData.SetUgradeValue();
                 GameManager.MinusMoney(upgradeCost);
 
-                CanNextUpgrade(playerData, playerMsItem);
+                CanNextUpgrade(upgradeData, item);
             }
         }
     }
-
 
 
     void CanNextUpgrade<T>(UpgradeData<T> upgradeData, Upgrade_Item item)
@@ -116,8 +147,21 @@ public class UpgradeUI : MonoBehaviour
         }
     }
 
-    
-    public void SetDisableBtnColor(Image img) => img.color = disableItemBtnColor;
-    
-    public void SetEnableBtnColor(Image img) => img.color = defaultItemBtnColor;
+
+    void SetBtnColorState(bool state, Image img) {
+        if (state)
+            img.color = defaultItemBtnColor; 
+        else
+            img.color = disableItemBtnColor;
+    }
+
+    void SetBtnScale(Transform btn)
+    {
+        btn.transform.DOScale(btnPressedScale + .1f, .4f).OnComplete(() =>
+        {
+            btn.transform.DOScale(btnPressedScale, .4f);
+        });
+
+    }
+
 }

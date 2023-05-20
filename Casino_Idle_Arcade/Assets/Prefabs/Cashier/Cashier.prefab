@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 1
-  worker: {fileID: 0}
+  employeeType: 0
+  employee: {fileID: 8917602267431512669}
   isDealerAvailabe: 0
   isPlayerAvailable: 0
 --- !u!1 &1106576280
@@ -529,7 +529,6 @@ Transform:
   - {fileID: 2172176977184244283}
   - {fileID: 562904536}
   - {fileID: 679551883}
-  - {fileID: 8946464902830319350}
   - {fileID: 8231926962336511390}
   - {fileID: 6004551582804674340}
   m_Father: {fileID: 0}
@@ -690,68 +689,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8153398, y: 6.254112, z: 0.7835244}
   m_Center: {x: 0.083363414, y: 2.6675217, z: -0.004553333}
---- !u!1 &9030730678684382678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8946464902830319350}
-  - component: {fileID: 2435560561067459143}
-  - component: {fileID: 3073189513262628576}
-  m_Layer: 0
-  m_Name: workercheker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8946464902830319350
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030730678684382678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 323241000623256988}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2435560561067459143
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030730678684382678}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4443294, y: 1, z: 1.3940856}
-  m_Center: {x: 0.074159205, y: 0, z: 1.2329272}
---- !u!114 &3073189513262628576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030730678684382678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerType: 1
-  worker: {fileID: 0}
-  isDealerAvailabe: 0
-  isPlayerAvailable: 0
 --- !u!1001 &285653702164519732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 7901792871529528684, guid: 2674760a9c09dd74f89a663c08d0ac1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7901792871529528684, guid: 2674760a9c09dd74f89a663c08d0ac1a,
         type: 3}
@@ -975,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8214785476660993341, guid: 2425258fa5a96d440acdd85c8113883e,
         type: 3}
@@ -1710,3 +1647,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8917602266465762891}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8917602267431512669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1251070998, guid: a602c9b7fbf94e4478dadda770321068,
+    type: 3}
+  m_PrefabInstance: {fileID: 8917602266465762891}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544400279471462529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b477a55faa4d2b4da608dfa241e2fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

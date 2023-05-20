@@ -12,7 +12,8 @@ public static class WorkerManager
     public static List<ChipDeliverer> chipDeliverers = new List<ChipDeliverer>();
 
     public static void AddGamesToDeliverer(CasinoGame_ChipGame casinoGame)
-    {
+    {        
+
         if (chipDeliverers.Count != 0)
         {
             if (chipDeliverers[0].capacity > 0)
@@ -78,4 +79,19 @@ public static class WorkerManager
         }
         if(rouletteCleaners[0].capacity == 0) rouletteCleaners.Remove(rouletteCleaners[0]);
     }
+
+    public static void SetAgentMoveSpeed()
+    {
+        foreach (Worker worker in rouletteCleaners)
+        {
+            worker.SetMoveSpeed();
+        }
+
+        foreach (Worker worker in chipDeliverers)
+        {
+            worker.SetMoveSpeed(); 
+        }
+    }
+
+
 }

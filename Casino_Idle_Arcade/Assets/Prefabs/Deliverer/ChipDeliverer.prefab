@@ -1415,7 +1415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4e7ac54ff3db14f85d812015f73c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerData: {fileID: 11400000, guid: e8767a04cb054d14c93a5cdf5280a788, type: 2}
+  agent: {fileID: 3628109666241430342}
+  workerData: {fileID: 11400000, guid: 838255393aa14b2488b7465a75bd09ea, type: 2}
   destinationPoinst: []
   sweeperSpot: {fileID: 1748168150}
   capacity: 3
@@ -1423,13 +1424,12 @@ MonoBehaviour:
   anim: {fileID: 3628109666241430349}
   state: 1
   destination: {fileID: 0}
-  agent: {fileID: 3628109666241430342}
   handStack: {fileID: 8076867768632174490}
   stopingRadius: 3
-  collider: {fileID: 3628109666241430343}
+  isDelivering: 1
   waitingCd: 3
   waitingCdAmount: 3
-  isDelivering: 1
+  collider: {fileID: 3628109666241430343}
   casinoGames: []
   casinoGamesPoses: []
   closestChipDesk: {fileID: 0}

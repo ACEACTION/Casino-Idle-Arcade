@@ -8,18 +8,17 @@ public enum ChipDeliverState
 {
     waiting, Delivering
 }
-public class ChipDeliverer : Cleaner
+public class ChipDeliverer : Worker
 {
     public ChipDeliverState state;
     public Transform destination;
-    [SerializeField] NavMeshAgent agent;
     [SerializeField] HandStack handStack;
     [SerializeField] float stopingRadius;
-    [SerializeField] CapsuleCollider collider;
+    public bool isDelivering = true;
     public float waitingCd;
     [SerializeField] float waitingCdAmount;
 
-    public bool isDelivering = true;
+    [SerializeField] CapsuleCollider collider;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
     public List<CasinoGame_ChipGame> casinoGamesPoses = new List<CasinoGame_ChipGame>();
 
@@ -41,7 +40,7 @@ public class ChipDeliverer : Cleaner
     }
 
 
-    private void Start()
+    public override void Start()
     {
 
     }

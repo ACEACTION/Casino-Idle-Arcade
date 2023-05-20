@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RouletteWorkerCheker : WorkerCheker
+public class RouletteEmployeeChecker : EmployeeCheker
 {
     public CasinoGame_ChipGame casinoGame;
     public bool isCleanerAvailabe;
@@ -33,15 +33,7 @@ public class RouletteWorkerCheker : WorkerCheker
             {
                 isCleanerAvailabe = false;
             }
-        }
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            CinemachineManager.instance.ZoomOut();
-            if (CinemachineManager.instance.isNormalCam)
-                CinemachineManager.instance.ChangeCam();
-
-        }
+        }    
     }
 
 }

@@ -20,7 +20,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
     [Header("Cleaner")]
     public RouletteCleaner cleaner;
-    public RouletteWorkerCheker rwc;
+    public RouletteEmployeeChecker ewc;
     public bool isClean = true;
 
     [Header("Win Process")]
@@ -34,7 +34,7 @@ public class CasinoGame_ChipGame : CasinoGame
     [SerializeField] RouletteData data;
     public Sweeper sweeper;
     public ChipDeliverer chipDeliverer;
-    public WorkerCheker workerCheker;
+    public EmployeeCheker workerCheker;
     public Slider cleaningSlider;
     [SerializeField] ParticleSystem cleaningParticle;
     [SerializeField] Transform playChipSpot;
@@ -76,7 +76,7 @@ public class CasinoGame_ChipGame : CasinoGame
         if (choseWinnerPossible)
         {
 
-            if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
+            if (cleaner != null) cleaner.destinationPoinst.Add(ewc.transform);
             if (gameStack.StackIsEmpty() && chipDeliverer != null)
                 chipDeliverer.casinoGamesPoses.Add(this);
 
@@ -105,7 +105,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
         ActiveactCustomerAnimation();
         //setting dealer animation to idle
-        workerCheker.worker?.ActiveActionAnim(false);
+        workerCheker.employee?.ActiveActionAnim(false);
         gameSlider.gameObject?.SetActive(true);
         gameSlider.value += Time.deltaTime;
         playCd -= Time.deltaTime;
@@ -123,7 +123,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
         public void Cleaning()
     {
-        if (!isClean && (rwc.isCleanerAvailabe || workerCheker.isPlayerAvailable))
+        if (!isClean && (ewc.isCleanerAvailabe || workerCheker.isPlayerAvailable))
         {
             cleaningSlider.value += Time.deltaTime;
             cleaningCd -= Time.deltaTime;
@@ -139,7 +139,7 @@ public class CasinoGame_ChipGame : CasinoGame
     public virtual void CleanProcess()
     {
         if (cleaner != null)
-            cleaner.destinationPoinst.Remove(rwc.transform);
+            cleaner.destinationPoinst.Remove(ewc.transform);
 
         isClean = true;
         cleaningParticle.gameObject.SetActive(true);
@@ -153,7 +153,7 @@ public class CasinoGame_ChipGame : CasinoGame
     {
         if (!isClean)
         {
-            if (cleaner != null) cleaner.destinationPoinst.Add(rwc.transform);
+            if (cleaner != null) cleaner.destinationPoinst.Add(ewc.transform);
         }
     }
 

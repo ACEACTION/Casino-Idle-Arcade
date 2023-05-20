@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaccaratDealer : Worker
+public class BaccaratDealer : Employee
 {
     public override void ActiveActionAnim(bool state)
     {

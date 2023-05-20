@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum WorkerType
+public enum EmployeeType
 {
     RouletteDealer, Receptioner
 }
 
 
-public class Worker : MonoBehaviour
+public class Employee : MonoBehaviour
 {
     public Animator anim;
     public virtual void ActiveActionAnim(bool state)
