@@ -88,7 +88,6 @@ public class UpgradeUI : MonoBehaviour
     {               
         panel.SetActive(state);
         SetBtnColorState(state, bg);
-
     }
 
  

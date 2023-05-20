@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2297,6 +2297,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 30765724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &572539975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2125947021, guid: 64cb50dfb151a7f479063f08b9a4bac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 17267394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533bbe93379cc904bb73332c9716eb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &587022211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8379,7 +8391,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHandStack
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 572539975}
     - target: {fileID: 6006201692652425512, guid: eb836cc02ffba6e43accacea86ab6622,
         type: 3}
       propertyPath: objs.Array.data[0]
@@ -8780,6 +8792,11 @@ PrefabInstance:
       propertyPath: tutorialManager
       value: 
       objectReference: {fileID: 1511046663}
+    - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
+        type: 3}
+      propertyPath: isCompleteTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7659990875267568069, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: fpsText
