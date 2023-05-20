@@ -27,8 +27,12 @@ public class HandStack : MonoBehaviour
     [HideInInspector] public ElementStack casinoGameStack;
     ElementStack vMachineStack;    
 
+    public virtual void Awake()
+    {
 
-    private void Start()
+    }
+
+    void Start()
     {
         addStackCd = data.maxAddStackCd;
         data.firsStackOrigin = firstStack.localPosition;

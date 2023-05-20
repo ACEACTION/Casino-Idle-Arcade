@@ -11,9 +11,9 @@ public class Upgrade_Item : MonoBehaviour
     [SerializeField] GameObject cashIcon;
     [SerializeField] GameObject maxTxt;
 
-    public void SetDisableItemBtnColor(Color disableBgColor)
+    public void SetBtnBgColor(Color color)
     {
-        item_bg.color = disableBgColor;
+        item_bg.color = color;
     }
 
     public void SetItemCost(int cost) => itemCost.text = cost.ToString();

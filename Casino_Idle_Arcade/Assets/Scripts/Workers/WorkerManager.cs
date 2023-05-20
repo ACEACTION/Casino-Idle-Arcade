@@ -11,6 +11,10 @@ public static class WorkerManager
 
     public static List<ChipDeliverer> chipDeliverers = new List<ChipDeliverer>();
 
+    public static bool cleanerIsOpened;
+    public static bool chipDeliverIsOpened;
+
+
     public static void AddGamesToDeliverer(CasinoGame_ChipGame casinoGame)
     {        
 
@@ -40,7 +44,6 @@ public static class WorkerManager
                 casinoGamesForDeliverer[0].chipDeliverer = chipDeliverers[0];
                 casinoGamesForDeliverer.Remove(casinoGamesForDeliverer[0]);
                 chipDeliverers[0].capacity--;
-
             }
         }
         if (chipDeliverers[0].capacity == 0) chipDeliverers.Remove(chipDeliverers[0]);
@@ -93,5 +96,20 @@ public static class WorkerManager
         }
     }
 
+    public static bool BuyedWorker() => rouletteCleaners.Count > 0 || chipDeliverers.Count > 0;
+
+    // for lock icon in ui
+    public static void BuyedCleaner()
+    {
+        UpgradeUI.Instance.UnlockWorkerTitle();
+    }
+
+    // for lock icon in ui
+    public static void BuyedChipDeliver()
+    {
+        UpgradeUI.Instance.UnlockWorkerTitle();
+        UpgradeUI.Instance.UnlockWorkerStackItem();
+        chipDeliverIsOpened = true;
+    }
 
 }

@@ -18,20 +18,4 @@ public class HandStackData : UpgradeData<int>
         maxStackCount = v;
     }
 
-    //public int[] maxStackCountUpgradeLevel;
-    //public int[] upgradeLevelCosts;
-    //public int upgradeLevelCounter;
-
-    //public bool CanUpgradeStack()
-    //    => upgradeLevelCounter < maxStackCountUpgradeLevel.Length;
-
-    //public void SetMaxStackCount()
-    //{
-    //    maxStackCount = maxStackCountUpgradeLevel[upgradeLevelCounter];
-    //    upgradeLevelCounter++;
-    //}
-
-
-    //public int GetUpgradeCost() => upgradeLevelCosts[upgradeLevelCounter];
-
 }

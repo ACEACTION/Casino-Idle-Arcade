@@ -7,6 +7,7 @@ public class PlayerData : UpgradeData<float>
 {
 
     public float moveSpeed;
+    public float defaultMoveSpeed;
 
     public override void PassValueToData(float v)
     {
@@ -14,20 +15,10 @@ public class PlayerData : UpgradeData<float>
         moveSpeed = v;
     }
 
-
-    //public float[] moveSpeedUpgradeLevel;
-    //public int[] moveSpeedUpgradeLevelCosts;
-    //public int upgradeLevelCounter;
-
-    //public bool CanUpgradeMoveSpeed()
-    //    => upgradeLevelCounter < moveSpeedUpgradeLevel.Length;
-
-    //public void SetMoveSpeed()
-    //{
-    //    moveSpeed = moveSpeedUpgradeLevel[upgradeLevelCounter];
-    //    upgradeLevelCounter++;
-    //}
-
-    //public int GetUpgradeCost() => moveSpeedUpgradeLevelCosts[upgradeLevelCounter];
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        moveSpeed = defaultMoveSpeed;
+    }
 
 }

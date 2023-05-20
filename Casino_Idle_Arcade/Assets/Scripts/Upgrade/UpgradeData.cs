@@ -25,7 +25,7 @@ public class UpgradeData <T> : ScriptableObject
 
     public int GetUpgradeCost() => upgradeSlots[upgradeLevelCounter].upgradeCost;
 
-    private void OnDisable()
+    public virtual void OnDisable()
     {
         upgradeLevelCounter = 0;
     }

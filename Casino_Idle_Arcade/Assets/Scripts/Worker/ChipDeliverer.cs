@@ -42,7 +42,7 @@ public class ChipDeliverer : Worker
 
     public override void Start()
     {
-
+        WorkerManager.BuyedChipDeliver();
     }
 
 

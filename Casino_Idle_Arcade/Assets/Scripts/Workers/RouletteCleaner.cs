@@ -15,6 +15,8 @@ public class RouletteCleaner : Worker
     }
      public override void Start()
     {
+        WorkerManager.BuyedCleaner();
+
         agent.speed = workerData.moveSpeed;
         foreach (var casinoGame in casinoGames)
         {

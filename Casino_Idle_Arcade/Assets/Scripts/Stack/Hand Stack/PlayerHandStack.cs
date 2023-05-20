@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public class PlayerHandStack : HandStack
 {    
-    Transform trash;    
+    Transform trash;
+
 
     public override void AddStackResourceProcess()
     {

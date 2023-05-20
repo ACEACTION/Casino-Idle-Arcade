@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class UpgradeUI : MonoBehaviour
 {
     int upgradeCost = 0;
     [SerializeField] Color disableItemBtnColor;
     [SerializeField] Color defaultItemBtnColor;
-    float btnPressedScale; 
+    float btnPressedScale;
+    [SerializeField] TextMeshProUGUI statusTxt;
+    Vector3 statusOriginPos;
 
     [Header("Player Hand Stack")]
-    [SerializeField] HandStackData playerStackData;
+    [SerializeField] PlayerHandStackData playerStackData;
     [SerializeField] Upgrade_Item playerStackItem;
 
     [Header("Player Move Speed")]
@@ -32,13 +35,22 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] GameObject playerPanel;
     [SerializeField] Image workerTitleBg;
     [SerializeField] GameObject workerPanel;
+    [SerializeField] GameObject workerTitleLockIcon;
+    [SerializeField] GameObject workerStackLockIcon;
 
+    public static UpgradeUI Instance;
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
 
     private void Start()
     {
         defaultItemBtnColor = playerStackItem.item_bg.color;
         btnPressedScale = playerStackItem.item_btn.transform.localScale.x;
+        statusOriginPos = statusTxt.transform.position;
+
         OpenPlayerPanel();
     }
 
@@ -56,12 +68,19 @@ public class UpgradeUI : MonoBehaviour
 
     public void OpenWorkerPanel()
     {
-        InitPanel(workerStackData, workerStaclItem);
-        InitPanel(workerMoveSpeedData, workerMsItem);
+        if (WorkerManager.BuyedWorker())
+        {
 
-        SetPanelState(false, playerPanel, playerTitleBg);
-        SetPanelState(true, workerPanel, workerTitleBg);
+            InitPanel(workerStackData, workerStaclItem);
+            InitPanel(workerMoveSpeedData, workerMsItem);
 
+            SetPanelState(false, playerPanel, playerTitleBg);
+            SetPanelState(true, workerPanel, workerTitleBg);
+
+        }
+        else
+            ShowStatusTxt();
+        
         SetBtnScale(workerTitleBg.transform);
     }
 
@@ -83,7 +102,7 @@ public class UpgradeUI : MonoBehaviour
         }
         else
         {
-            item.SetDisableItemBtnColor(disableItemBtnColor);
+            item.SetBtnBgColor(disableItemBtnColor);
             item.SetMaxLevelItem();
         }
     }
@@ -100,14 +119,19 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradeWorkerHandStack()
     {
-        UpgradeProcess(workerStackData, workerStaclItem);
+        if (WorkerManager.chipDeliverIsOpened)
+            UpgradeProcess(workerStackData, workerStaclItem);
+        else
+        {
+            SetBtnScale(workerStaclItem.transform);
+            ShowStatusTxt();
+        }
     }
-
-
 
 
     public void UpgradeWorkerMoveSpeed()
     {
+
         UpgradeProcess(workerMoveSpeedData, workerMsItem);
         WorkerManager.SetAgentMoveSpeed();
     }
@@ -121,7 +145,9 @@ public class UpgradeUI : MonoBehaviour
             if (upgradeCost <= GameManager.totalMoney)
             {
                 upgradeData.SetUgradeValue();
+                
                 GameManager.MinusMoney(upgradeCost);
+                Money_UI.Instance.SetTotalMoneyTxt();
 
                 CanNextUpgrade(upgradeData, item);
             }
@@ -137,16 +163,28 @@ public class UpgradeUI : MonoBehaviour
             item.SetItemCost(upgradeCost);
             if (upgradeCost > GameManager.totalMoney)
             {
-                item.SetDisableItemBtnColor(disableItemBtnColor);
+                item.SetBtnBgColor(disableItemBtnColor);
             }
         }
         else
         {
-            item.SetDisableItemBtnColor(disableItemBtnColor);
+            item.SetBtnBgColor(disableItemBtnColor);
             item.SetMaxLevelItem();
         }
     }
 
+    void ShowStatusTxt()
+    {
+        statusTxt.transform.DOKill();
+        statusTxt.text = "Worker is not open";
+        statusTxt.gameObject.SetActive(true);
+        statusTxt.transform.position = statusOriginPos;
+        statusTxt.transform.DOMoveY(statusOriginPos.y + 280, 1.5f).OnComplete(() =>
+        {
+            statusTxt.gameObject.SetActive(false);
+        });
+
+    }
 
     void SetBtnColorState(bool state, Image img) {
         if (state)
@@ -163,5 +201,20 @@ public class UpgradeUI : MonoBehaviour
         });
 
     }
+
+
+    public void UnlockWorkerTitle()
+    {
+        workerTitleLockIcon.SetActive(false);
+    }
+
+    public void UnlockWorkerStackItem()
+    {
+        workerStackLockIcon.SetActive(false);
+        workerStaclItem.SetBtnBgColor(defaultItemBtnColor);
+    }
+
+
+    
 
 }
