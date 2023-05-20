@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Customer Hand Stack Data")]
+[CreateAssetMenu(menuName = "Data/Stack/Customer Hand Stack Data")]
 public class CustomerHandStackData : ScriptableObject
 {
     public float stackYOffset;

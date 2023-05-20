@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public enum ResourceDeskType
+{
+    chip, food
+}
+
 public class CasinoResourceDesk : MonoBehaviour
 {
     [SerializeField] ChipResourceDeskData data;
     [SerializeField] Transform resourceSpawnPoint;
+    public ResourceDeskType deskType;
 
     public virtual void AddResourceToStack(HandStack stack)
     {

@@ -80,7 +80,7 @@ public class Roulette : CasinoGame_ChipGame
                 }
                 else
                 {
-                    workerCheker.worker?.ActiveActionAnim(true);
+                    workerCheker.employee?.ActiveActionAnim(true);
                 }
             }
         }

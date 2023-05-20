@@ -11,12 +11,8 @@ public static class GameManager
     {
         totalMoney += amount;
     }
+    
 
-    public static void BuyCostFunc(int price)
-    {
-        totalMoney -= (totalMoney * 4 / 100);
-        price -= (totalMoney * 4 / 100);
-    }
-
+    public static void MinusMoney(int amount) => totalMoney -= amount;
 
 }

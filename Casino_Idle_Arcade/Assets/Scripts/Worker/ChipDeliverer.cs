@@ -4,23 +4,21 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum State
+public enum ChipDeliverState
 {
     waiting, Delivering
 }
-public class ChipDeliverer : Cleaner
+public class ChipDeliverer : Worker
 {
-
-    public State state;
+    public ChipDeliverState state;
     public Transform destination;
-    [SerializeField] NavMeshAgent agent;
     [SerializeField] HandStack handStack;
     [SerializeField] float stopingRadius;
-    [SerializeField] CapsuleCollider collider;
+    public bool isDelivering = true;
     public float waitingCd;
     [SerializeField] float waitingCdAmount;
 
-    public bool isDelivering = true;
+    [SerializeField] CapsuleCollider collider;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
     public List<CasinoGame_ChipGame> casinoGamesPoses = new List<CasinoGame_ChipGame>();
 
@@ -33,7 +31,7 @@ public class ChipDeliverer : Cleaner
         WorkerManager.AddAvailableGamesToDeliverer();
         agent.speed = workerData.moveSpeed;
         waitingCd = waitingCdAmount;
-        state = State.waiting;
+        state = ChipDeliverState.waiting;
 
         foreach (var casinoGame in casinoGames)
         {
@@ -42,16 +40,16 @@ public class ChipDeliverer : Cleaner
     }
 
 
-    private void Start()
+    public override void Start()
     {
-
+        WorkerManager.BuyedChipDeliver();
     }
 
 
     private void Update()
     {
         //check if deliverer waited for order
-        if(state == State.waiting)
+        if(state == ChipDeliverState.waiting)
         {
             anim.SetBool("isDelivering", false);
 
@@ -70,10 +68,10 @@ public class ChipDeliverer : Cleaner
                     destination = closestChipDesk;
                 }
 
-                state = State.Delivering;
+                state = ChipDeliverState.Delivering;
             }
         }
-        if(state == State.Delivering)
+        if(state == ChipDeliverState.Delivering)
         {
             agent.SetDestination(destination.position);
             anim.SetBool("isDelivering", true);
@@ -141,7 +139,7 @@ public class ChipDeliverer : Cleaner
                 {
                     if (Vector3.Distance(transform.position, sweeperSpot.position) <= 1f)
                     {
-                        state = State.waiting;
+                        state = ChipDeliverState.waiting;
                         agent.speed = workerData.moveSpeed;
                         anim.SetBool("isDelivering", false);
 

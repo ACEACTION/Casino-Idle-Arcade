@@ -22,6 +22,7 @@ public class PlayerMovements : MonoBehaviour
 
 
     // references
+    [SerializeField] PlayerData data;
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
@@ -84,13 +85,14 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-        if (handStack.stackHasResource)
-            velocity = anim.deltaPosition * animationMoveSpeed;
+        if (!handStack.StackIsEmpty())
+            velocity = anim.deltaPosition * data.moveSpeed;
         else
-            velocity = anim.deltaPosition * animationStackMoveSpeed;
+            velocity = anim.deltaPosition * data.moveSpeed;
 
         //velocity = anim.deltaPosition;
     }
 
-   
+    
+
 }

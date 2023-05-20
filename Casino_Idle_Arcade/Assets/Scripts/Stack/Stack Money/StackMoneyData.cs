@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 
-[CreateAssetMenu(menuName = "Data/Stack Money Data")]
+[CreateAssetMenu(menuName = "Data/Stack/Stack Money Data")]
 public class StackMoneyData : ScriptableObject
 {
     public int xSize = 5;

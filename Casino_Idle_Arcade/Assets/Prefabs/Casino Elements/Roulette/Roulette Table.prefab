@@ -1007,8 +1007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6b0728fec2c50418176c373adbaa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
-  worker: {fileID: 0}
+  employeeType: 0
+  employee: {fileID: 1636607718209869800}
   isDealerAvailabe: 0
   isPlayerAvailable: 0
 --- !u!65 &1457323629
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1770952632}
   - component: {fileID: 1770952631}
   m_Layer: 0
-  m_Name: RWC
+  m_Name: Roulette Employee Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1117,8 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec073412bd57a246a270673fcd6c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
-  worker: {fileID: 0}
+  employeeType: 0
+  employee: {fileID: 1636607718209869800}
   isDealerAvailabe: 0
   isPlayerAvailable: 0
   casinoGame: {fileID: 1045904133}
@@ -2438,7 +2438,7 @@ MonoBehaviour:
   castTime: 1
   castTimeAmount: 1
   delayToReset: 0
-  readyToPlay: 0
+  readyToUse: 0
   moneyStacks:
   - {fileID: 5732474711946774731}
   - {fileID: 3860646741677242973}
@@ -2447,13 +2447,13 @@ MonoBehaviour:
   - {fileID: 7126347749745303933}
   gameStack: {fileID: 3620804334466494937}
   stackMoney: {fileID: 1749080763487290806}
-  dealerCastTime: 5
+  playCd: 0
   cleaningCd: 3
   isWorkerAvailable: 0
   betCounter: 0
   hasChip: 0
   cleaner: {fileID: 0}
-  rwc: {fileID: 1770952632}
+  ewc: {fileID: 1770952632}
   isClean: 1
   data: {fileID: 11400000, guid: a8218d5f7a47eb64b974b76d7a774de3, type: 2}
   sweeper: {fileID: 3481900672330427575}
@@ -2485,15 +2485,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7df162cd029d914386ec42d6c38034b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
   maxStackCount: 8
   stackCount: 0
-  game: {fileID: 0}
+  data: {fileID: 11400000, guid: 895d3339b9557964392962d921667573, type: 2}
   casinoResources: []
   firsStack: {fileID: 5274721340613529291}
   stackTxt: {fileID: 4909983666764739640}
   resourceIcon: {fileID: 0}
   ground: {fileID: 0}
+  game: {fileID: 0}
 --- !u!114 &3481900672330427575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,6 +4141,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1636607717296440318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1636607718209869800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1251070998, guid: a602c9b7fbf94e4478dadda770321068,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636607717296440318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653976542631683380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b477a55faa4d2b4da608dfa241e2fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8309925797077958542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7342186189009566832, guid: a602c9b7fbf94e4478dadda770321068,

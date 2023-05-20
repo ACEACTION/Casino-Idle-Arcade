@@ -4,20 +4,20 @@ using UnityEngine;
 
 
 
-public class WorkerCheker : MonoBehaviour
+public class EmployeeCheker : MonoBehaviour
 {
-    public WorkerType workerType;
-    public Worker worker;
+    public EmployeeType employeeType;
+    public Employee employee;
     public bool isDealerAvailabe;
     public bool isPlayerAvailable;
 
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.CompareTag(workerType.ToString()))
+        if (other.gameObject.CompareTag(employeeType.ToString()))
         {
             isDealerAvailabe = true;
-            worker = other.gameObject.GetComponent<Worker>();
+            employee = other.gameObject.GetComponent<Employee>();
         }
 
         if (other.gameObject.CompareTag("Player"))

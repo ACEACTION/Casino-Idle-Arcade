@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class RouletteCleaner : Cleaner
+public class RouletteCleaner : Worker
 {
-    [SerializeField] NavMeshAgent agent;
     public bool isCleaning = true;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
 
@@ -14,8 +13,10 @@ public class RouletteCleaner : Cleaner
         WorkerManager.AddAvaiableCasinoGamesToCleaner();
 
     }
-    private void Start()
+     public override void Start()
     {
+        WorkerManager.BuyedCleaner();
+
         agent.speed = workerData.moveSpeed;
         foreach (var casinoGame in casinoGames)
         {

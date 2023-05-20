@@ -13,7 +13,7 @@ public class CashierManager : MonoBehaviour
 
     public CashierData data;
     public List<Transform> customerSpots = new List<Transform>();
-    public WorkerCheker workerCheker;
+    public EmployeeCheker workerCheker;
     [SerializeField] Slider slider;
     [SerializeField] Image firstCustomerGameIcon;
     [SerializeField] CashierFirstTransform firstCounter;
