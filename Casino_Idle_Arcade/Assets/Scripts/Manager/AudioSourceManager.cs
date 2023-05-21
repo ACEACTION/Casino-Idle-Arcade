@@ -7,6 +7,8 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip[] pickUpCashSfx;
     [SerializeField] AudioClip[] placeChipSfx;
     [SerializeField] AudioClip sweepSfx;
+    [SerializeField] AudioClip buyItemSfx;
+    [SerializeField] AudioClip switchTabSfx;
     [SerializeField] AudioClip popSfx;
     [SerializeField] AudioClip shineSfx;
 
@@ -28,6 +30,10 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     public void PlayFushSfx() => PlaySfx(fushSfx);
+    public void PlayBuyItem() => PlaySfx(buyItemSfx);
+
+    public void PlaySwitchTabIcon() => PlaySfx(switchTabSfx);
+
     public void PlayCashPickupSfx() => PlaySfx(pickUpCashSfx[Random.Range(0,pickUpCashSfx.Length)]);
     public void PlayPoPSfx() => PlaySfx(popSfx);
 
