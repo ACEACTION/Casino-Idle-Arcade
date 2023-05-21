@@ -160,6 +160,9 @@ public class UpgradeUI : MonoBehaviour
     public void UpgradeProcess<T>(UpgradeData<T> upgradeData, Upgrade_Item item)
     {
         SetBtnScale(item.item_btn.transform);
+        // play upgrade sfx
+        AudioSourceManager.Instance.PlayBuyItem();
+
         if (upgradeData.CanUpgrade())
         {
             upgradeCost = upgradeData.GetUpgradeCost();
@@ -172,8 +175,6 @@ public class UpgradeUI : MonoBehaviour
 
                 CanNextUpgrade(upgradeData, item);
 
-                // play upgrade sfx
-                AudioSourceManager.Instance.PlayBuyItem();
 
                 InitPlayerPanel();
                 InitWorkerPanel();
