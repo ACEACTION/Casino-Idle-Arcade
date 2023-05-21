@@ -227,7 +227,7 @@ public class CasinoGame_ChipGame : CasinoGame
             if (getChipCd <= 0)
             {
                 chip = gameStack.GetFromGameStack();
-                CallDeliverer();
+
                 if (chip)
                 {
                     chip.transform.SetParent(transform);
@@ -247,6 +247,7 @@ public class CasinoGame_ChipGame : CasinoGame
                         roulette_ui.SetChipTxt(betCounter.ToString());
 
                 }
+                CallDeliverer();
 
                 getChipCd = data.maxGetChipCd;
 
