@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameManager 
 {
 
-    public static int totalMoney;
+    static int totalMoney;
     public static bool isCompleteTutorial;
     public static void AddMoney(int amount)
     {
@@ -14,5 +14,7 @@ public static class GameManager
     
 
     public static void MinusMoney(int amount) => totalMoney -= amount;
+
+    public static int GetTotalMoney() => totalMoney;
 
 }

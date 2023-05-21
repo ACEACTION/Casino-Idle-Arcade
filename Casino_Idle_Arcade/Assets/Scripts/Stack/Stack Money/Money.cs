@@ -58,6 +58,7 @@ public class Money : CasinoResource
             {
                 goToPlayer = false;
                 GameManager.AddMoney(moneyAmount);
+                Money_UI.Instance.SetTotalMoneyTxt();
                 ReleaseResource();
             }
         }        

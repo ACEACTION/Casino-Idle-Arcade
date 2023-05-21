@@ -10,6 +10,7 @@ public class BtnTest_Ui : MonoBehaviour
     public void AddCash()
     {
         GameManager.AddMoney(extraMoney);
+        Money_UI.Instance.SetTotalMoneyTxt();
     }
 
     public void AddStack()

@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8647,13 +8647,18 @@ PrefabInstance:
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: isCompleteTutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7659990875267568069, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: fpsText
       value: 
       objectReference: {fileID: 719630555}
+    - target: {fileID: 8038122930291222102, guid: 7ed0c129d23fd184f970505cadb2d4a2,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed0c129d23fd184f970505cadb2d4a2, type: 3}
 --- !u!1001 &3628109666440497610
@@ -8960,6 +8965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Snack Desk Resource
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842958274008995971, guid: 1a7895b8f78a0bd4388c9baa43e33be7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a7895b8f78a0bd4388c9baa43e33be7, type: 3}

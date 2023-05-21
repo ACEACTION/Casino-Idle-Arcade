@@ -35,7 +35,7 @@ public class BuyAreaController : MonoBehaviour
     }
     private void Update()
     {
-        if (price > 0 && isPlayerAvailabe && GameManager.totalMoney > 0 ) 
+        if (price > 0 && isPlayerAvailabe && GameManager.GetTotalMoney() > 0 ) 
         {
             if (playerWaitingCd <= 0)
             {
@@ -52,8 +52,8 @@ public class BuyAreaController : MonoBehaviour
                     {
                         StackMoneyPool.Instance.OnReleaseMoney(money);
                     });
-                    paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.totalMoney);
-                    GameManager.totalMoney -= paymentAmount;
+                    paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.GetTotalMoney());
+                    GameManager.MinusMoney(paymentAmount);
                     remainingPayment = price - paymentAmount;
                     price -= paymentAmount;
                     AudioSourceManager.Instance.PlayFushSfx();
@@ -63,7 +63,7 @@ public class BuyAreaController : MonoBehaviour
                     
                     if (remainingPayment < 0)
                     {
-                        GameManager.totalMoney += -remainingPayment;
+                        GameManager.MinusMoney(-remainingPayment);
                     }
 
                     Money_UI.Instance.SetTotalMoneyTxt();

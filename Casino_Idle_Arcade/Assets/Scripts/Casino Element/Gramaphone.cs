@@ -46,7 +46,7 @@ public class Gramaphone : MonoBehaviour
     void EnableMenu()
     {
         gramaphoneUiCanvas.gameObject.SetActive(true);
-        if(GameManager.totalMoney < musicCost)
+        if(GameManager.GetTotalMoney() < musicCost)
         {
             bgImage.color = disableColor;
         }
@@ -80,7 +80,7 @@ public class Gramaphone : MonoBehaviour
             playBtn.localScale = new Vector3(playBtnScale, playBtnScale, playBtnScale);
         });
 
-        if (GameManager.totalMoney >= musicCost)
+        if (GameManager.GetTotalMoney() >= musicCost)
         {
             musicVfx.gameObject.SetActive(true);
             musicVfx.Play();
@@ -97,7 +97,7 @@ public class Gramaphone : MonoBehaviour
 
             AudioSourceBgMusic.Instance.SetAudioSource(casinoMusics[randomIndex]);
 
-            GameManager.totalMoney -= musicCost;
+            GameManager.MinusMoney(musicCost);
             Money_UI.Instance.SetTotalMoneyTxt();
             /*PlayMusic(casinoMusics[Random.Range]);
             GameManager.totalMoney -= index;*/

@@ -10,7 +10,7 @@ public class Money_UI : MonoBehaviour
     [SerializeField] float maxAddMoneyCd;
 
     public int totalMoney;
-    public int currentMoney;
+    public float moneyAmount;
     [SerializeField] Color flashColor;
     Color defaultMoneyIconColor;
     Vector3 iconDefaultScale;
@@ -30,39 +30,25 @@ public class Money_UI : MonoBehaviour
     {
         iconDefaultScale = moneyIcon.transform.localScale;
         defaultMoneyIconColor = moneyIcon.color;
-        currentMoney = GameManager.totalMoney;
         addMoneyCd = maxAddMoneyCd;
-        SetMoneyUiTxt();
+        
     }
 
 
 
     private void Update()
     {
-        totalMoney = GameManager.totalMoney;
-
-        //if (currentMoney != GameManager.totalMoney)
+        //totalMoney = GameManager.GetTotalMoney();        
+        //if (currentMoney < GameManager.GetTotalMoney())
         //{
         //    addMoneyCd -= Time.deltaTime;
         //    moneyIcon.transform.localScale = iconDefaultScale + new Vector3(.3f, .3f, .3f);
         //    moneyIcon.color = flashColor;
 
-
-
         //    if (addMoneyCd <= 0)
         //    {
-        //        if (currentMoney < GameManager.totalMoney)
-        //        {
-        //            currentMoney++;
-        //        }
-        //        else if (currentMoney > GameManager.totalMoney)
-        //        {
-        //            currentMoney--;
-        //        }
-
-        //        SetMoneyUiTxt();
-        //        moneyIcon.transform.localScale = iconDefaultScale + new Vector3(.3f, .3f, .3f);
-        //        moneyIcon.color = flashColor;
+        //        currentMoney++;
+        //        SetMoneyUiTxt();                
         //    }
         //}
         //else
@@ -71,36 +57,49 @@ public class Money_UI : MonoBehaviour
         //    moneyIcon.color = defaultMoneyIconColor;
         //}
 
-
-        if (currentMoney < GameManager.totalMoney)
-        {
-            addMoneyCd -= Time.deltaTime;
-            moneyIcon.transform.localScale = iconDefaultScale + new Vector3(.3f, .3f, .3f);
-            moneyIcon.color = flashColor;
-
-            if (addMoneyCd <= 0)
-            {
-                currentMoney++;
-                SetMoneyUiTxt();
-                //moneyIcon.transform.localScale = iconDefaultScale + new Vector3(.3f, .3f, .3f);
-                //moneyIcon.color = flashColor;
-            }
-        }
-        else
-        {
-            moneyIcon.transform.localScale = iconDefaultScale;
-            moneyIcon.color = defaultMoneyIconColor;
-        }
+        if (Input.GetKeyDown(KeyCode.Space))
+            print(GameManager.GetTotalMoney());
 
     }
 
-    public void SetCurrentMoney() => currentMoney = GameManager.totalMoney;
-
-    void SetMoneyUiTxt() => moneyTxt.text = currentMoney.ToString();
+    void SetMoneyUiTxt() => moneyTxt.text = moneyAmount.ToString();
 
     public void SetTotalMoneyTxt()
     {
-        currentMoney = GameManager.totalMoney;
-        moneyTxt.text = GameManager.totalMoney.ToString();
+        moneyAmount = GameManager.GetTotalMoney();
+
+        if (moneyAmount < 1000)
+        {
+            SetTxt(moneyAmount.ToString());
+        }
+        else if (moneyAmount >= 1000 && moneyAmount < 10000)
+        {
+            moneyAmount /= 1000;
+            SetTxt(moneyAmount.ToString("F1") + "k");
+        }
+        else if (moneyAmount >= 10000 && moneyAmount < 100000)
+        {
+            moneyAmount /= 1000;
+            SetTxt(moneyAmount.ToString("F2") + "k");
+        }
+        else if (moneyAmount >= 100000 && moneyAmount < 1000000)
+        {
+            moneyAmount /= 1000;
+            SetTxt(moneyAmount.ToString("F2") + "k");
+        }
+        else if (moneyAmount >= 1000000)
+        {
+            moneyAmount /= 1000000;
+            SetTxt(moneyAmount.ToString("F2") + "m");
+        }        
+        
+            
+
+        //moneyTxt.text = GameManager.GetTotalMoney().ToString();
     }
+
+    void SetTxt(string txt) => moneyTxt.text = txt;
+
+
+
 }

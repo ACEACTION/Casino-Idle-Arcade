@@ -24,7 +24,8 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-        GameManager.totalMoney += defaultMoney;
+        GameManager.AddMoney(defaultMoney);
+
 
         if (isCompleteTutorial)
         {
@@ -35,9 +36,9 @@ public class CasinoManager : MonoBehaviour
             tutorialManager.SetActive(true);
     }
 
-    private void Update()
+    private void Start()
     {
-        moneytest = GameManager.totalMoney;
+        Money_UI.Instance.SetTotalMoneyTxt();
     }
 
 }

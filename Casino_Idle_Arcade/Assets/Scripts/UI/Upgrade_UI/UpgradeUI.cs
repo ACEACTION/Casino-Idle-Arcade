@@ -116,7 +116,7 @@ public class UpgradeUI : MonoBehaviour
         {
             upgradeCost = upgradeData.GetUpgradeCost();
             item.SetItemCost(upgradeCost);
-            if (GameManager.totalMoney >= upgradeCost )
+            if (GameManager.GetTotalMoney() >= upgradeCost )
                 item.SetBtnBgColor(defaultItemBtnColor);
             else
                 item.SetBtnBgColor(disableItemBtnColor);
@@ -166,7 +166,7 @@ public class UpgradeUI : MonoBehaviour
         if (upgradeData.CanUpgrade())
         {
             upgradeCost = upgradeData.GetUpgradeCost();
-            if (upgradeCost <= GameManager.totalMoney)
+            if (upgradeCost <= GameManager.GetTotalMoney())
             {
                 upgradeData.SetUgradeValue();
 
@@ -191,7 +191,7 @@ public class UpgradeUI : MonoBehaviour
         {
             upgradeCost = upgradeData.GetUpgradeCost();
             item.SetItemCost(upgradeCost);
-            if (upgradeCost > GameManager.totalMoney)
+            if (upgradeCost > GameManager.GetTotalMoney())
             {
                 item.SetBtnBgColor(disableItemBtnColor);
             }
