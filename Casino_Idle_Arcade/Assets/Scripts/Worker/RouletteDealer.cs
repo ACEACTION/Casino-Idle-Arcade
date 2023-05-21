@@ -10,5 +10,4 @@ public class RouletteDealer : Employee
         anim.SetBool("isPlayingCard", state);
     }
 
-
 }
