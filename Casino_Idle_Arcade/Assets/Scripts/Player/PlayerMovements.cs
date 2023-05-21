@@ -86,13 +86,13 @@ public class PlayerMovements : MonoBehaviour
     private void OnAnimatorMove()
     {
         if (!handStack.StackIsEmpty())
-            velocity = anim.deltaPosition * data.moveSpeed;
+            velocity = anim.deltaPosition * animationMoveSpeed;
         else
-            velocity = anim.deltaPosition * data.moveSpeed;
+            velocity = anim.deltaPosition * animationMoveSpeed;
 
         //velocity = anim.deltaPosition;
     }
 
-    
+    public void SetAnimationMoveSpeed(float ms) => anim.SetFloat("moveSpeed", ms);
 
 }

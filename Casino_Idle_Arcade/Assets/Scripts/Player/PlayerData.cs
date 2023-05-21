@@ -13,6 +13,7 @@ public class PlayerData : UpgradeData<float>
     {
         base.PassValueToData(v);
         moveSpeed = v;
+        PlayerMovements.Instance.SetAnimationMoveSpeed(moveSpeed);
     }
 
     public override void OnDisable()
