@@ -103,7 +103,9 @@ public class UpgradeUI : MonoBehaviour
     {               
         panel.SetActive(state);
         SetBtnColorState(state, bg);
+        
         // play title panel sfx
+        AudioSourceManager.Instance.PlaySwitchTabIcon();
     }
 
  
@@ -170,10 +172,11 @@ public class UpgradeUI : MonoBehaviour
 
                 CanNextUpgrade(upgradeData, item);
 
+                // play upgrade sfx
+                AudioSourceManager.Instance.PlayBuyItem();
+
                 InitPlayerPanel();
                 InitWorkerPanel();
-
-                // play upgrade sfx
             }
             else
                 ShowStatusTxt("Money is not enough!");
