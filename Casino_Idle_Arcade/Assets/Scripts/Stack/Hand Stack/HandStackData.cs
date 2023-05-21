@@ -18,4 +18,9 @@ public class HandStackData : UpgradeData<int>
         maxStackCount = v;
     }
 
+    public override void OnDisable()
+    {
+        base.OnDisable();
+    }
+
 }

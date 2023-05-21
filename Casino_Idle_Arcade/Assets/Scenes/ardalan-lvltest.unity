@@ -1380,6 +1380,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 17267394}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &232315817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 513802984723435615, guid: 00840687c9751ef458d835ea36450997,
+    type: 3}
+  m_PrefabInstance: {fileID: 8249163097526929101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b9674db77359f4b822befdb5395231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &238907419
 GameObject:
   m_ObjectHideFlags: 0
@@ -8615,7 +8627,7 @@ PrefabInstance:
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: defaultMoney
-      value: 50000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
@@ -9780,6 +9792,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 232315817}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OpenMainPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UpgradeUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842776118151580737, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8431720599722076367, guid: 00840687c9751ef458d835ea36450997,
         type: 3}

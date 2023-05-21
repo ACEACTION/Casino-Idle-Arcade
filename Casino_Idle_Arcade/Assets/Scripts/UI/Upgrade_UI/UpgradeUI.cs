@@ -51,13 +51,17 @@ public class UpgradeUI : MonoBehaviour
         btnPressedScale = playerStackItem.item_btn.transform.localScale.x;
         statusOriginPos = statusTxt.transform.position;
 
+    }
+
+    public void OpenMainPanel()
+    {
         OpenPlayerPanel();
     }
 
+
     public void OpenPlayerPanel()
     {
-        InitPanel(playerStackData, playerStackItem);
-        InitPanel(playerData, playerMsItem);        
+        InitPlayerPanel();
 
         SetPanelState(true, playerPanel, playerTitleBg);
         SetPanelState(false, workerPanel, workerTitleBg);
@@ -71,17 +75,28 @@ public class UpgradeUI : MonoBehaviour
         if (WorkerManager.BuyedWorker())
         {
 
-            InitPanel(workerStackData, workerStaclItem);
-            InitPanel(workerMoveSpeedData, workerMsItem);
+            InitWorkerPanel();
 
             SetPanelState(false, playerPanel, playerTitleBg);
             SetPanelState(true, workerPanel, workerTitleBg);
 
         }
         else
-            ShowStatusTxt();
+            ShowStatusTxt("Worker is not open!");
         
         SetBtnScale(workerTitleBg.transform);
+    }
+
+    void InitPlayerPanel()
+    {
+        InitPanel(playerStackData, playerStackItem);
+        InitPanel(playerData, playerMsItem);
+    }
+
+    void InitWorkerPanel()
+    {
+        InitPanel(workerStackData, workerStaclItem);
+        InitPanel(workerMoveSpeedData, workerMsItem);
     }
 
     void SetPanelState(bool state, GameObject panel, Image bg)
@@ -99,6 +114,10 @@ public class UpgradeUI : MonoBehaviour
         {
             upgradeCost = upgradeData.GetUpgradeCost();
             item.SetItemCost(upgradeCost);
+            if (GameManager.totalMoney >= upgradeCost )
+                item.SetBtnBgColor(defaultItemBtnColor);
+            else
+                item.SetBtnBgColor(disableItemBtnColor);
         }
         else
         {
@@ -124,7 +143,7 @@ public class UpgradeUI : MonoBehaviour
         else
         {
             SetBtnScale(workerStaclItem.transform);
-            ShowStatusTxt();
+            ShowStatusTxt("Worker is not open!");
         }
     }
 
@@ -145,14 +164,19 @@ public class UpgradeUI : MonoBehaviour
             if (upgradeCost <= GameManager.totalMoney)
             {
                 upgradeData.SetUgradeValue();
-                
+
                 GameManager.MinusMoney(upgradeCost);
                 Money_UI.Instance.SetTotalMoneyTxt();
 
                 CanNextUpgrade(upgradeData, item);
-               
+
+                InitPlayerPanel();
+                InitWorkerPanel();
+
                 // play upgrade sfx
             }
+            else
+                ShowStatusTxt("Money is not enough!");
         }
     }
 
@@ -175,10 +199,10 @@ public class UpgradeUI : MonoBehaviour
         }
     }
 
-    void ShowStatusTxt()
+    void ShowStatusTxt(string msg)
     {
         statusTxt.transform.DOKill();
-        statusTxt.text = "Worker is not open";
+        statusTxt.text = msg;
         statusTxt.gameObject.SetActive(true);
         statusTxt.transform.position = statusOriginPos;
         statusTxt.transform.DOMoveY(statusOriginPos.y + 280, 1.5f).OnComplete(() =>
