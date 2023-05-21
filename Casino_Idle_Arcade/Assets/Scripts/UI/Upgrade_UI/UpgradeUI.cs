@@ -88,6 +88,7 @@ public class UpgradeUI : MonoBehaviour
     {               
         panel.SetActive(state);
         SetBtnColorState(state, bg);
+        // play title panel sfx
     }
 
  
@@ -149,6 +150,8 @@ public class UpgradeUI : MonoBehaviour
                 Money_UI.Instance.SetTotalMoneyTxt();
 
                 CanNextUpgrade(upgradeData, item);
+               
+                // play upgrade sfx
             }
         }
     }
