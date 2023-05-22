@@ -35,7 +35,7 @@ public class ChipDeliverer : Worker
 
         foreach (var casinoGame in casinoGames)
         {
-            casinoGame.CallDeliverer();
+            StartCoroutine(casinoGame.CallDeliverer());
         }
     }
 

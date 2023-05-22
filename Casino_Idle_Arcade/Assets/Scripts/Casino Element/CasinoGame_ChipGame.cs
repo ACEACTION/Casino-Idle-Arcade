@@ -156,9 +156,9 @@ public class CasinoGame_ChipGame : CasinoGame
         }
     }
 
-    public void CallDeliverer()
+    public IEnumerator CallDeliverer()
     {
-
+        yield return new WaitForSeconds(1f);
         if (gameStack.StackIsEmpty())
         {
             if (chipDeliverer != null) chipDeliverer.casinoGamesPoses.Add(this);
@@ -247,7 +247,7 @@ public class CasinoGame_ChipGame : CasinoGame
                         roulette_ui.SetChipTxt(betCounter.ToString());
 
                 }
-                CallDeliverer();
+                StartCoroutine(CallDeliverer());
 
                 getChipCd = data.maxGetChipCd;
 
