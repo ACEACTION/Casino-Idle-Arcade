@@ -67,6 +67,8 @@ public class UpgradeUI : MonoBehaviour
         SetPanelState(false, workerPanel, workerTitleBg);
 
         SetBtnScale(playerTitleBg.transform);
+        // play title panel sfx
+        AudioSourceManager.Instance.PlaySwitchTabIcon();
 
     }
 
@@ -85,6 +87,8 @@ public class UpgradeUI : MonoBehaviour
             ShowStatusTxt("Worker is not open!");
         
         SetBtnScale(workerTitleBg.transform);
+        // play title panel sfx
+        AudioSourceManager.Instance.PlaySwitchTabIcon();
     }
 
     void InitPlayerPanel()
@@ -102,10 +106,7 @@ public class UpgradeUI : MonoBehaviour
     void SetPanelState(bool state, GameObject panel, Image bg)
     {               
         panel.SetActive(state);
-        SetBtnColorState(state, bg);
-        
-        // play title panel sfx
-        AudioSourceManager.Instance.PlaySwitchTabIcon();
+        SetBtnColorState(state, bg);               
     }
 
  
@@ -145,7 +146,7 @@ public class UpgradeUI : MonoBehaviour
         else
         {
             SetBtnScale(workerStaclItem.transform);
-            ShowStatusTxt("Worker is not open!");
+            ShowStatusTxt("Chip deliver is not open!");
         }
     }
 
