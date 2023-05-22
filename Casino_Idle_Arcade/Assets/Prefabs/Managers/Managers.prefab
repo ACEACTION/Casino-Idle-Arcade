@@ -260,6 +260,16 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: a1de7dbe32f30a940ac09fa9ea0add86, type: 3}
     - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
         type: 3}
+      propertyPath: buyItemSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5e2dd46e567c146a65a44ad2603026, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
+      propertyPath: switchTabSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 045d57a72aaa6474d9490f0ab13ef838, type: 3}
+    - target: {fileID: 8330105962593634568, guid: 3c36432a253a3b84f8759f3a7aaeef86,
+        type: 3}
       propertyPath: pickUpCashSfx.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -363,36 +373,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casino Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: defaultMoney
-      value: 50000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: isCompleteTutorial
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: availableElements.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: availableElements.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: availableElements.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199340485684177300, guid: 9d45d07bead0a5046b1fef30101aa29f,
-        type: 3}
-      propertyPath: availableElements.Array.data[3]
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1199340485684177301, guid: 9d45d07bead0a5046b1fef30101aa29f,
         type: 3}
       propertyPath: m_RootOrder
@@ -450,26 +430,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d45d07bead0a5046b1fef30101aa29f, type: 3}
---- !u!1 &7164376046226446067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1199340485684177299, guid: 9d45d07bead0a5046b1fef30101aa29f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8342940158292016992}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7659990875267568069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7164376046226446067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720d386b97ea9f7439641b17f99d7403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpsText: {fileID: 0}
-  deltaTime: 0
 --- !u!4 &7164376046226446069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1199340485684177301, guid: 9d45d07bead0a5046b1fef30101aa29f,

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1199340485684177301}
   - component: {fileID: 1199340485684177300}
+  - component: {fileID: 7659990875267568069}
   m_Layer: 0
   m_Name: CasinoManager
   m_TagString: Untagged
@@ -44,4 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ba07d877a762d428cfa541f97a64d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableElements: 00000000
+  defaultMoney: 500000
+  isCompleteTutorial: 1
+  tutorialManager: {fileID: 0}
+  moneytest: 0
+  availableElements: 00000000010000000200000003000000
+--- !u!114 &7659990875267568069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199340485684177299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720d386b97ea9f7439641b17f99d7403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsText: {fileID: 0}
+  deltaTime: 0
