@@ -1249,6 +1249,7 @@ Transform:
   - {fileID: 7928741721422673349}
   - {fileID: 1754102219780109704}
   - {fileID: 249787297392823878}
+  - {fileID: 8418496883457087323}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1313,14 +1314,13 @@ MonoBehaviour:
   castTime: 2
   castTimeAmount: 2
   delayToReset: 4
-  readyToPlay: 0
+  readyToUse: 0
   moneyStacks:
   - {fileID: 5575233221500950168}
   - {fileID: 4251515876287010517}
   - {fileID: 2315085212372167963}
-  cleaner: {fileID: 0}
-  rwc: {fileID: 0}
-  isClean: 1
+  gameStack: {fileID: 0}
+  stackMoney: {fileID: 8418496883457087322}
   data: {fileID: 11400000, guid: 66e394aa8e655e640aa3b1a324150e8b, type: 2}
   animator: {fileID: 1693442473}
 --- !u!95 &1693442473
@@ -1525,6 +1525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot Money Stack 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
         type: 3}
       propertyPath: m_RootOrder
@@ -1616,6 +1621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jackpot Money Stack 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
         type: 3}
@@ -1709,6 +1719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackpot Money Stack 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5631386049142287028, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6004279822717076665, guid: 38b26f6c140233f4ea95dea6f3bdd0ed,
         type: 3}
       propertyPath: m_RootOrder
@@ -1789,3 +1804,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ed87f552c89e246a2775182808f8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &8524190068626673085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7691326297396350370}
+    m_Modifications:
+    - target: {fileID: 187044501671811812, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_Name
+      value: Casino Game Stack Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000081446345
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000019986182
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000000015156776
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231307903560159643, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231307903560159643, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231307903560159643, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8eb7b31d5b4f445458c72dfb97d57e6e, type: 3}
+--- !u!114 &8418496883457087322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 187044501671811815, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8524190068626673085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9655199ee90de4c8597494ace63f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8418496883457087323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 187044501671811814, guid: 8eb7b31d5b4f445458c72dfb97d57e6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8524190068626673085}
+  m_PrefabAsset: {fileID: 0}

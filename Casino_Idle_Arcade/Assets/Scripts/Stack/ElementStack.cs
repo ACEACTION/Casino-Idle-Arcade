@@ -16,13 +16,15 @@ public class ElementStack : MonoBehaviour
     [SerializeField] TextMeshPro stackTxt;
     [SerializeField] Transform resourceIcon;
     [SerializeField] Transform ground;
+    Vector3 resourceIconScale;
 
     public virtual void Start()
     {
         data.iconDefaultScale = resourceIcon.localScale.x;
         data.stackDefaultScale = transform.localScale.x;
-        ShowEmptyStack();
         SetStackTxt();
+        resourceIconScale = resourceIcon.transform.localScale;
+        ShowEmptyStack();
     }
 
     public bool CanAddStack() => stackCount < maxStackCount;
@@ -43,6 +45,8 @@ public class ElementStack : MonoBehaviour
         {
 
             //resourceIcon.DOScale(data.iconDefaultScale, .7f);
+            resourceIcon.gameObject.SetActive(true);
+            resourceIcon.DOScale(resourceIconScale, data.scaleDuration);
             ground.DOScale(data.stackDefaultScale + .2f, 1);
 
         }
@@ -50,17 +54,21 @@ public class ElementStack : MonoBehaviour
 
     public void SetResourceParent(Transform resource, Transform parent) => resource.parent = parent;
     public void RotateResource(Transform resource)
-        => resource.DORotate(new Vector3(0, Random.Range(0, 1200), 0), data.duration, RotateMode.FastBeyond360);
+        => resource.DORotate(new Vector3(0, Random.Range(0, 1200), 0), data.jumpDuration, RotateMode.FastBeyond360);
 
     public void JumpMoveResource(CasinoResource resource) 
         => resource.transform.DOJump(firsStack.position, data.jumpPower, 1,
-            data.duration).OnComplete(() =>
+            data.jumpDuration).OnComplete(() =>
             {
                 CompleteJumpMove(resource);
             });
     public virtual void CompleteJumpMove(CasinoResource resource) 
     {
         casinoResources.Add(resource);
+        resourceIcon.DOScale(new Vector3(.01f, .01f, .01f), data.scaleDuration).OnComplete(() =>
+        {
+            resourceIcon.gameObject.SetActive(false);
+        });
     }
 
     public virtual void AddToGameStack(CasinoResource resource)

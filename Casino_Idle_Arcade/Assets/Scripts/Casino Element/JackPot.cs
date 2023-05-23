@@ -99,10 +99,13 @@ public class JackPot : CasinoGame
     {
         int moneyAmount = Random.Range(data.moneyAmountUpgradeLevel[upgradeIndex],
                 data.moneyAmountUpgradeLevel[upgradeIndex] + 2);
-        for (int i = 0; i < moneyAmount; i++)
+
+        customers[0].PayMoney(stackMoney, moneyAmount, MoneyType.jackpotMoney);
+        
+        /*for (int i = 0; i < moneyAmount; i++)
         {
             moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
-        }
+        }*/
     }
 
     public override void UpgradeElements()

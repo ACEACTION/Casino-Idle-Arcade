@@ -7,7 +7,8 @@ public class ElementStackData : ScriptableObject
 {
     public int[] maxStackCountLevel;
     public float stackYOffset;
-    public float duration;
+    public float jumpDuration;
+    public float scaleDuration;
     public float jumpPower;
     [HideInInspector] public float iconDefaultScale;
     [HideInInspector] public float stackDefaultScale;
