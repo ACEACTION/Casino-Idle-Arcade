@@ -57,8 +57,8 @@ public class Money : CasinoResource
                 PlayerMovements.Instance.transform.position + new Vector3(0, 1, 0)) < .1f)
             {
                 goToPlayer = false;
-                GameManager.AddMoney(moneyAmount);
-                Money_UI.Instance.SetTotalMoneyTxt();
+                //GameManager.AddMoney(moneyAmount);
+                //Money_UI.Instance.SetTotalMoneyTxt();
                 ReleaseResource();
             }
         }        
