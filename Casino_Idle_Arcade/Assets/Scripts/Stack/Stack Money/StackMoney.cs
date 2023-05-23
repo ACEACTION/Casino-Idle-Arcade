@@ -131,7 +131,6 @@ public class StackMoney : MonoBehaviour
         moneyList.Clear();
     }
 
-    bool showMoney = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -141,11 +140,14 @@ public class StackMoney : MonoBehaviour
 
             if (totalMoney > 0)
             {
-                AudioSourceManager.Instance.PlayCashPickupSfx();
-                showMoney = false;
-                stackMoneyCanvas.AddMoneyText(totalMoney);
-                totalMoney = 0;
+                //stackMoneyCanvas.AddMoneyText(totalMoney);
 
+                AudioSourceManager.Instance.PlayCashPickupSfx();
+                GameManager.AddMoney(totalMoney);
+                LootMoneu_UI.Instance.ShowLootMoneyTxt(totalMoney);
+                Money_UI.Instance.SetTotalMoneyTxt();
+
+                totalMoney = 0;
             }
         }
     }

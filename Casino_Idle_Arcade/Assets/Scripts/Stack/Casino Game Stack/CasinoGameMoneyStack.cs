@@ -86,8 +86,17 @@ public class CasinoGameMoneyStack : MonoBehaviour
             
             if (totalMoney > 0)
             {
-                stackMoneyCanvas.AddMoneyText(totalMoney);
+                //stackMoneyCanvas.AddMoneyText(totalMoney);
+                
+                
+                AudioSourceManager.Instance.PlayCashPickupSfx();
+                GameManager.AddMoney(totalMoney);
+                LootMoneu_UI.Instance.ShowLootMoneyTxt(totalMoney);
+                Money_UI.Instance.SetTotalMoneyTxt();
+
+
                 totalMoney = 0;
+
             }
         }
     }
