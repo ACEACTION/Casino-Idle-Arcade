@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpCashSfx:
-  - {fileID: 8300000, guid: 4367f60af60aaf044b3e763dcee338b1, type: 3}
-  - {fileID: 8300000, guid: a136f9819614e1d44b3063d5d986b403, type: 3}
-  - {fileID: 8300000, guid: 777ed026f7b8ee84997628e0047bd162, type: 3}
+  - {fileID: 8300000, guid: 410e6efbea1c2aa40af32b21f70a91d0, type: 3}
+  - {fileID: 8300000, guid: 71a1b056b1fb2e547b63620b7003831a, type: 3}
   placeChipSfx:
   - {fileID: 8300000, guid: 7f0d7aabf1a85a64da4abe014c0cf95a, type: 3}
+  sweepSfx: {fileID: 8300000, guid: 19bf1f57460c21b48bedac520629dd57, type: 3}
+  buyItemSfx: {fileID: 8300000, guid: 7a5e2dd46e567c146a65a44ad2603026, type: 3}
+  cantBuyItemSfx: {fileID: 8300000, guid: e848ab622fa4ba04a8408941464fa1d2, type: 3}
+  switchTabSfx: {fileID: 8300000, guid: 045d57a72aaa6474d9490f0ab13ef838, type: 3}
+  popSfx: {fileID: 8300000, guid: a92bca9e4c89c6749aa2ca7f68ef1885, type: 3}
+  shineSfx: {fileID: 8300000, guid: 9cc000ea439f8df43a2f0f8ab549adcc, type: 3}
   receptionSfx: {fileID: 8300000, guid: 155da62ebe2bb9a42bba67ad5f70d9e1, type: 3}
   musicBg: {fileID: 0}
   rouletteGamePlaySfx: {fileID: 8300000, guid: 24600d60af3256445a43736819ea04cf, type: 3}
+  buyAreaSfx: {fileID: 8300000, guid: a1de7dbe32f30a940ac09fa9ea0add86, type: 3}
+  fushSfx: {fileID: 8300000, guid: 9c91e5c737870c0488551a5d9914ca77, type: 3}
   audioScr: {fileID: 8330105962593634571}
 --- !u!82 &8330105962593634571
 AudioSource:
@@ -65,9 +72,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 45f7719e6fa7b914ab94bcbec90ad82c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

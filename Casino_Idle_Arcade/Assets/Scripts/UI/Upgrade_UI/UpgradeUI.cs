@@ -93,14 +93,14 @@ public class UpgradeUI : MonoBehaviour
 
     void InitPlayerPanel()
     {
-        InitPanel(playerStackData, playerStackItem);
-        InitPanel(playerData, playerMsItem);
+        InitPanel(playerStackData, playerStackItem, true);
+        InitPanel(playerData, playerMsItem, true);
     }
 
     void InitWorkerPanel()
     {
-        InitPanel(workerStackData, workerStaclItem);
-        InitPanel(workerMoveSpeedData, workerMsItem);
+        InitPanel(workerMoveSpeedData, workerMsItem, true);
+        InitPanel(workerStackData, workerStaclItem, WorkerManager.chipDeliverIsOpened);
     }
 
     void SetPanelState(bool state, GameObject panel, Image bg)
@@ -110,15 +110,15 @@ public class UpgradeUI : MonoBehaviour
     }
 
  
-    void InitPanel<T>(UpgradeData<T> upgradeData , Upgrade_Item item)
+    void InitPanel<T>(UpgradeData<T> upgradeData , Upgrade_Item item, bool activeBtnBgColor)
     {
 
         if (upgradeData.CanUpgrade())
         {
             upgradeCost = upgradeData.GetUpgradeCost();
             item.SetItemCost(upgradeCost);
-            if (GameManager.GetTotalMoney() >= upgradeCost )
-                item.SetBtnBgColor(defaultItemBtnColor);
+            if (GameManager.GetTotalMoney() >= upgradeCost && activeBtnBgColor)
+                item.SetBtnBgColor(defaultItemBtnColor);            
             else
                 item.SetBtnBgColor(disableItemBtnColor);
         }
@@ -146,6 +146,7 @@ public class UpgradeUI : MonoBehaviour
         else
         {
             SetBtnScale(workerStaclItem.transform);
+            AudioSourceManager.Instance.PlayCantBuyItem();
             ShowStatusTxt("Chip deliver is not open!");
         }
     }
@@ -161,8 +162,6 @@ public class UpgradeUI : MonoBehaviour
     public void UpgradeProcess<T>(UpgradeData<T> upgradeData, Upgrade_Item item)
     {
         SetBtnScale(item.item_btn.transform);
-        // play upgrade sfx
-        AudioSourceManager.Instance.PlayBuyItem();
 
         if (upgradeData.CanUpgrade())
         {
@@ -179,9 +178,13 @@ public class UpgradeUI : MonoBehaviour
 
                 InitPlayerPanel();
                 InitWorkerPanel();
+                AudioSourceManager.Instance.PlayBuyItem();
             }
             else
+            {
                 ShowStatusTxt("Money is not enough!");
+                AudioSourceManager.Instance.PlayCantBuyItem();
+            }
         }
     }
 
