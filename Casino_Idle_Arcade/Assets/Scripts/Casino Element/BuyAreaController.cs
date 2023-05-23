@@ -12,6 +12,8 @@ public class BuyAreaController : MonoBehaviour
     [SerializeField] bool activeBoughtElement;
     [SerializeField] bool destroyAfterBought = true;
     public int price;
+    public int priceAmount;
+    public int payTime;//time to buy anyelement
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
     [SerializeField] float cooldownAmount;
@@ -23,15 +25,19 @@ public class BuyAreaController : MonoBehaviour
     public float maxPlayerWaitingCd;
     float playerWaitingCd;
 
-    int paymentAmount = 0;
+    public int paymentAmount = 0;
     int remainingPayment;
     float defaultScale;
 
     private void Start()
     {
+        payTime = 2;
         priceText.text = price.ToString();
         defaultScale = transform.localScale.x;
         playerWaitingCd = maxPlayerWaitingCd;
+        priceAmount = price;
+        paymentAmount = (priceAmount / (payTime * 10));
+
     }
     private void Update()
     {
@@ -43,7 +49,7 @@ public class BuyAreaController : MonoBehaviour
                 if (cooldown <= 0)
                 {
                     cooldown = cooldownAmount;
-
+                    
                     Money money = StackMoneyPool.Instance.pool.Get();
                     money.transform.position = PlayerMovements.Instance.transform.position;
                     money.transform.eulerAngles = new Vector3(Random.Range(0, 359), 0, Random.Range(0, 359));
@@ -52,19 +58,22 @@ public class BuyAreaController : MonoBehaviour
                     {
                         StackMoneyPool.Instance.OnReleaseMoney(money);
                     });
-                    paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.GetTotalMoney());
+                    //paymentAmount = Mathf.Min(paymentAmount + Random.Range(2, 5), GameManager.GetTotalMoney());
+                    paymentAmount = Mathf.Min(paymentAmount, GameManager.GetTotalMoney());
+
                     GameManager.MinusMoney(paymentAmount);
                     remainingPayment = price - paymentAmount;
-                    price -= paymentAmount;
-                    AudioSourceManager.Instance.PlayFushSfx();
 
-                    // GameManager.totalMoney -= (GameManager.totalMoney * 8) / 100;
-
-                    
                     if (remainingPayment < 0)
                     {
                         GameManager.MinusMoney(-remainingPayment);
                     }
+
+                    price -= paymentAmount;
+
+                    AudioSourceManager.Instance.PlayFushSfx();
+
+
 
                     Money_UI.Instance.SetTotalMoneyTxt();
 
@@ -109,7 +118,6 @@ public class BuyAreaController : MonoBehaviour
         {
             transform.DOScale(defaultScale, 0.5f);
             isPlayerAvailabe = false;
-            playerWaitingCd = maxPlayerWaitingCd;
             priceText.transform.DOScale(0.6f, 0f);
         
         }

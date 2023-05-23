@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8574,6 +8574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
+      propertyPath: defaultMoney
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
+        type: 3}
       propertyPath: tutorialManager
       value: 
       objectReference: {fileID: 1511046663}
@@ -9897,6 +9902,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: price
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: payTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: cooldown
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: priceAmount
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: cooldownAmount
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8576449024947259649, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
