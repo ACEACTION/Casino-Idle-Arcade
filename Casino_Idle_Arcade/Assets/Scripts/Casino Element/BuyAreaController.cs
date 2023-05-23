@@ -12,7 +12,7 @@ public class BuyAreaController : MonoBehaviour
     [SerializeField] bool activeBoughtElement;
     [SerializeField] bool destroyAfterBought = true;
     public int price;
-    public int priceAmount;
+    //public int priceAmount;
     public int payTime;//time to buy anyelement
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
@@ -35,8 +35,8 @@ public class BuyAreaController : MonoBehaviour
         priceText.text = price.ToString();
         defaultScale = transform.localScale.x;
         playerWaitingCd = maxPlayerWaitingCd;
-        priceAmount = price;
-        paymentAmount = (priceAmount / (payTime * 10));
+        //priceAmount = price;
+        paymentAmount = (price / (payTime * 10));
 
     }
     private void Update()
@@ -64,7 +64,7 @@ public class BuyAreaController : MonoBehaviour
                     GameManager.MinusMoney(paymentAmount);
                     remainingPayment = price - paymentAmount;
 
-                    if (remainingPayment < 0)
+                    if (remainingPayment <= 0)
                     {
                         GameManager.MinusMoney(-remainingPayment);
                     }
@@ -72,8 +72,6 @@ public class BuyAreaController : MonoBehaviour
                     price -= paymentAmount;
 
                     AudioSourceManager.Instance.PlayFushSfx();
-
-
 
                     Money_UI.Instance.SetTotalMoneyTxt();
 

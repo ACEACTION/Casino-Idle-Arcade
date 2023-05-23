@@ -7,7 +7,7 @@ using TMPro;
 public class LootMoneu_UI : MonoBehaviour
 {
     [SerializeField] float moveYtarget;
-    [SerializeField] float moveDuration;
+    [SerializeField] float duration;
     [SerializeField] Ease moveEaseType;
 
     Vector3 originPos;
@@ -36,17 +36,28 @@ public class LootMoneu_UI : MonoBehaviour
     {
         mainPanel.gameObject.SetActive(true);
         mainPanel.transform.DOKill();
-        lootMoneyTxt.text = moneyAmount.ToString();
+        //lootMoneyTxt.text = moneyAmount.ToString();
         mainPanel.localScale = new Vector3(.01f, .01f, .01f);
         mainPanel.position = originPos;
 
-        mainPanel.DOMoveY(transform.position.y + moveYtarget, moveDuration)
+        mainPanel.DOMoveY(transform.position.y + moveYtarget, duration)
             .OnComplete(() =>
             {
                 mainPanel.gameObject.SetActive(false);
             });
 
-        mainPanel.transform.DOScale(defaultScale, moveDuration).SetEase(moveEaseType);
+        mainPanel.transform.DOScale(defaultScale, duration).SetEase(moveEaseType);
+        
+        
+        StartCoroutine(IncreaseMoneyProgress(moneyAmount));
+    }
+
+    IEnumerator IncreaseMoneyProgress(int moneyAmount)
+    {
+        yield return new WaitForSeconds(.05f);
+
+        lootMoneyTxt.text = moneyAmount.ToString();
+
     }
 
 }
