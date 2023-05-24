@@ -19,4 +19,7 @@ public class BtnTest_Ui : MonoBehaviour
         if (PlayerMovements.Instance.handStack.data.maxStackCount > maxStack) PlayerMovements.Instance.handStack.data.maxStackCount = maxStack;
     }
 
+
+    
+
 }

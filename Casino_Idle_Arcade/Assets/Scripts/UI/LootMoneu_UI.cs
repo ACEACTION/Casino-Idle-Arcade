@@ -52,11 +52,8 @@ public class LootMoneu_UI : MonoBehaviour
         StartCoroutine(IncreaseMoneyProgress(moneyAmount));
     }
 
-    IEnumerator IncreaseMoneyProgress(int moneyAmount)
-        
+    IEnumerator IncreaseMoneyProgress(int moneyAmount)        
     {
-
-
         int startAmount = 0;
         int targetAmount = moneyAmount;
         float duration = .5f; // The duration of the animation in seconds

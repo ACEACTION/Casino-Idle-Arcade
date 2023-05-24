@@ -1,31 +1,29 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class Test : MonoBehaviour
 {
-    public CasinoResourceDesk casinoResource;
+    public float vibrateCancelTime;
+    public TMP_InputField inputField;
 
-    private void OnTriggerEnter(Collider other)
+    public void VibrateBtn()
     {
-        if (other.gameObject.CompareTag("Casino Resource"))
-        {
-            casinoResource = other.GetComponent<CasinoResourceDesk>();
-        }
-
-     
-
+        StartCoroutine(VibrateProcess());
     }
 
-    private void OnTriggerExit(Collider other)
+    IEnumerator VibrateProcess()
     {
-        if (other.gameObject.CompareTag("Casino Resource"))
-        {
-            casinoResource = null;
-        }
-
-      
-
+        Vibrator.Vibrate((Convert.ToInt64(inputField.text)));
+        yield return new WaitForSeconds(vibrateCancelTime);
+        Vibrator.Cancel();
     }
+
+
 }
