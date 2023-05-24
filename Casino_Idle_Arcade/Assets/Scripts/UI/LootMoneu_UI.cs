@@ -37,7 +37,7 @@ public class LootMoneu_UI : MonoBehaviour
         mainPanel.gameObject.SetActive(true);
         mainPanel.transform.DOKill();
         //lootMoneyTxt.text = moneyAmount.ToString();
-        mainPanel.localScale = new Vector3(.01f, .01f, .01f);
+        mainPanel.localScale = new Vector3(.4f, .4f, .4f);
         mainPanel.position = originPos;
 
         mainPanel.DOMoveY(transform.position.y + moveYtarget, duration)
@@ -53,10 +53,25 @@ public class LootMoneu_UI : MonoBehaviour
     }
 
     IEnumerator IncreaseMoneyProgress(int moneyAmount)
+        
     {
-        yield return new WaitForSeconds(.05f);
 
-        lootMoneyTxt.text = moneyAmount.ToString();
+
+        int startAmount = 0;
+        int targetAmount = moneyAmount;
+        float duration = .5f; // The duration of the animation in seconds
+
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / duration);
+            int currentValue = Mathf.RoundToInt(Mathf.Lerp(startAmount, targetAmount, progress));
+            lootMoneyTxt.text = currentValue.ToString();
+            yield return null;
+        }
+
+        lootMoneyTxt.text = targetAmount.ToString();
 
     }
 
