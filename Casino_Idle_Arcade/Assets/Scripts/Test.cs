@@ -20,9 +20,11 @@ public class Test : MonoBehaviour
 
     IEnumerator VibrateProcess()
     {
-        Vibrator.Vibrate((Convert.ToInt64(inputField.text)));
-        yield return new WaitForSeconds(vibrateCancelTime);
-        Vibrator.Cancel();
+        //Vibrator.Vibrate((Convert.ToInt64(inputField.text)));
+        //yield return new WaitForSeconds(vibrateCancelTime);
+        //Vibrator.Cancel();
+        yield return new WaitForEndOfFrame();
+        Handheld.Vibrate();
     }
 
 
