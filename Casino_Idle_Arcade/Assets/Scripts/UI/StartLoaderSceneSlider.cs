@@ -9,6 +9,7 @@ public class StartLoaderSceneSlider : MonoBehaviour
 
     void Start()
     {
+        progressSlider.value = 0;
         StartCoroutine(LoadAsynchronously());
     }
 
