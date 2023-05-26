@@ -5,16 +5,18 @@ using UnityEngine;
 public class UpgradeCashierDesk : MonoBehaviour
 {
     [SerializeField] BuyAreaController bAController;
-    [SerializeField] GameObject upgradeEffect;
-    [SerializeField] GameObject receptioner;
+    [SerializeField] GameObject[] destroyedArea;
 
     private void Update()
     {
         if (bAController.price <= 0)
-        {
-            upgradeEffect.SetActive(true);
-            receptioner.SetActive(true);
+        {            
+            for (int i = 0; i < destroyedArea.Length; i++)
+            {
+                Destroy(destroyedArea[i]);
+            }
             Destroy(gameObject);
+
         }
     }
 }
