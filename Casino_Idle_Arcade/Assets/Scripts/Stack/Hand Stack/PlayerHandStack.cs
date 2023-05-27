@@ -15,6 +15,7 @@ public class PlayerHandStack : HandStack
         AudioSourceManager.Instance.PlayPoPSfx();
         StartCoroutine(SetVibrate());
         
+        // vibration
 
         if (StackIsMax())
         {
@@ -34,7 +35,9 @@ public class PlayerHandStack : HandStack
     public override void RemoveFromStackProcess(CasinoResource resource)
     {
         base.RemoveFromStackProcess(resource);
-        StartCoroutine(SetVibrate());        
+
+        // vibration
+
         MaxStackText.Instance.SetTextState(false);
     }
 
