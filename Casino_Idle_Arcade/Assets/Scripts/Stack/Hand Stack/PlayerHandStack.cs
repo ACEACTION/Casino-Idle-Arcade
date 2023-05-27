@@ -6,6 +6,8 @@ using DG.Tweening;
 public class PlayerHandStack : HandStack
 {    
     Transform trash;
+    int ascendingCounter = 0;
+    int descendingCounter = 7;
 
 
     private void Start()
@@ -15,9 +17,17 @@ public class PlayerHandStack : HandStack
 
     public override void AddStackResourceProcess()
     {
-        base.AddStackResourceProcess();        
+        base.AddStackResourceProcess();
 
-        AudioSourceManager.Instance.PlayPoPSfx();
+
+        AudioSourceManager.Instance.PlayPoPSfx(ascendingCounter);
+        ascendingCounter++;
+        if(ascendingCounter > 7)
+        {
+            ascendingCounter = 7;
+        }
+
+        
         // StartCoroutine(SetVibrate());
 
         // vibration
@@ -45,7 +55,12 @@ public class PlayerHandStack : HandStack
 
         // vibration
         TapVibrateCustom();
-
+        AudioSourceManager.Instance.PlayPoPSfx(descendingCounter);
+        descendingCounter--;
+        if(descendingCounter < 0)
+        {
+            descendingCounter = 0;
+        }
         MaxStackText.Instance.SetTextState(false);
     }
 
@@ -78,20 +93,43 @@ public class PlayerHandStack : HandStack
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+
+
         if (other.gameObject.CompareTag("Trash"))
         {
             trash = other.transform;
         }
     }
 
+    public override void EnterToResourceDesk(Collider other)
+    {
+        base.EnterToResourceDesk(other);
+        ascendingCounter = 0;
+        descendingCounter = 7;
+
+
+    }
+
     public override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
+
+        ascendingCounter = 0;
+        descendingCounter = 7;
+
+
         if (other.gameObject.CompareTag("Trash"))
         {
             trash = null;
         }
     }
+
+    public override void ExitResourceDesk()
+    {
+        base.ExitResourceDesk();
+
+    }
+
     public void TapVibrateCustom()
     {
 #if UNITY_ANDROID
