@@ -22,7 +22,7 @@ public class ChipResourceDesk : CasinoResourceDesk
         Chip chip = MakeChip(GetChipType());
         SetResourcePos(chip.transform);
         SetResourceParent(chip.transform, stack.firstStack.transform.parent);
-        SetResourceLocalMove(chip.transform, stack.firstStack);
+        SetResourceLocalJump(chip.transform, stack.firstStack);
 
         AddToStackList(stack.stackList, chip);
         AddToStackList(stack.chipList, chip);

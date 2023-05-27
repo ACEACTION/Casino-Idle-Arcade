@@ -10,18 +10,17 @@ public class PlayerHandStack : HandStack
 
     public override void AddStackResourceProcess()
     {
-        base.AddStackResourceProcess();
+        base.AddStackResourceProcess();        
 
-
-        Vibrator.Vibrate(6000);
-        Vibrator.Cancel();
         AudioSourceManager.Instance.PlayPoPSfx();
+        StartCoroutine(SetVibrate());
+        
 
         if (StackIsMax())
         {
             MaxStackText.Instance.SetTextState(true);
         }
-    }
+    }    
 
     public override void RemoveFromStackWithCd()
     {
@@ -35,6 +34,7 @@ public class PlayerHandStack : HandStack
     public override void RemoveFromStackProcess(CasinoResource resource)
     {
         base.RemoveFromStackProcess(resource);
+        StartCoroutine(SetVibrate());        
         MaxStackText.Instance.SetTextState(false);
     }
 
@@ -44,7 +44,7 @@ public class PlayerHandStack : HandStack
         if (trash)
         {
             CasinoResource resource = stackList[stackList.Count - 1];
-            resource.transform.DOJump(trash.position, 3, 1, .6f)
+            resource.transform.DOJump(trash.position, 3, 1, .2f)
                 .OnComplete(() =>
                 {
                     resource.ReleaseResource();
@@ -54,6 +54,14 @@ public class PlayerHandStack : HandStack
             vMachineList.Remove(resource);
             RemoveFromStackProcess(resource);
         }
+    }
+
+
+    IEnumerator SetVibrate()
+    {
+        Vibrator.Vibrate(5000);
+        yield return new WaitForSeconds(0);
+        Vibrator.Cancel();
     }
 
     public override void OnTriggerEnter(Collider other)

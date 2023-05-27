@@ -12,7 +12,7 @@ public class CasinoFoodResourceDesk : CasinoResourceDesk
         CasinoResource food = VendingMachinePool.Instance.casinoFoodPool.Get();
         SetResourcePos(food.transform);
         SetResourceParent(food.transform, stack.firstStack.transform.parent);
-        SetResourceLocalMove(food.transform, stack.firstStack);
+        SetResourceLocalJump(food.transform, stack.firstStack);
         
         AddToStackList(stack.stackList, food);
         AddToStackList(stack.vMachineList, food);
