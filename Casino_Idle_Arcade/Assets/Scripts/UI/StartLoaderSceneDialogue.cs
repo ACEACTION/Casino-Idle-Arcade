@@ -8,6 +8,6 @@ public class StartLoaderSceneDialogue : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueTxt;
     private void Start()
     {        
-        dialogueTxt.text = dialogues[Random.Range(0, dialogues.Count)];
+        dialogueTxt.text = string.Concat(dialogues[Random.Range(0, dialogues.Count)], "...");
     }
 }

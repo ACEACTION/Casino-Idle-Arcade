@@ -76,7 +76,6 @@ public class HandStack : MonoBehaviour
     {
         resourceDesk.AddResourceToStack(this);
         stackCount++;
-        AudioSourceManager.Instance.PlayPoPSfx();
         firstStack.transform.localPosition += new Vector3(0, data.stackYOffset, 0);
 
         // set animation

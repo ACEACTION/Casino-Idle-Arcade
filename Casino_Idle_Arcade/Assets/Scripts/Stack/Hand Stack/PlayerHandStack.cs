@@ -12,6 +12,11 @@ public class PlayerHandStack : HandStack
     {
         base.AddStackResourceProcess();
 
+
+        Vibrator.Vibrate(6000);
+        Vibrator.Cancel();
+        AudioSourceManager.Instance.PlayPoPSfx();
+
         if (StackIsMax())
         {
             MaxStackText.Instance.SetTextState(true);
