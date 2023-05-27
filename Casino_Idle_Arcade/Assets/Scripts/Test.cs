@@ -7,7 +7,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using RDG;
+
 
 public class Test : MonoBehaviour
 {
@@ -18,10 +18,7 @@ public class Test : MonoBehaviour
 
     public void VibrateBtn()
     {
-        //StartCoroutine(VibrateProcess());
-        Vibration.Vibrate(Convert.ToInt64(inputField.text),
-                Convert.ToInt32(inputField2.text));
-
+        StartCoroutine(VibrateProcess());
     }
 
     IEnumerator VibrateProcess()
