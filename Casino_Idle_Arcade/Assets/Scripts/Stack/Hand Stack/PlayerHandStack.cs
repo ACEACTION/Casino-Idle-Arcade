@@ -8,14 +8,21 @@ public class PlayerHandStack : HandStack
     Transform trash;
 
 
+    private void Start()
+    {
+        Vibration.Init();
+    }
+
     public override void AddStackResourceProcess()
     {
         base.AddStackResourceProcess();        
 
         AudioSourceManager.Instance.PlayPoPSfx();
-        StartCoroutine(SetVibrate());
-        
+        // StartCoroutine(SetVibrate());
+
         // vibration
+        TapVibrateCustom();
+
 
         if (StackIsMax())
         {
@@ -37,6 +44,7 @@ public class PlayerHandStack : HandStack
         base.RemoveFromStackProcess(resource);
 
         // vibration
+        TapVibrateCustom();
 
         MaxStackText.Instance.SetTextState(false);
     }
@@ -84,6 +92,11 @@ public class PlayerHandStack : HandStack
             trash = null;
         }
     }
-
+    public void TapVibrateCustom()
+    {
+#if UNITY_ANDROID
+        Vibration.VibrateAndroid(5);
+#endif
+    }
 
 }
