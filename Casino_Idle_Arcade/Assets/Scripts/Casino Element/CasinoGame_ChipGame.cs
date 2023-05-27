@@ -102,7 +102,7 @@ public class CasinoGame_ChipGame : CasinoGame
     {
         base.PlayGame();
 
-        ActiveactCustomerAnimation();
+        StartCoroutine(ActiveactCustomerAnimation());
         //setting dealer animation to idle
         employeeChecker.employee?.ActiveActionAnim(false);
         gameSlider.gameObject?.SetActive(true);
@@ -197,13 +197,14 @@ public class CasinoGame_ChipGame : CasinoGame
 
     public virtual void ResetTableGame() {}
 
-    public void ActiveactCustomerAnimation()
+    public IEnumerator ActiveactCustomerAnimation()
     {
         if (!actCustomerAnimation)
         {
             actCustomerAnimation = true;
             foreach (CustomerMovement customer in customers)
             {
+                yield return new WaitForSeconds(Random.Range(0, 1f));
                 customer.SetPlayingCardAnimation(true);
             }
         }
