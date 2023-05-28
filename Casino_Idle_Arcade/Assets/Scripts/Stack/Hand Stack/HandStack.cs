@@ -129,7 +129,6 @@ public class HandStack : MonoBehaviour
         stackList.Remove(resource);
         stackCount--;
         firstStack.transform.localPosition -= new Vector3(0, data.stackYOffset, 0);
-        AudioSourceManager.Instance.PlayPoPSfx();
         ResetStackListPos();    
         
         // set animation
@@ -151,8 +150,8 @@ public class HandStack : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {        
         if (other.gameObject.CompareTag("Casino Resource"))
-        {            
-            resourceDesk = other.GetComponent<CasinoResourceDesk>();
+        {
+            EnterToResourceDesk(other);
         }
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
@@ -165,15 +164,18 @@ public class HandStack : MonoBehaviour
             vMachineStack = other.GetComponent<VendingMachineStack>();
         }
 
-        
+    }
 
+    public virtual void EnterToResourceDesk(Collider other)
+    {
+        resourceDesk = other.GetComponent<CasinoResourceDesk>();
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Casino Resource"))
         {
-            resourceDesk = null;
+            ExitResourceDesk();
         }
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
@@ -185,6 +187,11 @@ public class HandStack : MonoBehaviour
         {
             vMachineStack = null;
         }        
+    }
+
+    public virtual void ExitResourceDesk()
+    {
+        resourceDesk = null;
     }
 
     public int GetStackCount() => stackCount;

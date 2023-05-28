@@ -10,7 +10,7 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip buyItemSfx;
     [SerializeField] AudioClip cantBuyItemSfx;
     [SerializeField] AudioClip switchTabSfx;
-    [SerializeField] AudioClip popSfx;
+    [SerializeField] AudioClip[] popSfxs;
     [SerializeField] AudioClip shineSfx;
 
     [SerializeField] AudioClip receptionSfx;
@@ -37,7 +37,7 @@ public class AudioSourceManager : MonoBehaviour
     public void PlaySwitchTabIcon() => PlaySfx(switchTabSfx);
 
     public void PlayCashPickupSfx() => PlaySfx(pickUpCashSfx[Random.Range(0,pickUpCashSfx.Length)]);
-    public void PlayPoPSfx() => PlaySfx(popSfx);
+    public void PlayPoPSfx(int index) => PlaySfx(popSfxs[index]);
 
     public void PlaySweepSfx() => PlaySfx(sweepSfx);
 
