@@ -28,7 +28,7 @@ public class BuyAreaController : MonoBehaviour
     public int paymentAmount = 0;
     int remainingPayment;
     float defaultScale;
-
+    bool playSfx;
     private void Start()
     {
         payTime = 2;
@@ -90,10 +90,14 @@ public class BuyAreaController : MonoBehaviour
             buyedElement.SetActive(activeBoughtElement);
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
-            AudioSourceManager.Instance.PlayBuyAreaSfx();
 
+            if (!playSfx)
+            {
+                playSfx = true;
+                AudioSourceManager.Instance.PlayBuyAreaSfx();
+            }
             if (destroyAfterBought)
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, .1f);
         }
     }
     private void OnTriggerEnter(Collider other)

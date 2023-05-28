@@ -11,6 +11,8 @@ public class PriorityManager : MonoBehaviour
     {
         if (!GameManager.isCompleteTutorial) return;
         SetPrioritySlotState(true);
+        UpgradeCameraFollow.instance.destinations = priorityObjs;
+        UpgradeCameraFollow.instance.DoCoroutine();
     }
 
     void SetPrioritySlotState(bool state)
