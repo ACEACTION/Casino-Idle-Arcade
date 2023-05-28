@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
-    public bool startGame;
+    //public bool startGame;
 
     [SerializeField] GameObject defaultCam;
     [SerializeField] GameObject startGameCam;
@@ -24,7 +24,7 @@ public class StartGame : MonoBehaviour
         defaultCam.SetActive(false);
         mainCanvas.SetActive(false);
         tutorial.SetActive(false);
-        startGame = false;
+        PlayerMovements.Instance.canMove = false;
     }
 
     public void TapToStart()
@@ -34,13 +34,13 @@ public class StartGame : MonoBehaviour
         startGameCanvas.SetActive(false);
         mainCanvas.SetActive(true);
 
-        startGame = true;
+        PlayerMovements.Instance.canMove = true;
 
         if (!CasinoManager.instance.isCompleteTutorial)
             tutorial.SetActive(true);
     }
 
 
-
+    
 
 }

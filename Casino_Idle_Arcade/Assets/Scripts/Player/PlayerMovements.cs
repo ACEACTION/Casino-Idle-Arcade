@@ -28,7 +28,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Transform cameraTransform;
     public HandStack handStack;
     [SerializeField] CharacterController controller;
-
+    [HideInInspector] public bool canMove;
     public static PlayerMovements Instance;
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StartGame.Instance.startGame)
+        if (canMove)
         {
             Move();
             RotatePlayerFace();
