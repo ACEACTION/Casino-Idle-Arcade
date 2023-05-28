@@ -3,25 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class Upgrade_Item : MonoBehaviour
-{    
-    public Image item_bg;
-    public Button item_btn;
-    [SerializeField] TextMeshProUGUI itemCost;
-    [SerializeField] GameObject cashIcon;
-    [SerializeField] GameObject maxTxt;
+{
+    // references        
+    [SerializeField] Upgrade_Item_Btn item_btn;           
 
-    public void SetBtnBgColor(Color color)
+    public void InitItemBtn<T>(UpgradeData<T> upgradeData)
     {
-        item_bg.color = color;
+
+        if (upgradeData.CanUpgrade())
+        {
+            item_btn.InitItemTxt(string.Concat(upgradeData.upgradeName, " Lvl.", upgradeData.upgradeLevelCounter + 1)
+                    , upgradeData.GetUpgradeCost());
+        }
+
+        item_btn.SetMaxedState(upgradeData.CanUpgrade());
     }
 
-    public void SetItemCost(int cost) => itemCost.text = cost.ToString();
-
-    public void SetMaxLevelItem()
-    {
-        itemCost.gameObject.SetActive(false);
-        cashIcon.SetActive(false);
-        maxTxt.SetActive(true);
+    public void UpgradeItem<T>(UpgradeData<T> upgradeData)
+    {        
+        if (upgradeData.CanUpgrade())
+        {
+            if (GameManager.GetTotalMoney() >= upgradeData.GetUpgradeCost())
+            {
+                GameManager.MinusMoney(upgradeData.GetUpgradeCost());
+                Money_UI.Instance.SetTotalMoneyTxt();
+                upgradeData.SetUgradeValue();
+                InitItemBtn(upgradeData);
+                AudioSourceManager.Instance.PlayBuyItem();
+            }
+            else
+            {
+                AudioSourceManager.Instance.PlayCantBuyItem();
+                Money_UI.Instance.ShakeMoneyUI();
+            }
+        }
+        else
+            AudioSourceManager.Instance.PlayCantBuyItem();
     }
+
 }

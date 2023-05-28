@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeData <T> : ScriptableObject
 {
+    public string upgradeName;
     public T upgradeValue;
     public int upgradeLevelCounter; 
 
@@ -14,10 +15,10 @@ public class UpgradeData <T> : ScriptableObject
         => upgradeLevelCounter < upgradeSlots.Count;
 
     public void SetUgradeValue()
-    {        
+    {
         upgradeValue = upgradeSlots[upgradeLevelCounter].upgradeValue;
         upgradeLevelCounter++;
-        PassValueToData(upgradeValue);
+        PassValueToData(upgradeValue);        
     }
 
     public virtual void PassValueToData(T v) { }

@@ -40,12 +40,7 @@ public class ChipDeliverer : Worker
     }
 
 
-    public override void Start()
-    {
-        WorkerManager.BuyedChipDeliver();
-    }
-
-
+ 
     private void Update()
     {
         //check if deliverer waited for order

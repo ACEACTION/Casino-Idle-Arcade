@@ -36,9 +36,6 @@ public class CasinoManager : MonoBehaviour
             tutorialManager.SetActive(true);
     }
 
-    private void Start()
-    {
-        Money_UI.Instance.SetTotalMoneyTxt();
-    }
+   
 
 }

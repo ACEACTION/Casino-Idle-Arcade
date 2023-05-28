@@ -15,14 +15,13 @@ public class RouletteCleaner : Worker
     }
      public override void Start()
     {
-        WorkerManager.BuyedCleaner();
-
         agent.speed = workerData.moveSpeed;
         foreach (var casinoGame in casinoGames)
         {
             casinoGame.CallCleaner();
         }
     }
+
     private void Update()
     {
         if (destinationPoinst.Count != 0)

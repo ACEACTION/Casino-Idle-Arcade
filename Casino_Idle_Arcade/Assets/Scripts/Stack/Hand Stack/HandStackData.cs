@@ -6,6 +6,7 @@ using UnityEngine;
 public class HandStackData : UpgradeData<int>
 {
     public int maxStackCount;
+    public int defaultMaxStackCount;
 
     public float stackYOffset;
     public float maxAddStackCd;
@@ -21,6 +22,7 @@ public class HandStackData : UpgradeData<int>
     public override void OnDisable()
     {
         base.OnDisable();
+        maxStackCount = defaultMaxStackCount;
     }
 
 }

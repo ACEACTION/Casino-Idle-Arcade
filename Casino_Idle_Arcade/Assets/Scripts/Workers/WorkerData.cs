@@ -6,11 +6,18 @@ using UnityEngine;
 public class WorkerData : UpgradeData<float>
 {
     public float moveSpeed;
+    public float defaultMoveSpeed;
 
     public override void PassValueToData(float v)
     {
         base.PassValueToData(v);
         moveSpeed = v;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        moveSpeed = defaultMoveSpeed;
     }
 
 }

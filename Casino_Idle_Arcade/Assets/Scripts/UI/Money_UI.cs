@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Money_UI : MonoBehaviour
 {
-    [SerializeField] float addMoneyCd;
-    [SerializeField] float maxAddMoneyCd;
-
-    public int totalMoney;
-    public float moneyAmount;
+    [SerializeField] float shakeDuration;
+    [SerializeField] float shakeStrength;
+    Vector3 defaultPos;
+    int moneyAmount;
     [SerializeField] Color flashColor;
     Color defaultMoneyIconColor;
     Vector3 iconDefaultScale;
 
     [SerializeField] TextMeshProUGUI moneyTxt;
     [SerializeField] Image moneyIcon;
+
 
     public static Money_UI Instance;
 
@@ -30,39 +31,19 @@ public class Money_UI : MonoBehaviour
     {
         iconDefaultScale = moneyIcon.transform.localScale;
         defaultMoneyIconColor = moneyIcon.color;
-        addMoneyCd = maxAddMoneyCd;
-        
+        defaultPos = transform.position;
+        SetTotalMoneyTxt();
     }
 
 
 
     private void Update()
     {
-        //totalMoney = GameManager.GetTotalMoney();        
-        //if (currentMoney < GameManager.GetTotalMoney())
-        //{
-        //    addMoneyCd -= Time.deltaTime;
-        //    moneyIcon.transform.localScale = iconDefaultScale + new Vector3(.3f, .3f, .3f);
-        //    moneyIcon.color = flashColor;
-
-        //    if (addMoneyCd <= 0)
-        //    {
-        //        currentMoney++;
-        //        SetMoneyUiTxt();                
-        //    }
-        //}
-        //else
-        //{
-        //    moneyIcon.transform.localScale = iconDefaultScale;
-        //    moneyIcon.color = defaultMoneyIconColor;
-        //}
-
+        
         if (Input.GetKeyDown(KeyCode.Space))
             print(GameManager.GetTotalMoney());
 
     }
-
-    void SetMoneyUiTxt() => moneyTxt.text = moneyAmount.ToString();
 
     public void SetTotalMoneyTxt()
     {
@@ -91,15 +72,27 @@ public class Money_UI : MonoBehaviour
         {
             moneyAmount /= 1000000;
             SetTxt(moneyAmount.ToString("F2") + "m");
-        }        
-        
-            
+        }
 
-        //moneyTxt.text = GameManager.GetTotalMoney().ToString();
+        StartCoroutine(SetFlashColor());
+
     }
 
     void SetTxt(string txt) => moneyTxt.text = txt;
 
+    IEnumerator SetFlashColor()
+    {
+        moneyIcon.color = flashColor;
+        yield return new WaitForSeconds(.2f);
+        moneyIcon.color = defaultMoneyIconColor;
+    }
 
+    public void ShakeMoneyUI()
+    {
+        transform.DOShakePosition(shakeDuration, shakeStrength).OnComplete(() =>
+        {
+            transform.position = defaultPos;
+        });
+    }
 
 }
