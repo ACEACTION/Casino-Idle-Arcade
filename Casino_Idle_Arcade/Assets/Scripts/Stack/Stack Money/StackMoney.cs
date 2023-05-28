@@ -70,10 +70,10 @@ public class StackMoney : MonoBehaviour
     public void AddToStack(Money money)
     {
 
+        totalMoney += money.moneyAmount;
+     
         if (!isPlayer)
         {
-            totalMoney += money.moneyAmount;
-
             if (stackCounter < slots.Count)
             {                
                 SetMoneyParent(money.transform, slots[stackCounter].transform);
@@ -93,7 +93,8 @@ public class StackMoney : MonoBehaviour
 
         }
         else
-        {
+        {            
+            GiveMoneyToPlayerProcess();
             money.SetGoToPlayer();
         }
     }
@@ -141,15 +142,18 @@ public class StackMoney : MonoBehaviour
             if (totalMoney > 0)
             {
                 //stackMoneyCanvas.AddMoneyText(totalMoney);
-
-                AudioSourceManager.Instance.PlayCashPickupSfx();
-                GameManager.AddMoney(totalMoney);
-                LootMoneu_UI.Instance.ShowLootMoneyTxt(totalMoney);
-                Money_UI.Instance.SetTotalMoneyTxt();
-
-                totalMoney = 0;
+                GiveMoneyToPlayerProcess();
             }
         }
+    }
+
+    void GiveMoneyToPlayerProcess()
+    {
+        AudioSourceManager.Instance.PlayCashPickupSfx();
+        GameManager.AddMoney(totalMoney);
+        LootMoneu_UI.Instance.ShowLootMoneyTxt(totalMoney);
+        Money_UI.Instance.SetTotalMoneyTxt();
+        totalMoney = 0;
     }
 
 

@@ -10,7 +10,7 @@ public class Money_UI : MonoBehaviour
     [SerializeField] float shakeDuration;
     [SerializeField] float shakeStrength;
     Vector3 defaultPos;
-    int moneyAmount;
+    float moneyAmount;
     [SerializeField] Color flashColor;
     Color defaultMoneyIconColor;
     Vector3 iconDefaultScale;
@@ -56,17 +56,17 @@ public class Money_UI : MonoBehaviour
         else if (moneyAmount >= 1000 && moneyAmount < 10000)
         {
             moneyAmount /= 1000;
-            SetTxt(moneyAmount.ToString("F1") + "k");
+            SetTxt(moneyAmount.ToString("F2") + "k");
         }
         else if (moneyAmount >= 10000 && moneyAmount < 100000)
         {
             moneyAmount /= 1000;
-            SetTxt(moneyAmount.ToString("F2") + "k");
+            SetTxt(moneyAmount.ToString("F1") + "k");
         }
         else if (moneyAmount >= 100000 && moneyAmount < 1000000)
         {
             moneyAmount /= 1000;
-            SetTxt(moneyAmount.ToString("F2") + "k");
+            SetTxt(moneyAmount.ToString("F1") + "k");
         }
         else if (moneyAmount >= 1000000)
         {
