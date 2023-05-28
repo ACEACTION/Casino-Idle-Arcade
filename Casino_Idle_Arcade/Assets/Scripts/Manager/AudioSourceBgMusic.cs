@@ -22,6 +22,7 @@ public class AudioSourceBgMusic : MonoBehaviour
     {
         audioSource.clip = audioClip;
         audioSource.Play();
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
 }

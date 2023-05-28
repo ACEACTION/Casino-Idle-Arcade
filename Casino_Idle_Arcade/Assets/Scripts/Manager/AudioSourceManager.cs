@@ -12,6 +12,7 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip switchTabSfx;
     [SerializeField] AudioClip[] popSfxs;
     [SerializeField] AudioClip shineSfx;
+    [SerializeField] AudioClip[] doorSfxs;
 
     [SerializeField] AudioClip receptionSfx;
     [SerializeField] AudioClip musicBg;
@@ -31,6 +32,8 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     public void PlayFushSfx() => PlaySfx(fushSfx);
+
+    public void PlayDoorSound() => PlaySfx(doorSfxs[Random.Range(0, doorSfxs.Length)]);
     public void PlayBuyItem() => PlaySfx(buyItemSfx);
     public void PlayCantBuyItem() => PlaySfx(cantBuyItemSfx);
 
