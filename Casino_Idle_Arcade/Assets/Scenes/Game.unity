@@ -3998,10 +3998,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 880355791739130632, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880355792741243526, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2228745140997473903, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691364257343705252, guid: e028d1d22e9bdb3479cb265a98bb060c,
+        type: 3}
+      propertyPath: followCam
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4691364257343705252, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
@@ -4021,7 +4036,7 @@ PrefabInstance:
     - target: {fileID: 7390790762411057133, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
       propertyPath: price
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8576449024947259649, guid: e028d1d22e9bdb3479cb265a98bb060c,
         type: 3}
@@ -4828,6 +4843,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717902718}
     m_Modifications:
+    - target: {fileID: 2538317234349891826, guid: 06ec3301dababc4449bb3f32ea525e8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6344417440169934593, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_RootOrder
@@ -5353,7 +5373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1717902718}
   m_Layer: 0
-  m_Name: Expantion-1
+  m_Name: Receptions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7133,6 +7153,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 91040b004500d6e43a5db4da81d1d90f,
         type: 2}
+    - target: {fileID: 5095321446198674020, guid: f2ce8195fc596694d9cce50aac4e3cbb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2ce8195fc596694d9cce50aac4e3cbb, type: 3}
 --- !u!1 &2309546024873563224
@@ -7808,7 +7833,7 @@ PrefabInstance:
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: defaultMoney
-      value: 500
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
