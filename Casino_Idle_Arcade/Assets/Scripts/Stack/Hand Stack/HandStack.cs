@@ -48,6 +48,7 @@ public class HandStack : MonoBehaviour
     }
 
     public bool CanAddStack() => stackCount < data.maxStackCount;
+
     public bool CanRemoveStack() => stackCount > 0;
 
     void AddStackResourceWithCd()

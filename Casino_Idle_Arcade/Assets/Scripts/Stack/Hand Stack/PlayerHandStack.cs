@@ -55,11 +55,11 @@ public class PlayerHandStack : HandStack
 
         // vibration
         TapVibrateCustom();
-        AudioSourceManager.Instance.PlayPoPSfx(descendingCounter);
-        descendingCounter--;
-        if(descendingCounter < 0)
+        AudioSourceManager.Instance.PlayPoPSfx(ascendingCounter);
+        ascendingCounter++;
+        if (ascendingCounter > 7)
         {
-            descendingCounter = 0;
+            ascendingCounter = 7;
         }
         MaxStackText.Instance.SetTextState(false);
     }

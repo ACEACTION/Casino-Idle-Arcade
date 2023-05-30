@@ -46,7 +46,14 @@ public class ChipDeliverer : Worker
         //check if deliverer waited for order
         if(state == ChipDeliverState.waiting)
         {
-            anim.SetBool("isDelivering", false);
+            if (handStack.CanRemoveStack())
+            {
+                anim.SetBool("idlecarry", true);
+                anim.SetBool("walkcarry", false);
+            }
+            else anim.SetBool("isDelivering", false);
+
+
 
             //check if there is any order
             if (casinoGamesPoses.Count > 0)
@@ -69,13 +76,29 @@ public class ChipDeliverer : Worker
         if(state == ChipDeliverState.Delivering)
         {
             agent.SetDestination(destination.position);
-            anim.SetBool("isDelivering", true);
+
+            if (handStack.CanRemoveStack())
+            {
+                anim.SetBool("walkcarry", true);
+            }
+            else
+            {
+                anim.SetBool("isDelivering", true);
+            }
+            anim.SetBool("idlecarry", false);
 
             if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
             {
                 //deliverer arrives to destination
 
+                if (handStack.CanRemoveStack())
+                {
+                    anim.SetBool("idlecarry", true);
+                  //  anim.SetBool("walkcarry", false);
+                }
                 anim.SetBool("isDelivering", false);
+                anim.SetBool("walkcarry", false);
+
                 waitingCd -= Time.deltaTime;
                 if (waitingCd <= 0)
                 {
@@ -136,7 +159,14 @@ public class ChipDeliverer : Worker
                     {
                         state = ChipDeliverState.waiting;
                         agent.speed = workerData.moveSpeed;
-                        anim.SetBool("isDelivering", false);
+
+                    if (handStack.CanRemoveStack())
+                    {
+                        anim.SetBool("idlecarry", true);
+                        anim.SetBool("walkcarry", false);
+                    }
+                    anim.SetBool("isDelivering", false);
+
 
                     }
 
