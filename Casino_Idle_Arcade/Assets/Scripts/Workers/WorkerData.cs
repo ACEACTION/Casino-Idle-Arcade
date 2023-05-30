@@ -14,9 +14,9 @@ public class WorkerData : UpgradeData<float>
         moveSpeed = v;
     }
 
-    public override void OnDisable()
+    public override void OnEnable()
     {
-        base.OnDisable();
+        base.OnEnable();
         moveSpeed = defaultMoveSpeed;
     }
 

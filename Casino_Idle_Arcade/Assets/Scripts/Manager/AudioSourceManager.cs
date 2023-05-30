@@ -14,8 +14,7 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip shineSfx;
     [SerializeField] AudioClip[] doorSfxs;
 
-    [SerializeField] AudioClip receptionSfx;
-    [SerializeField] AudioClip musicBg;
+    [SerializeField] AudioClip receptionSfx;   
     [SerializeField] AudioClip rouletteGamePlaySfx;
     [SerializeField] AudioClip buyAreaSfx;
     [SerializeField] AudioClip fushSfx;

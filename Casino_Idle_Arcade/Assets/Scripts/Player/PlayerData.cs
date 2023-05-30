@@ -16,9 +16,9 @@ public class PlayerData : UpgradeData<float>
         PlayerMovements.Instance.SetAnimationMoveSpeed(moveSpeed);
     }
 
-    public override void OnDisable()
+    public override void OnEnable()
     {
-        base.OnDisable();
+        base.OnEnable();
         moveSpeed = defaultMoveSpeed;
     }
 

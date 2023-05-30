@@ -19,15 +19,8 @@ public class PlayerHandStack : HandStack
     {
         base.AddStackResourceProcess();
 
+        PlayStackSfx();
 
-        AudioSourceManager.Instance.PlayPoPSfx(ascendingCounter);
-        ascendingCounter++;
-        if(ascendingCounter > 7)
-        {
-            ascendingCounter = 7;
-        }
-
-        
         // StartCoroutine(SetVibrate());
 
         // vibration
@@ -55,12 +48,9 @@ public class PlayerHandStack : HandStack
 
         // vibration
         TapVibrateCustom();
-        AudioSourceManager.Instance.PlayPoPSfx(descendingCounter);
-        descendingCounter--;
-        if(descendingCounter < 0)
-        {
-            descendingCounter = 0;
-        }
+
+        PlayStackSfx();
+
         MaxStackText.Instance.SetTextState(false);
     }
 
@@ -83,12 +73,17 @@ public class PlayerHandStack : HandStack
     }
 
 
-    IEnumerator SetVibrate()
+    void PlayStackSfx()
     {
-        Vibrator.Vibrate(5000);
-        yield return new WaitForSeconds(0);
-        Vibrator.Cancel();
+        AudioSourceManager.Instance.PlayPoPSfx(ascendingCounter);
+        ascendingCounter++;
+        if (ascendingCounter > 7)
+        {
+            ascendingCounter = 7;
+        }
     }
+
+    
 
     public override void OnTriggerEnter(Collider other)
     {
