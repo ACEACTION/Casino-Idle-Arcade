@@ -60,7 +60,7 @@ public class PlayerHandStack : HandStack
         if (trash)
         {
             CasinoResource resource = stackList[stackList.Count - 1];
-            resource.transform.DOJump(trash.position, 3, 1, .2f)
+            resource.transform.DOJump(trash.position, 3, 1, .1f)
                 .OnComplete(() =>
                 {
                     resource.ReleaseResource();

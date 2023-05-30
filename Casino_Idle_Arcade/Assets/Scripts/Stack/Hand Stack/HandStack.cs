@@ -35,7 +35,7 @@ public class HandStack : MonoBehaviour
     void Start()
     {
         addStackCd = data.maxAddStackCd;
-        data.firsStackOrigin = firstStack.localPosition;
+        data.firstStackOrigin = firstStack.localPosition;
 
         // for test
         defaultMaxStackCount = data.maxStackCount;
@@ -138,7 +138,7 @@ public class HandStack : MonoBehaviour
 
     void ResetStackListPos()
     {
-        firstStack.localPosition = data.firsStackOrigin;
+        firstStack.localPosition = data.firstStackOrigin;
         foreach (CasinoResource r in stackList)
         {
             r.transform.localPosition = firstStack.localPosition;

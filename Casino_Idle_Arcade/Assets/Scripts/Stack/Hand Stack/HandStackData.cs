@@ -11,7 +11,7 @@ public class HandStackData : UpgradeData<int>
     public float stackYOffset;
     public float maxAddStackCd;
     public float maxRemoveStackCd;
-    public Vector3 firsStackOrigin;
+    [HideInInspector] public Vector3 firstStackOrigin;
 
     public override void PassValueToData(int v)
     {
