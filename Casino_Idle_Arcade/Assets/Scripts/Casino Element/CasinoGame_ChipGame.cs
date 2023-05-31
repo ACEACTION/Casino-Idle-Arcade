@@ -54,7 +54,6 @@ public class CasinoGame_ChipGame : CasinoGame
         ShakeModel();
         gameStack.SetMaxStackCount(upgradeIndex);
         cleaningCd = data.cleaningCdAmount;
-
     }
 
     public virtual void PayMoney()
@@ -120,7 +119,7 @@ public class CasinoGame_ChipGame : CasinoGame
     }
 
 
-        public void Cleaning()
+    public void Cleaning()
     {
         if (!isClean && (rec.isCleanerAvailabe || employeeChecker.isPlayerAvailable))
         {
@@ -129,7 +128,6 @@ public class CasinoGame_ChipGame : CasinoGame
 
             if (cleaningCd <= 0)
             {
-
                 CleanProcess();
             }
         }

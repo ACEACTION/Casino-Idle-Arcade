@@ -19,6 +19,9 @@ public class TutorialManager : MonoBehaviour
     bool getChip;
     public bool carryChip;
 
+    // clean
+    bool goToCleanTable;
+    bool baccaratGameIsEnded;
 
     [SerializeField] ArrowRenderer arrowRenderer;
     [SerializeField] GameObject standArrow;
@@ -72,7 +75,8 @@ public class TutorialManager : MonoBehaviour
         MakeFirstBaccarat();
         ShowCashier();
         ChipDeskProcess();
-        EndTutorial();
+        CarryChipToTable();
+        ClearTable();
         SetArrowFollow();
     }
 
@@ -142,18 +146,37 @@ public class TutorialManager : MonoBehaviour
 
 
 
-    void EndTutorial()
+    void CarryChipToTable()
     {
         if (carryChip && PlayerMovements.Instance.handStack.casinoGameStack)
         {
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
+            //GameManager.isCompleteTutorial = true;
+            standArrow.SetActive(false);
+            goToCleanTable = true;
+        }
+    }
+
+
+    void ClearTable()
+    {
+        if (goToCleanTable && firstBaccarat.playCd <= 0)
+        {
+            arrowRenderer.gameObject.SetActive(true);
+            standArrow.SetActive(true);                        
+            baccaratGameIsEnded = true;
+        }
+
+        if (baccaratGameIsEnded && firstBaccarat.isClean)
+        {
+            arrowRenderer.gameObject.SetActive(false);
             GameManager.isCompleteTutorial = true;
             standArrow.SetActive(false);
             secondBaccarat.SetActive(true);
         }
-    }
 
+    }
 
     void SetArrowFollow()
     {
