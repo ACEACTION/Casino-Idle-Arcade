@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
@@ -9,7 +10,6 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] float chipDeskTime;
     [SerializeField] Vector3 camOffset;
     float cashierTime;
-    float getChipTime;
     bool followArrow = true;
     bool changeCam = true;
 
@@ -34,7 +34,18 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] HandStack playerHandStack;
     [SerializeField] GameObject secondBaccarat;
     [SerializeField] PriorityManager firstPriority_Baccarat;
+    [SerializeField] PlayerHandStackData playerHandStackData;
 
+    [Header("Upgrade Player stack")]
+    bool canUpgradePlayerStack;
+    [SerializeField] GameObject upgradePanel;
+    [SerializeField] ScrollRect upgradeRect;
+    [SerializeField] GameObject uiBlock_openUpgradePanel;
+    [SerializeField] GameObject uiBlock_upgradePlayerStack;
+    [SerializeField] GameObject uIBlock_closeUpgradePanel;
+    float disableUpgradeRectCd = .1f;
+    bool notYetUpgradePanelClosed;
+    bool enoughMoneyToUpgradePlayerStack;
 
     private void Start()
     {
@@ -42,7 +53,7 @@ public class TutorialManager : MonoBehaviour
         if (!GameManager.isCompleteTutorial)
         { 
             cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 2f;
-            getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
+            //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
             
@@ -77,6 +88,7 @@ public class TutorialManager : MonoBehaviour
         ChipDeskProcess();
         CarryChipToTable();
         ClearTable();
+        UpgradePlayerStack();
         SetArrowFollow();
     }
 
@@ -164,19 +176,72 @@ public class TutorialManager : MonoBehaviour
         if (goToCleanTable && firstBaccarat.playCd <= 0)
         {
             arrowRenderer.gameObject.SetActive(true);
-            standArrow.SetActive(true);                        
+            standArrow.SetActive(true);
+            goToCleanTable = false;
             baccaratGameIsEnded = true;
         }
 
         if (baccaratGameIsEnded && firstBaccarat.isClean)
         {
             arrowRenderer.gameObject.SetActive(false);
-            GameManager.isCompleteTutorial = true;
             standArrow.SetActive(false);
             secondBaccarat.SetActive(true);
+            baccaratGameIsEnded = false;
+            canUpgradePlayerStack = true;
         }
 
     }
+
+
+
+    void UpgradePlayerStack()
+    {
+        // check enough money after intro tutorial
+        if (canUpgradePlayerStack && GameManager.GetTotalMoney() >= playerHandStackData.GetUpgradeCost())
+            enoughMoneyToUpgradePlayerStack = true;
+
+        
+        if (canUpgradePlayerStack && enoughMoneyToUpgradePlayerStack)
+        {
+            PlayerMovements.Instance.canMove = false;
+            PlayerMovements.Instance.SetMovingAnimationState(false);
+            uiBlock_openUpgradePanel.SetActive(true);
+
+            // check user click on upgrade btn
+            /* notYetUpgradePanelClosed: when we press to close upgrade main panel, 
+                a few time spend to close so uiBlocks like openPanel and upgradeStack is active again
+                so we declare a bool var to complete process in last if block*/
+            if (upgradePanel.activeSelf == true || notYetUpgradePanelClosed)
+            {
+                uiBlock_openUpgradePanel.SetActive(false);
+                uiBlock_upgradePlayerStack.SetActive(true);
+
+                // wait to load upgradeItem and after disable rect scroll to user cant scroll 
+                disableUpgradeRectCd -= Time.deltaTime;
+                if (disableUpgradeRectCd <= 0)
+                    upgradeRect.enabled = false;
+                
+                // when user upgrade hand stack
+                if (playerHandStackData.upgradeLevelCounter == 1)
+                {
+                    uiBlock_upgradePlayerStack.SetActive(false);
+                    uIBlock_closeUpgradePanel.SetActive(true);
+                    notYetUpgradePanelClosed = true;
+
+                    // when user close the upgrade panel
+                    if (upgradePanel.activeSelf == false)
+                    {
+                        PlayerMovements.Instance.canMove = true;
+                        upgradeRect.enabled = true;
+                        uIBlock_closeUpgradePanel.SetActive(false);
+                        canUpgradePlayerStack = false;
+                        GameManager.isCompleteTutorial = true;
+                    }
+                }
+
+            }
+        }
+    } 
 
     void SetArrowFollow()
     {
@@ -208,9 +273,5 @@ public class TutorialManager : MonoBehaviour
 
     Vector3 GetPlayerPos() => PlayerMovements.Instance.transform.position;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
 
 }

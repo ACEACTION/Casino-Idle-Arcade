@@ -72,16 +72,16 @@ public class PlayerMovements : MonoBehaviour
     {
         if (movementDir != Vector3.zero)
         {
-            anim.SetBool("isMoving", true);
+            SetMovingAnimationState(true);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDir.normalized), Time.deltaTime * rotationSpeed);
         }
         else
         {
-            anim.SetBool("isMoving", false);
+            SetMovingAnimationState(false);
         }
     }
-
-    
+            
+    public void SetMovingAnimationState(bool state) => anim.SetBool("isMoving", state);
 
     private void OnAnimatorMove()
     {

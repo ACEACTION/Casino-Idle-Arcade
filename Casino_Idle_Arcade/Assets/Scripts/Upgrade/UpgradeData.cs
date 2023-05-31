@@ -18,7 +18,7 @@ public class UpgradeData <T> : ScriptableObject
     {
         upgradeValue = upgradeSlots[upgradeLevelCounter].upgradeValue;
         upgradeLevelCounter++;
-        PassValueToData(upgradeValue);        
+        PassValueToData(upgradeValue);
     }
 
     public virtual void PassValueToData(T v) { }
@@ -32,7 +32,7 @@ public class UpgradeData <T> : ScriptableObject
     //}
 
     public virtual void OnEnable()
-    {
+    {        
         upgradeLevelCounter = 0;
     }
 
