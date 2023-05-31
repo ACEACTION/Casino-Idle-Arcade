@@ -32,6 +32,7 @@ public class UpgradeCameraFollow : MonoBehaviour
 
     public IEnumerator FollowNewAreas()
     {
+        yield return new WaitForSeconds(.1f);
             PlayerMovements.Instance.canMove = false;
 
             Joystick.Instance.ResetJoystick();

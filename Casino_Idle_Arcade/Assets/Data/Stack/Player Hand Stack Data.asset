@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Stack
   upgradeValue: 5
-  upgradeLevelCounter: 1
+  upgradeLevelCounter: 0
   upgradeSlots:
+  - upgradeValue: 4
+    upgradeCost: 500
   - upgradeValue: 5
-    upgradeCost: 200
-  - upgradeValue: 7
     upgradeCost: 750
-  - upgradeValue: 9
+  - upgradeValue: 7
     upgradeCost: 1200
-  - upgradeValue: 12
+  - upgradeValue: 9
     upgradeCost: 2500
-  maxStackCount: 0
+  maxStackCount: 3
   defaultMaxStackCount: 3
   stackYOffset: 0.24
   maxAddStackCd: 0.1

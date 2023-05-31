@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 4557
+  controlID: 13601
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 4558
+  controlID: 13602
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 4559
+  controlID: 13603
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,9 +227,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 74a50000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 72c3ffff86c3ffff64c6ffff14cbffff18fbffffca6b0000466c00009c6c0000
+      m_SelectedIDs: 5cfafdff
+      m_LastClickedID: -132516
+      m_ExpandedIDs: 60fafdff642afeff72c3ffff86c3ffff64c6ffff14cbffff18fbffffca6b0000466c00009c6c0000be010500cc01050052020500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: AnimatorControllerTool
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -272,14 +272,14 @@ MonoBehaviour:
     y: 0
     width: 397.59998
     height: 451.2
-  m_MinSize: {x: 102, y: 121}
+  m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 9}
+  m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
   - {fileID: 9}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -314,8 +314,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -100, y: -25.600006}
+      snapOffset: {x: -100, y: -25.600006}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -501,14 +501,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 448.2409, y: 926.6054, z: -18.660429}
+    m_Target: {x: -1.9173081, y: 7.460614, z: -16.288422}
     speed: 2
-    m_Value: {x: 448.2409, y: 926.6054, z: -18.660429}
+    m_Value: {x: -1.9173081, y: 7.460614, z: -16.288422}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -537,17 +537,17 @@ MonoBehaviour:
       m_Size: {x: 0, y: 0}
     yGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -555,17 +555,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.25048643, y: 0.06731312, z: -0.017461205, w: -0.9656226}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.25048563, y: 0.0673129, z: -0.017461149, w: -0.9656195}
   m_Size:
-    m_Target: 732.07007
+    m_Target: 2.569831
     speed: 2
-    m_Value: 732.07007
+    m_Value: 2.569831
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -766,22 +766,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Data/Stack
+    - Assets/Scripts/Manager
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Data/Stack
+  - Assets/Scripts/Manager
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\digi max\UnityProjects\GitHub\Casino-Idle-Arcade\Casino_Idle_Arcade
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 188.6}
-    m_SelectedIDs: c4a70000
-    m_LastClickedID: 42948
-    m_ExpandedIDs: 0000000048a700004aa700004ca700004ea7000050a7000092a7000000ca9a3b
+    scrollPos: {x: 0, y: 505.40002}
+    m_SelectedIDs: 0e6a0400
+    m_LastClickedID: 289294
+    m_ExpandedIDs: 0000000048a700004aa700004ca700004ea7000050a70000a2a70000aaa7000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -834,9 +834,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 74a50000
-    m_LastClickedInstanceID: 42356
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 5cfafdff
+    m_LastClickedInstanceID: -132516
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300009a370500
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -13552
+  m_LastSelectedObjectID: -132516
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
