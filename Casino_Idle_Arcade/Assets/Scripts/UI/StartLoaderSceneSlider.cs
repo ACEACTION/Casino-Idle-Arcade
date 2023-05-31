@@ -16,7 +16,7 @@ public class StartLoaderSceneSlider : MonoBehaviour
     IEnumerator LoadAsynchronously()
     {
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
         while (!operation.isDone)
