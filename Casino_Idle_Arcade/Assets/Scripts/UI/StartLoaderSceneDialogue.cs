@@ -9,30 +9,37 @@ public class StartLoaderSceneDialogue : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueTxt;
     
     IEnumerator Start()
-    {        
-        string dialogue = string.Concat(dialogues[Random.Range(0, dialogues.Count)]);
+    {
+        int dialogueIndex = Random.Range(0, dialogues.Count);
+        string dialogue;
 
         while (true)
         {
-            SetDialogueTxt(string.Concat(dialogue));
+            dialogue = dialogues[dialogueIndex];
+
+            SetDialogueTxt(dialogue, "");
 
             yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(string.Concat(dialogue, "."));
+            SetDialogueTxt(dialogue, ".");
 
             yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(string.Concat(dialogue, ".."));
+            SetDialogueTxt(dialogue, "..");
 
             yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(string.Concat(dialogue, "..."));
+            SetDialogueTxt(dialogue, "...");
 
             yield return new WaitForSeconds(dotInTxtCd);
+
+            dialogueIndex++;
+            if (dialogueIndex >= dialogues.Count) dialogueIndex = 0;
         }
 
     }
 
-    void SetDialogueTxt(string txt)
+    void SetDialogueTxt(string dialogue, string dot)
     {
-        dialogueTxt.text = txt;
+        dialogueTxt.text = string.Concat(dialogue, dot);
+        
     }
     
 
