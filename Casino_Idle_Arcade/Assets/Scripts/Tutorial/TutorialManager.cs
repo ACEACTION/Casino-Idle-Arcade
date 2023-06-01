@@ -43,6 +43,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject uiBlock_openUpgradePanel;
     [SerializeField] GameObject uiBlock_upgradePlayerStack;
     [SerializeField] GameObject uIBlock_closeUpgradePanel;
+    [SerializeField] GameObject closeUpgradePanelBtn;
     float disableUpgradeRectCd = .1f;
     bool notYetUpgradePanelClosed;
     bool enoughMoneyToUpgradePlayerStack;
@@ -52,7 +53,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!GameManager.isCompleteTutorial)
         { 
-            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 2f;
+            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 1.7f;
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
@@ -216,6 +217,8 @@ public class TutorialManager : MonoBehaviour
                 uiBlock_openUpgradePanel.SetActive(false);
                 uiBlock_upgradePlayerStack.SetActive(true);
 
+                closeUpgradePanelBtn.SetActive(false); 
+
                 // wait to load upgradeItem and after disable rect scroll to user cant scroll 
                 disableUpgradeRectCd -= Time.deltaTime;
                 if (disableUpgradeRectCd <= 0)
@@ -227,6 +230,7 @@ public class TutorialManager : MonoBehaviour
                     uiBlock_upgradePlayerStack.SetActive(false);
                     uIBlock_closeUpgradePanel.SetActive(true);
                     notYetUpgradePanelClosed = true;
+                    closeUpgradePanelBtn.SetActive(true);
 
                     // when user close the upgrade panel
                     if (upgradePanel.activeSelf == false)

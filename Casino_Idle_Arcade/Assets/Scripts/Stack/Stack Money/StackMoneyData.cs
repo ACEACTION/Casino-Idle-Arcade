@@ -13,7 +13,8 @@ public class StackMoneyData : ScriptableObject
     public float xOffset;
     public float yOffset;
     public float zOffset;
-    public float moneyMoveSpeed;
+    public float moneyMoveDuration;
+    public float jumpPower;
     public Ease moneyMoveEase;
     public float goToPlayerDelay;
 }

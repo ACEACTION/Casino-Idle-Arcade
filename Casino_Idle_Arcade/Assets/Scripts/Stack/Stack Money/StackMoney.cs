@@ -77,7 +77,7 @@ public class StackMoney : MonoBehaviour
             if (stackCounter < slots.Count)
             {                
                 SetMoneyParent(money.transform, slots[stackCounter].transform);
-                money.transform.DOLocalMove(Vector3.zero, stackData.moneyMoveSpeed)
+                money.transform.DOLocalJump(Vector3.zero, stackData.jumpPower, 1, stackData.moneyMoveDuration)
                     .SetEase(stackData.moneyMoveEase);
                 money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
                 moneyList.Add(money);
@@ -85,7 +85,7 @@ public class StackMoney : MonoBehaviour
             else
             {                
                 SetMoneyParent(money.transform, slots[slots.Count - 1].transform);
-                money.transform.DOLocalMove(Vector3.zero, stackData.moneyMoveSpeed)
+                money.transform.DOLocalJump(Vector3.zero, stackData.jumpPower, 1, stackData.moneyMoveDuration)
                     .SetEase(stackData.moneyMoveEase)
                     .OnComplete(() => money.ReleaseResource());
             }
