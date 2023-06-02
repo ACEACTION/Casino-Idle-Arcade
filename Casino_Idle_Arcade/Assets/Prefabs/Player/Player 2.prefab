@@ -613,6 +613,8 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: bf6d73656ae2d10428f276e6e5a29475, type: 2}
+  - {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  - {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1107,7 +1109,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1152,7 +1154,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8841590631143330191}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d4e4bd03e825721459005144f3b767ef, type: 3}
+  m_Avatar: {fileID: 9000000, guid: c835517ef27d3384ebf2053e27ecfa3b, type: 3}
   m_Controller: {fileID: 9100000, guid: 477d3b1b00226e348859b18643117d94, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -1176,15 +1178,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootEffect: {fileID: 0}
-  animationMoveSpeed: 200
-  animationStackMoveSpeed: 200
+  animationMoveSpeed: 100
+  animationStackMoveSpeed: 100
   rotationSpeed: 90
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: e42c85ffe2fa00d4a84def698c6859a7, type: 2}
   rb: {fileID: 8535106362512023903}
   anim: {fileID: 8535106362512023909}
   cameraTransform: {fileID: 0}
   handStack: {fileID: 2125947021}
   controller: {fileID: 8535106362512023907}
+  canMove: 0
 --- !u!114 &2125947021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,7 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackCount: 0
   resourcesToStackType: 0000000001000000
-  data: {fileID: 11400000, guid: a2240fa8e1438074ea40187ad253b14c, type: 2}
+  data: {fileID: 11400000, guid: 67454789013e8b4448639e7c2ff16b74, type: 2}
   anim: {fileID: 8535106362512023909}
   firstStack: {fileID: 8535106362433505745}
   stackList: []
