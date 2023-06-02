@@ -39,7 +39,7 @@ public class PlayerMovements : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocity = transform.position;
+      //  velocity = transform.position;
     }
 
     // Update is called once per frame
