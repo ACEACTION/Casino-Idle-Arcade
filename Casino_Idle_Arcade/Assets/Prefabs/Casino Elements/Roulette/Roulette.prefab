@@ -46,19 +46,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 308222322, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 308222323, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.022770917
+      value: 0.032746106
       objectReference: {fileID: 0}
     - target: {fileID: 308222323, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.022770917
+      value: 0.032746106
       objectReference: {fileID: 0}
     - target: {fileID: 308222323, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.022770917
+      value: 0.032746106
       objectReference: {fileID: 0}
     - target: {fileID: 308222323, guid: e51e497a9e31e1640b57e326a648bec7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -196,6 +196,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3e6bbc7152fa34e8f6292e1a39e7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2691599021848965459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3741397278774289952, guid: e51e497a9e31e1640b57e326a648bec7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636607716924118899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1952438037553809337
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691599021848965459}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.4660001, y: 1.217, z: 0.46100003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.367, z: 0.46100003}
+  m_TimeToStationary: 0.5
+--- !u!1 &3299487832260003934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4286376534986989357, guid: e51e497a9e31e1640b57e326a648bec7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636607716924118899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &3549133317971829396
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299487832260003934}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.478, y: 0.437, z: 0.97400004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.437, z: 0.23400001}
+  m_TimeToStationary: 0.5
+--- !u!1 &7552129935098815224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9113289094225753483, guid: e51e497a9e31e1640b57e326a648bec7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636607716924118899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &9025263060978225954
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552129935098815224}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.659, y: 0.437, z: 0.96500003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.437, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &8183166236978428057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7432650612723773418, guid: e51e497a9e31e1640b57e326a648bec7,
@@ -208,6 +274,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1636607716924118899}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &924305015967187525
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8852848689562116643}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2600802570462694690
 PrefabInstance:
   m_ObjectHideFlags: 0
