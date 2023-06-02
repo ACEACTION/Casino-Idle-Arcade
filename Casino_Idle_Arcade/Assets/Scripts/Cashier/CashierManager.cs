@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 public class CashierManager : MonoBehaviour
 {
     public bool cashierAvailabe;
@@ -23,6 +25,7 @@ public class CashierManager : MonoBehaviour
 
     private void Start()
     {
+        transform.DOShakeScale(1f, 0.5f);
         cooldown = data.cooldownAmount;
         slider.maxValue = cooldown;
         CustomerSpawner.instance.maxCustomer += 5;

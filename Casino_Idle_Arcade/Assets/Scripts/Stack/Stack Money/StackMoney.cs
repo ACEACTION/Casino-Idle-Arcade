@@ -7,7 +7,7 @@ public class StackMoney : MonoBehaviour
 {
     [Header("Stack")]    
     public int stackCounter;
-    bool isPlayer;
+    [HideInInspector] public bool isPlayer;
     public int totalMoney;
 
     [Header("References")]
