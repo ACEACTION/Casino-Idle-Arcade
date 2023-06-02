@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/MoneyData")]
 public class MoneyData : ScriptableObject
 {
-
     public int receptionMoneyAmount;
     public int rouletteMoneyAmount;
     public int baccaratMoneyAmount;
@@ -20,6 +19,7 @@ public class MoneyData : ScriptableObject
     {
         switch (type)
         {
+           
             case MoneyType.receptionMoney:
                 return receptionMoneyAmount;
             case MoneyType.rouletteMoney:

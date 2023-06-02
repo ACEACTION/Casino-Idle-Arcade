@@ -36,6 +36,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] PriorityManager firstPriority_Baccarat;
     [SerializeField] PlayerHandStackData playerHandStackData;
 
+    [Header("Loot Start Money")]
+    [SerializeField] StackMoney startMoneyStack;
+    bool lootStartMoney;
+
     [Header("Upgrade Player stack")]
     bool canUpgradePlayerStack;
     [SerializeField] GameObject upgradePanel;
@@ -52,8 +56,9 @@ public class TutorialManager : MonoBehaviour
     {
 
         if (!GameManager.isCompleteTutorial)
-        { 
+        {
             cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 1.7f;
+            cashierManager.transform.parent.gameObject.SetActive(false);
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             ChangeCamera();
             chipDesk.SetActive(false);
@@ -84,6 +89,7 @@ public class TutorialManager : MonoBehaviour
         
         MaxStackText.Instance.SetTextState(false);
 
+        LootStartMoney();
         MakeFirstBaccarat();
         ShowCashier();
         ChipDeskProcess();
@@ -93,16 +99,32 @@ public class TutorialManager : MonoBehaviour
         SetArrowFollow();
     }
 
+ 
+    void LootStartMoney()
+    {
+        if (!lootStartMoney && startMoneyStack.isPlayer)
+        {
+            objs.RemoveAt(0);
+            changeCam = true;
+            ChangeCamera();
+            lootStartMoney = true;
+            firstBaccarat.transform.parent.gameObject.SetActive(true);
+        }
+    }
+
     void MakeFirstBaccarat()
     {
         if (!makeFirstRoulette && baccaratBAController.price <= 0)
         {
             objs.RemoveAt(0);
             makeFirstRoulette = true;
-            changeCam = true;
             
+            cashierManager.transform.parent.gameObject.SetActive(true);
+
+            changeCam = true;            
             // next move
             showCashier = true;
+
             
             ChangeCamera();
         }
@@ -269,10 +291,13 @@ public class TutorialManager : MonoBehaviour
         Joystick.Instance.ResetJoystick();
         Joystick.Instance.gameObject.SetActive(false);        
         standArrow.transform.position = objs[0].position + new Vector3(0, 4, 0);
+        LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
         followCam.SetActive(false);
         Joystick.Instance.gameObject.SetActive(true);
         Joystick.Instance.ResetJoystick();
+        LootMoneu_UI.Instance.gameObject.SetActive(true);
+
     }
 
     Vector3 GetPlayerPos() => PlayerMovements.Instance.transform.position;
