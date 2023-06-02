@@ -23,13 +23,13 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-        //GameManager.AddMoney(defaultMoney);
 
 
         if (isCompleteTutorial)
         {
             GameManager.isCompleteTutorial = true;
             tutorialManager.SetActive(false);
+            GameManager.AddMoney(defaultMoney);
         }
         else
             tutorialManager.SetActive(true);

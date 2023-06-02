@@ -15,6 +15,10 @@ public class StackMoneyData : ScriptableObject
     public float zOffset;
     public float moneyMoveDuration;
     public float jumpPower;
+    [SerializeField] float  minRotationDuration, maxRotationDuration;
     public Ease moneyMoveEase;
     public float goToPlayerDelay;
+
+    public float GetRotationDuration() => Random.Range(minRotationDuration, maxRotationDuration);
+
 }

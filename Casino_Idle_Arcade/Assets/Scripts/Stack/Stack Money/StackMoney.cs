@@ -71,7 +71,8 @@ public class StackMoney : MonoBehaviour
     {
 
         totalMoney += money.moneyAmount;
-     
+        money.transform.eulerAngles = new Vector3(0, Random.Range(90, 560), 0);
+
         if (!isPlayer)
         {
             if (stackCounter < slots.Count)
@@ -79,7 +80,6 @@ public class StackMoney : MonoBehaviour
                 SetMoneyParent(money.transform, slots[stackCounter].transform);
                 money.transform.DOLocalJump(Vector3.zero, stackData.jumpPower, 1, stackData.moneyMoveDuration)
                     .SetEase(stackData.moneyMoveEase);
-                money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), 1, RotateMode.FastBeyond360);
                 moneyList.Add(money);
             }
             else
@@ -89,6 +89,13 @@ public class StackMoney : MonoBehaviour
                     .SetEase(stackData.moneyMoveEase)
                     .OnComplete(() => money.ReleaseResource());
             }
+
+            money.transform.DORotate(new Vector3(0, 0, 0), stackData.GetRotationDuration(), RotateMode.FastBeyond360)
+                .OnComplete(() =>
+                {
+                    money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), .5f, RotateMode.FastBeyond360);
+
+                });
             stackCounter++;
 
         }

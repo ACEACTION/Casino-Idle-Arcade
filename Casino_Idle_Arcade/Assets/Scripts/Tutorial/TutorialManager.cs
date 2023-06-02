@@ -65,11 +65,11 @@ public class TutorialManager : MonoBehaviour
             
             standArrow.transform.DOMoveY(standArrow.transform.position.y - 2f, 1.5f).SetLoops(-1, LoopType.Yoyo);
             firstPriority_Baccarat.priorityObjs.RemoveAt(0);
-            
-
+            cashierManager.transform.parent.gameObject.SetActive(false);
         }
         else
         {
+            cashierManager.transform.parent.gameObject.SetActive(true);
             standArrow.SetActive(false);
         }
     }
@@ -289,7 +289,8 @@ public class TutorialManager : MonoBehaviour
         followCam.transform.position = objs[0].position + camOffset;
         followCam.SetActive(true);
         Joystick.Instance.ResetJoystick();
-        Joystick.Instance.gameObject.SetActive(false);        
+        Joystick.Instance.gameObject.SetActive(false);
+        Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false);
         standArrow.transform.position = objs[0].position + new Vector3(0, 4, 0);
         LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
