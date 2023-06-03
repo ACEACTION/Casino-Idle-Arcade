@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class RouletteCleaner : Worker
 {
+    bool canFollow = true;
+    [SerializeField] float camStayCd;
+    [SerializeField] Vector3 offSet;
     public bool isCleaning = true;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
 
@@ -15,6 +18,9 @@ public class RouletteCleaner : Worker
     }
      public override void Start()
     {
+        ArrivedToFirstPosition();
+        transform.position = spawnPoint.position;
+
         agent.speed = workerData.moveSpeed;
         foreach (var casinoGame in casinoGames)
         {
@@ -22,40 +28,79 @@ public class RouletteCleaner : Worker
         }
     }
 
+    public override void ArrivedToFirstPosition()
+    {
+        base.ArrivedToFirstPosition();
+        anim.SetBool("isWalking", true);
+        agent.SetDestination(afterSpawnTransform.position);
+
+    }
     private void Update()
     {
-        if (destinationPoinst.Count != 0)
+        if (!canWork)
         {
-            agent.SetDestination(destinationPoinst[0].transform.position);
-            if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+            if (canFollow)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, destinationPoinst[0].transform.rotation, 0.1f);
-                StartCoroutine(MoveToCleaningSpot());
-                anim.SetBool("isWalking", false);
-                anim.SetBool("isCleaning", true);
-
+                flCam.gameObject.SetActive(true);
+                flCam.transform.position = transform.position + offSet;
+                camStayCd -= Time.deltaTime;
+                if (camStayCd <= 0)
+                {
+                    canFollow = false;
+                }
             }
             else
             {
-                anim.SetBool("isCleaning", false);
-                anim.SetBool("isWalking", true);
-                agent.speed = workerData.moveSpeed;
+                flCam.gameObject.SetActive(false);
+
             }
+            //we have to wait till worker arrives to first position
+            if (Vector3.Distance(transform.position, afterSpawnTransform.position) <= agent.stoppingDistance)
+            {
+                //worker arrives to first position
+                canWork = true;
+                anim.SetBool("isWalking", false);
 
-
+            }
 
         }
-        else
+        if (canWork)
         {
-            agent.SetDestination(sweeperSpot.position);
-            if(Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+
+
+            if (destinationPoinst.Count != 0)
             {
-                anim.SetBool("isWalking", false);
+                agent.SetDestination(destinationPoinst[0].transform.position);
+                if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, destinationPoinst[0].transform.rotation, 0.1f);
+                    StartCoroutine(MoveToCleaningSpot());
+                    anim.SetBool("isWalking", false);
+                    anim.SetBool("isCleaning", true);
+
+                }
+                else
+                {
+                    anim.SetBool("isCleaning", false);
+                    anim.SetBool("isWalking", true);
+                    agent.speed = workerData.moveSpeed;
+                }
+
+
+
             }
             else
             {
-                anim.SetBool("isWalking", true);
+                agent.SetDestination(sweeperSpot.position);
+                if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+                {
+                    anim.SetBool("isWalking", false);
+                }
+                else
+                {
+                    anim.SetBool("isWalking", true);
 
+                }
             }
         }
     }

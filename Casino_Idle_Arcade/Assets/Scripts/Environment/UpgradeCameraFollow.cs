@@ -8,6 +8,7 @@ using UnityEngine;
 public class UpgradeCameraFollow : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
+    [SerializeField] CinemachineVirtualCamera normalCam;
     public int counter = 0;
     [SerializeField] CinemachineVirtualCamera firstFollowCamera;
 
