@@ -10,7 +10,6 @@ public class CashierManager : MonoBehaviour
     public bool playerIsCashier;
     public int tableIndex = 0;
     public int maxCapacity = 5;
-    bool customerPayedMoney;
     [SerializeField] float cooldown;
     public List<CustomerMovement> customersList = new List<CustomerMovement>();
 
@@ -51,20 +50,14 @@ public class CashierManager : MonoBehaviour
 
                 firstCustomerGameIcon.sprite = data.GetIcon(casinoElement.elementType);
 
-
-                if (!customerPayedMoney)
-                {
-                    firstCounter.firstCustomer.PayMoney(stackMoney,
-                            data.GetPayment(casinoElement.elementType),
-                            MoneyType.receptionMoney);
-                    customerPayedMoney = true;
-                }
-
-
                 cooldown -= Time.deltaTime;
                 slider.value += Time.deltaTime;
                 if (cooldown <= 0)
                 {
+                    firstCounter.firstCustomer.PayMoney(stackMoney,
+                            data.GetPayment(casinoElement.elementType),
+                            MoneyType.receptionMoney);
+
                     casinoElement.SendCustomerToElement(firstCounter.firstCustomer);
                     casinoElement = null;
                     cooldown = data.cooldownAmount;
@@ -72,7 +65,6 @@ public class CashierManager : MonoBehaviour
                     firstCounter.nextCustomer = false;
                     firstCustomerGameIcon.gameObject.SetActive(false);
                     slider.gameObject.SetActive(false);
-                    customerPayedMoney = false;
                 }
             }
         }
