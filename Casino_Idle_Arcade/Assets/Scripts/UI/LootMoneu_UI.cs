@@ -64,12 +64,13 @@ public class LootMoneu_UI : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = Mathf.Clamp01(elapsedTime / duration);
             int currentValue = Mathf.RoundToInt(Mathf.Lerp(startAmount, targetAmount, progress));
-            lootMoneyTxt.text = currentValue.ToString();
+            SetUITxt(currentValue.ToString());
             yield return null;
         }
 
-        lootMoneyTxt.text = targetAmount.ToString();
-
+        SetUITxt(targetAmount.ToString());
     }
+
+    void SetUITxt(string txt) => lootMoneyTxt.text = string.Concat("$", txt);
 
 }
