@@ -28,8 +28,7 @@ public class AudioSourceBgMusic : MonoBehaviour
     public void SetAudioSource(AudioClip audioClip)
     {
         audioSource.clip = audioClip;
-        audioSource.Play();
-        transform.GetChild(0).gameObject.SetActive(true);
+        audioSource.Play();        
     }
 
 }
