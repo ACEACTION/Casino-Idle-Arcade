@@ -35,6 +35,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject secondBaccarat;
     [SerializeField] PriorityManager firstPriority_Baccarat;
     [SerializeField] PlayerHandStackData playerHandStackData;
+    [SerializeField] GameObject ambienceAudioSrc;
 
     [Header("Loot Start Money")]
     [SerializeField] StackMoney startMoneyStack;
@@ -67,11 +68,13 @@ public class TutorialManager : MonoBehaviour
             firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
+            ambienceAudioSrc.SetActive(false);
         }
         else
         {
             cashierManager.transform.parent.gameObject.SetActive(true);
             standArrow.SetActive(false);
+            ambienceAudioSrc.SetActive(true);
         }
     }
 
@@ -263,6 +266,9 @@ public class TutorialManager : MonoBehaviour
                         uIBlock_closeUpgradePanel.SetActive(false);
                         canUpgradePlayerStack = false;
                         GameManager.isCompleteTutorial = true;
+
+                        ambienceAudioSrc.SetActive(true);
+
                     }
                 }
 

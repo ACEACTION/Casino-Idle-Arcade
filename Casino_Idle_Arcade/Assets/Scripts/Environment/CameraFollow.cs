@@ -8,7 +8,6 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     
-
     [SerializeField] Vector3 offset;
     [SerializeField] CinemachineVirtualCamera normalCam;
     int counter = 0;

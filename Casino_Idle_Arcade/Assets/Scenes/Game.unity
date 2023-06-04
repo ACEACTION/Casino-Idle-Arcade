@@ -1494,6 +1494,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1986709071}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &445814996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3623468771083306445, guid: 7ed0c129d23fd184f970505cadb2d4a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3623468770257960510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &466340569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3503600479949159541, guid: aa08791c44b18d74f8abe7938bb139cd,
@@ -7029,14 +7035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1898124618, guid: eb836cc02ffba6e43accacea86ab6622, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1898124618, guid: eb836cc02ffba6e43accacea86ab6622, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.57
-      objectReference: {fileID: 0}
     - target: {fileID: 2770717608160236452, guid: eb836cc02ffba6e43accacea86ab6622,
         type: 3}
       propertyPath: m_RootOrder
@@ -7132,6 +7130,11 @@ PrefabInstance:
       propertyPath: playerHandStack
       value: 
       objectReference: {fileID: 572539975}
+    - target: {fileID: 6006201692652425512, guid: eb836cc02ffba6e43accacea86ab6622,
+        type: 3}
+      propertyPath: ambienceAudioSrc
+      value: 
+      objectReference: {fileID: 445814996}
     - target: {fileID: 6006201692652425512, guid: eb836cc02ffba6e43accacea86ab6622,
         type: 3}
       propertyPath: objs.Array.data[1]
@@ -7542,7 +7545,7 @@ PrefabInstance:
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: defaultMoney
-      value: 50000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}

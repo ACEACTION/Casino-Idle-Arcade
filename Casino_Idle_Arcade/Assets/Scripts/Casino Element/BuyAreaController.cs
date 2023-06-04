@@ -104,10 +104,18 @@ public class BuyAreaController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.DOScale(defaultScale + .2f, 0.5f);
-            priceText.transform.DOScale
-            (priceText.transform.localScale.x + 0.1f, 0.3f);
             isPlayerAvailabe = true;
+            if (GameManager.GetTotalMoney() > 0)
+            {
+                transform.DOScale(defaultScale + .2f, 0.5f);
+                priceText.transform.DOScale
+                (priceText.transform.localScale.x + 0.1f, 0.3f);
+
+
+            }
+            else 
+                Money_UI.Instance.ShakeMoneyUI();
+
         }
     }
 
@@ -121,7 +129,7 @@ public class BuyAreaController : MonoBehaviour
             transform.DOScale(defaultScale, 0.5f);
             isPlayerAvailabe = false;
             priceText.transform.DOScale(0.6f, 0f);
-        
+            playerWaitingCd = maxPlayerWaitingCd;
         }
     }
 }
