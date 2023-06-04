@@ -38,7 +38,8 @@ public class WorkerUpgradeEffect : MonoBehaviour
                 upgradeMsgPanel.gameObject.SetActive(false);
             });
 
-
+        // play sfx
+        AudioSourceManager.Instance.PlayUpgradeWorkerSfx();
 
     }
 
