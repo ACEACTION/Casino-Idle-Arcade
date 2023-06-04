@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5019167938913998434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -379,6 +379,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6991046270973857153, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a19d60cfbe9f764a8a8c8ac9dbbf453, type: 3}
 --- !u!1 &5095321446198674020 stripped
@@ -486,15 +491,41 @@ PrefabInstance:
       propertyPath: priorityObjs.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4139115532069958722, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1834812
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139115532069958722, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1834812
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139115532069958722, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1834812
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919926899374162828, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919926899374162828, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 5919926899374162828, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: fb690488f0fa2a144a35ae9b726ceb27,
+        type: 3}
     - target: {fileID: 5919926899374162828, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3ef86581bdbe7499bc0c3ada419524, type: 3}
