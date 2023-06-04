@@ -10,6 +10,7 @@ public class PlayerMovements : MonoBehaviour
 
     //variables
     public ParticleSystem lootEffect;
+    [SerializeField] GameObject footSteps;
     [SerializeField] float animationMoveSpeed = 2;
     [SerializeField] float animationStackMoveSpeed = 4;
     [SerializeField] float rotationSpeed;
@@ -66,6 +67,7 @@ public class PlayerMovements : MonoBehaviour
         movementDir.Normalize();
         velocity.y += gravity * Time.deltaTime * 10f;
         controller.Move(velocity * Time.deltaTime);
+        footSteps.SetActive(true);
     }
 
     public void RotatePlayerFace()
@@ -78,6 +80,8 @@ public class PlayerMovements : MonoBehaviour
         else
         {
             SetMovingAnimationState(false);
+            footSteps.SetActive(false);
+
         }
     }
             

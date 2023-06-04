@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
 
+    [SerializeField] float cd;
+    private void Update()
+    {
+        cd -= Time.deltaTime;
+    }
     private void OnCollisionEnter(Collision collision)
     {
-        AudioSourceManager.Instance.PlayDoorSound();
-
+        if (cd < 0)
+        {
+            cd = 4f;
+            AudioSourceManager.Instance.PlayDoorSound();
+        }
     }
 }

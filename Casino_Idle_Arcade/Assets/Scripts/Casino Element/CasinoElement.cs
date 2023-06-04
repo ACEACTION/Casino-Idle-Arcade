@@ -6,7 +6,7 @@ using DG.Tweening;
 public class CasinoElement : MonoBehaviour
 {
 
-    public ElementsType elementType; 
+    public ElementsType elementType;
     public int upgradeIndex;
     public int maxGameCapacity;
     public int customerCounter;
@@ -15,14 +15,14 @@ public class CasinoElement : MonoBehaviour
     public List<CustomerMovement> customers = new List<CustomerMovement>();
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
-    
 
-    public bool HasCapacity() =>  customers.Count < maxGameCapacity;        
+
+    public bool HasCapacity() => customers.Count < maxGameCapacity;
 
 
     public void AddToCustomerList(CustomerMovement customer) => customers.Add(customer);
 
-    public void RemoveFromCustomerList(CustomerMovement customer) => customers.Remove(customer);    
+    public void RemoveFromCustomerList(CustomerMovement customer) => customers.Remove(customer);
 
     public virtual void CustomerHasArrived() { }
 
@@ -62,10 +62,10 @@ public class CasinoElement : MonoBehaviour
     }
 
 
-    
+
 
     public virtual void UpgradeElements()
-    {                
+    {
         upgradeModels[upgradeIndex].SetActive(false);
         upgradeIndex++;
         upgradeModels[upgradeIndex].SetActive(true);
@@ -79,9 +79,15 @@ public class CasinoElement : MonoBehaviour
 
     }
 
-    
+
     public Transform GetModel() => upgradeModels[upgradeIndex].transform;
-    public void ShakeModel() => GetModel().DOShakeScale(1f, 0.5f);
+    public void ShakeModel() 
+    {
+        //  GetModel().DOShakeScale(1f, 0.5f); 
+        var defaultScale = GetModel().localScale;
+        GetModel().localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        GetModel().DOScale(defaultScale, 0.7f).SetEase(Ease.OutBounce);
+    }
     
 }
 

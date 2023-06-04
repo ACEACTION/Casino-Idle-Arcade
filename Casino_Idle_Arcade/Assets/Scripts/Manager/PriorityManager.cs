@@ -17,7 +17,7 @@ public class PriorityManager : MonoBehaviour
         if (followCam)
         {
             UpgradeCameraFollow.instance.destinations = priorityObjs;
-            UpgradeCameraFollow.instance.DoCoroutine();
+         //   UpgradeCameraFollow.instance.DoCoroutine();
         }
     }
 
