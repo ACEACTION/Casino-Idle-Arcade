@@ -41,18 +41,18 @@ public class RouletteCleaner : Worker
         {
             if (canFollow)
             {
-                flCam.gameObject.SetActive(true);
-                flCam.transform.position = transform.position + offSet;
+                CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
+                CameraFollow.instance.CamFollowDynamic(transform);
                 camStayCd -= Time.deltaTime;
                 if (camStayCd <= 0)
                 {
                     canFollow = false;
+                    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
                 }
             }
             else
             {
-                flCam.gameObject.SetActive(false);
-
+                //flCam.gameObject.SetActive(false);
             }
             //we have to wait till worker arrives to first position
             if (Vector3.Distance(transform.position, afterSpawnTransform.position) <= agent.stoppingDistance)
@@ -60,7 +60,6 @@ public class RouletteCleaner : Worker
                 //worker arrives to first position
                 canWork = true;
                 anim.SetBool("isWalking", false);
-
             }
 
         }

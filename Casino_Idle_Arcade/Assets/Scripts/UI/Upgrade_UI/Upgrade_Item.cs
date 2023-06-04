@@ -21,7 +21,7 @@ public class Upgrade_Item : MonoBehaviour
         item_btn.SetMaxedState(upgradeData.CanUpgrade());
     }
 
-    public void UpgradeItem<T>(UpgradeData<T> upgradeData)
+    public void UpgradeItem<T>(UpgradeData<T> upgradeData, WorkerUpgradeEffect upgradeEff)
     {        
         if (upgradeData.CanUpgrade())
         {
@@ -32,6 +32,9 @@ public class Upgrade_Item : MonoBehaviour
                 upgradeData.SetUgradeValue();
                 InitItemBtn(upgradeData);
                 AudioSourceManager.Instance.PlayBuyItem();
+                
+                CameraFollow.instance.SetDynamicFollow_UpgradeWorker(upgradeEff.transform.parent
+                    , upgradeEff, upgradeData.upgradeName);
             }
             else
             {
@@ -41,6 +44,6 @@ public class Upgrade_Item : MonoBehaviour
         }
         else
             AudioSourceManager.Instance.PlayCantBuyItem();
-    }
+    }    
 
 }

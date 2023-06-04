@@ -39,9 +39,11 @@ public class Money_UI : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             print(GameManager.GetTotalMoney());
+        }
 
     }
 
