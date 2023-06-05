@@ -42,9 +42,11 @@ public class TutorialManager : MonoBehaviour
     bool lootStartMoney;
 
     [Header("Upgrade Player stack")]
-    bool canUpgradePlayerStack;
+    [SerializeField] GameObject upgradeBtn;
+    public bool canUpgradePlayerStack;
     [SerializeField] GameObject upgradePanel;
     [SerializeField] ScrollRect upgradeRect;
+    bool uiBlock_openUpgradePanel_onceOpen;
     [SerializeField] GameObject uiBlock_openUpgradePanel;
     [SerializeField] GameObject uiBlock_upgradePlayerStack;
     [SerializeField] GameObject uIBlock_closeUpgradePanel;
@@ -69,12 +71,14 @@ public class TutorialManager : MonoBehaviour
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
             ambienceAudioSrc.SetActive(false);
+            upgradeBtn.SetActive(false);
         }
         else
         {
             cashierManager.transform.parent.gameObject.SetActive(true);
             standArrow.SetActive(false);
             ambienceAudioSrc.SetActive(true);
+            upgradeBtn.SetActive(true);
         }
     }
 
@@ -114,12 +118,17 @@ public class TutorialManager : MonoBehaviour
             lootStartMoney = true;
             firstBaccarat.transform.parent.gameObject.SetActive(true);
         }
+
+
     }
+
+    
 
     void MakeFirstBaccarat()
     {
         if (!makeFirstRoulette && baccaratBAController.price <= 0)
         {
+
             objs.RemoveAt(0);
             makeFirstRoulette = true;
             
@@ -232,7 +241,7 @@ public class TutorialManager : MonoBehaviour
         {
             PlayerMovements.Instance.canMove = false;
             PlayerMovements.Instance.SetMovingAnimationState(false);
-            uiBlock_openUpgradePanel.SetActive(true);
+            
 
             // check user click on upgrade btn
             /* notYetUpgradePanelClosed: when we press to close upgrade main panel, 
@@ -273,8 +282,19 @@ public class TutorialManager : MonoBehaviour
                 }
 
             }
+            else
+            {
+                upgradeBtn.SetActive(true);
+                if (!uiBlock_openUpgradePanel_onceOpen)
+                {
+                    uiBlock_openUpgradePanel_onceOpen = true;
+                    uiBlock_openUpgradePanel.SetActive(true); 
+                }
+            }
+            
         }
-    } 
+    }
+
 
     void SetArrowFollow()
     {
