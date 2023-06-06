@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1695319114, guid: fa1489290d9612542a1a0dc8bd5bd3f1, type: 3}
+  m_Sprite: {fileID: 1377508432, guid: ba8bf0c03de7fac40a102a473de07b7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -878,6 +878,7 @@ MonoBehaviour:
   activeBoughtElement: 1
   destroyAfterBought: 0
   price: 50
+  payTime: 0
   cooldown: 0.1
   cooldownAmount: 0.1
   buyedElement: {fileID: 0}
@@ -885,6 +886,7 @@ MonoBehaviour:
   buildEffect: {fileID: 19813282, guid: 4e410a35a255ee3419b094f1aac14727, type: 3}
   priorityManager: {fileID: 1774280721395154072}
   maxPlayerWaitingCd: 0.6
+  paymentAmount: 0
 --- !u!114 &1062664833526231002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,4 +913,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396aaab7e91c7a43a7649fc22b0d840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCam: 0
   priorityObjs: []
