@@ -5,11 +5,12 @@ using UnityEngine.AI;
 public class RouletteCleaner : Worker
 {
     bool canFollow = true;
+    public bool playerMaxStackTxtState;
+    public bool getPlayerMaxStackTxtState;
     [SerializeField] float camStayCd;
     [SerializeField] Vector3 offSet;
     public bool isCleaning = true;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
-
     private void OnEnable()
     {
         WorkerManager.rouletteCleaners.Add(this);
@@ -19,9 +20,11 @@ public class RouletteCleaner : Worker
      public override void Start()
     {
         ArrivedToFirstPosition();
-        transform.position = spawnPoint.position;
+        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
 
+        transform.position = spawnPoint.position;
         agent.speed = workerData.moveSpeed;
+    
         foreach (var casinoGame in casinoGames)
         {
             casinoGame.CallCleaner();
@@ -39,21 +42,27 @@ public class RouletteCleaner : Worker
     {
         if (!canWork)
         {
-            if (canFollow)
-            {
-                CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
-                CameraFollow.instance.CamFollowDynamic(transform);
-                camStayCd -= Time.deltaTime;
-                if (camStayCd <= 0)
-                {
-                    canFollow = false;
-                    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                //flCam.gameObject.SetActive(false);
-            }
+            //if (canFollow)
+            //{
+            //    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
+            //    CameraFollow.instance.CamFollowDynamic(transform);
+
+            //    if (!getPlayerMaxStackTxtState)
+            //    {
+            //        getPlayerMaxStackTxtState = true;
+            //        playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
+            //    }
+
+            //    MaxStackText.Instance.gameObject.SetActive(false);
+
+            //    camStayCd -= Time.deltaTime;
+            //    if (camStayCd <= 0)
+            //    {
+            //        MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
+            //        canFollow = false;
+            //        CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
+            //    }
+            //}
             //we have to wait till worker arrives to first position
             if (Vector3.Distance(transform.position, afterSpawnTransform.position) <= agent.stoppingDistance)
             {

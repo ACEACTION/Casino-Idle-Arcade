@@ -21,11 +21,13 @@ public class ChipDeliverer : Worker
     public bool isDelivering = true;
     public float waitingCd;
     [SerializeField] float waitingCdAmount;
+    public bool playerMaxStackTxtState;
+    public bool getPlayerMaxStackTxtState;
+
 
     [SerializeField] CapsuleCollider collider;
     public List<CasinoGame_ChipGame> casinoGames = new List<CasinoGame_ChipGame>();
     public List<CasinoGame_ChipGame> casinoGamesPoses = new List<CasinoGame_ChipGame>();
-
 
     [SerializeField] Transform closestChipDesk;
 
@@ -39,6 +41,9 @@ public class ChipDeliverer : Worker
         waitingCd = waitingCdAmount;
         state = ChipDeliverState.waiting;
         ArrivedToFirstPosition();
+
+        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
+
         foreach (var casinoGame in casinoGames)
         {
             StartCoroutine(casinoGame.CallDeliverer());
@@ -62,16 +67,25 @@ public class ChipDeliverer : Worker
         {
             if (canFollow)
             {
-                CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
-                CameraFollow.instance.CamFollowDynamic(transform);
+                //CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
+                //CameraFollow.instance.CamFollowDynamic(transform);
                 
-                camStayCd -= Time.deltaTime;
-                if(camStayCd <= 0)
-                {
-                    canFollow = false;
-                    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
-                }
+                //if (!getPlayerMaxStackTxtState)
+                //{
+                //    getPlayerMaxStackTxtState = true;
+                //    playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
+                //}
+
+                //MaxStackText.Instance.gameObject.SetActive(false);
+                //camStayCd -= Time.deltaTime;
+                //if (camStayCd <= 0)
+                //{
+                //    MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
+                //    canFollow = false;
+                //    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
+                //}
             }
+
             //we have to wait till worker arrives to first position
             if (Vector3.Distance(transform.position, afterSpawnTransform.position) <= agent.stoppingDistance)
             {

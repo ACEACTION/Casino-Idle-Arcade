@@ -27,6 +27,13 @@ public class CameraFollow : MonoBehaviour
     bool playerMaxStackTxtState;
 
 
+    // upgrade worker
+    bool upgradeWorker;
+
+    // buy worker
+    bool boughtWorker;
+
+
     private void Awake()
     {
         if(instance == null)
@@ -51,11 +58,20 @@ public class CameraFollow : MonoBehaviour
             if (followWorkerCd <= 0)
             {
                 firstFollowCamera.gameObject.SetActive(false);
+                PlayerMovements.Instance.canMove = true;
                 dynamicFollow = false;
                 followWorkerCd = maxFollowWorkerCd;
-                PlayerMovements.Instance.canMove = true;
-                MainUpgradePanel.Instance.gameObject.SetActive(true);
-                MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
+
+                if (upgradeWorker)
+                {
+                    upgradeWorker = false;
+                    MainUpgradePanel.Instance.gameObject.SetActive(true);
+                }
+
+                if (boughtWorker)
+                {
+                    boughtWorker = false;
+                }
 
             }
         }
@@ -70,24 +86,54 @@ public class CameraFollow : MonoBehaviour
         worker = obj;
         PlayerMovements.Instance.canMove = false;
         Joystick.Instance.background.gameObject.SetActive(false);
+        
+        // max stack process
+        playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
+        MaxStackText.Instance.gameObject.SetActive(false);
+        StartCoroutine(ResetPlayerMaxStackTxt());
+
     }
 
     public void CamFollowDynamic(Transform obj) => firstFollowCamera.transform.position = obj.position + offset;
 
     public void SetDynamicFollow_UpgradeWorker(Transform obj, WorkerUpgradeEffect upgradeEff, string upgradeMsg)
     {
+        upgradeWorker = true;
         SetDynamicFollow(obj);
         StartCoroutine(ShowUpgradeWorkerMsg(upgradeEff, upgradeMsg));
     }
 
-    IEnumerator ShowUpgradeWorkerMsg(WorkerUpgradeEffect upgradeEff, string msg)
+    public void SetDynamicFollow_BuyWorker(Transform obj)
     {
-        playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
-        MaxStackText.Instance.gameObject.SetActive(false);
+        boughtWorker = true;
+        SetDynamicFollow(obj);
+        GameplayCanvas.instance.upgradeBtn.SetActive(false);
+        StartCoroutine(ResetUpgradeBtn());
+    }
+
+
+    IEnumerator ShowUpgradeWorkerMsg(WorkerUpgradeEffect upgradeEff, string msg)
+    {        
         MainUpgradePanel.Instance.gameObject.SetActive(false);
         float delay = maxFollowWorkerCd / 2;
         yield return new WaitForSeconds(delay);
         upgradeEff.UpgradeEffectProcess(msg);
+    }
+
+    IEnumerator ResetPlayerMaxStackTxt()
+    {
+        float delay = maxFollowWorkerCd * 2;
+        yield return new WaitForSeconds(delay);
+        MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
+
+    }
+
+
+    IEnumerator ResetUpgradeBtn()
+    {
+        float delay = maxFollowWorkerCd * 2;
+        yield return new WaitForSeconds(delay);
+        GameplayCanvas.instance.upgradeBtn.SetActive(true);
     }
 
     public void DoCoroutine()
