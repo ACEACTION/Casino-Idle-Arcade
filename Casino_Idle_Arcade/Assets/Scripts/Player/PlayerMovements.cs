@@ -11,15 +11,13 @@ public class PlayerMovements : MonoBehaviour
     //variables
     public ParticleSystem lootEffect;
     [SerializeField] GameObject footSteps;
-    [SerializeField] float animationMoveSpeed = 2;
-    [SerializeField] float animationStackMoveSpeed = 4;
+    [SerializeField] float moveSpeed = 2;
     [SerializeField] float rotationSpeed;
     Vector3 movementDir;
     float xDir, zDir;
     float inputMagnitude;
     Vector3 velocity;
     float gravity = -.8f;
-    float speed;
 
 
     // references
@@ -41,6 +39,8 @@ public class PlayerMovements : MonoBehaviour
     void Start()
     {
       //  velocity = transform.position;
+        SetAnimationMoveSpeed(data.defaultAnimationMoveSpeed);
+        SetPlayerMoveSpeed(data.defaultPlayerMoveSpeed);
     }
 
     // Update is called once per frame
@@ -69,7 +69,7 @@ public class PlayerMovements : MonoBehaviour
 
 
         movementDir.Normalize();
-        movementDir *= inputMagnitude * animationMoveSpeed * Time.deltaTime;
+        movementDir *= inputMagnitude * moveSpeed * Time.deltaTime;
         //movementDir.y += gravity * Time.deltaTime;
 
         controller.Move(movementDir);
@@ -105,5 +105,5 @@ public class PlayerMovements : MonoBehaviour
     //}
 
     public void SetAnimationMoveSpeed(float ms) => anim.SetFloat("moveSpeed", ms);
-
+    public void SetPlayerMoveSpeed(float ms) => moveSpeed = ms;
 }

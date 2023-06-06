@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   upgradeName: Speed
-  upgradeValue: 1.2
+  upgradeValue: 1.4
   upgradeLevelCounter: 0
   upgradeSlots:
   - upgradeValue: 1.1
@@ -24,5 +24,12 @@ MonoBehaviour:
     upgradeCost: 1800
   - upgradeValue: 1.4
     upgradeCost: 2700
-  moveSpeed: 1
-  defaultMoveSpeed: 1
+  playerMoveSpeedUpgrades:
+  - 4.5
+  - 5
+  - 5.5
+  - 6
+  animationMoveSpeed: 1
+  defaultAnimationMoveSpeed: 1
+  playerMoveSpeed: 4
+  defaultPlayerMoveSpeed: 4
