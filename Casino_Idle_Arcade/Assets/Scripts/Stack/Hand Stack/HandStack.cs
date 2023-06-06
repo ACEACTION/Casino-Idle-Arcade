@@ -18,7 +18,7 @@ public class HandStack : MonoBehaviour
 
     // references
     public HandStackData data;
-    [SerializeField] Animator anim;
+    public Animator anim;
     public Transform firstStack;    
     public List<CasinoResource> stackList;
     public List<CasinoResource> vMachineList;
@@ -80,7 +80,7 @@ public class HandStack : MonoBehaviour
         firstStack.transform.localPosition += new Vector3(0, data.stackYOffset, 0);
 
         // set animation
-        anim.SetLayerWeight(1, 1);
+        //anim.SetLayerWeight(1, 1);
     }
 
 
@@ -133,7 +133,7 @@ public class HandStack : MonoBehaviour
         ResetStackListPos();    
         
         // set animation
-        if (StackIsEmpty()) anim.SetLayerWeight(1, 0.01f);
+        //if (StackIsEmpty()) anim.SetLayerWeight(1, 0.01f);
 
     }
 

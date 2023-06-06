@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class PlayerMovements : MonoBehaviour
     float xDir, zDir;
     float inputMagnitude;
     Vector3 velocity;
-    float gravity = -19.8f;
+    float gravity = -.8f;
     float speed;
 
 
@@ -64,11 +64,17 @@ public class PlayerMovements : MonoBehaviour
         inputMagnitude = Mathf.Clamp01(movementDir.magnitude);
 
         anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
-        //velocity.y += gravity * Time.deltaTime * 10f;
+        velocity.y += gravity * Time.deltaTime;
+
+
+
         movementDir.Normalize();
         movementDir *= inputMagnitude * animationMoveSpeed * Time.deltaTime;
-        //controller.Move(velocity * Time.deltaTime);
+        //movementDir.y += gravity * Time.deltaTime;
+
         controller.Move(movementDir);
+        controller.Move(velocity * Time.deltaTime);
+
         footSteps.SetActive(true);
     }
 
@@ -83,7 +89,6 @@ public class PlayerMovements : MonoBehaviour
         {
             SetMovingAnimationState(false);
             footSteps.SetActive(false);
-
         }
     }
             

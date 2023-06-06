@@ -26,6 +26,8 @@ public class PlayerHandStack : HandStack
         // vibration
         TapVibrateCustom();
 
+        // set animation
+        anim.SetBool("isCarry", true);
 
         if (StackIsMax())
         {
@@ -50,6 +52,12 @@ public class PlayerHandStack : HandStack
         TapVibrateCustom();
 
         PlayStackSfx();
+
+
+        // set animation
+        if (StackIsEmpty())
+            anim.SetBool("isCarry", false);
+
 
         MaxStackText.Instance.SetTextState(false);
     }
