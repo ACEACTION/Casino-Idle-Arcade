@@ -64,9 +64,11 @@ public class PlayerMovements : MonoBehaviour
         inputMagnitude = Mathf.Clamp01(movementDir.magnitude);
 
         anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
+        //velocity.y += gravity * Time.deltaTime * 10f;
         movementDir.Normalize();
-        velocity.y += gravity * Time.deltaTime * 10f;
-        controller.Move(velocity * Time.deltaTime);
+        movementDir *= inputMagnitude * animationMoveSpeed * Time.deltaTime;
+        //controller.Move(velocity * Time.deltaTime);
+        controller.Move(movementDir);
         footSteps.SetActive(true);
     }
 
@@ -87,15 +89,15 @@ public class PlayerMovements : MonoBehaviour
             
     public void SetMovingAnimationState(bool state) => anim.SetBool("isMoving", state);
 
-    private void OnAnimatorMove()
-    {
-        if (!handStack.StackIsEmpty())
-            velocity = anim.deltaPosition * animationMoveSpeed;
-        else
-            velocity = anim.deltaPosition * animationMoveSpeed;
+    //private void OnAnimatorMove()
+    //{
+    //    if (!handStack.StackIsEmpty())
+    //        velocity = anim.deltaPosition * animationMoveSpeed;
+    //    else
+    //        velocity = anim.deltaPosition * animationMoveSpeed;
 
-        //velocity = anim.deltaPosition;
-    }
+    //    //velocity = anim.deltaPosition;
+    //}
 
     public void SetAnimationMoveSpeed(float ms) => anim.SetFloat("moveSpeed", ms);
 

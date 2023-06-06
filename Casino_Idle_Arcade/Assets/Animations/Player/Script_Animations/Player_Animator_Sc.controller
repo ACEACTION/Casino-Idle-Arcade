@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1695892710979605221}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 250, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5355866572646247155}
     m_Position: {x: 61.41336, y: 260.6558, z: 0}
@@ -35,7 +35,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Happy Idle
+  m_Name: Idle
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -49,7 +49,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: c835517ef27d3384ebf2053e27ecfa3b,
+  m_Motion: {fileID: -203655887218126122, guid: ad4992038d3cf4d4fb26e3c4e907313c,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -87,7 +87,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 61a80d109a0d24640ac90d357ad15dde,
+    m_Motion: {fileID: -203655887218126122, guid: 2b6124c6bbcaf4b498be85fda73c7770,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -96,7 +96,7 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 2717546134309670420, guid: f9debe2f043e04f46b7297c529de3c17,
+    m_Motion: {fileID: 2717546134309670420, guid: 72e6f54d864d81a44afbff422767ba2c,
       type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
@@ -196,7 +196,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: casp animation
+  m_Name: Player_Animator_Sc
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: InputMagnitude
