@@ -518,15 +518,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3628109665316987878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.604, z: -0.286}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.017597007, y: -0.030650856, z: -0.0012465856, w: 0.99937445}
+  m_LocalPosition: {x: 0.023918165, y: -0.23615195, z: -0.24108566}
+  m_LocalScale: {x: 1.0522387, y: 0.95391434, z: 1.0511448}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3628109666653785642}
-  m_Father: {fileID: 3878474462609091751}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1358329008171846533}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -2.02, y: -3.512, z: -0.081}
 --- !u!1 &3628109665906739896
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +833,6 @@ Transform:
   m_Children:
   - {fileID: 5288297623186766905}
   - {fileID: 4932357026132502724}
-  - {fileID: 3628109665316987879}
   - {fileID: 4675373887590653183}
   m_Father: {fileID: 3628109665283185775}
   m_RootOrder: 0
@@ -942,6 +941,8 @@ MonoBehaviour:
   isDelivering: 1
   waitingCd: 3
   waitingCdAmount: 3
+  playerMaxStackTxtState: 0
+  getPlayerMaxStackTxtState: 0
   collider: {fileID: 3628109666241430343}
   casinoGames: []
   casinoGamesPoses: []
@@ -1255,6 +1256,7 @@ Transform:
   - {fileID: 106894638592657556}
   - {fileID: 5512712167243853381}
   - {fileID: 6949299167850342875}
+  - {fileID: 3628109665316987879}
   m_Father: {fileID: 6841422980301552008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1428,7 +1430,7 @@ PrefabInstance:
     - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
         type: 3}
