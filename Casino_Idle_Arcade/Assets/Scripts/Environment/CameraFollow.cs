@@ -24,6 +24,8 @@ public class CameraFollow : MonoBehaviour
     bool dynamicFollow;
     Transform worker;
     public static CameraFollow instance;
+    bool playerMaxStackTxtState;
+
 
     private void Awake()
     {
@@ -52,7 +54,9 @@ public class CameraFollow : MonoBehaviour
                 dynamicFollow = false;
                 followWorkerCd = maxFollowWorkerCd;
                 PlayerMovements.Instance.canMove = true;
-                MainUpgradePanel.Instance.gameObject.SetActive(true);               
+                MainUpgradePanel.Instance.gameObject.SetActive(true);
+                MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
+
             }
         }
     }
@@ -78,6 +82,8 @@ public class CameraFollow : MonoBehaviour
 
     IEnumerator ShowUpgradeWorkerMsg(WorkerUpgradeEffect upgradeEff, string msg)
     {
+        playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
+        MaxStackText.Instance.gameObject.SetActive(false);
         MainUpgradePanel.Instance.gameObject.SetActive(false);
         float delay = maxFollowWorkerCd / 2;
         yield return new WaitForSeconds(delay);

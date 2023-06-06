@@ -5,8 +5,7 @@ using UnityEngine;
 public class MaxStackText : MonoBehaviour
 {
     [SerializeField] GameObject maxTxt;
-    public static MaxStackText Instance;
-
+    public static MaxStackText Instance;    
     private void Awake()
     {
         if (Instance == null)
