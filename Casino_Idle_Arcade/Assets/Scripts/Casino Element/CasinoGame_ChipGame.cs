@@ -156,7 +156,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
     public IEnumerator CallDeliverer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForEndOfFrame();
         if (gameStack.StackIsEmpty())
         {
             if (chipDeliverer != null) chipDeliverer.casinoGamesPoses.Add(this);

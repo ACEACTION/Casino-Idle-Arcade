@@ -14,6 +14,7 @@ public class ChipDeliverer : Worker
     public ChipDeliverState state;
     public Transform destination;
     bool canFollow = true;
+    float removeCd = 1.5f;
     [SerializeField] float camStayCd;
     [SerializeField] Vector3 offSet;
     [SerializeField] HandStack handStack;
@@ -205,8 +206,13 @@ public class ChipDeliverer : Worker
                             destination = sweeperSpot;
 
                         }
-                        casinoGamesPoses.RemoveAt(0);
+                        removeCd -= Time.deltaTime;
+                        if (removeCd <= 0)
+                        {
 
+                            removeCd = 1.5f;
+                            casinoGamesPoses.RemoveAt(0);
+                        }
 
                     }
                 }
