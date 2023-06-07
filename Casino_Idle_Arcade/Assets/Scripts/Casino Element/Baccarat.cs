@@ -23,8 +23,9 @@ public class Baccarat : CasinoGame_ChipGame
         WorkerManager.AddGamesToDeliverer(this);
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         Init();
         CasinoElementManager.roulettes.Add(this);
         CasinoElementManager.allCasinoElements.Add(this);

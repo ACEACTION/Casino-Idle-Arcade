@@ -16,6 +16,32 @@ public class CasinoElement : MonoBehaviour
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
 
+    public virtual void Start()
+    {
+        InitElementProcess();  
+    }
+
+    public virtual void InitElementProcess()
+    {
+        // load model process
+        for (int i = 0; i < upgradeModels.Length; i++)
+        {
+            upgradeModels[i].SetActive(false);
+        }
+        GetModel().gameObject.SetActive(true);
+
+
+        // customer capacity process
+        maxGameCapacity = upgradeCapacity[upgradeIndex];
+
+        // spot list process
+        spotList.Clear();
+        for (int i = 0; i <= upgradeIndex; i++)
+        {
+            spotList.AddRange(elementSpotSlots[i].elementSpots);
+        }
+    }
+
 
     public bool HasCapacity() => customers.Count < maxGameCapacity;
 

@@ -15,16 +15,18 @@ public class Roulette : CasinoGame_ChipGame
 
 
 
-    private void OnEnable()
+    void OnEnable()
     {
+        
         WorkerManager.casinoGamesForCleaners.Add(this);
         WorkerManager.casinoGamesForDeliverer.Add(this);
         WorkerManager.AddNewCasinoGamesToAvailabeCleaners(this);
         WorkerManager.AddGamesToDeliverer(this);
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         Init();
         SetGameBalls(true, false);
         CasinoElementManager.roulettes.Add(this);
@@ -58,7 +60,7 @@ public class Roulette : CasinoGame_ChipGame
 
     public override void ResetTableGame()
     {
-    
+        base.ResetTableGame();
     }
     
     

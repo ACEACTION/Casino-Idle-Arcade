@@ -73,7 +73,7 @@ public class Customer : MonoBehaviour
         {
             yield return new WaitForSeconds(customerData.payMoneyCd);            
             Money money = StackMoneyPool.Instance.pool.Get();
-            money.transform.position = transform.position;
+            money.transform.position = transform.position + new Vector3(0, .5f, .5f);
             money.transform.eulerAngles = new Vector3(0, 0, 0);
             money.SetMoneyAmount(type);
             stackMoney.AddToStack(money);
