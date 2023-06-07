@@ -75,6 +75,8 @@ public class ElementStack : MonoBehaviour
     {
         stackCount++;
         SetStackTxt();
+        resource.transform.eulerAngles = Vector3.zero;
+
         if (stackCount == 1)
         {
             ground.DOScale(data.stackDefaultScale, 1);

@@ -31,10 +31,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] CashierManager cashierManager;
     [SerializeField] GameObject chipDesk;   
     [SerializeField] Baccarat firstBaccarat;
-    [SerializeField] HandStack playerHandStack;
+    //[SerializeField] HandStack playerHandStack;
     [SerializeField] GameObject secondBaccarat;
     [SerializeField] PriorityManager firstPriority_Baccarat;
-    [SerializeField] PlayerHandStackData playerHandStackData;
+    //[SerializeField] PlayerHandStackData playerHandStackData;
     [SerializeField] GameObject ambienceAudioSrc;
 
     [Header("Loot Start Money")]
@@ -176,7 +176,7 @@ public class TutorialManager : MonoBehaviour
 
     void ChipDeskProcess()
     {
-        if (getChip && !playerHandStack.StackIsEmpty())
+        if (getChip && !PlayerMovements.Instance.handStack.StackIsEmpty())
         {
 
             chipDeskTime -= Time.deltaTime;
@@ -233,7 +233,7 @@ public class TutorialManager : MonoBehaviour
     void UpgradePlayerStack()
     {
         // check enough money after intro tutorial
-        if (canUpgradePlayerStack && GameManager.GetTotalMoney() >= playerHandStackData.GetUpgradeCost())
+        if (canUpgradePlayerStack && GameManager.GetTotalMoney() >= PlayerMovements.Instance.handStack.data.GetUpgradeCost())
             enoughMoneyToUpgradePlayerStack = true;
 
         
@@ -260,7 +260,7 @@ public class TutorialManager : MonoBehaviour
                     upgradeRect.enabled = false;
                 
                 // when user upgrade hand stack
-                if (playerHandStackData.upgradeLevelCounter == 1)
+                if (PlayerMovements.Instance.handStack.data.upgradeLevelCounter == 1)
                 {
                     uiBlock_upgradePlayerStack.SetActive(false);
                     uIBlock_closeUpgradePanel.SetActive(true);
