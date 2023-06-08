@@ -49,7 +49,7 @@ public class CasinoGame_ChipGame : CasinoGame
     {
         cleaningSlider.value = 0;
         cleaningSlider.maxValue = data.cleaningCdAmount;
-        getChipCd = data.maxGetChipCd;
+        getChipCd = data.maxGetChipCd + .5f;
         data.playChipSpotDefaultPos = playChipSpot.localPosition;
         SetPlayCd(upgradeIndex);
         gameSlider.maxValue = playCd;
