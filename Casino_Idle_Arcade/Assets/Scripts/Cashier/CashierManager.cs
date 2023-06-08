@@ -28,7 +28,7 @@ public class CashierManager : MonoBehaviour
         transform.DOShakeScale(1f, 0.5f);
         cooldown = data.cooldownAmount;
         slider.maxValue = cooldown;
-        CustomerSpawner.instance.maxCustomer += 5;
+        CustomerSpawner.instance.maxCustomer += maxCapacity;
         slider.gameObject.SetActive(false);
     }
 

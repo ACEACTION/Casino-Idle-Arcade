@@ -280,7 +280,9 @@ public class CasinoGame_ChipGame : CasinoGame
             }
 
             betCounter /= 100;
-            //roulette_ui.SetChipPanelState(true);
+            //creative 1
+            betCounter = 5;
+
             roulette_ui.SetChipTxt(betCounter.ToString());
             casinoGameCanvas.OpenChipPanel();
             totalChipCounter = betCounter;

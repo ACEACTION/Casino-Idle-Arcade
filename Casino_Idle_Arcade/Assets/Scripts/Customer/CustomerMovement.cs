@@ -17,6 +17,7 @@ public class CustomerMovement : Customer
 
     private void Update()
     {
+        agent.speed = 5f;
         dir = destination;
         if (destination != null)
         {
@@ -98,7 +99,7 @@ public class CustomerMovement : Customer
     {
         ShowHappy();
         SetWinningAnimation(true);
-        Invoke("Leave", 4);
+        Invoke("Leave", 2);
     }
 
     

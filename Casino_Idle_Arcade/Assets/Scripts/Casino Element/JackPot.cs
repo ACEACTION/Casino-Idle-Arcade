@@ -11,8 +11,10 @@ public class JackPot : CasinoGame
     bool canPlayAnim = true;
     float winProbability;
     
-    private void Start()
+    public override void Start()
     {
+        base.Start();
+
         CasinoElementManager.allCasinoElements.Add(this);
         CasinoElementManager.jackPots.Add(this);
         
@@ -82,7 +84,7 @@ public class JackPot : CasinoGame
         {
             customers[0].LosePorccess();
         }
-
+        customers[0].SetPlayingJackPotAnimation(false);
         CustomerPayedMoney();
     }
 
@@ -97,8 +99,7 @@ public class JackPot : CasinoGame
 
     void CustomerPayedMoney()
     {
-        int moneyAmount = Random.Range(data.moneyAmountUpgradeLevel[upgradeIndex],
-                data.moneyAmountUpgradeLevel[upgradeIndex] + 2);
+        int moneyAmount = data.moneyAmountUpgradeLevel[upgradeIndex];
 
         customers[0].PayMoney(stackMoney, moneyAmount, MoneyType.jackpotMoney);
         
