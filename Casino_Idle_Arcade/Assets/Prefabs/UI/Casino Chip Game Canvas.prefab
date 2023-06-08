@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 6654409733038615444}
   - component: {fileID: 6654409733038615443}
   - component: {fileID: 6654409733038615446}
+  - component: {fileID: 1867394949405894015}
   m_Layer: 0
   m_Name: Casino Chip Game Canvas
   m_TagString: Untagged
@@ -672,7 +673,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6654409733038615443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,6 +703,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ce628f87e850a4b9d3ec9117c9035d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1867394949405894015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654409733038615441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c232497a9d1c8d46be1acbd9e5c42f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  yMoveTarget: 1
+  chipPanel: {fileID: 5343475636938401888}
+  cleanSlider: {fileID: 6654409732250033595}
+  playGameSlider: {fileID: 1482909106967862982}
 --- !u!1 &6654409733095890123
 GameObject:
   m_ObjectHideFlags: 0

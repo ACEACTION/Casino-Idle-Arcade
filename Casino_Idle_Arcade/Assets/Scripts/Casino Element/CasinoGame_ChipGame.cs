@@ -43,6 +43,7 @@ public class CasinoGame_ChipGame : CasinoGame
     public List<CasinoResource> chipsOnBet = new List<CasinoResource>();
     [SerializeField] CasinoChipGame_UI roulette_ui;
     public Slider gameSlider;
+    [SerializeField] CasinoChipGameCanvas casinoGameCanvas;
 
     public void Init()
     {
@@ -68,8 +69,6 @@ public class CasinoGame_ChipGame : CasinoGame
             if (totalChipCounter >= 5 && totalChipCounter < 10)  moneyAmount = (int)(moneyAmount * 1.5f);
             if (totalChipCounter >= 10 && totalChipCounter < 15) moneyAmount = (int)(moneyAmount * 2f);
             if (totalChipCounter >= 15) moneyAmount *= 3;
-
-            print(moneyAmount);
             customers[winnerIndex].PayMoney(stackMoney, moneyAmount, MoneyType.baccaratMoney);
 
         }
@@ -98,7 +97,8 @@ public class CasinoGame_ChipGame : CasinoGame
             }
            
             isClean = false;
-            cleaningSlider.gameObject.SetActive(true);
+            //cleaningSlider.gameObject.SetActive(true);
+            casinoGameCanvas.OpenCleanPanel();
             
         }
     }
@@ -110,7 +110,8 @@ public class CasinoGame_ChipGame : CasinoGame
         StartCoroutine(ActiveactCustomerAnimation());
         //setting dealer animation to idle
         employeeChecker.employee?.ActiveActionAnim(false);
-        gameSlider.gameObject?.SetActive(true);
+        //gameSlider.gameObject?.SetActive(true);
+        casinoGameCanvas.OpenPlayGamePanel();
         gameSlider.value += Time.deltaTime;
         playCd -= Time.deltaTime;
 
@@ -119,7 +120,8 @@ public class CasinoGame_ChipGame : CasinoGame
             //game ended
             ChoseWinner();
             PayMoney();
-            gameSlider.gameObject.SetActive(false);
+            //gameSlider.gameObject.SetActive(false);
+            casinoGameCanvas.ClosePlayGamePanel();
         }
 
     }
@@ -147,7 +149,8 @@ public class CasinoGame_ChipGame : CasinoGame
         isClean = true;
         cleaningParticle.gameObject.SetActive(true);
         cleaningParticle.Play();
-        cleaningSlider.gameObject.SetActive(false);
+        //cleaningSlider.gameObject.SetActive(false);
+        casinoGameCanvas.CloseCleanPanel();
         sweeper.Sweep();
         StartCoroutine(ResetGame());
     }
@@ -246,7 +249,8 @@ public class CasinoGame_ChipGame : CasinoGame
                     if (betCounter <= 0)
                     {
                         hasChip = true;
-                        roulette_ui.SetChipPanelState(false);
+                        //roulette_ui.SetChipPanelState(false);
+                        casinoGameCanvas.CloseChipPanel();
                     }
                     else
                         roulette_ui.SetChipTxt(betCounter.ToString());
@@ -272,8 +276,9 @@ public class CasinoGame_ChipGame : CasinoGame
             }
 
             betCounter /= 100;
-            roulette_ui.SetChipPanelState(true);
+            //roulette_ui.SetChipPanelState(true);
             roulette_ui.SetChipTxt(betCounter.ToString());
+            casinoGameCanvas.OpenChipPanel();
             totalChipCounter = betCounter;
         }
     }
