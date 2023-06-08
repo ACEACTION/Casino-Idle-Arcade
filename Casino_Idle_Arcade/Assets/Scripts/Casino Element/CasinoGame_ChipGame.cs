@@ -14,6 +14,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
     [Header("Chip Process")]
     public int betCounter;
+    int totalChipCounter;
     bool getBet = false;
     public bool hasChip;
     float getChipCd;
@@ -61,9 +62,14 @@ public class CasinoGame_ChipGame : CasinoGame
         if (payedMoney)
         {
             payedMoney = false;
-            int moneyAmount = Random.Range(data.moneyAmountLevel[upgradeIndex],
-                data.moneyAmountLevel[upgradeIndex] + 2);
+            int moneyAmount = totalChipCounter * (upgradeIndex + 1);
 
+            //if (totalChipCounter >= 1 && totalChipCounter < 5) moneyAmount *= 2;
+            if (totalChipCounter >= 5 && totalChipCounter < 10)  moneyAmount = (int)(moneyAmount * 1.5f);
+            if (totalChipCounter >= 10 && totalChipCounter < 15) moneyAmount = (int)(moneyAmount * 2f);
+            if (totalChipCounter >= 15) moneyAmount *= 3;
+
+            print(moneyAmount);
             customers[winnerIndex].PayMoney(stackMoney, moneyAmount, MoneyType.baccaratMoney);
 
         }
@@ -268,6 +274,7 @@ public class CasinoGame_ChipGame : CasinoGame
             betCounter /= 100;
             roulette_ui.SetChipPanelState(true);
             roulette_ui.SetChipTxt(betCounter.ToString());
+            totalChipCounter = betCounter;
         }
     }
 

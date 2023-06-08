@@ -85,9 +85,9 @@ public class PlayerHandStack : HandStack
     {
         AudioSourceManager.Instance.PlayPoPSfx(ascendingCounter);
         ascendingCounter++;
-        if (ascendingCounter > 7)
+        if (ascendingCounter == 7)
         {
-            ascendingCounter = 7;
+            ascendingCounter = 0;
         }
     }
 
