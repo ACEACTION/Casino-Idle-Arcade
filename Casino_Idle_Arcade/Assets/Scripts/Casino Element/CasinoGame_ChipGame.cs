@@ -111,7 +111,6 @@ public class CasinoGame_ChipGame : CasinoGame
         //setting dealer animation to idle
         employeeChecker.employee?.ActiveActionAnim(false);
         //gameSlider.gameObject?.SetActive(true);
-        casinoGameCanvas.OpenPlayGamePanel();
         gameSlider.value += Time.deltaTime;
         playCd -= Time.deltaTime;
 
@@ -122,6 +121,10 @@ public class CasinoGame_ChipGame : CasinoGame
             PayMoney();
             //gameSlider.gameObject.SetActive(false);
             casinoGameCanvas.ClosePlayGamePanel();
+        }
+        else
+        {
+            casinoGameCanvas.OpenPlayGamePanel();
         }
 
     }
@@ -191,7 +194,8 @@ public class CasinoGame_ChipGame : CasinoGame
             payedMoney = true;
             gameSlider.value = 0;
             cleaningSlider.value = 0;
-            gameSlider.gameObject.SetActive(false);
+            //gameSlider.gameObject.SetActive(false);
+            casinoGameCanvas.CloseChipPanel();
             cleaningSlider.value = 0;
 
             ResetTableGame();
@@ -303,7 +307,8 @@ public class CasinoGame_ChipGame : CasinoGame
             payedMoney = true;
             gameSlider.value = 0;
             cleaningSlider.value = 0;
-            gameSlider.gameObject.SetActive(false);
+            //gameSlider.gameObject.SetActive(false);
+            casinoGameCanvas.CloseCleanPanel();
             ShakeModel();
         }
 

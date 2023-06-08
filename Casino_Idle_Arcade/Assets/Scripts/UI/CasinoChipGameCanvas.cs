@@ -5,11 +5,9 @@ using DG.Tweening;
 using System.IO;
 
 public class CasinoChipGameCanvas : MonoBehaviour
-{    
-    [SerializeField] float duration;
-    [SerializeField] float yMoveTarget;
-    
-    Vector3 originPos;
+{
+
+    [SerializeField] CasinoChipGameCanvasData data;
 
     [Header("Chip Panel")]
     [SerializeField] Transform chipPanel;
@@ -27,11 +25,11 @@ public class CasinoChipGameCanvas : MonoBehaviour
     Vector3 playGamePanelScale;
     bool playGamePanelIsOpen;
 
-
+    //Vector3 originPos;
 
     private void Start()
     {
-        originPos = chipPanel.position;
+        data.originPos = chipPanel.localPosition;
         GetDefaultScale();
     }
 
@@ -45,10 +43,8 @@ public class CasinoChipGameCanvas : MonoBehaviour
 
     public void OpenChipPanel()
     {
-        print(1);
         if (!chipPanelIsOpen)
         {
-            print(2);
             chipPanelIsOpen = true;
             OpenPanel(chipPanel, chipPanelScale);
         }
@@ -56,10 +52,8 @@ public class CasinoChipGameCanvas : MonoBehaviour
 
     public void CloseChipPanel()
     {
-        print(3);
         if (chipPanelIsOpen)
-        {
-            print(4);
+        {        
             chipPanelIsOpen = false;
             ClosePanel(chipPanel);
         }
@@ -74,36 +68,43 @@ public class CasinoChipGameCanvas : MonoBehaviour
     }
     public void CloseCleanPanel()
     {
-        if (!cleanPanelIsOpen)
+        if (cleanPanelIsOpen)
         {
-            cleanPanelIsOpen = true;
+            cleanPanelIsOpen = false;
             ClosePanel(cleanSlider); 
         }
     }
     public void OpenPlayGamePanel()
     {
-        if (playGamePanelIsOpen)
+        if (!playGamePanelIsOpen)
         { 
-            playGamePanelIsOpen = false;
+            playGamePanelIsOpen = true;
             OpenPanel(playGameSlider, playGamePanelScale); 
         }
     }
-    public void ClosePlayGamePanel() => ClosePanel(playGameSlider);
+    public void ClosePlayGamePanel()
+    {
+        if (playGamePanelIsOpen)
+        {
+            playGamePanelIsOpen = false;
+            ClosePanel(playGameSlider);
+        }
+    }
 
 
     void OpenPanel(Transform panel, Vector3 defaultScale)
     {
-        panel.position = originPos;
+        panel.localPosition = data.originPos;
         panel.localScale = Vector3.zero;
         panel.gameObject.SetActive(true);
-        panel.DOMoveY(panel.transform.position.y + yMoveTarget, duration);
-        panel.DOScale(defaultScale, duration);
+        panel.DOLocalMoveY(panel.transform.localPosition.y + data.yMoveTarget, data.duration);
+        panel.DOScale(defaultScale, data.duration);
     }
 
     void ClosePanel(Transform panel)
     {
-        panel.DOScale(0, duration);
-        panel.DOMove(originPos, duration).OnComplete(() =>
+        panel.DOScale(0, data.duration);
+        panel.DOLocalMove(data.originPos, data.duration).OnComplete(() =>
         {
             panel.gameObject.SetActive(false);
         });
