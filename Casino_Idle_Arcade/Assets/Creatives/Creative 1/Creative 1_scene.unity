@@ -107,7 +107,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.75
+    agentRadius: 0.5
     agentHeight: 2.12
     agentSlope: 45
     agentClimb: 0.55
@@ -115,7 +115,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.25
+    cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1297,6 +1297,7 @@ GameObject:
   - component: {fileID: 185565828}
   - component: {fileID: 185565827}
   - component: {fileID: 185565829}
+  - component: {fileID: 185565830}
   m_Layer: 0
   m_Name: Creative 1 Controller
   m_TagString: Untagged
@@ -1353,6 +1354,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &185565830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185565826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c79b3eea8bd54e4185edc931411a964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &198336984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,13 +5824,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4413379515657279280, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413379515657279280, guid: 06ec3301dababc4449bb3f32ea525e8b,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.53
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4413379515657279280, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.11
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4413379515657279281, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
@@ -9442,6 +9460,11 @@ PrefabInstance:
       propertyPath: chipDeliver2Eff
       value: 
       objectReference: {fileID: 1647209618}
+    - target: {fileID: 4108341994357052427, guid: 00840687c9751ef458d835ea36450997,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -112.55957
+      objectReference: {fileID: 0}
     - target: {fileID: 6428424259038933109, guid: 00840687c9751ef458d835ea36450997,
         type: 3}
       propertyPath: m_Name
