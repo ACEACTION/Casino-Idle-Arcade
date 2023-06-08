@@ -98,13 +98,13 @@ public class CasinoChipGameCanvas : MonoBehaviour
         panel.localScale = Vector3.zero;
         panel.gameObject.SetActive(true);
         panel.DOLocalMoveY(panel.transform.localPosition.y + data.yMoveTarget, data.duration);
-        panel.DOScale(defaultScale, data.duration);
+        panel.DOScale(defaultScale, data.duration).SetEase(data.openPanelEaseType);
     }
 
     void ClosePanel(Transform panel)
     {
         panel.DOScale(0, data.duration);
-        panel.DOLocalMove(data.originPos, data.duration).OnComplete(() =>
+        panel.DOLocalMove(data.originPos, data.duration).SetEase(data.closePanelEaseType).OnComplete(() =>
         {
             panel.gameObject.SetActive(false);
         });

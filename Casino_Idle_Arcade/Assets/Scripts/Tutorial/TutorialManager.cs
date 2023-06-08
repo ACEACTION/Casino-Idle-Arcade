@@ -66,7 +66,7 @@ public class TutorialManager : MonoBehaviour
             ChangeCamera();
             chipDesk.SetActive(false);
             
-            standArrow.transform.DOMoveY(standArrow.transform.position.y - 2f, 1.5f).SetLoops(-1, LoopType.Yoyo);
+            standArrow.transform.DOMoveY(standArrow.transform.position.y - 1f, 1.5f).SetLoops(-1, LoopType.Yoyo);
             firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
