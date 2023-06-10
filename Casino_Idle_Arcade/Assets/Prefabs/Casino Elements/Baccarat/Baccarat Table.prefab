@@ -698,6 +698,7 @@ MonoBehaviour:
   isWorkerAvailable: 0
   betCounter: 0
   hasChip: 0
+  giveChipsToWinner: 0
   cleaner: {fileID: 0}
   rec: {fileID: 7823684972411258871}
   isClean: 1
@@ -3663,6 +3664,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4197004859267266029, guid: 608818ee164e60747b5ae785ffa9854c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5326794868065452328, guid: 608818ee164e60747b5ae785ffa9854c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3826,12 +3832,12 @@ PrefabInstance:
     - target: {fileID: 6654409733658352261, guid: 608818ee164e60747b5ae785ffa9854c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654409733658352261, guid: 608818ee164e60747b5ae785ffa9854c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608818ee164e60747b5ae785ffa9854c, type: 3}

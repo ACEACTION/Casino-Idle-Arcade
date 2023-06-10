@@ -18,6 +18,7 @@ public class CasinoGame_ChipGame : CasinoGame
     bool getBet = false;
     public bool hasChip;
     float getChipCd;
+    public bool giveChipsToWinner;
 
     [Header("Cleaner")]
     public RouletteCleaner cleaner;
@@ -25,6 +26,7 @@ public class CasinoGame_ChipGame : CasinoGame
     public bool isClean = true;
 
     [Header("Win Process")]
+    CustomerMovement winCustomer;
     int winnerIndex;
     bool actCustomerAnimation = false;
     bool choseWinnerPossible = true;
@@ -89,8 +91,9 @@ public class CasinoGame_ChipGame : CasinoGame
             {
                 if (customers.IndexOf(customer) == winnerIndex)
                 {
-                    customer.WinProccess();
-                    StartCoroutine(GiveChipsToWinner(customer));
+                    winCustomer = customer;
+                    winCustomer.WinProccess();
+                    StartCoroutine(GiveChipsToWinnerProcess());
                 }
                 else
                     customer.LosePorccess();
@@ -98,7 +101,7 @@ public class CasinoGame_ChipGame : CasinoGame
            
             isClean = false;
             //cleaningSlider.gameObject.SetActive(true);
-            casinoGameCanvas.OpenCleanPanel();
+            //casinoGameCanvas.OpenCleanPanel();
             
         }
     }
@@ -132,7 +135,7 @@ public class CasinoGame_ChipGame : CasinoGame
 
     public void Cleaning()
     {
-        if (!isClean && (rec.isCleanerAvailabe || employeeChecker.isPlayerAvailable))
+        if (!isClean && giveChipsToWinner && (rec.isCleanerAvailabe || employeeChecker.isPlayerAvailable))
         {
             cleaningSlider.value += Time.deltaTime;
             cleaningCd -= Time.deltaTime;
@@ -194,6 +197,7 @@ public class CasinoGame_ChipGame : CasinoGame
             payedMoney = true;
             gameSlider.value = 0;
             cleaningSlider.value = 0;
+            giveChipsToWinner = false;
             //gameSlider.gameObject.SetActive(false);
             casinoGameCanvas.CloseChipPanel();
             cleaningSlider.value = 0;
@@ -221,13 +225,25 @@ public class CasinoGame_ChipGame : CasinoGame
         }
     }
 
-    public IEnumerator GiveChipsToWinner(Customer customer)
+    public IEnumerator GiveChipsToWinnerProcess()
     {
         yield return new WaitForSeconds(data.giveChipsToWinnerDelay);
+
+        // we check isClean bool because if upgrade table, we will have bug(Clean slider open)
+        if (!isClean)
+        {
+            giveChipsToWinner = true;
+            casinoGameCanvas.OpenCleanPanel();
+            GiveChipsToCustomer();
+        }
+    }
+
+    void GiveChipsToCustomer()
+    {
         foreach (CasinoResource resource in chipsOnBet)
         {
-            customer.stack.AddResourceToStack(resource);
-        }
+            winCustomer.stack.AddResourceToStack(resource);
+        }        
     }
 
     public void GetChipFromStack()
@@ -279,9 +295,7 @@ public class CasinoGame_ChipGame : CasinoGame
                 betCounter += customer.Bet(data.betUnitPrice);
             }
 
-            betCounter /= 100;
-            //creative 1
-            betCounter = 5;
+            betCounter /= 100;            
 
             roulette_ui.SetChipTxt(betCounter.ToString());
             casinoGameCanvas.OpenChipPanel();
@@ -295,8 +309,13 @@ public class CasinoGame_ChipGame : CasinoGame
         base.UpgradeElements();
 
         if (playCd <= 0)
-        {
-            CleanProcess();
+        {      
+            if (!giveChipsToWinner)
+            {               
+                GiveChipsToCustomer();                
+            }
+
+            CleanProcess();            
             StartCoroutine(ResetGame());
         }
         else
