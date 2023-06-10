@@ -32,7 +32,10 @@ public class ChipDeliverer : Worker
 
     [SerializeField] Transform closestChipDesk;
 
-    
+    public void SetHandStack(Transform stack)
+    {
+        handStack.firstStack = stack;
+    }
     private void OnEnable()
     {
         transform.position = spawnPoint.position;
@@ -43,7 +46,7 @@ public class ChipDeliverer : Worker
         state = ChipDeliverState.waiting;
         ArrivedToFirstPosition();
 
-        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
+       // CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
 
         foreach (var casinoGame in casinoGames)
         {
