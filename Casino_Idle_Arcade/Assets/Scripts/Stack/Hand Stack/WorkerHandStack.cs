@@ -7,7 +7,6 @@ public class WorkerHandStack : HandStack
     public override void AddStackResourceProcess()
     {
         base.AddStackResourceProcess();
-
     }
 
     public override void RemoveFromStackWithCd()

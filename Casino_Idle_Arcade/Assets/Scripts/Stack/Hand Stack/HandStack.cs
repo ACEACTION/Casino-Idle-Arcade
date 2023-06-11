@@ -205,6 +205,8 @@ public class HandStack : MonoBehaviour
     public bool StackIsEmpty() => stackCount == 0;
     public bool ListHasResource<T>(List<T> list) => list.Count > 0;
 
+    public void SetFirstStack(Transform t) => firstStack = t;
+
     private void OnDisable()
     {
         data.maxStackCount = defaultMaxStackCount;
