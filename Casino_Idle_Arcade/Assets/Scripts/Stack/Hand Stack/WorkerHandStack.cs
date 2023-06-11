@@ -24,6 +24,5 @@ public class WorkerHandStack : HandStack
     public override void RemoveFromStack()
     {
         base.RemoveFromStack();
-       
     }
 }

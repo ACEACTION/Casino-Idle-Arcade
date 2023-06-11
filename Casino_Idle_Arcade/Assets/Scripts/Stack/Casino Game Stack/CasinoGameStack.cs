@@ -23,9 +23,9 @@ public class CasinoGameStack : ElementStack
 
         //resource.transform.SetParent(firsStack.transform.parent);
 
-        firsStack.position += new Vector3(0, data.stackYOffset, 0);        
         JumpMoveResource(resource);
         SetResourceParent(resource.transform, firsStack.transform.parent);
+        firsStack.position += new Vector3(0, data.stackYOffset, 0);        
     }
 
     public override void CompleteJumpMove(CasinoResource resource)
@@ -33,6 +33,11 @@ public class CasinoGameStack : ElementStack
         base.CompleteJumpMove(resource);
     }
 
+    public override void GetResource()
+    {
+        base.GetResource();
+        firsStack.position -= new Vector3(0, data.stackYOffset, 0);
+    }
 
     public override void SetDeliverProcess()
     {

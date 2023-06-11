@@ -52,7 +52,8 @@ public class ElementStack : MonoBehaviour
         }
     }
 
-    public void SetResourceParent(Transform resource, Transform parent) => resource.parent = parent;
+    public void SetResourceParent(Transform resource, Transform parent) => resource.parent = parent; 
+    
     public void RotateResource(Transform resource)
         => resource.DORotate(new Vector3(0, Random.Range(0, 1200), 0), data.jumpDuration, RotateMode.FastBeyond360);
 
@@ -89,7 +90,7 @@ public class ElementStack : MonoBehaviour
         if (CanGetResource())
         {
             stackCount--;
-            firsStack.position -= new Vector3(0, data.stackYOffset, 0);
+            GetResource();
             CasinoResource resource = casinoResources[casinoResources.Count - 1];
             casinoResources.RemoveAt(casinoResources.Count - 1);
             resource.transform.SetParent(null);
@@ -103,6 +104,10 @@ public class ElementStack : MonoBehaviour
             return null;
         }
 
+    }
+
+    public virtual void GetResource()
+    {
     }
 
     public virtual void SetDeliverProcess()
