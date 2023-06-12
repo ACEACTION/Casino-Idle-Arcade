@@ -116,6 +116,7 @@ public class CustomerMovement : Customer
             SetMove(chipDesk.customerSpot);
         }
     }
+
     public void LosingAnimationEvent()
     {
         isLeaving = true;
