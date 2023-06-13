@@ -55,6 +55,7 @@ public class JackPot : CasinoGame
         if (canPlayAnim)
         {
             canPlayAnim = false;
+            AudioSourceManager.Instance.PlayJackpotSfx();
             animator.SetTrigger("isPlayed");
         }
         customers[0].SetPlayingJackPotAnimation(true);
@@ -67,31 +68,36 @@ public class JackPot : CasinoGame
     public override IEnumerator ResetGame()
     {
         canPlayAnim = true;
-
+        endGame = false;
         return base.ResetGame();
 
     }
 
+    bool endGame;
     public void EndGame()
     {
-        if(CustomerIsWinning())
+        if (!endGame)
         {
-            customers[0].dontGoToChipDesk = true;            
-            customers[0].WinJackpotProcess();
-            StartCoroutine(GiveMoneyToCustomer());
-        }
-        else
-        {
-            customers[0].LosePorccess();
-        }
-        customers[0].SetPlayingJackPotAnimation(false);
-        CustomerPayedMoney();
-    }
+            if (CustomerIsWinning())
+            {
+                customers[0].dontGoToChipDesk = true;
+                customers[0].WinJackpotProcess(delayToReset);                
+                StartCoroutine(GiveMoneyToCustomer());
+            }
+            else
+            {
+                customers[0].LosePorccess();
+            }
+            customers[0].SetPlayingJackPotAnimation(false);
+            CustomerPayedMoney();
 
+            endGame = true;
+        }
+    }
 
     IEnumerator GiveMoneyToCustomer()
     {
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(delayToReset);
         Money money = StackMoneyPool.Instance.pool.Get();
         money.transform.position = transform.position;
         customers[0].stack.AddResourceToStack(money);

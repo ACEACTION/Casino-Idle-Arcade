@@ -158,7 +158,7 @@ public class StackMoney : MonoBehaviour
     {
         AudioSourceManager.Instance.PlayCashPickupSfx();
         GameManager.AddMoney(totalMoney);
-        LootMoneu_UI.Instance.ShowLootMoneyTxt(totalMoney);
+        LootMoneu_UI.Instance?.ShowLootMoneyTxt(totalMoney);
         Money_UI.Instance?.SetTotalMoneyTxt();
         totalMoney = 0;
     }

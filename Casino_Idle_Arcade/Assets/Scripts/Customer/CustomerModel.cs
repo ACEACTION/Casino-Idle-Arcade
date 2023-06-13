@@ -8,9 +8,10 @@ public class CustomerModel : MonoBehaviour
     [SerializeField] GameObject modelEff;
     [SerializeField] GameObject[] poorModels;
     [SerializeField] GameObject[] richModels;
-    int randomIndex;
+    [HideInInspector] public int randomIndex;
 
-    private void OnEnable()
+    // virtual for creatives
+    public virtual void OnEnable()
     {
         SetModelEffState(false);
         randomIndex = Random.Range(0, 2);

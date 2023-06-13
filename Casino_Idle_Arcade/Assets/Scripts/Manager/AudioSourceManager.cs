@@ -15,6 +15,10 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip[] doorSfxs;
     [SerializeField] AudioClip upgradeWorkerSfx;
 
+    [Header("Jackpot")]
+    [SerializeField] AudioClip playJackPotSfx;
+    [SerializeField] AudioClip endJackPotSfx;
+
     [SerializeField] AudioClip receptionSfx;   
     [SerializeField] AudioClip rouletteGamePlaySfx;
     [SerializeField] AudioClip buyAreaSfx;
@@ -47,8 +51,10 @@ public class AudioSourceManager : MonoBehaviour
     public void PlayBuyAreaSfx() => PlaySfx(buyAreaSfx);
 
     public void PlayShineSfx() => PlaySfx(shineSfx);
-
+    //public void PlayJackpotSfx() => PlaySfx(play);
+    //public void PlayEndJackpotSfx() => PlaySfx();
     public void PlayUpgradeWorkerSfx() => PlaySfx(upgradeWorkerSfx);
     public void PlaySfx(AudioClip sfx) => audioScr.PlayOneShot(sfx);
+
 
 }

@@ -124,11 +124,13 @@ public class CustomerMovement : Customer
         happyEmojies[emojiIndex].Play();
     }
 
-    public void WinJackpotProcess()
+    public void WinJackpotProcess(float leavDelay)
     {
         ShowHappy();
         SetWinningAnimation(true);
-        Invoke("Leave", 2);
+        
+        Invoke("Leave", leavDelay);
+        //Leave();
         
         StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
     }
