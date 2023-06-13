@@ -295,8 +295,9 @@ public class CasinoGame_ChipGame : CasinoGame
                 betCounter += customer.Bet(data.betUnitPrice);
             }
 
-            betCounter /= 100;            
-
+            betCounter /= 100;
+            //creative 2
+            betCounter = 6;
             roulette_ui.SetChipTxt(betCounter.ToString());
             casinoGameCanvas.OpenChipPanel();
             totalChipCounter = betCounter;

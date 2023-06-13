@@ -54,6 +54,7 @@ public class CashierManager : MonoBehaviour
                 slider.value += Time.deltaTime;
                 if (cooldown <= 0)
                 {
+                    AudioSourceManager.Instance.PlayReceptionSfx();
                     firstCounter.firstCustomer.PayMoney(stackMoney,
                             data.GetPayment(casinoElement.elementType),
                             MoneyType.receptionMoney);
