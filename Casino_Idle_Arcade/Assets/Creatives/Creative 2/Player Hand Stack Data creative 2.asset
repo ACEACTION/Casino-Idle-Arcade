@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07272415f48878c48b67b08cde4b81bc, type: 3}
+  m_Name: Player Hand Stack Data creative 2
+  m_EditorClassIdentifier: 
+  upgradeName: Stack
+  upgradeValue: 4
+  upgradeLevelCounter: 0
+  upgradeSlots:
+  - upgradeValue: 4
+    upgradeCost: 500
+  - upgradeValue: 5
+    upgradeCost: 750
+  - upgradeValue: 7
+    upgradeCost: 1200
+  - upgradeValue: 9
+    upgradeCost: 2500
+  maxStackCount: 4
+  defaultMaxStackCount: 4
+  stackYOffset: 0.24
+  maxAddStackCd: 0.05
+  maxRemoveStackCd: 0.05
+  firstStackOrigin: {x: 0, y: 0, z: 0}
