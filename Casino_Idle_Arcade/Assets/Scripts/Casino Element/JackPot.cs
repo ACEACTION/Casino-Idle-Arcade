@@ -10,7 +10,8 @@ public class JackPot : CasinoGame
     [SerializeField] Animator animator;
     bool canPlayAnim = true;
     float winProbability;
-    
+    bool endGame;
+
     public override void Start()
     {
         base.Start();
@@ -55,14 +56,13 @@ public class JackPot : CasinoGame
         if (canPlayAnim)
         {
             canPlayAnim = false;
-            AudioSourceManager.Instance.PlayJackpotSfx();
             animator.SetTrigger("isPlayed");
         }
         customers[0].SetPlayingJackPotAnimation(true);
     }
     public void DisableJackPotAnim()
     {
-        animator.ResetTrigger("isPlayed");   
+        animator.ResetTrigger("isPlayed");
     }
 
     public override IEnumerator ResetGame()
@@ -73,7 +73,6 @@ public class JackPot : CasinoGame
 
     }
 
-    bool endGame;
     public void EndGame()
     {
         if (!endGame)
@@ -92,6 +91,9 @@ public class JackPot : CasinoGame
             CustomerPayedMoney();
 
             endGame = true;
+
+            AudioSourceManager.Instance.StopAudioSrc();
+            AudioSourceManager.Instance.PlayEndJackpotSfx();
         }
     }
 
@@ -131,4 +133,8 @@ public class JackPot : CasinoGame
     }
     void SetWinProbability() => winProbability = data.winProbabilityUpgradeLevel[upgradeIndex];
 
+    public void PlayJackpotSfx()
+    {        
+        AudioSourceManager.Instance.PlayJackpotSfx();
+    }
 }

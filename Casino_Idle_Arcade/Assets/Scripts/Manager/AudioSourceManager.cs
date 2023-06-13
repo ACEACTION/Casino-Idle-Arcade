@@ -15,15 +15,17 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip[] doorSfxs;
     [SerializeField] AudioClip upgradeWorkerSfx;
 
-    [Header("Jackpot")]
-    [SerializeField] AudioClip playJackPotSfx;
-    [SerializeField] AudioClip endJackPotSfx;
 
     [SerializeField] AudioClip receptionSfx;   
     [SerializeField] AudioClip rouletteGamePlaySfx;
     [SerializeField] AudioClip buyAreaSfx;
     [SerializeField] AudioClip fushSfx;
     public AudioSource audioScr;
+
+
+    [Header("Jackpot")]
+    [SerializeField] AudioClip playJackPotSfx;
+    [SerializeField] AudioClip endJackPotSfx;
 
     //singletoon
     public static AudioSourceManager Instance;
@@ -53,10 +55,11 @@ public class AudioSourceManager : MonoBehaviour
     public void PlayBuyAreaSfx() => PlaySfx(buyAreaSfx);
 
     public void PlayShineSfx() => PlaySfx(shineSfx);
-    //public void PlayJackpotSfx() => PlaySfx(play);
-    //public void PlayEndJackpotSfx() => PlaySfx();
+    public void PlayJackpotSfx() => PlaySfx(playJackPotSfx);
+    public void PlayEndJackpotSfx() => PlaySfx(endJackPotSfx);
     public void PlayUpgradeWorkerSfx() => PlaySfx(upgradeWorkerSfx);
     public void PlaySfx(AudioClip sfx) => audioScr.PlayOneShot(sfx);
 
+    public void StopAudioSrc() => audioScr.Stop();
 
 }
