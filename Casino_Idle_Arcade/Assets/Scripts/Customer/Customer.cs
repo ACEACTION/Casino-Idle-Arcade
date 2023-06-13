@@ -21,7 +21,7 @@ public class Customer : MonoBehaviour
     public ChipDesk chipDesk = null;
     //[SerializeField] GameObject[] customerCards;
     public VendingMachine vendingMachine;
-    public CustomerModel customerModel;
+    public GameObject[] customerCards;
 
 
     private void OnEnable()
@@ -100,11 +100,10 @@ public class Customer : MonoBehaviour
 
     public void SetCustomerCardsActiveState(bool state)
     {
-        customerModel.SetCardsState(state);
-        //foreach (GameObject card in customerCards)
-        //{
-        //    card.gameObject.SetActive(state);
-        //}
+        foreach (GameObject card in customerCards)
+        {
+            card.SetActive(state);
+        }
     }
 
     //public Vector3 GetCustomerCardPos() => customerCards[1].transform.position;

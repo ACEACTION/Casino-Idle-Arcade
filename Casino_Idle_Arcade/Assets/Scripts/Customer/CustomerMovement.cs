@@ -6,10 +6,12 @@ using UnityEngine.AI;
 
 public class CustomerMovement : Customer
 {
+    [SerializeField] CustomerModel customerModel;
+    
     Transform dir;
     [SerializeField] NavMeshAgent agent;
 
-    
+
     public Transform destination;
     public bool fCustomer;
     int emojiIndex;
@@ -57,12 +59,19 @@ public class CustomerMovement : Customer
     {
         ShowHappy();
         SetWinningAnimation(true);
+        
+        customerModel.ActiveRichModel();
+        customerModel.SetModelEffState(true);
     }
+
     public void LosePorccess()
     {
         emojiIndex = Random.Range(0, sadEmojies.Length);
         sadEmojies[emojiIndex].gameObject.SetActive(true);
         sadEmojies[emojiIndex].Play();
+
+        customerModel.ActivePoorModel();
+        customerModel.SetModelEffState(true);
 
         //check if customer has chance to go 
         SetDesireRate();

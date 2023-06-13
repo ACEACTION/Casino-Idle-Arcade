@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class CustomerModel : MonoBehaviour
 {
-    [SerializeField] Animator anim;
-    [SerializeField] CustomerMovement customerMvment;
-    [SerializeField] GameObject[] cards;
+    GameObject currentModel;
+    [SerializeField] GameObject modelEff;
+    [SerializeField] GameObject[] poorModels;
+    [SerializeField] GameObject[] richModels;
+    int randomIndex;
 
-    public void SetCardsState(bool state)
+    private void OnEnable()
     {
-        foreach (GameObject card in cards)
-        {
-            card.SetActive(state);
-        }
+        SetModelEffState(false);
+        randomIndex = Random.Range(0, 2);
+        if (randomIndex == 0) ActivePoorModel();
+        else ActiveRichModel();
     }
 
-    public Animator GetAnimator() => anim;
-
-    public void SetWinningAniamtionEvent()
+    public void ActivePoorModel()
     {
-        customerMvment.WinningAnimationEvent();
+        ActiveModel(poorModels[Random.Range(0, poorModels.Length)]);        
     }
 
-    public void SetLosingAnimationEvent()
+    public void ActiveRichModel()
     {
-        customerMvment.LosingAnimationEvent();
+        ActiveModel(richModels[Random.Range(0, richModels.Length)]);
     }
 
-    public void disablingWinnigAnim() =>  anim.SetBool("isWinning", false);
     
 
+    void ActiveModel(GameObject model)
+    {
+        currentModel?.SetActive(false);
+        currentModel = model;
+        currentModel.SetActive(true);
+    }
+
+        
+    public void SetModelEffState(bool state) => modelEff.SetActive(state);
 }
