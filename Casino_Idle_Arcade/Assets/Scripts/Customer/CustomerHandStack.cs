@@ -91,6 +91,7 @@ public class CustomerHandStack : MonoBehaviour
     }
 
 
+
     void GiveMoneyToChipDesk(ChipDesk chipDesk)
     {
         //cmovement.PayMoney(chipDesk.stackMoney, 4, MoneyType.chipDeskMoney);
