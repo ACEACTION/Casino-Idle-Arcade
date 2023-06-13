@@ -33,6 +33,8 @@ public class AudioSourceManager : MonoBehaviour
 
     public void PlayFushSfx() => PlaySfx(fushSfx);
 
+    public void PlayReceptionSfx() => PlaySfx(receptionSfx);
+
     public void PlayDoorSound() => PlaySfx(doorSfxs[Random.Range(0, doorSfxs.Length)]);
     public void PlayBuyItem() => PlaySfx(buyItemSfx);
     public void PlayCantBuyItem() => PlaySfx(cantBuyItemSfx);
