@@ -17,9 +17,6 @@ public class Money : CasinoResource
        defaultScale = transform.localScale;               
     }
 
-    private void Start()
-    {
-    }
 
     private void OnEnable()
     {

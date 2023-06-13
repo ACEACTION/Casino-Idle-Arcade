@@ -25,8 +25,11 @@ public class CustomerHandStack : MonoBehaviour
     {
         resources.Add(resource);
         resource.transform.SetParent(transform);
-        resource.transform.DOLocalMove(firstStack.localPosition, .7f);
-        firstStack.position += new Vector3(0, data.stackYOffset, 0);
+        resource.transform.DOLocalRotate(Vector3.zero, 0);
+        resource.transform.DOLocalMove(firstStack.localPosition, .4f).OnComplete(() =>
+        {
+        });
+        firstStack.position += new Vector3(0, data.stackYOffset, 0);        
         stackCounter++;
     }
 

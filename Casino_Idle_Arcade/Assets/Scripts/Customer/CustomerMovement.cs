@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using System;
+using Random = UnityEngine.Random;
 
 public class CustomerMovement : Customer
 {
@@ -59,10 +60,17 @@ public class CustomerMovement : Customer
     {
         ShowHappy();
         SetWinningAnimation(true);
-        
+
+        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));        
+    }
+
+    void ActiveWinModel()
+    {
         customerModel.ActiveRichModel();
         customerModel.SetModelEffState(true);
     }
+
+    
 
     public void LosePorccess()
     {
@@ -70,8 +78,8 @@ public class CustomerMovement : Customer
         sadEmojies[emojiIndex].gameObject.SetActive(true);
         sadEmojies[emojiIndex].Play();
 
-        customerModel.ActivePoorModel();
-        customerModel.SetModelEffState(true);
+        StartCoroutine(ActiveModelWithDelay(ActivePoorModel));
+       
 
         //check if customer has chance to go 
         SetDesireRate();
@@ -89,6 +97,18 @@ public class CustomerMovement : Customer
 
         }
         else SetLosingAnimation(true);
+    }
+
+    void ActivePoorModel()
+    {
+        customerModel.ActivePoorModel();
+        customerModel.SetModelEffState(true);
+    }
+
+    IEnumerator ActiveModelWithDelay(Action activeModel)
+    {
+        yield return new WaitForSeconds(.5f);
+        activeModel();
     }
 
     void ShowHappy()
@@ -109,9 +129,11 @@ public class CustomerMovement : Customer
         ShowHappy();
         SetWinningAnimation(true);
         Invoke("Leave", 2);
+        
+        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
     }
 
-    
+
 
 
     //should be edited after this to add more chipdesk from manager
