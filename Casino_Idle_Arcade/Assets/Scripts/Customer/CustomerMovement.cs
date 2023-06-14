@@ -74,9 +74,7 @@ public class CustomerMovement : Customer
 
     public void LosePorccess()
     {
-        emojiIndex = Random.Range(0, sadEmojies.Length);
-        sadEmojies[emojiIndex].gameObject.SetActive(true);
-        sadEmojies[emojiIndex].Play();
+        ShowSad();
 
         StartCoroutine(ActiveModelWithDelay(ActivePoorModel));
        
@@ -124,19 +122,47 @@ public class CustomerMovement : Customer
         happyEmojies[emojiIndex].Play();
     }
 
-    public void WinJackpotProcess(float leavDelay)
+    void ShowSad()
+    {
+        emojiIndex = Random.Range(0, sadEmojies.Length);
+        sadEmojies[emojiIndex].gameObject.SetActive(true);
+        sadEmojies[emojiIndex].Play();
+    }
+
+    public void SetWinJackpot(float winDuration)
+    {
+
+
+        //Invoke("Leave", leavDelay);
+        //Leave();
+        StartCoroutine(WinJackpotProcess(winDuration));
+        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
+    }
+    
+    IEnumerator WinJackpotProcess(float winDuration)
     {
         ShowHappy();
         SetWinningAnimation(true);
-        
-        Invoke("Leave", leavDelay);
-        //Leave();
-        
-        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
+        yield return new WaitForSeconds(winDuration);
+        SetWinningAnimation(false);
+        Leave();
     }
 
 
+    public void LoseJackpot(float loseDuration)
+    {
+        StartCoroutine(LoseJackpotProcess(loseDuration));
+        StartCoroutine(ActiveModelWithDelay(ActivePoorModel));
+    }
 
+    IEnumerator LoseJackpotProcess(float loseDuration)
+    {
+        ShowSad();
+        SetLosingAnimation(true);
+        yield return new WaitForSeconds(loseDuration);
+        
+
+    }
 
     //should be edited after this to add more chipdesk from manager
     public void WinningAnimationEvent()

@@ -80,7 +80,7 @@ public class JackPot : CasinoGame
             if (CustomerIsWinning())
             {
                 customers[0].dontGoToChipDesk = true;
-                customers[0].WinJackpotProcess(delayToReset);                
+                customers[0].SetWinJackpot(delayToReset);                
                 StartCoroutine(GiveMoneyToCustomer());
             }
             else
