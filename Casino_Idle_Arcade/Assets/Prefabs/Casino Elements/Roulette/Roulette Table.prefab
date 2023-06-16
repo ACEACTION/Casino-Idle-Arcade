@@ -1941,6 +1941,8 @@ GameObject:
   - component: {fileID: 1083140145664439103}
   - component: {fileID: 2948979729897342965}
   - component: {fileID: 658052980}
+  - component: {fileID: 3725471193926386397}
+  - component: {fileID: 456728438887412965}
   m_Layer: 0
   m_Name: Roulette Type 3
   m_TagString: Untagged
@@ -2031,6 +2033,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticBalls: {fileID: 2073756477}
   animatedBalls: {fileID: 1639183394}
+--- !u!208 &3725471193926386397
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741397278774289952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.4660001, y: 1.217, z: 0.46100003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.367, z: 0.46100003}
+  m_TimeToStationary: 0.5
+--- !u!114 &456728438887412965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741397278774289952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 3725471193926386397}
 --- !u!1 &4286376534986989357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,6 +2074,8 @@ GameObject:
   - component: {fileID: 4502685572089258302}
   - component: {fileID: 1506637666196161442}
   - component: {fileID: 2009878650}
+  - component: {fileID: 7321993652307561640}
+  - component: {fileID: 7673113595274256870}
   m_Layer: 0
   m_Name: Roulette Type 1
   m_TagString: Untagged
@@ -2133,6 +2166,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticBalls: {fileID: 1848124167}
   animatedBalls: {fileID: 764167702}
+--- !u!208 &7321993652307561640
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286376534986989357}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.478, y: 0.437, z: 0.97400004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.437, z: 0.23400001}
+  m_TimeToStationary: 0.5
+--- !u!114 &7673113595274256870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286376534986989357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 7321993652307561640}
 --- !u!1 &5610441756554286524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2671,6 +2733,8 @@ GameObject:
   - component: {fileID: 4799961013350506644}
   - component: {fileID: 7311616353199969374}
   - component: {fileID: 33221011}
+  - component: {fileID: 1656940569068176260}
+  - component: {fileID: 1644746713961002237}
   m_Layer: 0
   m_Name: Roulette Type 2
   m_TagString: Untagged
@@ -2761,6 +2825,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticBalls: {fileID: 1780196687}
   animatedBalls: {fileID: 810836103}
+--- !u!208 &1656940569068176260
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113289094225753483}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.659, y: 0.437, z: 0.96500003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.437, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &1644746713961002237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113289094225753483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 1656940569068176260}
 --- !u!1001 &224731064
 PrefabInstance:
   m_ObjectHideFlags: 0

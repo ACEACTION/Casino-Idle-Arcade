@@ -2274,6 +2274,8 @@ GameObject:
   - component: {fileID: 4988587527645653050}
   - component: {fileID: 5901324914856383949}
   - component: {fileID: 3803337299736396951}
+  - component: {fileID: 6652184804588797153}
+  - component: {fileID: 2057761461535174487}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -2346,6 +2348,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6652184804588797153
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805560390708793080}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.9110001, y: 0.572, z: 0.41400003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.089, y: 0.572, z: -0.039}
+  m_TimeToStationary: 0.5
+--- !u!114 &2057761461535174487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805560390708793080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 6652184804588797153}
 --- !u!1 &6166340161921008473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,6 +3504,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3074993292511161795}
     m_Modifications:
+    - target: {fileID: 6484951847105176755, guid: 8947c5f3ffbc4fd4d832faeb88823157,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 6484951847105176755, guid: 8947c5f3ffbc4fd4d832faeb88823157,
         type: 3}
       propertyPath: m_fontAsset

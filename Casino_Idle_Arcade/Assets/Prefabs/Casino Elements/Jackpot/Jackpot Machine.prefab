@@ -254,6 +254,8 @@ GameObject:
   - component: {fileID: 1901724679867129519}
   - component: {fileID: 3299892848943288586}
   - component: {fileID: 733915601592722880}
+  - component: {fileID: 3827437862050985623}
+  - component: {fileID: 2906240103640584054}
   m_Layer: 0
   m_Name: Machine Type 1
   m_TagString: Untagged
@@ -330,6 +332,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3827437862050985623
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238375728146449429}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.55700004, y: 0.776, z: 0.441}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.776, z: 0.106000006}
+  m_TimeToStationary: 0.5
+--- !u!114 &2906240103640584054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238375728146449429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 3827437862050985623}
 --- !u!1 &1587638940095169757
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +372,8 @@ GameObject:
   - component: {fileID: 2108737514650148455}
   - component: {fileID: 3092959252588532162}
   - component: {fileID: 939160245586683144}
+  - component: {fileID: 8488990048740729997}
+  - component: {fileID: 1871859918543373908}
   m_Layer: 0
   m_Name: Machine Type 2
   m_TagString: Untagged
@@ -417,6 +450,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &8488990048740729997
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587638940095169757}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.597, y: 1.103, z: 0.51100004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.103, z: 0.106000006}
+  m_TimeToStationary: 0.5
+--- !u!114 &1871859918543373908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587638940095169757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 8488990048740729997}
 --- !u!1 &2018991894047327029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1499,8 @@ GameObject:
   - component: {fileID: 6951792283578126716}
   - component: {fileID: 6329353711922896601}
   - component: {fileID: 8084690183907584531}
+  - component: {fileID: 6778269505284004904}
+  - component: {fileID: 3029524171036189798}
   m_Layer: 0
   m_Name: Machine Type 3
   m_TagString: Untagged
@@ -1513,6 +1577,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6778269505284004904
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724353492437535686}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.772, y: 1.182, z: 0.504}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.182, z: 0.20500001}
+  m_TimeToStationary: 0.5
+--- !u!114 &3029524171036189798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724353492437535686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 6778269505284004904}
 --- !u!1001 &4421391589217104252
 PrefabInstance:
   m_ObjectHideFlags: 0

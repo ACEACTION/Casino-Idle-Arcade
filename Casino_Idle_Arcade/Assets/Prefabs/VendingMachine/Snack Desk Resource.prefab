@@ -2740,6 +2740,8 @@ GameObject:
   - component: {fileID: 4953710658358915718}
   - component: {fileID: 8291344670064360739}
   - component: {fileID: 6121571968670190057}
+  - component: {fileID: 2079793997131982725}
+  - component: {fileID: 2680406154194340703}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -2815,6 +2817,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &2079793997131982725
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761455453334464572}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.6200001, y: 1.95, z: 3.292}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.9560001, z: 0.020000001}
+  m_TimeToStationary: 0.5
+--- !u!114 &2680406154194340703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761455453334464572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 2079793997131982725}
 --- !u!1 &6995603209726898525
 GameObject:
   m_ObjectHideFlags: 0

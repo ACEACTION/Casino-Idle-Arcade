@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1023229419758426067}
   - component: {fileID: 4151446021074917494}
   - component: {fileID: 2195523925653449916}
+  - component: {fileID: 6083407375595134980}
+  - component: {fileID: 4887376371063965644}
   m_Layer: 0
   m_Name: Baccarat Model 3
   m_TagString: Untagged
@@ -84,6 +86,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6083407375595134980
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394325624444833129}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3030001, y: 0.46100003, z: 1.144}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.46100003, z: 0.040000003}
+  m_TimeToStationary: 0.5
+--- !u!114 &4887376371063965644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394325624444833129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 6083407375595134980}
 --- !u!1 &2014978757329152423
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +126,8 @@ GameObject:
   - component: {fileID: 1206248014482486045}
   - component: {fileID: 2815505925495897272}
   - component: {fileID: 69340637222160498}
+  - component: {fileID: 5072157414677893084}
+  - component: {fileID: 20160405790908164}
   m_Layer: 0
   m_Name: Baccarat Model 2
   m_TagString: Untagged
@@ -168,6 +201,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5072157414677893084
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014978757329152423}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.6420001, y: 0.425, z: 1.005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.425, z: 0.023000002}
+  m_TimeToStationary: 0.5
+--- !u!114 &20160405790908164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014978757329152423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 5072157414677893084}
 --- !u!1 &2099776685026852351
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +241,8 @@ GameObject:
   - component: {fileID: 1614601392672761669}
   - component: {fileID: 2434174694016116960}
   - component: {fileID: 442227653353905194}
+  - component: {fileID: 6904924901446301839}
+  - component: {fileID: 4830160203114691286}
   m_Layer: 0
   m_Name: Baccarat Model 1
   m_TagString: Untagged
@@ -252,6 +316,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6904924901446301839
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099776685026852351}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.425, z: 0.896}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.425, z: 0.13100001}
+  m_TimeToStationary: 0.5
+--- !u!114 &4830160203114691286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099776685026852351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 6904924901446301839}
 --- !u!1 &6940673567864949619
 GameObject:
   m_ObjectHideFlags: 0

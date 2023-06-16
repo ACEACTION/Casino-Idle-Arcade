@@ -423,6 +423,8 @@ GameObject:
   - component: {fileID: 3734533504020691515}
   - component: {fileID: 3734533504020691492}
   - component: {fileID: 3734533504020691514}
+  - component: {fileID: 940780626719306037}
+  - component: {fileID: 4507489138886322450}
   m_Layer: 0
   m_Name: Cashier
   m_TagString: Untagged
@@ -568,6 +570,35 @@ MonoBehaviour:
   firstCounter: {fileID: 285653701028799908}
   stackMoney: {fileID: 7292628815658343613}
   casinoElement: {fileID: 0}
+--- !u!208 &940780626719306037
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096540019902770982}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.9110001, y: 0.572, z: 0.41400003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.089, y: 0.572, z: -0.039}
+  m_TimeToStationary: 0.5
+--- !u!114 &4507489138886322450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096540019902770982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bcad33558c6c94384e78493108d7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle: {fileID: 940780626719306037}
 --- !u!1 &5658155687190957260
 GameObject:
   m_ObjectHideFlags: 0
