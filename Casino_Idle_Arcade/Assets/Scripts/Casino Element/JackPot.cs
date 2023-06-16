@@ -80,12 +80,13 @@ public class JackPot : CasinoGame
             if (CustomerIsWinning())
             {
                 customers[0].dontGoToChipDesk = true;
-                customers[0].SetWinJackpot(delayToReset);                
+                customers[0].SetWinJackpot(data.afterGameDuration);                
                 StartCoroutine(GiveMoneyToCustomer());
             }
             else
             {
-                customers[0].LosePorccess();
+                //customers[0].LosePorccess();
+                customers[0].SetLose(data.afterGameDuration);
             }
             customers[0].SetPlayingJackPotAnimation(false);
             CustomerPayedMoney();
@@ -120,9 +121,9 @@ public class JackPot : CasinoGame
     public override void UpgradeElements()
     {
         base.UpgradeElements();
-        SetWinProbability();
         SetCastTime();
         ShakeElement();
+        SetWinProbability();
     }
 
 

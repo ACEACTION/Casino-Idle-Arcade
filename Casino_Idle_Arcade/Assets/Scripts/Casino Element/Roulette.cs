@@ -52,7 +52,7 @@ public class Roulette : CasinoGame_ChipGame
 
             foreach (CustomerMovement cs in customers)
             {
-                cs.disablePlayingAnim();
+                cs.SetPlayingCardAnimationState(false);
             }
 
         }

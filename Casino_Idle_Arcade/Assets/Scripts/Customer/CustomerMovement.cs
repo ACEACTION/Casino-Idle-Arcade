@@ -20,7 +20,6 @@ public class CustomerMovement : Customer
 
     private void Update()
     {
-        agent.speed = 5f;
         dir = destination;
         if (destination != null)
         {
@@ -51,51 +50,78 @@ public class CustomerMovement : Customer
         }
         else
         {
-            anim.SetBool("isWalking", true);
+            if (isLosing)
+                SetSadWalkState(true);
+            else
+                anim.SetBool("isWalking", true);
         }
         destination = ts;
 
+    }    
+
+    public void SetWin(float winDuration, List<CasinoResource> chips)
+    {
+        SetPlayingCardAnimationState(false);
+        StartCoroutine(WinProcess(winDuration, chips));
+        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
     }
-    public void WinProccess()
+
+
+    IEnumerator WinProcess(float winDuration, List<CasinoResource> chips)
     {
         ShowHappy();
-        SetWinningAnimation(true);
+        //SetWinningAnimationState(true);
+        SetWinningAnimationState(true);
+        yield return new WaitForSeconds(winDuration);
+        foreach (CasinoResource resource in chips)
+        {
+            stack.AddResourceToStack(resource);
+        }
+        //SetWinningAnimationState(false);
+        SetWinningAnimationState(false);
 
-        StartCoroutine(ActiveModelWithDelay(ActiveWinModel));        
+
+        if (!dontGoToChipDesk)
+        {
+            isLeaving = true;
+            isWinning = true;
+            SetChipDesk();
+            SetMove(chipDesk.customerSpot);
+        }        
+
     }
 
     void ActiveWinModel()
     {
         customerModel.ActiveRichModel();
         customerModel.SetModelEffState(true);
+    }   
+
+    public void SetLose(float loseDuration)
+    {
+        isLosing = true;
+        StartCoroutine(LoseProcess(loseDuration));
+    }
+
+    IEnumerator LoseProcess(float loseDuration)
+    {
+        ShowSad();
+        SetLosingAnimation(true);
+        StartCoroutine(ActiveModelWithDelay(ActivePoorModel));
+
+        //check if customer has chance to go 
+        yield return new WaitForSeconds(loseDuration);
+        SetLosingAnimation(false);
+
+        if (!GoToWendingMachine())        
+        {
+            isLeaving = true;
+            SetMove(ExitPosition.instance.customerSpot);
+            SetSadWalkState(true);
+        }
     }
 
     
-
-    public void LosePorccess()
-    {
-        ShowSad();
-
-        StartCoroutine(ActiveModelWithDelay(ActivePoorModel));
-       
-
-        //check if customer has chance to go 
-        SetDesireRate();
-        if (CustomerWantsVendingMachine())
-        {
-            vendingMachine = vendingMachineManager.CanSendCustomerToVendingMachine();
-            if (vendingMachine)
-            {
-                //there is vending machine available
-
-                vendingMachine.SendCustomerToElement(this);
-                vendingMachine = null;
-            }
-            else SetLosingAnimation(true);
-
-        }
-        else SetLosingAnimation(true);
-    }
 
     void ActivePoorModel()
     {
@@ -131,10 +157,6 @@ public class CustomerMovement : Customer
 
     public void SetWinJackpot(float winDuration)
     {
-
-
-        //Invoke("Leave", leavDelay);
-        //Leave();
         StartCoroutine(WinJackpotProcess(winDuration));
         StartCoroutine(ActiveModelWithDelay(ActiveWinModel));
     }
@@ -142,9 +164,9 @@ public class CustomerMovement : Customer
     IEnumerator WinJackpotProcess(float winDuration)
     {
         ShowHappy();
-        SetWinningAnimation(true);
+        SetWinningAnimationState(true);
         yield return new WaitForSeconds(winDuration);
-        SetWinningAnimation(false);
+        SetWinningAnimationState(false);
         Leave();
     }
 
@@ -159,27 +181,7 @@ public class CustomerMovement : Customer
     {
         ShowSad();
         SetLosingAnimation(true);
-        yield return new WaitForSeconds(loseDuration);
-        
-
-    }
-
-    //should be edited after this to add more chipdesk from manager
-    public void WinningAnimationEvent()
-    {
-        if (!dontGoToChipDesk)
-        {
-            isLeaving = true;
-            isWinning = true;
-            SetChipDesk();
-            SetMove(chipDesk.customerSpot);
-        }
-    }
-
-    public void LosingAnimationEvent()
-    {
-        isLeaving = true;
-        SetMove(ExitPosition.instance.customerSpot);
+        yield return new WaitForSeconds(loseDuration);       
     }
 
     public void ExitCasino() => SetMove(ExitPosition.instance.customerSpot);
@@ -197,21 +199,8 @@ public class CustomerMovement : Customer
         }
     }
 
-    public void settingIdleAnimationTrue()
-    {
-        anim.SetBool("idle", true);
-    }
 
-    public void disablingWinnigAnim()
-    {
-        anim.SetBool("isWinning", false);
-    }
-
-    public void disablePlayingAnim()
-    {
-        anim.SetBool("isPlayingCard", false);
-    }
-
+    // event
     public void DisalbeJackPotPlayingAnim()
     {
         anim.SetBool("isPlayingJackPot", false);
@@ -223,7 +212,10 @@ public class CustomerMovement : Customer
         anim.SetBool("idlecarry", false);
         anim.SetBool("walkcarry", false);
         anim.SetBool("sadWalking", false);
+        anim.SetBool("isLosing", false);
         anim.Play("idle");
+
+        isLosing = false;
         chipDesk = null;
         isWinning = false;
         dontGoToChipDesk = false;
@@ -247,6 +239,21 @@ public class CustomerMovement : Customer
 
         CustomerPool.instance.OnReleaseCustomer(this);
 
+    }
+
+    public bool GoToWendingMachine()
+    {
+        SetDesireRate();
+        vendingMachine = vendingMachineManager.CanSendCustomerToVendingMachine();
+        if (CustomerWantsVendingMachine() && vendingMachine)
+        {
+            //there is vending machine available
+            isLosing = false;
+            vendingMachine.SendCustomerToElement(this);
+            vendingMachine = null;
+            return true;
+        }
+        else return false;
     }
 
 }

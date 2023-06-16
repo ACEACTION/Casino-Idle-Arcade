@@ -12,7 +12,6 @@ public class MoneyData : ScriptableObject
     public int chipDeskMoneyAmount;
     public int vendingMoneyAmount;
     public int barMoneyAmount;
-    public float moneyGoToCustomerFromDeskTime;
     public float goToPlayerTime;
 
     public int GetMoneyAmount(MoneyType type)

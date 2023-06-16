@@ -14,7 +14,7 @@ public class RouletteData : ScriptableObject
     public float maxGetChipCd;
     public float playChipSpotOffset;
     public Vector3 playChipSpotDefaultPos;
-    public float giveChipsToWinnerDelay = 2f;
+    public float afterGameDuration = 2f;
 
 
     public float GetMaxPlayCdLevel(int upgradeIndex) => maxPlayCdLevel[upgradeIndex];

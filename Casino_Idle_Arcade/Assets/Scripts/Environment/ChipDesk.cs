@@ -20,13 +20,6 @@ public class ChipDesk : MonoBehaviour
         ChipDeskManager.chipDeskList.Add(this);
     }
 
-    public Money GiveMoney()
-    {
-        Money money = StackMoneyPool.Instance.pool.Get();
-        money.transform.position = moneySpawnPoint.position;
-        return money;
-    }
-
     public void AddReleaseChipList(CasinoResource resource) => releaseChipList.Add(resource);
 
 

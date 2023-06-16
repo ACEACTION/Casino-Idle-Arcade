@@ -62,7 +62,8 @@ public class CustomerHandStack : MonoBehaviour
 
         // stack money in customer hand
         GetMoneyFromChipDesk(chipDesk);
-    }    
+        cmovement.ExitCasino();
+    }
 
     public void ReleaseResources()
     {
@@ -78,19 +79,9 @@ public class CustomerHandStack : MonoBehaviour
 
     void GetMoneyFromChipDesk(ChipDesk chipDesk)
     {
-        Money money = chipDesk.GiveMoney();
-        money.transform.SetParent(firstStack);
-        money.transform.localScale += new Vector3(.1f, .1f, .1f);
-        money.transform.
-            DOLocalMove(Vector3.zero, 
-            money.moneyData.moneyGoToCustomerFromDeskTime)
-            .OnComplete(() =>
-            {
-                GiveMoneyToChipDesk(chipDesk);
-            });
-        resources.Add(money);
-        stackCounter++;
-        cmovement.ExitCasino();
+        Money money = StackMoneyPool.Instance.pool.Get();
+        money.transform.position = transform.position;
+        AddResourceToStack(money);
     }
 
 

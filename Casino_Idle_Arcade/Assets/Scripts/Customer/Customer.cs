@@ -10,7 +10,7 @@ public class Customer : MonoBehaviour
     public CustomerData customerData;
     public Transform snackTransform;
     float vendingMachineDesireRate;
-
+    [HideInInspector] public bool isLosing;
     public ParticleSystem[] confetti;
     public bool isWinning = false;
     public bool tableWinner;
@@ -24,30 +24,22 @@ public class Customer : MonoBehaviour
     public GameObject[] customerCards;
 
 
-    private void OnEnable()
-    {      
-    }
-
-    public void SetPlayingCardAnimation(bool state)
+    public void SetPlayingCardAnimationState(bool state)
     {
         anim.SetBool("isPlayingCard", state);
     }
-
 
     public void SetPlayingJackPotAnimation(bool state)
     {
         anim.SetBool("isPlayingJackPot", state);
     }
-    public void SetPlayingVendingMachineAnimation(bool state)
-    {
-        anim.SetBool("isBuyingSnack", state);
-    }
 
-    public void SetWinningAnimation(bool state)
+    public void SetWinningAnimationState(bool state)
     {
         anim.SetBool("isWinning", state);
     }
-    public void SetSadWalkAnimation(bool state)
+
+    public void SetSadWalkState(bool state)
     {
         anim.SetBool("sadWalking", state);
     }
@@ -105,7 +97,5 @@ public class Customer : MonoBehaviour
             card.SetActive(state);
         }
     }
-
-    //public Vector3 GetCustomerCardPos() => customerCards[1].transform.position;
 
 }

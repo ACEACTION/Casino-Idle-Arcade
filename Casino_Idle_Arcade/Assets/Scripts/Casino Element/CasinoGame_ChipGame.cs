@@ -92,11 +92,13 @@ public class CasinoGame_ChipGame : CasinoGame
                 if (customers.IndexOf(customer) == winnerIndex)
                 {
                     winCustomer = customer;
-                    winCustomer.WinProccess();
+                    //winCustomer.WinProccess();
+                    winCustomer.SetWin(data.afterGameDuration, chipsOnBet);
                     StartCoroutine(GiveChipsToWinnerProcess());
                 }
                 else
-                    customer.LosePorccess();
+                    //customer.LosePorccess();
+                    customer.SetLose(data.afterGameDuration);
             }
            
             isClean = false;
@@ -220,21 +222,21 @@ public class CasinoGame_ChipGame : CasinoGame
             foreach (CustomerMovement customer in customers)
             {
                 yield return new WaitForSeconds(Random.Range(0, 1f));
-                customer.SetPlayingCardAnimation(true);
+                customer.SetPlayingCardAnimationState(true);
             }
         }
     }
 
     public IEnumerator GiveChipsToWinnerProcess()
     {
-        yield return new WaitForSeconds(data.giveChipsToWinnerDelay);
+        yield return new WaitForSeconds(data.afterGameDuration);
 
         // we check isClean bool because if upgrade table, we will have bug(Clean slider open)
         if (!isClean)
         {
             giveChipsToWinner = true;
             casinoGameCanvas.OpenCleanPanel();
-            GiveChipsToCustomer();
+            //GiveChipsToCustomer();
         }
     }
 
@@ -296,8 +298,10 @@ public class CasinoGame_ChipGame : CasinoGame
             }
 
             betCounter /= 100;
+            
             //creative 2
-            betCounter = 6;
+            //betCounter = 6;
+
             roulette_ui.SetChipTxt(betCounter.ToString());
             casinoGameCanvas.OpenChipPanel();
             totalChipCounter = betCounter;

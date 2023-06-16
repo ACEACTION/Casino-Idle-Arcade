@@ -9,5 +9,5 @@ public class JackpotData : ScriptableObject
     public float[] winProbabilityUpgradeLevel;
     public int[] moneyAmountUpgradeLevel;
     public float[] playGameTime;
-
+    public float afterGameDuration;
 }
