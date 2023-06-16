@@ -16,6 +16,8 @@ public class JackPot : CasinoGame
     {
         base.Start();
 
+        delayToReset = data.afterGameDuration;
+
         CasinoElementManager.allCasinoElements.Add(this);
         CasinoElementManager.jackPots.Add(this);
         
@@ -81,7 +83,6 @@ public class JackPot : CasinoGame
             {
                 customers[0].dontGoToChipDesk = true;
                 customers[0].SetWinJackpot(data.afterGameDuration);                
-                StartCoroutine(GiveMoneyToCustomer());
             }
             else
             {
@@ -98,24 +99,12 @@ public class JackPot : CasinoGame
         }
     }
 
-    IEnumerator GiveMoneyToCustomer()
-    {
-        yield return new WaitForSeconds(data.afterGameDuration);
-        Money money = StackMoneyPool.Instance.pool.Get();
-        money.transform.position = transform.position;
-        customers[0].stack.AddResourceToStack(money);
-    }
-
     void CustomerPayedMoney()
     {
         int moneyAmount = data.moneyAmountUpgradeLevel[upgradeIndex];
 
         customers[0].PayMoney(stackMoney, moneyAmount, MoneyType.jackpotMoney);
         
-        /*for (int i = 0; i < moneyAmount; i++)
-        {
-            moneyStacks[Random.Range(0, moneyStacks.Length)].MakeMoney();
-        }*/
     }
 
     public override void UpgradeElements()
@@ -134,8 +123,9 @@ public class JackPot : CasinoGame
     }
     void SetWinProbability() => winProbability = data.winProbabilityUpgradeLevel[upgradeIndex];
 
-    public void PlayJackpotSfx()
+    // event
+    public void PlayJackpotSfx_Event()
     {        
-        AudioSourceManager.Instance.PlayJackpotSfx();
+        //AudioSourceManager.Instance.PlayJackpotSfx();
     }
 }

@@ -167,6 +167,7 @@ public class CustomerMovement : Customer
         SetWinningAnimationState(true);
         yield return new WaitForSeconds(winDuration);
         SetWinningAnimationState(false);
+        stack.GiveMoneyToCustomer(1);
         Leave();
     }
 

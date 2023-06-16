@@ -47,7 +47,7 @@ public class ChipDeliverer : Worker
         state = ChipDeliverState.waiting;
         ArrivedToFirstPosition();
 
-       // CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
+        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
 
         foreach (var casinoGame in casinoGames)
         {

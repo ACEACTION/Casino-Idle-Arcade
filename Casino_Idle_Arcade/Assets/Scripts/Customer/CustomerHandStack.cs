@@ -64,7 +64,7 @@ public class CustomerHandStack : MonoBehaviour
         
         chipCounter = resources.Count;
         resources.Clear();
-        GetMoneyFromChipDesk(chipDesk, chipCounter);
+        GiveMoneyToCustomer(chipCounter);
         cmovement.ExitCasino();
     }
 
@@ -80,9 +80,9 @@ public class CustomerHandStack : MonoBehaviour
         resources.Clear();
     }
 
-    void GetMoneyFromChipDesk(ChipDesk chipDesk, int count)
+    public void GiveMoneyToCustomer(int moneyCount)
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < moneyCount; i++)
         {
             Money money = StackMoneyPool.Instance.pool.Get();
             money.transform.position = transform.position;
