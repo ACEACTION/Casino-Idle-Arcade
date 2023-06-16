@@ -100,7 +100,7 @@ public class JackPot : CasinoGame
 
     IEnumerator GiveMoneyToCustomer()
     {
-        yield return new WaitForSeconds(delayToReset);
+        yield return new WaitForSeconds(data.afterGameDuration);
         Money money = StackMoneyPool.Instance.pool.Get();
         money.transform.position = transform.position;
         customers[0].stack.AddResourceToStack(money);

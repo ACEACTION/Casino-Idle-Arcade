@@ -8,6 +8,7 @@ public class CustomerHandStack : MonoBehaviour
     // variables
     
     public int stackCounter;
+    int chipCounter;
     // references
     [SerializeField] CustomerHandStackData data;    
     [SerializeField] Transform firstStack;
@@ -57,11 +58,13 @@ public class CustomerHandStack : MonoBehaviour
             chipDesk.AddReleaseChipList(resources[i]);
         }
 
-        resources.Clear();
         //chipDesk.ReleaseChips();
 
         // stack money in customer hand
-        GetMoneyFromChipDesk(chipDesk);
+        
+        chipCounter = resources.Count;
+        resources.Clear();
+        GetMoneyFromChipDesk(chipDesk, chipCounter);
         cmovement.ExitCasino();
     }
 
@@ -77,11 +80,14 @@ public class CustomerHandStack : MonoBehaviour
         resources.Clear();
     }
 
-    void GetMoneyFromChipDesk(ChipDesk chipDesk)
+    void GetMoneyFromChipDesk(ChipDesk chipDesk, int count)
     {
-        Money money = StackMoneyPool.Instance.pool.Get();
-        money.transform.position = transform.position;
-        AddResourceToStack(money);
+        for (int i = 0; i < count; i++)
+        {
+            Money money = StackMoneyPool.Instance.pool.Get();
+            money.transform.position = transform.position;
+            AddResourceToStack(money);
+        }
     }
 
 

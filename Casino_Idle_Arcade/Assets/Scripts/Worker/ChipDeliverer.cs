@@ -12,9 +12,6 @@ public enum ChipDeliverState
 public class ChipDeliverer : Worker
 {
 
-    //creative 2
-    int counter = 0;
-
     public ChipDeliverState state;
     public Transform destination;
     bool canFollow = true;
@@ -71,9 +68,7 @@ public class ChipDeliverer : Worker
 
     private void Update()
     {
-        if (counter == 0)
-        {
-            if (!canWork)
+          if (!canWork)
             {
                 if (canFollow)
                 {
@@ -239,7 +234,6 @@ public class ChipDeliverer : Worker
                                 anim.SetBool("walkcarry", false);
                             }
                             anim.SetBool("isDelivering", false);
-                            counter++;
 
                         }
 
@@ -250,11 +244,8 @@ public class ChipDeliverer : Worker
                 }
             }
 
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            counter = 0;
-        }
+        
+     
     }
 
     
