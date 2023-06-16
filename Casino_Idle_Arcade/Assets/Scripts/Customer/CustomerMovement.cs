@@ -215,6 +215,7 @@ public class CustomerMovement : Customer
         anim.SetBool("isLosing", false);
         anim.Play("idle");
 
+        customerModel.ResetModel();
         isLosing = false;
         chipDesk = null;
         isWinning = false;

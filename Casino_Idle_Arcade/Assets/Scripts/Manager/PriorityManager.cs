@@ -25,7 +25,8 @@ public class PriorityManager : MonoBehaviour
     {
         foreach (GameObject e in priorityObjs)
         {
-            e?.SetActive(state);
+            if (e != null)
+                e?.SetActive(state);
         }
     }
 }

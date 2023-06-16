@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CustomerModel : MonoBehaviour
 {
+    [SerializeField] GameObject normalModel;
     GameObject currentModel;
     [SerializeField] GameObject modelEff;
     [SerializeField] GameObject[] poorModels;
     [SerializeField] GameObject[] richModels;
-    [HideInInspector] public int randomIndex;
+    //[HideInInspector] public int randomIndex;
 
     // virtual for creatives
     public virtual void OnEnable()
     {
         SetModelEffState(false);
-        randomIndex = Random.Range(0, 2);
-        if (randomIndex == 0) ActivePoorModel();
-        else ActiveRichModel();
+        currentModel = normalModel;
     }
 
     public void ActivePoorModel()
@@ -29,8 +28,6 @@ public class CustomerModel : MonoBehaviour
         ActiveModel(richModels[Random.Range(0, richModels.Length)]);
     }
 
-    
-
     void ActiveModel(GameObject model)
     {
         currentModel?.SetActive(false);
@@ -38,6 +35,12 @@ public class CustomerModel : MonoBehaviour
         currentModel.SetActive(true);
     }
 
-        
+    public void ResetModel()
+    {
+        currentModel.SetActive(false);
+        normalModel.SetActive(true);
+    }
+
+
     public void SetModelEffState(bool state) => modelEff.SetActive(state);
 }
