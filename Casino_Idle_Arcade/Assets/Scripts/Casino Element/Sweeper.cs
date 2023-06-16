@@ -22,6 +22,7 @@ public class Sweeper : MonoBehaviour
         cardsAnim.SetBool("isMessy", true);
     }
 
+    public void PlayMessCardSfx() => AudioSourceManager.Instance.PlayMessCardSfx();
 
     public void PlayDustEffect()
     {

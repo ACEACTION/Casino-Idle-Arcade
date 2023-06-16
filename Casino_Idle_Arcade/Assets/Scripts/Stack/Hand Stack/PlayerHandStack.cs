@@ -31,7 +31,7 @@ public class PlayerHandStack : HandStack
 
         if (StackIsMax())
         {
-            MaxStackText.Instance.SetTextState(true);
+            MaxStackText.Instance?.SetTextState(true);
         }
     }    
 
@@ -59,7 +59,7 @@ public class PlayerHandStack : HandStack
             anim.SetBool("isCarry", false);
 
 
-        MaxStackText.Instance.SetTextState(false);
+        MaxStackText.Instance?.SetTextState(false);
     }
 
     public override void RemoveFromStack()

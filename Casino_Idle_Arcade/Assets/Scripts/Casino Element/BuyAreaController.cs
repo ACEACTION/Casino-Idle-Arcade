@@ -73,7 +73,7 @@ public class BuyAreaController : MonoBehaviour
 
                     AudioSourceManager.Instance.PlayFushSfx();
 
-                    Money_UI.Instance.SetTotalMoneyTxt();
+                    Money_UI.Instance?.SetTotalMoneyTxt();
 
                     priceText.text = price.ToString();
                 }
