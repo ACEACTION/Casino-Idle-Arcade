@@ -25,6 +25,7 @@ public class CasinoGameStack : ElementStack
 
         JumpMoveResource(resource);
         SetResourceParent(resource.transform, firsStack.transform.parent);
+
         firsStack.position += new Vector3(0, data.stackYOffset, 0);        
     }
 

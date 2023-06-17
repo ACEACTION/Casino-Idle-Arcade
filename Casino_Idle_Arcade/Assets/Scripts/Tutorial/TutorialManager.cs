@@ -196,7 +196,7 @@ public class TutorialManager : MonoBehaviour
 
     void CarryChipToTable()
     {
-        if (carryChip && PlayerMovements.Instance.handStack.casinoGameStack)
+        if (carryChip && PlayerMovements.Instance.handStack.elementStack)
         {
             carryChip = false;
             arrowRenderer.gameObject.SetActive(false);
@@ -221,7 +221,6 @@ public class TutorialManager : MonoBehaviour
         {
             arrowRenderer.gameObject.SetActive(false);
             standArrow.SetActive(false);
-            secondBaccarat.SetActive(true);
             baccaratGameIsEnded = false;
             canUpgradePlayerStack = true;
         }
@@ -277,6 +276,7 @@ public class TutorialManager : MonoBehaviour
                         GameManager.isCompleteTutorial = true;
 
                         ambienceAudioSrc.SetActive(true);
+                        secondBaccarat.SetActive(true);
 
                     }
                 }

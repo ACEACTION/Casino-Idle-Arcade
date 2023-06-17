@@ -14,10 +14,13 @@ public class WorkerUpgradeEffect : MonoBehaviour
     //[SerializeField] float yMoveTarget;
     //[SerializeField] float yMoveDuration;
 
+    private void Awake()
+    {
+        upgradeEff.Stop();        
+    }
 
     private void Start()
     {
-        upgradeEff.Stop();
         data.upgradeMsgPanelOriginPos = upgradeMsgPanel.localPosition;
         upgradeMsgPanel.gameObject.SetActive(false);
     }

@@ -82,6 +82,7 @@ public class ElementStack : MonoBehaviour
         {
             ground.DOScale(data.stackDefaultScale, 1);
         }
+
     }
 
     public CasinoResource GetFromGameStack()

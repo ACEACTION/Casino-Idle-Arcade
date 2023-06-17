@@ -24,7 +24,7 @@ public class HandStack : MonoBehaviour
     public List<CasinoResource> vMachineList;
     public List<CasinoResource> chipList;
     public CasinoResourceDesk resourceDesk;
-    [HideInInspector] public ElementStack casinoGameStack;
+    [HideInInspector] public ElementStack elementStack;
     ElementStack vMachineStack;    
 
     public virtual void Awake()
@@ -87,7 +87,7 @@ public class HandStack : MonoBehaviour
 
     public virtual void RemoveFromStackWithCd()
     {
-        if ((casinoGameStack || vMachineStack) && CanRemoveStack())
+        if ((elementStack || vMachineStack) && CanRemoveStack())
         {
             RemoveFromStackWithCdProcess();    
         }        
@@ -105,11 +105,11 @@ public class HandStack : MonoBehaviour
 
     public virtual void RemoveFromStack()
     {
-        if (casinoGameStack && ListHasResource(chipList) && casinoGameStack.CanAddStack())
+        if (elementStack && ListHasResource(chipList) && elementStack.CanAddStack())
         {
             CasinoResource resource = chipList[chipList.Count - 1];
             RemoveFromStackProcess(resource);
-            casinoGameStack.AddToGameStack(resource);
+            elementStack.AddToGameStack(resource);
             chipList.Remove(resource);
         }
 
@@ -119,10 +119,7 @@ public class HandStack : MonoBehaviour
             RemoveFromStackProcess(resource);
             vMachineStack.AddToGameStack(resource);
             vMachineList.Remove(resource);
-        }
-
-        
-
+        }       
     }
 
     public virtual void RemoveFromStackProcess(CasinoResource resource)
@@ -157,7 +154,7 @@ public class HandStack : MonoBehaviour
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
         {
-            casinoGameStack = other.GetComponent<CasinoGameStack>();
+            elementStack = other.GetComponent<CasinoGameStack>();
         }
 
         if (other.gameObject.CompareTag("VendingMachine"))
@@ -181,7 +178,7 @@ public class HandStack : MonoBehaviour
 
         if (other.gameObject.CompareTag("Casino Chip Game"))
         {
-            casinoGameStack = null;
+            elementStack = null;
         }
 
         if (other.gameObject.CompareTag("VendingMachine"))

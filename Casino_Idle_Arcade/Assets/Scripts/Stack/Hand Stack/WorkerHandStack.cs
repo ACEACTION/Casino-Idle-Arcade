@@ -16,7 +16,6 @@ public class WorkerHandStack : HandStack
     public override void RemoveFromStackWithCd()
     {
         base.RemoveFromStackWithCd();
-
     }
 
     public override void RemoveFromStackProcess(CasinoResource resource)
