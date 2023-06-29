@@ -29,7 +29,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] List<Transform> objs;
     [SerializeField] BuyAreaController baccaratBAController;
     [SerializeField] CashierManager cashierManager;
-    [SerializeField] GameObject chipDesk;   
+    [SerializeField] GameObject chipDesk;
+    [SerializeField] float beforeFollowTime;
     [SerializeField] Baccarat firstBaccarat;
     //[SerializeField] HandStack playerHandStack;
     [SerializeField] GameObject secondBaccarat;
@@ -60,7 +61,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!GameManager.isCompleteTutorial)
         {
-            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 1.7f;
+            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 5.7f;
             cashierManager.transform.parent.gameObject.SetActive(false);
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             ChangeCamera();
@@ -314,10 +315,11 @@ public class TutorialManager : MonoBehaviour
     IEnumerator ChangeCameraDelay()
     {
         followCam.transform.position = objs[0].position + camOffset;
-        followCam.SetActive(true);
         Joystick.Instance.ResetJoystick();
         Joystick.Instance.gameObject.SetActive(false);
-        Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false);
+        Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false); 
+        followCam.SetActive(true);
+
         standArrow.transform.position = objs[0].position + new Vector3(0, 4, 0);
         LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
