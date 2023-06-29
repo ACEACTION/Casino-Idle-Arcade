@@ -13,7 +13,7 @@ public class ElementStack : MonoBehaviour
     public ElementStackData data;
     public List<CasinoResource> casinoResources = new List<CasinoResource>();
     public Transform firsStack;
-    [SerializeField] TextMeshPro stackTxt;
+    [SerializeField] TextMeshProUGUI stackTxt;
     [SerializeField] Transform resourceIcon;
     [SerializeField] Transform ground;
     Vector3 resourceIconScale;
@@ -45,8 +45,8 @@ public class ElementStack : MonoBehaviour
         {
 
             //resourceIcon.DOScale(data.iconDefaultScale, .7f);
-            resourceIcon.gameObject.SetActive(true);
-            resourceIcon.DOScale(resourceIconScale, data.scaleDuration);
+            //resourceIcon.gameObject.SetActive(true);
+            //resourceIcon.DOScale(resourceIconScale, data.scaleDuration);
             ground.DOScale(data.stackDefaultScale + .2f, 1);
 
         }
@@ -66,10 +66,10 @@ public class ElementStack : MonoBehaviour
     public virtual void CompleteJumpMove(CasinoResource resource) 
     {
         casinoResources.Add(resource);
-        resourceIcon.DOScale(new Vector3(.01f, .01f, .01f), data.scaleDuration).OnComplete(() =>
-        {
-            resourceIcon.gameObject.SetActive(false);
-        });
+        //resourceIcon.DOScale(new Vector3(.01f, .01f, .01f), data.scaleDuration).OnComplete(() =>
+        //{
+        //    resourceIcon.gameObject.SetActive(false);
+        //});
     }
 
     public virtual void AddToGameStack(CasinoResource resource)
