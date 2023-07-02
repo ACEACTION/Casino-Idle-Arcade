@@ -968,7 +968,7 @@ MonoBehaviour:
   vMachineList: []
   chipList: []
   resourceDesk: {fileID: 0}
-  casinoGameStack: {fileID: 0}
+  elementStack: {fileID: 0}
 --- !u!1 &4734268777064439067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1581,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3628109665283185775}
     m_Modifications:
+    - target: {fileID: 880538508096886852, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.071
+      objectReference: {fileID: 0}
     - target: {fileID: 1266910042970184981, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: price
@@ -1634,7 +1639,7 @@ PrefabInstance:
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.031
       objectReference: {fileID: 0}
     - target: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
@@ -1676,6 +1681,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2050089763619545899, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8909b5782750aaf48b18884e90c70407, type: 2}
     - target: {fileID: 2113769500172788312, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
       propertyPath: m_Name
