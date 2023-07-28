@@ -88,8 +88,8 @@ public class CameraFollow : MonoBehaviour
         Joystick.Instance.background.gameObject.SetActive(false);
         
         // max stack process
-        playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
-        MaxStackText.Instance.gameObject.SetActive(false);
+        playerMaxStackTxtState = MaxStackText.Instance.GetTextActiveSelf();
+        MaxStackText.Instance.SetTextState(false);
         StartCoroutine(ResetPlayerMaxStackTxt());
 
     }
@@ -124,8 +124,7 @@ public class CameraFollow : MonoBehaviour
     {
         float delay = maxFollowWorkerCd * 2;
         yield return new WaitForSeconds(delay);
-        MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
-
+        MaxStackText.Instance.SetTextState(playerMaxStackTxtState);
     }
 
 

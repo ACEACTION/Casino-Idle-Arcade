@@ -14,5 +14,6 @@ public class MaxStackText : MonoBehaviour
 
     public void SetTextState(bool state) => maxTxt.SetActive(state);
     
+    public bool GetTextActiveSelf() => maxTxt.activeSelf;
 
 }
