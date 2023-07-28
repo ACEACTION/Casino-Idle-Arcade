@@ -21,7 +21,7 @@ public class StartGame : MonoBehaviour
 
     private void Start()
     {
-        defaultCam.SetActive(false);
+        //defaultCam.SetActive(false);
         mainCanvas.SetActive(false);
         tutorial.SetActive(false);
         PlayerMovements.Instance.canMove = false;
@@ -29,8 +29,8 @@ public class StartGame : MonoBehaviour
 
     public void TapToStart()
     {
-        startGameCam.SetActive(false);
-        defaultCam.SetActive(true);
+        //startGameCam.SetActive(false);
+        //defaultCam.SetActive(true);
         startGameCanvas.SetActive(false);
         mainCanvas.SetActive(true);
 
