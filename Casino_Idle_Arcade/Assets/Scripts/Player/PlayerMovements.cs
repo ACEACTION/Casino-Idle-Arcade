@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -17,7 +14,7 @@ public class PlayerMovements : MonoBehaviour
     float xDir, zDir;
     float inputMagnitude;
     Vector3 velocity;
-    float gravity = -.8f;
+    float gravity = 90.8f;
 
 
     // references
@@ -25,10 +22,13 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     [SerializeField] Transform cameraTransform;
+    
     public HandStack handStack;
     [SerializeField] CharacterController controller;
     [HideInInspector] public bool canMove;
     public static PlayerMovements Instance;
+    private Vector3 _input;
+
     private void Awake()
     {
         if (Instance == null)
@@ -50,59 +50,60 @@ public class PlayerMovements : MonoBehaviour
         {
             Move();
             RotatePlayerFace();
+            if (handStack.CanRemoveStack())
+            {
+                anim.SetLayerWeight(1, 1);
+            }
+            else anim.SetLayerWeight(1, 0);
+
+
         }
-    }
-    
-
-    private void Move()
-    {
-
-        xDir = Joystick.Instance.Horizontal + Input.GetAxis("Horizontal");
-        zDir = Joystick.Instance.Vertical + Input.GetAxis("Vertical");
-
-        movementDir = new Vector3(xDir, 0, zDir);
-        inputMagnitude = Mathf.Clamp01(movementDir.magnitude);
-
-        anim.SetFloat("InputMagnitude", inputMagnitude, 0.05f, Time.deltaTime);
-        velocity.y += gravity * Time.deltaTime;
-
-
-
-        movementDir.Normalize();
-        movementDir *= inputMagnitude * moveSpeed * Time.deltaTime;
-        //movementDir.y += gravity * Time.deltaTime;
-
-        controller.Move(movementDir);
-        controller.Move(velocity * Time.deltaTime);
-
-        footSteps.SetActive(true);
     }
 
     public void RotatePlayerFace()
     {
-        if (movementDir != Vector3.zero)
+        if (_input != Vector3.zero)
         {
             SetMovingAnimationState(true);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDir.normalized), Time.deltaTime * rotationSpeed);
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(_input.x, 0, _input.z)).normalized;
+
+            // Smoothly rotate the player's transform towards the target rotation
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
+    
         else
         {
             SetMovingAnimationState(false);
             footSteps.SetActive(false);
         }
     }
-            
-    public void SetMovingAnimationState(bool state) => anim.SetBool("isMoving", state);
 
-    //private void OnAnimatorMove()
-    //{
-    //    if (!handStack.StackIsEmpty())
-    //        velocity = anim.deltaPosition * animationMoveSpeed;
-    //    else
-    //        velocity = anim.deltaPosition * animationMoveSpeed;
 
-    //    //velocity = anim.deltaPosition;
-    //}
+    private void Move()
+    {
+        xDir = Joystick.Instance.Horizontal + Input.GetAxisRaw("Horizontal");
+        zDir = Joystick.Instance.Vertical + Input.GetAxisRaw("Vertical");
+
+        _input = new Vector3(xDir, 0, zDir);
+        inputMagnitude = Mathf.Clamp01(_input.magnitude);
+
+        footSteps.SetActive(true);
+
+        _input = Quaternion.Euler(0, 45, 0) * _input;
+        _input.Normalize();
+
+        _input.y -= gravity * Time.deltaTime;
+
+        _input *= inputMagnitude * data.playerMoveSpeed * Time.deltaTime;
+
+
+        controller.Move(_input);
+
+    }
+ 
+    public void SetMovingAnimationState(bool state) => anim.SetBool("isRunning", state);
+
+
 
     public void SetAnimationMoveSpeed(float ms) => anim.SetFloat("moveSpeed", ms);
     public void SetPlayerMoveSpeed(float ms) => moveSpeed = ms;
