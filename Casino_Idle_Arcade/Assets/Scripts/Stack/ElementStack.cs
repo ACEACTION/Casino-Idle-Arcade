@@ -67,6 +67,8 @@ public class ElementStack : MonoBehaviour
     public virtual void CompleteJumpMove(CasinoResource resource) 
     {
         casinoResources.Add(resource);
+        ResetStackListPos();
+
         //resourceIcon.DOScale(new Vector3(.01f, .01f, .01f), data.scaleDuration).OnComplete(() =>
         //{
         //    resourceIcon.gameObject.SetActive(false);
@@ -84,7 +86,6 @@ public class ElementStack : MonoBehaviour
             ground.DOScale(data.stackDefaultScale, 1);
         }
 
-        ResetStackListPos();
     }
 
     public CasinoResource GetFromGameStack()
