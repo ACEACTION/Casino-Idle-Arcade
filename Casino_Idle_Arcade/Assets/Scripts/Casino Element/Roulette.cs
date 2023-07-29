@@ -9,7 +9,7 @@ public class Roulette : CasinoGame_ChipGame
     
     [SerializeField] Animator anim;
     [SerializeField] RouletteSpiner[] gameBalls;
-    [SerializeField] RouletteData data;
+    //[SerializeField] RouletteData data;
     [SerializeField] GameObject staticBalls;
     [SerializeField] GameObject animatedBalls;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class RouletteCleaner : Worker
 {
-    bool canFollow = true;
+    //bool canFollow = true;
     public bool playerMaxStackTxtState;
     public bool getPlayerMaxStackTxtState;
     [SerializeField] float camStayCd;

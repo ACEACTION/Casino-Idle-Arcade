@@ -6,7 +6,7 @@ public class Creative2_WorkerHandStack : WorkerHandStack
 {
     public Transform firstStack1;
     public Transform firstStack2;
-    int ascendingCounter = 0;
+    //int ascendingCounter = 0;
 
     public override void AddStackResourceProcess()
     {

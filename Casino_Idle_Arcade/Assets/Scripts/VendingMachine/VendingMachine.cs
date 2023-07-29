@@ -8,8 +8,9 @@ public class VendingMachine : CasinoGame
     [SerializeField] VendingMachineStack stack;
     bool payedMoney = true;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         vendingMachineManager.vendingMachines.Add(this);
         if (!CasinoManager.instance.availableElements.Contains(ElementsType.VendingMachine))
         {

@@ -305,6 +305,11 @@ public class CasinoGame_ChipGame : CasinoGame
 
             // betCounter = 12;
 
+
+            // for tutorial
+            if (!CasinoManager.instance.isCompleteTutorial) 
+                betCounter = PlayerMovements.Instance.handStack.data.maxStackCount;
+
             roulette_ui.SetChipTxt(betCounter.ToString());
             casinoGameCanvas.OpenChipPanel();
             totalChipCounter = betCounter;
