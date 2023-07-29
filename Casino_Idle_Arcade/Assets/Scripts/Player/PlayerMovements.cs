@@ -95,7 +95,7 @@ public class PlayerMovements : MonoBehaviour
 
         _input.y -= gravity * Time.deltaTime;
 
-        _input *= inputMagnitude * data.playerMoveSpeed * Time.deltaTime;
+        _input *= inputMagnitude * moveSpeed * Time.deltaTime;
 
 
         controller.Move(_input);
