@@ -181,15 +181,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021334975}
-  m_LocalRotation: {x: 0.4987903, y: 0, z: 0, w: 0.8667227}
-  m_LocalPosition: {x: 12.96, y: 6.66, z: -5.61}
+  m_LocalRotation: {x: 0.27771577, y: 0.41571444, z: -0.13495432, w: 0.8554781}
+  m_LocalPosition: {x: -9.87, y: 6.66, z: -23.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1992857219}
   m_Father: {fileID: 2770717608160236452}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 59.84, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 51, y: 0, z: 0}
 --- !u!114 &2021334976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,14 +206,14 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
+  m_Priority: 1
+  m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 68.8
-    OrthographicSize: 5
-    NearClipPlane: 0.3
+    OrthographicSize: 4
+    NearClipPlane: -30
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -381,8 +381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamTime: 3
-  chipDeskTime: 0.7
-  camOffset: {x: 0, y: 6.5, z: -6}
+  chipDeskTime: 3
+  camOffset: {x: 0, y: 0, z: 0}
   carryChip: 0
   arrowRenderer: {fileID: 1662080786034622734}
   standArrow: {fileID: 1223874173038895821}
@@ -396,14 +396,14 @@ MonoBehaviour:
   baccaratBAController: {fileID: 0}
   cashierManager: {fileID: 0}
   chipDesk: {fileID: 0}
+  beforeFollowTime: 1
   firstBaccarat: {fileID: 0}
-  playerHandStack: {fileID: 0}
   secondBaccarat: {fileID: 0}
   firstPriority_Baccarat: {fileID: 0}
-  playerHandStackData: {fileID: 11400000, guid: 67454789013e8b4448639e7c2ff16b74,
-    type: 2}
   ambienceAudioSrc: {fileID: 0}
   startMoneyStack: {fileID: 4661743752316880268}
+  upgradeBtn: {fileID: 0}
+  canUpgradePlayerStack: 0
   upgradePanel: {fileID: 0}
   upgradeRect: {fileID: 0}
   uiBlock_openUpgradePanel: {fileID: 0}

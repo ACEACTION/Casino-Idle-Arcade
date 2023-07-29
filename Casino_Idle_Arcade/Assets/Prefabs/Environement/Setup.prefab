@@ -49,14 +49,14 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
+  m_Priority: 1
+  m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 68.8
-    OrthographicSize: 5
-    NearClipPlane: 0.3
+    OrthographicSize: 4
+    NearClipPlane: 0
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 1421630708}
+  m_ComponentOwner: {fileID: 372009532}
 --- !u!1 &27450948
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: -33.08, y: 27.6, z: -23.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -516,8 +516,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591759945}
-  m_LocalRotation: {x: 0.43051103, y: 0, z: 0, w: 0.9025853}
-  m_LocalPosition: {x: 20.499546, y: 6.1014943, z: 0.77366424}
+  m_LocalRotation: {x: 0.27771574, y: 0.41571444, z: -0.13495429, w: 0.85547817}
+  m_LocalPosition: {x: -25.8, y: 27.175495, z: -35.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -541,14 +541,14 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
+  m_Priority: 1
+  m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 68.8
-    OrthographicSize: 5
-    NearClipPlane: 0.3
+    OrthographicSize: 4
+    NearClipPlane: -30
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -1843,14 +1843,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cb9af631bfd3740980543a746fa884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 6.5, z: -5}
+  offset: {x: 0, y: 0, z: 0}
   normalCam: {fileID: 3111766856049532536}
   firstFollowCamera: {fileID: 591759948}
   secondFollowCamera: {fileID: 25242375}
   stayCd: 1
   destinations: []
-  maxFollowWorkerCd: 2
-  followWorkerCd: 2
+  maxFollowWorkerCd: 3
+  followWorkerCd: 3
 --- !u!1 &1725008768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,8 +2433,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3111766854272372099}
-  m_LocalRotation: {x: 0.41604272, y: -0, z: -0, w: 0.90934515}
-  m_LocalPosition: {x: 3.364958, y: 5.0515685, z: -17.52109}
+  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalPosition: {x: -26.710455, y: 24.575495, z: -42.736336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2464,11 +2464,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 68.8
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2545,7 +2545,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 3
+    m_Time: 1.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -2880,6 +2880,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818046042}
     m_Modifications:
+    - target: {fileID: 2797346242124778420, guid: 4c10ef83959b51145bbfe5deb82fe809,
+        type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797346242124778420, guid: 4c10ef83959b51145bbfe5deb82fe809,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_RootOrder
@@ -2888,17 +2898,17 @@ PrefabInstance:
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 11.332008
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.2701511
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -54.81505
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
@@ -2908,17 +2918,17 @@ PrefabInstance:
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2797346242124778421, guid: 4c10ef83959b51145bbfe5deb82fe809,
         type: 3}
@@ -2939,6 +2949,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NormalCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797346243275741357, guid: 4c10ef83959b51145bbfe5deb82fe809,
+        type: 3}
+      propertyPath: m_FollowOffset.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797346243275741357, guid: 4c10ef83959b51145bbfe5deb82fe809,
+        type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797346243275741357, guid: 4c10ef83959b51145bbfe5deb82fe809,
+        type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c10ef83959b51145bbfe5deb82fe809, type: 3}
