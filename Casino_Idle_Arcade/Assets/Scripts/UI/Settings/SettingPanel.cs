@@ -17,6 +17,9 @@ public class SettingPanel : MonoBehaviour
     {
         settingWindow.transform.localScale = Vector3.zero;
         closeBtn.onClick.AddListener(CloseWindow);
+
+        CloseWindow();
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()

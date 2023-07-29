@@ -11,7 +11,7 @@ public class StartGame : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject startGameCanvas;
     [SerializeField] GameObject tutorial;
-
+    [SerializeField] GameObject settingPanel;
     public static StartGame Instance;
 
     private void Awake()
@@ -38,6 +38,9 @@ public class StartGame : MonoBehaviour
 
         if (!CasinoManager.instance.isCompleteTutorial)
             tutorial.SetActive(true);
+
+        settingPanel.SetActive(true);
+
     }
 
 
