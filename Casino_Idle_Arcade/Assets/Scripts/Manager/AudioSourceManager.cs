@@ -28,6 +28,9 @@ public class AudioSourceManager : MonoBehaviour
     [SerializeField] AudioClip playJackPotSfx;
     [SerializeField] AudioClip endJackPotSfx;
 
+    [Header("Settings")]
+    [SerializeField] AudioClip settingBtnChangedSfx;
+
     //singletoon
     public static AudioSourceManager Instance;
 
@@ -61,8 +64,13 @@ public class AudioSourceManager : MonoBehaviour
     public void PlayUpgradeWorkerSfx() => PlaySfx(upgradeWorkerSfx);
 
     public void PlayMessCardSfx() => PlaySfx(messCardSfx);
+    public void PlaySetringBtnChangedSfx() => PlaySfx(settingBtnChangedSfx);
 
-    public void PlaySfx(AudioClip sfx) => audioScr.PlayOneShot(sfx);
+    public void PlaySfx(AudioClip sfx)
+    {
+        if (Setting_Sfx.Instance.toggle.isOn)
+            audioScr.PlayOneShot(sfx);
+    }
 
     public void StopAudioSrc() => audioScr.Stop();
 

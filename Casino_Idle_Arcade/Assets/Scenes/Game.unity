@@ -2257,6 +2257,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1198366527}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &669956332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8569281292162600273, guid: 16e1c5f2b24af2e49bb71629e49c3a2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1614281060780737856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &676820645
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4500,7 @@ PrefabInstance:
     - target: {fileID: 6344417440169934598, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6344417440646445395, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
@@ -7253,6 +7259,11 @@ PrefabInstance:
       propertyPath: priorityObjs.Array.data[0]
       value: 
       objectReference: {fileID: 1581786765}
+    - target: {fileID: 4788494900340197551, guid: 16e1c5f2b24af2e49bb71629e49c3a2f,
+        type: 3}
+      propertyPath: firsStack
+      value: 
+      objectReference: {fileID: 669956332}
     - target: {fileID: 6210439288810170624, guid: 16e1c5f2b24af2e49bb71629e49c3a2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8148,11 +8159,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 1243176301782107477, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: clip
-      value: 
-      objectReference: {fileID: 8300000, guid: edf3e44e784be4b46ac02550e7b1d455, type: 3}
     - target: {fileID: 1839107757179448997, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: fpsText
@@ -8168,16 +8174,6 @@ PrefabInstance:
       propertyPath: normalCamera
       value: 
       objectReference: {fileID: 1169453554}
-    - target: {fileID: 3623468771083306440, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: buyAreaSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: ff260bdac96c25b4b9b3c2ef84990350, type: 3}
-    - target: {fileID: 3623468771083306440, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: upgradeWorkerSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: a7616dadb674a8a4daf0f16868b37672, type: 3}
     - target: {fileID: 6723552481514046125, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: m_RootOrder
@@ -8233,31 +8229,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7164376046226446067, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: defaultMoney
-      value: 900090909
-      objectReference: {fileID: 0}
     - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
         type: 3}
       propertyPath: tutorialManager
       value: 
       objectReference: {fileID: 1511046663}
-    - target: {fileID: 7164376046226446068, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: isCompleteTutorial
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871325097627441852, guid: 7ed0c129d23fd184f970505cadb2d4a2,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: edf3e44e784be4b46ac02550e7b1d455, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed0c129d23fd184f970505cadb2d4a2, type: 3}
 --- !u!1001 &3628109666440497610
@@ -9229,6 +9205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Start Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658539990230508044, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5658539990230508046, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
         type: 3}
@@ -10305,10 +10286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 451952166, guid: 00840687c9751ef458d835ea36450997, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3036236806881520960, guid: 00840687c9751ef458d835ea36450997,
         type: 3}
       propertyPath: playerEff
@@ -10394,8 +10371,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 451952168, guid: 00840687c9751ef458d835ea36450997, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00840687c9751ef458d835ea36450997, type: 3}
 --- !u!1 &8399305779356322117
 GameObject:
