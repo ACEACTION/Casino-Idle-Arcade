@@ -16,15 +16,16 @@ public class ElementStack : MonoBehaviour
     [SerializeField] TextMeshProUGUI stackTxt;
     [SerializeField] Transform resourceIcon;
     [SerializeField] Transform ground;
-    Vector3 resourceIconScale;
+    Vector3 firstStackOriginPos;
 
     public virtual void Start()
     {
         data.iconDefaultScale = resourceIcon.localScale.x;
         data.stackDefaultScale = transform.localScale.x;
         SetStackTxt();
-        resourceIconScale = resourceIcon.transform.localScale;
+        //resourceIconScale = resourceIcon.transform.localScale;
         ShowEmptyStack();
+        firstStackOriginPos = firsStack.localPosition;
     }
 
     public bool CanAddStack() => stackCount < maxStackCount;
@@ -83,6 +84,7 @@ public class ElementStack : MonoBehaviour
             ground.DOScale(data.stackDefaultScale, 1);
         }
 
+        ResetStackListPos();
     }
 
     public CasinoResource GetFromGameStack()
@@ -97,6 +99,8 @@ public class ElementStack : MonoBehaviour
             resource.transform.SetParent(null);
             SetStackTxt();            
             ShowEmptyStack();
+            
+            ResetStackListPos();
 
             return resource;
         }
@@ -114,6 +118,16 @@ public class ElementStack : MonoBehaviour
     public virtual void SetDeliverProcess()
     {
         
+    }
+
+    public void ResetStackListPos()
+    {
+        firsStack.localPosition = firstStackOriginPos;
+        foreach (CasinoResource r in casinoResources)
+        {
+            r.transform.localPosition = firsStack.localPosition;
+            firsStack.transform.localPosition += new Vector3(0, data.stackYOffset, 0);
+        }
     }
 
 }
