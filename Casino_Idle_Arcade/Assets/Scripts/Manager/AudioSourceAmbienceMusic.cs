@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioSourceAmbienceMusic : MonoBehaviour
 {
+    [SerializeField] AudioClip clip;
     public AudioSource audioScr;
     public static AudioSourceAmbienceMusic Instance;
     private void Awake()
@@ -11,4 +12,14 @@ public class AudioSourceAmbienceMusic : MonoBehaviour
         if (Instance == null)
             Instance = this;
     }
+
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(.01f);
+        if (!GameManager.music)
+        { 
+            audioScr.Pause();             
+        }
+    }
+
 }

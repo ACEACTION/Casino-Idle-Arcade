@@ -5,25 +5,27 @@ using UnityEngine.UI;
 
 public class Setting_Music : MonoBehaviour
 {
-    public Toggle toggle;
+    public SwitchToggle switchToggle;
 
     public static Setting_Music Instance;
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
     }
 
     void Start()
     {
-        toggle.onValueChanged.AddListener(ToggleOnChanged);
-        ToggleOnChanged(toggle.isOn);
+        switchToggle.InitToggle(GameManager.music);
+        switchToggle.toggle.onValueChanged.AddListener(ToggleOnChanged);
+        //ToggleOnChanged(switchToggle.toggle.isOn);
     }
 
     void ToggleOnChanged(bool on)
     {
+        GameManager.music = on;
         AudioSourceManager.Instance.PlaySetringBtnChangedSfx();
-
         if (on)
         {
             AudioSourceBgMusic.Instance.audioSource.Play();

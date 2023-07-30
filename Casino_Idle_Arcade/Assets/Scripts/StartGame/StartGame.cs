@@ -36,7 +36,8 @@ public class StartGame : MonoBehaviour
 
         PlayerMovements.Instance.canMove = true;
 
-        if (!CasinoManager.instance.isCompleteTutorial)
+        //if (!CasinoManager.instance.isCompleteTutorial)
+        if (!GameManager.isCompleteTutorial)
             tutorial.SetActive(true);
 
         settingPanel.SetActive(true);

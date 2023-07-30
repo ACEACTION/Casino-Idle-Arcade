@@ -7,7 +7,8 @@ public class Tutorial_StartMoney : MonoBehaviour
     [SerializeField] StackMoney stackMoney;
     void Start()
     {
-        if (!CasinoManager.instance.isCompleteTutorial)
+        //if (!CasinoManager.instance.isCompleteTutorial)
+        if (!GameManager.isCompleteTutorial)
         {
             stackMoney.gameObject.SetActive(true);
             stackMoney.totalMoney = CasinoManager.instance.defaultMoney;

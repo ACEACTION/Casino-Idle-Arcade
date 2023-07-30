@@ -35,18 +35,6 @@ public class Money_UI : MonoBehaviour
         SetTotalMoneyTxt();
     }
 
-
-
-    private void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print(GameManager.GetTotalMoney());
-        }
-
-    }
-
     public void SetTotalMoneyTxt()
     {
         moneyAmount = GameManager.GetTotalMoney();

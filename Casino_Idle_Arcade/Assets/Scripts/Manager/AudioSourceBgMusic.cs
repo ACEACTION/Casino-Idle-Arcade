@@ -22,13 +22,27 @@ public class AudioSourceBgMusic : MonoBehaviour
 
     private void Start()
     {
-        SetAudioSource(clip);
+        //SetAudioSource(clip);        
     }
-
+    
     public void SetAudioSource(AudioClip audioClip)
     {
         audioSource.clip = audioClip;
-        audioSource.Play();        
+
+        if (GameManager.music)
+            audioSource.Play();
+        else
+            audioSource.Pause();
+
     }
 
+    public void SetAudioSource()
+    {
+        audioSource.clip = clip;
+
+        if (GameManager.music)
+            audioSource.Play();
+        else
+            audioSource.Pause();
+    }
 }

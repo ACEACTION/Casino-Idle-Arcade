@@ -30,6 +30,7 @@ public class AudioSourceManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] AudioClip settingBtnChangedSfx;
+    [SerializeField] AudioClip closeSfx;
 
     //singletoon
     public static AudioSourceManager Instance;
@@ -64,11 +65,12 @@ public class AudioSourceManager : MonoBehaviour
     public void PlayUpgradeWorkerSfx() => PlaySfx(upgradeWorkerSfx);
 
     public void PlayMessCardSfx() => PlaySfx(messCardSfx);
-    public void PlaySetringBtnChangedSfx() => PlaySfx(settingBtnChangedSfx);
+    public void PlaySetringBtnChangedSfx() => audioScr.PlayOneShot(settingBtnChangedSfx);
+    public void PlayPopup() => PlaySfx(closeSfx);
 
     public void PlaySfx(AudioClip sfx)
     {
-        if (Setting_Sfx.Instance.toggle.isOn)
+        if (GameManager.sfx)
             audioScr.PlayOneShot(sfx);
     }
 
