@@ -18,6 +18,8 @@ public class Setting_ResetData : MonoBehaviour
         GameManager.DeleteTotalMoneyFile();
         SaveLoadController.Instance.DeleteTutorialStateFile();
         SaveLoad_Settings.Instance.DeleteSettingDataFile();
+        SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+
         SceneManager.LoadScene(0);
     }
 }

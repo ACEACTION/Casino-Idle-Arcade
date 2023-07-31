@@ -204,6 +204,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8336561607668088995}
     m_Modifications:
+    - target: {fileID: 2710459379509837936, guid: de1b773f4c94db8499b8b931fa21d027,
+        type: 3}
+      propertyPath: buyAreaController
+      value: 
+      objectReference: {fileID: 7063922110440505913}
     - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
       propertyPath: m_Name
@@ -789,6 +794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
+      propertyPath: boughtElement
+      value: 
+      objectReference: {fileID: 3014514674104499729}
+    - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
       propertyPath: priorityObjs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -827,8 +837,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 87
       objectReference: {fileID: 0}
+    - target: {fileID: 8127179045682956946, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 2216149133485279653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3ef86581bdbe7499bc0c3ada419524, type: 3}
+--- !u!1 &7063922110440505913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2113769500172788312, guid: de3ef86581bdbe7499bc0c3ada419524,
+    type: 3}
+  m_PrefabInstance: {fileID: 9177642879887024225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7585125099748317315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,

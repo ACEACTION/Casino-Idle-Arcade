@@ -30,6 +30,7 @@ public class Baccarat : CasinoGame_ChipGame
         CasinoElementManager.roulettes.Add(this);
         CasinoElementManager.allCasinoElements.Add(this);
 
+        
     }    
 
     public override void PlayGame()

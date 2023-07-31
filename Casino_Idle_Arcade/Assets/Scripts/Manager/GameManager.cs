@@ -6,9 +6,7 @@ using AmirSaveLoadSystem;
 public static class GameManager 
 {
 
-    // user data
-   
-
+ 
     // settings
     public static bool sfx;
     public static bool music;

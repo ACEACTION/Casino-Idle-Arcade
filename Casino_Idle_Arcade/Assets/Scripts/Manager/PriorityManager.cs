@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PriorityManager : MonoBehaviour
 {
+    [SerializeField] GameObject boughtElement;
     [SerializeField] bool followCam;
     public List<GameObject> priorityObjs;
 
@@ -13,6 +14,9 @@ public class PriorityManager : MonoBehaviour
         if (!GameManager.isCompleteTutorial) return;
 
         SetPrioritySlotState(true);
+        
+        PriorityController.Instance.AddPriority(priorityObjs, boughtElement);
+
 
         if (followCam)
         {

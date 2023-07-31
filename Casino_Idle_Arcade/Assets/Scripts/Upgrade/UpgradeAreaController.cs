@@ -12,8 +12,11 @@ public class UpgradeAreaController : MonoBehaviour
         if (bAController.price <= 0)
         {
             casinoElement.UpgradeElements();
+            SaveLoad_CasinoElement.Instance.AddItemToElementsSaveDatas(casinoElement);
+
             Destroy(gameObject);
         }
     }
+
 
 }

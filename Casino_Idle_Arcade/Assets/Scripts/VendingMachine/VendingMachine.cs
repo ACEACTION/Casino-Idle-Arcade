@@ -6,6 +6,7 @@ using UnityEngine;
 public class VendingMachine : CasinoGame
 {
     [SerializeField] VendingMachineStack stack;
+    [SerializeField] GameObject snackDeskResource;
     bool payedMoney = true;
 
     public override void Start()
@@ -18,6 +19,8 @@ public class VendingMachine : CasinoGame
         }
 
         ShakeModel();
+
+        snackDeskResource.SetActive(true);
     }
 
     private void Update()

@@ -96,6 +96,7 @@ public class BuyAreaController : MonoBehaviour
                 playSfx = true;
                 AudioSourceManager.Instance.PlayBuyAreaSfx();
             }
+
             if (destroyAfterBought)
                 Destroy(this.gameObject, .1f);
         }
