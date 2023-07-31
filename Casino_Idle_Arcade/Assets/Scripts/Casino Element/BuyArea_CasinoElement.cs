@@ -26,7 +26,7 @@ public class BuyArea_CasinoElement : MonoBehaviour
     {
         if (bA.price <= 0 && !notSaved) 
         {
-            print("VB");
+            
             notSaved = true;
             SaveLoad_CasinoElement.Instance.AddItemToElementsSaveDatas(element);
         }

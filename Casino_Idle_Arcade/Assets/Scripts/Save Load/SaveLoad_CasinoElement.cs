@@ -21,6 +21,11 @@ public class SaveLoad_CasinoElement : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < casinoElementsId.Count; i++)
+        {
+            casinoElementsId[i].elementId = i;
+        }
+
         LoadCasinoElements();
     }
 
