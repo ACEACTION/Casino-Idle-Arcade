@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class RouletteCleaner : Worker
 {
-    //bool canFollow = true;
     public bool playerMaxStackTxtState;
     public bool getPlayerMaxStackTxtState;
     [SerializeField] float camStayCd;
@@ -17,10 +16,13 @@ public class RouletteCleaner : Worker
         WorkerManager.AddAvaiableCasinoGamesToCleaner();
 
     }
-     public override void Start()
+    public override void Start()
     {
+        base.Start();
         ArrivedToFirstPosition();
-        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
+
+        if (camFollow)
+            CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
 
         transform.position = spawnPoint.position;
         agent.speed = workerData.moveSpeed;
