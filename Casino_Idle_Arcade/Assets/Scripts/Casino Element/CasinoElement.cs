@@ -116,7 +116,9 @@ public class CasinoElement : MonoBehaviour
         GetModel().localScale = new Vector3(0.01f, 0.01f, 0.01f);
         GetModel().DOScale(defaultScale, 0.7f).SetEase(Ease.OutBounce);
     }
-    
+
+    public virtual StackMoney GetStackMoney() => null;
+
 }
 
 [System.Serializable]

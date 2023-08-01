@@ -353,4 +353,6 @@ public class CasinoGame_ChipGame : CasinoGame
 
     void SetPlayCd(int upgradeIndex) => playCd = data.GetMaxPlayCdLevel(upgradeIndex);
 
+    public override StackMoney GetStackMoney() => stackMoney;
+
 }

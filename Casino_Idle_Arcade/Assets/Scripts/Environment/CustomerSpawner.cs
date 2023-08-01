@@ -25,8 +25,9 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] GameObject Customer; 
     [SerializeField] float spawnTime = 1f; 
     public Transform spawnPoint; 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(.1f); 
         if (GameManager.isCompleteTutorial)
             SpawnCustomers();
     }

@@ -19,6 +19,7 @@ public class Setting_ResetData : MonoBehaviour
         SaveLoadController.Instance.DeleteTutorialStateFile();
         SaveLoad_Settings.Instance.DeleteSettingDataFile();
         SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+        PriorityController.Instance.DeleteOpenedPriorityFile();
 
         SceneManager.LoadScene(0);
     }

@@ -21,7 +21,7 @@ public class Worker : MonoBehaviour
     public int capacityAmount;
     public Animator anim;
 
-
+    public BuyAreaController buyAreaController;
 
 
     public virtual void Start()
