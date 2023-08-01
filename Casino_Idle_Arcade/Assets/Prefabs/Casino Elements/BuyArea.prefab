@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 1266910042970184984}
   - component: {fileID: 1266910042970184981}
   - component: {fileID: 3899756762945589852}
+  - component: {fileID: 8127179045682956946}
   m_Layer: 0
   m_Name: BuyArea
   m_TagString: Untagged
@@ -520,6 +521,20 @@ MonoBehaviour:
   followCam: 0
   priorityObjs:
   - {fileID: 0}
+--- !u!114 &8127179045682956946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113769500172788312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26094fc647dcaa4396ede7fe33ba327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bA: {fileID: 1266910042970184981}
+  element: {fileID: 0}
 --- !u!1 &2810553776741198211
 GameObject:
   m_ObjectHideFlags: 0

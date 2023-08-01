@@ -10,7 +10,7 @@ public enum ElementsType
 public class CasinoManager : MonoBehaviour
 {
     public int defaultMoney;
-    public bool isCompleteTutorial;
+    //public bool isCompleteTutorial;
     [SerializeField] GameObject tutorialManager;
     public List<ElementsType> availableElements = new List<ElementsType>();
     public static CasinoManager instance;
@@ -23,16 +23,17 @@ public class CasinoManager : MonoBehaviour
             instance = this;
         }
 
-
-
-        if (isCompleteTutorial)
+        if (GameManager.isCompleteTutorial)
         {
             GameManager.isCompleteTutorial = true;
             tutorialManager.SetActive(false);
             GameManager.AddMoney(defaultMoney);
+
         }
         else
+        {
             tutorialManager.SetActive(true);
+        }
     }
 
 }

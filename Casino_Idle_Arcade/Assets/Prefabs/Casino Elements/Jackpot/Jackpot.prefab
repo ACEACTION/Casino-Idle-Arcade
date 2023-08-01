@@ -48,6 +48,11 @@ PrefabInstance:
       propertyPath: casinoElement
       value: 
       objectReference: {fileID: 2216149133485279653}
+    - target: {fileID: 1774280721395154072, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
+        type: 3}
+      propertyPath: openedPriority
+      value: 
+      objectReference: {fileID: 5859370509491901829}
     - target: {fileID: 8104751669941356526, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
         type: 3}
       propertyPath: m_RootOrder
@@ -204,16 +209,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8336561607668088995}
     m_Modifications:
-    - target: {fileID: 733915601592722880, guid: de1b773f4c94db8499b8b931fa21d027,
+    - target: {fileID: 2710459379509837936, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: buyAreaController
       value: 
-      objectReference: {fileID: 2100000, guid: 7e688168b9b2f174fb4d784ae5eb327c, type: 2}
-    - target: {fileID: 939160245586683144, guid: de1b773f4c94db8499b8b931fa21d027,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7e688168b9b2f174fb4d784ae5eb327c, type: 2}
+      objectReference: {fileID: 7063922110440505913}
     - target: {fileID: 7059045145338861336, guid: de1b773f4c94db8499b8b931fa21d027,
         type: 3}
       propertyPath: m_Name
@@ -279,11 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8084690183907584531, guid: de1b773f4c94db8499b8b931fa21d027,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7e688168b9b2f174fb4d784ae5eb327c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de1b773f4c94db8499b8b931fa21d027, type: 3}
 --- !u!114 &2216149133485279653 stripped
@@ -461,6 +456,11 @@ PrefabInstance:
       propertyPath: casinoElement
       value: 
       objectReference: {fileID: 2216149133485279653}
+    - target: {fileID: 1774280721395154072, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
+        type: 3}
+      propertyPath: openedPriority
+      value: 
+      objectReference: {fileID: 1625009116665667959}
     - target: {fileID: 1774280721395154072, guid: 5d63fbdfc6faaf645b7a213dc1f39bc3,
         type: 3}
       propertyPath: priorityObjs.Array.size
@@ -804,6 +804,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
         type: 3}
+      propertyPath: boughtElement
+      value: 
+      objectReference: {fileID: 3014514674104499729}
+    - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: openedPriority
+      value: 
+      objectReference: {fileID: 3014514674104499729}
+    - target: {fileID: 3899756762945589852, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
       propertyPath: priorityObjs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -842,8 +852,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 87
       objectReference: {fileID: 0}
+    - target: {fileID: 8127179045682956946, guid: de3ef86581bdbe7499bc0c3ada419524,
+        type: 3}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 2216149133485279653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3ef86581bdbe7499bc0c3ada419524, type: 3}
+--- !u!1 &7063922110440505913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2113769500172788312, guid: de3ef86581bdbe7499bc0c3ada419524,
+    type: 3}
+  m_PrefabInstance: {fileID: 9177642879887024225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7585125099748317315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1593797654904240354, guid: de3ef86581bdbe7499bc0c3ada419524,

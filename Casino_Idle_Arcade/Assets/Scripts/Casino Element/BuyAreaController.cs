@@ -17,10 +17,10 @@ public class BuyAreaController : MonoBehaviour
     bool isPlayerAvailabe;
     [SerializeField] float cooldown;
     [SerializeField] float cooldownAmount;
-    [SerializeField] GameObject buyedElement;
+    public GameObject buyedElement;
     [SerializeField] TextMeshProUGUI priceText;
     [SerializeField] ParticleSystem buildEffect;
-    [SerializeField] PriorityManager priorityManager;
+    public PriorityManager priorityManager;
 
     public float maxPlayerWaitingCd;
     float playerWaitingCd;
@@ -31,6 +31,12 @@ public class BuyAreaController : MonoBehaviour
     bool playSfx;
     private void Start()
     {
+        StartCoroutine(DelayForLoadPriorityController());
+    }
+
+    IEnumerator DelayForLoadPriorityController()
+    {
+        yield return new WaitForSeconds(.1f);
         payTime = 2;
         priceText.text = price.ToString();
         defaultScale = transform.localScale.x;
@@ -39,6 +45,7 @@ public class BuyAreaController : MonoBehaviour
         paymentAmount = (price / (payTime * 10));
 
     }
+
     private void Update()
     {
         if (price > 0 && isPlayerAvailabe && GameManager.GetTotalMoney() > 0 ) 
@@ -96,6 +103,7 @@ public class BuyAreaController : MonoBehaviour
                 playSfx = true;
                 AudioSourceManager.Instance.PlayBuyAreaSfx();
             }
+
             if (destroyAfterBought)
                 Destroy(this.gameObject, .1f);
         }
@@ -130,6 +138,7 @@ public class BuyAreaController : MonoBehaviour
             isPlayerAvailabe = false;
             priceText.transform.DOScale(0.6f, 0f);
             playerWaitingCd = maxPlayerWaitingCd;
+            PriorityController.Instance.SaveData();
         }
     }
 }

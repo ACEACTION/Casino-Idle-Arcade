@@ -10,12 +10,12 @@ public class CasinoElement : MonoBehaviour
     public int upgradeIndex;
     public int maxGameCapacity;
     public int customerCounter;
+    [SerializeField] GameObject buyAreaController;
     [SerializeField] int[] upgradeCapacity;
     [SerializeField] GameObject[] upgradeModels;
     public List<CustomerMovement> customers = new List<CustomerMovement>();
     public List<CasinoElementSpot> spotList;
     public List<CasinoElementSpotSlot> elementSpotSlots = new List<CasinoElementSpotSlot>();
-
     public virtual void Start()
     {
         InitElementProcess();  
@@ -29,7 +29,9 @@ public class CasinoElement : MonoBehaviour
             upgradeModels[i].SetActive(false);
         }
         GetModel().gameObject.SetActive(true);
-
+        
+        //if (buyAreaController)
+        //    buyAreaController.SetActive(false);
 
         // customer capacity process
         maxGameCapacity = upgradeCapacity[upgradeIndex];

@@ -87,7 +87,7 @@ public class PlayerMovements : MonoBehaviour
         _input = new Vector3(xDir, 0, zDir);
         inputMagnitude = Mathf.Clamp01(_input.magnitude);
         
-        if (Setting_Sfx.Instance.toggle.isOn)
+        if (GameManager.sfx)
             footSteps.SetActive(true);
 
         _input = Quaternion.Euler(0, 45, 0) * _input;

@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PriorityManager : MonoBehaviour
 {
+    public GameObject openedPriority;
     [SerializeField] bool followCam;
     public List<GameObject> priorityObjs;
-
+    bool setPriority;
 
     public void OpenNextPriority()
     {
         if (!GameManager.isCompleteTutorial) return;
 
-        SetPrioritySlotState(true);
+
+        if (!setPriority)
+        {
+            setPriority = true;
+            SetPrioritySlotState(true);
+            
+            PriorityController.Instance.AddPriority(priorityObjs, openedPriority);
+        }
 
         if (followCam)
         {

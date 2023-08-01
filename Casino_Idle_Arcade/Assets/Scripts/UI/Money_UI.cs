@@ -33,24 +33,18 @@ public class Money_UI : MonoBehaviour
         defaultMoneyIconColor = moneyIcon.color;
         defaultPos = transform.position;
         SetTotalMoneyTxt();
+
     }
-
-
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetKeyUp(KeyCode.Q))
             print(GameManager.GetTotalMoney());
-        }
-
     }
 
     public void SetTotalMoneyTxt()
     {
         moneyAmount = GameManager.GetTotalMoney();
-
         if (moneyAmount < 1000)
         {
             SetTxt(moneyAmount.ToString());

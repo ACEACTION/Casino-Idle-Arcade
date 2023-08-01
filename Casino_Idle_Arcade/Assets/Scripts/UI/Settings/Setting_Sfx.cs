@@ -5,24 +5,28 @@ using UnityEngine.UI;
 
 public class Setting_Sfx : MonoBehaviour
 {
-    
-    public Toggle toggle;
+    public SwitchToggle switchToggle;
 
     public static Setting_Sfx Instance;
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
     }
 
     void Start()
     {
-        toggle.onValueChanged.AddListener(ToggleOnChanged);
+        switchToggle.toggle.onValueChanged.AddListener(ToggleOnChanged);
+        //ToggleOnChanged(GameManager.sfx);
+        switchToggle.InitToggle(GameManager.sfx);
     }
 
     void ToggleOnChanged(bool on)
     {
-        AudioSourceManager.Instance.PlaySetringBtnChangedSfx();
+        GameManager.sfx = on;    
+        if (!on)
+            AudioSourceManager.Instance.PlaySetringBtnChangedSfx();
     }
 
 }

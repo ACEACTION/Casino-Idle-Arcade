@@ -274,10 +274,13 @@ public class TutorialManager : MonoBehaviour
                         upgradeRect.enabled = true;
                         uIBlock_closeUpgradePanel.SetActive(false);
                         canUpgradePlayerStack = false;
-                        GameManager.isCompleteTutorial = true;
-
                         ambienceAudioSrc.SetActive(true);
                         secondBaccarat.SetActive(true);
+
+                        GameManager.isCompleteTutorial = true;
+                        // save data
+                        SaveLoadController.Instance.SaveTutorialState();
+                        GameManager.SaveTotalMoney();
 
                     }
                 }
