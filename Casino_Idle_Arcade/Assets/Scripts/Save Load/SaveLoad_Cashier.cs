@@ -20,7 +20,7 @@ public class SaveLoad_Cashier : MonoBehaviour
 
     private void Start()
     {
-        LoadCashierData();
+       StartCoroutine(LoadCashierData());
     }
 
     public void SaveCashierDesk(BuyAreaController bAC)
@@ -71,7 +71,7 @@ public class SaveLoad_Cashier : MonoBehaviour
         SaveData();
     }
 
-    void LoadCashierData()
+    IEnumerator LoadCashierData()
     {
         LoadData();
 
@@ -86,15 +86,20 @@ public class SaveLoad_Cashier : MonoBehaviour
                         cashierObjSlots[j].buyArea.buyedElement.SetActive(true);
                         cashierObjSlots[j].buyArea.priorityManager.openedPriority.SetActive(true);
                         cashierObjSlots[j].buyArea.gameObject.SetActive(false);
-                    }
 
-                    if (cashierDataSlots[i].receptionIsOpen)
-                    {
-                        cashierObjSlots[j].upgradeArea.DestroyAreas();
-                        cashierObjSlots[j].upgradeArea.gameObject.SetActive(false);
-                        cashierObjSlots[j].upgradeArea.bAController.buyedElement.SetActive(true);
-                    }
 
+                        if (cashierDataSlots[i].receptionIsOpen)
+                        {
+                            cashierObjSlots[j].upgradeArea.DestroyAreas();
+                            cashierObjSlots[j].upgradeArea.gameObject.SetActive(false);
+                            cashierObjSlots[j].upgradeArea.bAController.buyedElement.SetActive(true);
+                        }
+
+                        yield return new WaitForSeconds(.2f);
+                        cashierObjSlots[j].stackMoney.InitStackMoney(cashierDataSlots[i].stackMoneyAmount
+                        , MoneyType.receptionMoney);
+
+                    }
                 }
             }
         }
@@ -144,6 +149,25 @@ public class SaveLoad_Cashier : MonoBehaviour
 
     public void DeleteCashierData() => SaveLoadSystem.DeleteFile(cashierDataPath);
 
+
+    private void OnApplicationQuit()
+    {
+        for (int i = 0; i < cashierDataSlots.Count; i++)
+        {
+            for (int j = 0; j < cashierObjSlots.Count; j++)
+            {
+                if (cashierDataSlots[i].id == cashierObjSlots[j].id)
+                {
+                    cashierDataSlots[i].stackMoneyAmount = cashierObjSlots[j].stackMoney.stackCounter;
+                    break;
+                }
+            }
+        }
+
+        SaveData();
+
+    }
+
 }
 
 [System.Serializable]
@@ -152,6 +176,7 @@ public class CashierObjSlot
     public int id;
     public BuyAreaController buyArea;
     public UpgradeCashierDesk upgradeArea;
+    public StackMoney stackMoney;
 }
 
 [System.Serializable]
@@ -160,6 +185,7 @@ public class CashierDataSlot
     public int id;
     public bool cashierIsOpen;
     public bool receptionIsOpen;
+    public int stackMoneyAmount;
 
     public CashierDataSlot(int id, bool cashierIsOpen, bool receptionIsOpen)
     {

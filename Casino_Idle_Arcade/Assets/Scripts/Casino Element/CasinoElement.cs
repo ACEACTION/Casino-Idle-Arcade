@@ -10,7 +10,7 @@ public class CasinoElement : MonoBehaviour
     public int upgradeIndex;
     public int maxGameCapacity;
     public int customerCounter;
-    [SerializeField] GameObject buyAreaController;
+    public GameObject buyAreaController;
     [SerializeField] int[] upgradeCapacity;
     [SerializeField] GameObject[] upgradeModels;
     public List<CustomerMovement> customers = new List<CustomerMovement>();

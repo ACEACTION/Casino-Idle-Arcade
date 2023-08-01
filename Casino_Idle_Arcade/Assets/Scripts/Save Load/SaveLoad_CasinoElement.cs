@@ -44,7 +44,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
                     casinoElementsId[j].element.upgradeIndex = elementsSaveDatas[i].upgradeIndex;
                     casinoElementsId[j].element.gameObject.SetActive(true);
                     casinoElementsId[j].element.transform.parent.gameObject.SetActive(true);
-
+                    casinoElementsId[j].element.buyAreaController.gameObject.SetActive(false);
                     yield return new WaitForSeconds(.2f);
                     casinoElementsId[j].element.GetStackMoney().InitStackMoney(elementsSaveDatas[i].stackMoneyAmount
                         , MoneyType.baccaratMoney);

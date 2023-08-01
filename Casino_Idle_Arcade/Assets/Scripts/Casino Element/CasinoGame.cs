@@ -43,5 +43,7 @@ public class CasinoGame : CasinoElement
         customerCounter = 0;
         SetNullElementSpotsCustomer();
     }
-    
+
+
+    public override StackMoney GetStackMoney() => stackMoney;
 }
