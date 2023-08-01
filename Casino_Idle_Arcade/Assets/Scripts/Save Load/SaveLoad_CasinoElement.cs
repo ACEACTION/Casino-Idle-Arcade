@@ -133,7 +133,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
             }
         }
 
-        SaveElementData();        
+        SaveElementData();
     }
 
 }

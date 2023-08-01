@@ -2413,6 +2413,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8277dbec7f03d364eb03949a4b76d44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &665911028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5352676655221918903, guid: 06ec3301dababc4449bb3f32ea525e8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198366527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665911022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf8de13a083764a9a1e72e5787105e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &676820645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &798541052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4531,8 +4543,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1133870630}
   - component: {fileID: 1133870629}
+  - component: {fileID: 1133870632}
+  - component: {fileID: 1133870631}
   m_Layer: 0
-  m_Name: SaveLoad_CasinoElement
+  m_Name: SaveLoad Game Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4587,6 +4601,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1133870631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133870628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77e88098c202b04abdb6a547d08fd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cashierObjSlots:
+  - id: 0
+    buyArea: {fileID: 335433752}
+    upgradeArea: {fileID: 1901036538}
+  - id: 1
+    buyArea: {fileID: 1518014347}
+    upgradeArea: {fileID: 665911028}
+  cashierDataSlots: []
+--- !u!114 &1133870632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133870628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6019a1cb1104a894db93519d4475b7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPriorityObjects: []
+  allBuyAreas:
+  - {fileID: 335433752}
+  - {fileID: 1518014347}
+  - {fileID: 1779924728}
+  - {fileID: 1399143208}
+  - {fileID: 393425466}
+  - {fileID: 543997655}
+  - {fileID: 2010043172}
+  - {fileID: 1105596324}
+  - {fileID: 840408832}
+  - {fileID: 200504896}
+  - {fileID: 896627676}
+  - {fileID: 1904795729}
+  - {fileID: 246179572}
+  - {fileID: 597956650}
+  - {fileID: 994175047}
+  - {fileID: 1668386658}
+  - {fileID: 839562026}
+  - {fileID: 1041767254}
+  - {fileID: 490099667}
+  - {fileID: 2032590471}
+  - {fileID: 2107584737}
+  - {fileID: 1421750345}
+  - {fileID: 1276596027}
+  - {fileID: 1678701471}
+  - {fileID: 1123946954}
+  - {fileID: 1241436321}
+  - {fileID: 311942853}
+  - {fileID: 1144116371}
+  - {fileID: 8576449024730037152}
+  - {fileID: 741521915}
+  - {fileID: 5231927344721097363}
+  - {fileID: 823021081}
+  - {fileID: 587022217}
+  - {fileID: 542838044}
+  - {fileID: 2004290344}
+  - {fileID: 983444443}
+  - {fileID: 665911026}
+  - {fileID: 1901036535}
+  prioritiesSaveDataSlots: []
 --- !u!1001 &1144116364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4963,7 +5050,7 @@ PrefabInstance:
     - target: {fileID: 6344417440169934598, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344417440646445395, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
@@ -5670,6 +5757,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717902718}
     m_Modifications:
+    - target: {fileID: 2538317234349891826, guid: 06ec3301dababc4449bb3f32ea525e8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3210746854857078668, guid: 06ec3301dababc4449bb3f32ea525e8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6330,7 +6422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveLoad_settings: {fileID: 1816617248}
   isCompleteTutorial: 1
-  defaultMoney: 5000
+  defaultMoney: 99999999
 --- !u!1 &1837681618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8818899662065896376, guid: 00840687c9751ef458d835ea36450997,
@@ -6657,6 +6749,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8277dbec7f03d364eb03949a4b76d44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1901036538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5352676655221918903, guid: 06ec3301dababc4449bb3f32ea525e8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633752985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901036531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaf8de13a083764a9a1e72e5787105e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1901757938 stripped

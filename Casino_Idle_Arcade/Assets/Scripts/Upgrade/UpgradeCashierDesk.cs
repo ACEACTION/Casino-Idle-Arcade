@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class UpgradeCashierDesk : MonoBehaviour
 {
-    [SerializeField] BuyAreaController bAController;
+    public BuyAreaController bAController;
     [SerializeField] GameObject[] destroyedArea;
-
+    bool notSaved;
     private void Update()
     {
-        if (bAController.price <= 0)
+        if (bAController.price <= 0 && !notSaved)
         {            
-            for (int i = 0; i < destroyedArea.Length; i++)
-            {
-                Destroy(destroyedArea[i]);
-            }
+            notSaved = true;
+            //SaveLoad_Cashier.Instance.SaveReception(this);
+            SaveLoad_Cashier.Instance.SaveReception(this);
+
+            DestroyAreas();   
             Destroy(gameObject);
 
         }
     }
+
+    public void DestroyAreas()
+    {
+        for (int i = 0; i < destroyedArea.Length; i++)
+        {
+            Destroy(destroyedArea[i]);
+        }
+    }
+
 }
