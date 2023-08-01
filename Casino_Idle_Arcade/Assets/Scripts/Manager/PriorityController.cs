@@ -9,9 +9,8 @@ public class PriorityController : MonoBehaviour
     const string openedPrioritiesDataPath = "openedPrioritiesData";
 
     public List<PriorityObjectSlot> allPriorityObjects;
-
-    public List<PriorityObjectSlot> openedPriorities;
-    public List<int> prioritiesId = new List<int>();
+    public List<BuyAreaController> allBuyAreas;
+    public List<PrioritySaveDataSlot> prioritiesSaveDataSlots = new List<PrioritySaveDataSlot>();
     public static PriorityController Instance;
 
     private void Awake()
@@ -24,42 +23,37 @@ public class PriorityController : MonoBehaviour
 
     private void Start()
     {
-        //for (int i = 0; i < allPriorityObjects.Count; i++)
-        //{
-        //    allPriorityObjects[i].id = i;
-        //}
+        for (int i = 0; i < allBuyAreas.Count; i++)
+        {
+            allPriorityObjects.Add(new PriorityObjectSlot(i, allBuyAreas[i]));
+        }
+
+
         LoadPrioritiesId();
     }
 
 
     public void AddPriority(List<GameObject> priorities, GameObject boughtElement)
     {
-        //for (int i = 0; i < priorities.Count; i++)
-        //{
-        //    for (int j = 0; j < allPriorityObjects.Count ; j++)
-        //    {
-        //        if (priorities[i] == allPriorityObjects[j].obj)
-        //        {
-
-        //        }
-        //    }
-        //}
-
+        
         foreach (GameObject obj in priorities)
         {
-            //openedPriorities.Add(new PriorityObjectSlot(GetId(obj), obj));
-            prioritiesId.Add(GetId(obj));
+            PriorityObjectSlot slot = GetPriorityObj(obj);
+            if (slot != null)
+                prioritiesSaveDataSlots.Add(new PrioritySaveDataSlot(slot.id, slot.bAC.price));
+            else
+                prioritiesSaveDataSlots.Add(new PrioritySaveDataSlot(-1, -1));
         }
 
-        int boughtElementId = GetId(boughtElement);
+        PriorityObjectSlot priorityObject = GetPriorityObj(boughtElement);
 
-        if (boughtElementId == -1) return;
+        if (priorityObject == null) return;
 
-        foreach (int id in prioritiesId)
+        foreach (PrioritySaveDataSlot slot in prioritiesSaveDataSlots)
         {
-            if (id == boughtElementId)
+            if (slot.id == priorityObject.id)
             {
-                prioritiesId.Remove(id);
+                prioritiesSaveDataSlots.Remove(slot);
                 break;
             }
         }
@@ -68,19 +62,31 @@ public class PriorityController : MonoBehaviour
     }
 
 
-    int GetId(GameObject obj)
+    PriorityObjectSlot GetPriorityObj(GameObject obj)
     {
         foreach (PriorityObjectSlot slot in allPriorityObjects)
         {
-            if (slot.obj == obj)
-                return slot.id;
+            if (slot.bAC.priorityManager.openedPriority == obj)
+                return slot;
         }
-        return -1;      
+        return null;
     }
 
-    void SaveData()
+    public void SaveData()
     {
-        SaveLoadSystem.SaveAes(prioritiesId, openedPrioritiesDataPath,
+        for (int i = 0; i < prioritiesSaveDataSlots.Count; i++)
+        {
+            for (int j = 0; j < allPriorityObjects.Count; j++)
+            {
+                if (prioritiesSaveDataSlots[i].id == allPriorityObjects[j].id)
+                {
+                    prioritiesSaveDataSlots[i].remainPrice = allPriorityObjects[j].bAC.price;
+                    break;
+                }
+            }
+        }
+
+        SaveLoadSystem.SaveAes(prioritiesSaveDataSlots, openedPrioritiesDataPath,
             (error) =>
             {
                 Debug.Log(error);
@@ -91,17 +97,32 @@ public class PriorityController : MonoBehaviour
             });
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SaveLoadSystem.SaveAes(prioritiesSaveDataSlots, openedPrioritiesDataPath,
+            (error) =>
+            {
+                Debug.Log(error);
+            },
+            (success) =>
+            {
+                Debug.Log(success);
+            });
+        }
+    }
+
     void LoadPrioritiesId()
     {
-        //LoadData();
-
-        for (int i = 0; i < prioritiesId.Count; i++)
+        for (int i = 0; i < prioritiesSaveDataSlots.Count; i++)
         {
             for (int j = 0; j < allPriorityObjects.Count; j++)
             {
-                if (prioritiesId[i] == allPriorityObjects[j].id)
+                if (prioritiesSaveDataSlots[i].id == allPriorityObjects[j].id)
                 {
-                    allPriorityObjects[j].obj.SetActive(true);
+                    allPriorityObjects[j].bAC.priorityManager.openedPriority.SetActive(true);
+                    allPriorityObjects[j].bAC.price = prioritiesSaveDataSlots[i].remainPrice;
                 }
             }
         }
@@ -110,9 +131,9 @@ public class PriorityController : MonoBehaviour
 
     void LoadData()
     {
-        SaveLoadSystem.LoadAes<List<int>>((data) =>
+        SaveLoadSystem.LoadAes<List<PrioritySaveDataSlot>>((data) =>
         {
-            prioritiesId = data;
+            prioritiesSaveDataSlots = data;
         }, openedPrioritiesDataPath
         , (error) => { Debug.Log(error); }
         , (success) => { Debug.Log(success); });
@@ -124,10 +145,23 @@ public class PriorityController : MonoBehaviour
 public class PriorityObjectSlot
 {
     public int id;
-    public GameObject obj;
-    public PriorityObjectSlot(int id, GameObject obj)
+    public BuyAreaController bAC;
+    public PriorityObjectSlot(int id, BuyAreaController bAC)
     {
         this.id = id;
-        this.obj = obj;
+        this.bAC = bAC;
+    }
+}
+
+[System.Serializable]
+public class PrioritySaveDataSlot
+{
+    public int id;
+    public int remainPrice;
+
+    public PrioritySaveDataSlot(int id, int remainPrice)
+    {
+        this.id = id;
+        this.remainPrice = remainPrice;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PriorityManager : MonoBehaviour
 {
-    [SerializeField] GameObject openedPriority;
+    public GameObject openedPriority;
     [SerializeField] bool followCam;
     public List<GameObject> priorityObjs;
     bool setPriority;
