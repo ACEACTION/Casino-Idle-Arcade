@@ -17,8 +17,8 @@ public class Setting_Music : MonoBehaviour
 
     void Start()
     {
-        switchToggle.InitToggle(GameManager.music);
         switchToggle.toggle.onValueChanged.AddListener(ToggleOnChanged);
+        //switchToggle.InitToggle(GameManager.music);
         //ToggleOnChanged(switchToggle.toggle.isOn);
     }
 

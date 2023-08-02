@@ -12,6 +12,7 @@ public class SettingPanel : MonoBehaviour
     [SerializeField] Ease closeWindowEase;
     [SerializeField] Transform settingWindow;
     [SerializeField] Setting_Sfx setting_Sfx;
+    [SerializeField] Setting_Music setting_Music;
     [SerializeField] Button closeBtn;
     bool wasSelected = false;
 
@@ -38,7 +39,9 @@ public class SettingPanel : MonoBehaviour
         GameManager.sfx = false;
         setting_Sfx.switchToggle.InitToggle(defaultGameMngrSfx);
         GameManager.sfx = defaultGameMngrSfx;
-        
+
+        setting_Music.switchToggle.InitToggle(GameManager.music);
+
         CloseWindow();
         gameObject.SetActive(false);
     }
