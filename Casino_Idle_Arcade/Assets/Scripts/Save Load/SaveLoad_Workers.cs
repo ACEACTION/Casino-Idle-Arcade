@@ -35,7 +35,7 @@ public class SaveLoad_Workers : MonoBehaviour
                     workerObjs[j].worker.gameObject.SetActive(true);
                     workerObjs[j].bAC.priorityManager.openedPriority.SetActive(true);
                     workerObjs[j].bAC.gameObject.SetActive(false);
-
+                    workerObjs[j].priorityUi.ActivePriorityObjs();
                 }
             }
         }
@@ -44,7 +44,6 @@ public class SaveLoad_Workers : MonoBehaviour
 
     public void SaveWorker(Worker worker)
     {
-        print(worker);
         int workerId = GetIdByWorker(worker);
 
         if (workerId == -1)
@@ -91,9 +90,7 @@ public class SaveLoad_Workers : MonoBehaviour
                 return workerObjs[i].id; 
             }
         }
-
         return -1;
-
     }
 
     public void DeleteWorkersDataFile() => SaveLoadSystem.DeleteFile(workerSaveDatasPath);
@@ -106,6 +103,7 @@ public class WorkerObj
     public int id;
     public Worker worker;
     public BuyAreaController bAC;
+    public PriorityManagerUI priorityUi;
 }
 
 [System.Serializable]

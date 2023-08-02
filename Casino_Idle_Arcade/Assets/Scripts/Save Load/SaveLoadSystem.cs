@@ -140,11 +140,12 @@ namespace AmirSaveLoadSystem
 
         public static void DeleteFile(string fileName)
         {
-            string filePath = Path.Combine(Application.persistentDataPath, fileName);
+            var dataPath = Application.persistentDataPath + $"/{fileName}.bin";
+            //string filePath = Path.Combine(Application.persistentDataPath, fileName, ".bin");
 
-            if (File.Exists(filePath))
+            if (File.Exists(dataPath))
             {
-                File.Delete(filePath);
+                File.Delete(dataPath);
                 Debug.Log("File deleted successfully.");
             }
             else

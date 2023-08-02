@@ -38,7 +38,7 @@ public class HandStack : MonoBehaviour
         data.firstStackOrigin = firstStack.localPosition;
 
         // for test
-        defaultMaxStackCount = data.maxStackCount;
+        //defaultMaxStackCount = data.maxStackCount;
     }
 
     private void Update()
@@ -206,7 +206,7 @@ public class HandStack : MonoBehaviour
 
     private void OnDisable()
     {
-        data.maxStackCount = defaultMaxStackCount;
+        //data.maxStackCount = defaultMaxStackCount;
     }
 
 }

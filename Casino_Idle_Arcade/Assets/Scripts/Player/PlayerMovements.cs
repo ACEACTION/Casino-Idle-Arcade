@@ -39,8 +39,8 @@ public class PlayerMovements : MonoBehaviour
     void Start()
     {
       //  velocity = transform.position;
-        SetAnimationMoveSpeed(data.defaultAnimationMoveSpeed);
-        SetPlayerMoveSpeed(data.defaultPlayerMoveSpeed);
+        SetAnimationMoveSpeed(data.animationMoveSpeed);
+        SetPlayerMoveSpeed(data.playerMoveSpeed);
     }
 
     // Update is called once per frame
@@ -108,4 +108,6 @@ public class PlayerMovements : MonoBehaviour
 
     public void SetAnimationMoveSpeed(float ms) => anim.SetFloat("moveSpeed", ms);
     public void SetPlayerMoveSpeed(float ms) => moveSpeed = ms;
+
+
 }
