@@ -37,17 +37,12 @@ public class SettingPanel : MonoBehaviour
         defaultGameMngrSfx = GameManager.sfx;
         GameManager.sfx = false;
         setting_Sfx.switchToggle.InitToggle(defaultGameMngrSfx);
+        GameManager.sfx = defaultGameMngrSfx;
         
         CloseWindow();
-        StartCoroutine(DelayForDeactive());
-    }
-
-    IEnumerator DelayForDeactive()
-    {
-        yield return new WaitForEndOfFrame();
-        GameManager.sfx = defaultGameMngrSfx;
         gameObject.SetActive(false);
     }
+
 
     private void OnEnable()
     {
