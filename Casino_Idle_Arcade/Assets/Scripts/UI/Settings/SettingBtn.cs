@@ -13,7 +13,7 @@ public class SettingBtn : MonoBehaviour
         closeBtn.onClick.AddListener(() =>
         {
             settingPanel.SetActive(true);
-            AudioSourceManager.Instance.PlayPopup();
+            AudioSourceManager.Instance.OpenWindowUi();
         });
     }
 

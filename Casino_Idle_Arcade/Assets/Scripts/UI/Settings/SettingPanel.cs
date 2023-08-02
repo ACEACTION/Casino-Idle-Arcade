@@ -11,7 +11,11 @@ public class SettingPanel : MonoBehaviour
     [SerializeField] Ease openWindowEase;
     [SerializeField] Ease closeWindowEase;
     [SerializeField] Transform settingWindow;
+    [SerializeField] Setting_Sfx setting_Sfx;
     [SerializeField] Button closeBtn;
+    bool wasSelected = false;
+
+    public bool defaultGameMngrSfx;
 
     private void Awake()
     {
@@ -21,8 +25,27 @@ public class SettingPanel : MonoBehaviour
     private void Start()
     {
         closeBtn.onClick.AddListener(CloseWindow);
+
+        /* we cant add playCloseSfx to CloseWindowMethod, because this gameobject active
+             and deactive in begins of game and play sfx, so we added to button in seperate */
+        closeBtn.onClick.AddListener(() =>
+        {
+            AudioSourceManager.Instance.CloseWindowUi();
+        });
+
+        // if GameManager.sfx is on, the sfx is listened in beginning of game (the setting menu is not open)
+        defaultGameMngrSfx = GameManager.sfx;
+        GameManager.sfx = false;
+        setting_Sfx.switchToggle.InitToggle(defaultGameMngrSfx);
         
         CloseWindow();
+        StartCoroutine(DelayForDeactive());
+    }
+
+    IEnumerator DelayForDeactive()
+    {
+        yield return new WaitForEndOfFrame();
+        GameManager.sfx = defaultGameMngrSfx;
         gameObject.SetActive(false);
     }
 
@@ -38,12 +61,16 @@ public class SettingPanel : MonoBehaviour
 
     void CloseWindow()
     {
-        SaveLoad_Settings.Instance.SaveSettings(GameManager.sfx, GameManager.music);
-        AudioSourceManager.Instance.PlayPopup();
-        settingWindow.DOScale(0, openWinDuration).SetEase(closeWindowEase).OnComplete(() =>
+        if (!wasSelected)
         {
-            gameObject.SetActive(false);
-        });
+            wasSelected = true;
+            SaveLoad_Settings.Instance.SaveSettings(GameManager.sfx, GameManager.music);        
+            settingWindow.DOScale(0, openWinDuration).SetEase(closeWindowEase).OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+                wasSelected = false;
+            });
+        }
     }
 
 }
