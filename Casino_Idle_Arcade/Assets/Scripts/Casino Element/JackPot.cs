@@ -126,6 +126,6 @@ public class JackPot : CasinoGame
     // event
     public void PlayJackpotSfx_Event()
     {        
-        //AudioSourceManager.Instance.PlayJackpotSfx();
+        AudioSourceManager.Instance.PlayJackpotSfx();
     }
 }
