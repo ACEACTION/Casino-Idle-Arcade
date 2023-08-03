@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Setting_Sfx : MonoBehaviour
 {
     public SwitchToggle switchToggle;
-
+    public SettingPanel settingPanel;
     public static Setting_Sfx Instance;
     private void Awake()
     {
@@ -16,16 +16,16 @@ public class Setting_Sfx : MonoBehaviour
     }
 
     void Start()
-    {
+    {        
         switchToggle.toggle.onValueChanged.AddListener(ToggleOnChanged);
         //ToggleOnChanged(GameManager.sfx);
-        switchToggle.InitToggle(GameManager.sfx);
+        //switchToggle.InitToggle(settingPanel.defaultGameMngrSfx);
     }
 
     void ToggleOnChanged(bool on)
     {
-        GameManager.sfx = on;    
-        if (!on)
+        GameManager.sfx = on;
+        if (on)
             AudioSourceManager.Instance.PlaySetringBtnChangedSfx();
     }
 

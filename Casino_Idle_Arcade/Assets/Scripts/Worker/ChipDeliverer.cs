@@ -14,7 +14,6 @@ public class ChipDeliverer : Worker
 
     public ChipDeliverState state;
     public Transform destination;
-    bool canFollow = true;
     float removeCd = 1.5f;
     [SerializeField] float camStayCd;
     [SerializeField] Vector3 offSet;
@@ -37,6 +36,12 @@ public class ChipDeliverer : Worker
     {
         handStack = stack;
     }
+
+    public override void Start()
+    {
+        base.Start();
+    }
+
     private void OnEnable()
     {
         transform.position = spawnPoint.position;
@@ -47,7 +52,8 @@ public class ChipDeliverer : Worker
         state = ChipDeliverState.waiting;
         ArrivedToFirstPosition();
 
-        CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
+        if (camFollow)
+            CameraFollow.instance.SetDynamicFollow_BuyWorker(transform);
 
         foreach (var casinoGame in casinoGames)
         {
@@ -70,26 +76,7 @@ public class ChipDeliverer : Worker
     {
           if (!canWork)
             {
-                if (canFollow)
-                {
-                    //CameraFollow.instance.firstFollowCamera.gameObject.SetActive(true);
-                    //CameraFollow.instance.CamFollowDynamic(transform);
 
-                    //if (!getPlayerMaxStackTxtState)
-                    //{
-                    //    getPlayerMaxStackTxtState = true;
-                    //    playerMaxStackTxtState = MaxStackText.Instance.gameObject.activeSelf;
-                    //}
-
-                    //MaxStackText.Instance.gameObject.SetActive(false);
-                    //camStayCd -= Time.deltaTime;
-                    //if (camStayCd <= 0)
-                    //{
-                    //    MaxStackText.Instance.gameObject.SetActive(playerMaxStackTxtState);
-                    //    canFollow = false;
-                    //    CameraFollow.instance.firstFollowCamera.gameObject.SetActive(false);
-                    //}
-                }
 
                 //we have to wait till worker arrives to first position
                 if (Vector3.Distance(transform.position, afterSpawnTransform.position) <= agent.stoppingDistance)

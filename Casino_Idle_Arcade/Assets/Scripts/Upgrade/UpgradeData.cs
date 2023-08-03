@@ -31,9 +31,14 @@ public class UpgradeData <T> : ScriptableObject
     //    upgradeLevelCounter = 0;
     //}
 
+    public virtual void ResetData()
+    {
+        upgradeLevelCounter = 0;
+    }
+
     public virtual void OnEnable()
     {        
-        upgradeLevelCounter = 0;
+        //upgradeLevelCounter = 0;
     }
 
 }

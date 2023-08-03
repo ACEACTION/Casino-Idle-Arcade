@@ -26,12 +26,14 @@ public class SaveLoad_CasinoElement : MonoBehaviour
             casinoElementsId[i].elementId = i;
         }
 
-        LoadCasinoElements();
+        StartCoroutine(LoadCasinoElements());
     }
 
-    void LoadCasinoElements()
+    IEnumerator LoadCasinoElements()
     {
         LoadData();
+
+        yield return new WaitForSeconds(.2f);
 
         for (int i = 0; i < elementsSaveDatas.Count; i++)
         {
@@ -42,7 +44,10 @@ public class SaveLoad_CasinoElement : MonoBehaviour
                     casinoElementsId[j].element.upgradeIndex = elementsSaveDatas[i].upgradeIndex;
                     casinoElementsId[j].element.gameObject.SetActive(true);
                     casinoElementsId[j].element.transform.parent.gameObject.SetActive(true);
-                    
+                    casinoElementsId[j].element.buyAreaController.gameObject.SetActive(false);
+                    yield return new WaitForSeconds(.2f);
+                    casinoElementsId[j].element.GetStackMoney().InitStackMoney(elementsSaveDatas[i].stackMoneyAmount
+                        , MoneyType.baccaratMoney);
                 }
             }
         }
@@ -62,7 +67,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
     public void AddItemToElementsSaveDatas(CasinoElement element)
     {
         int id = GetId(element);
-        
+
         if (id == -1)
         {
             Debug.Log("the element doesnt add to list");
@@ -79,7 +84,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
                 return;
             }
         }
-        
+
         elementsSaveDatas.Add(new CasinoElementSaveData(id, element.upgradeIndex));
         SaveElementData();
     }
@@ -111,6 +116,26 @@ public class SaveLoad_CasinoElement : MonoBehaviour
     {
         SaveLoadSystem.DeleteFile(casinoElementSaveDatasPath);
     }
+
+
+    private void OnApplicationQuit()
+    {
+        for (int i = 0; i < elementsSaveDatas.Count; i++)
+        {
+            for (int j = 0; j < casinoElementsId.Count; j++)
+            {                
+                if (casinoElementsId[j].element.gameObject.activeSelf == true                    
+                    && elementsSaveDatas[i].elementId == casinoElementsId[j].elementId)
+                {
+                    elementsSaveDatas[i].stackMoneyAmount = casinoElementsId[j].element.GetStackMoney().stackCounter;
+                    break;
+                }
+            }
+        }
+
+        SaveElementData();
+    }
+
 }
 
 [System.Serializable]
@@ -125,6 +150,7 @@ public class CasinoElementSaveData
 {
     public int elementId;
     public int upgradeIndex;
+    public int stackMoneyAmount;
 
     public CasinoElementSaveData(int elementId, int upgradeIndex)
     {

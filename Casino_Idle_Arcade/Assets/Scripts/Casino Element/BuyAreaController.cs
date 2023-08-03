@@ -43,7 +43,7 @@ public class BuyAreaController : MonoBehaviour
         playerWaitingCd = maxPlayerWaitingCd;
         //priceAmount = price;
         paymentAmount = (price / (payTime * 10));
-
+        if (paymentAmount < 1) paymentAmount = price;
     }
 
     private void Update()

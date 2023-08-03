@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Worker : MonoBehaviour
 {
     public CinemachineVirtualCamera flCam;
+    [HideInInspector] public bool camFollow = true;
 
 
     public NavMeshAgent agent;
@@ -21,13 +22,13 @@ public class Worker : MonoBehaviour
     public int capacityAmount;
     public Animator anim;
 
-
+    //public BuyAreaController buyAreaController;
 
 
     public virtual void Start()
     {
         SetMoveSpeed();
-
+        SaveLoad_Workers.Instance.SaveWorker(this);
     }
 
     public virtual void ArrivedToFirstPosition()

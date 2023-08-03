@@ -12,4 +12,7 @@ public class PlayerHandStackData : HandStackData
         // for player stack max txt in ui
         MaxStackText.Instance.SetTextState(false);
     }
+
+    
+
 }

@@ -5,13 +5,16 @@ using UnityEngine;
 public class BuyCashierDesk : MonoBehaviour
 {
     [SerializeField] int cashierListIndex;
-    [SerializeField] BuyAreaController controller;
+    public BuyAreaController controller;
     [SerializeField] CashierManager cashierManager;
 
+    bool notSaved;
     private void Update()
     {
-        if (controller.price <= 0)
+        if (controller.price <= 0 && !notSaved)
         {
+            notSaved = true;
+            SaveLoad_Cashier.Instance.SaveCashierDesk(controller);
             CustomerSpawner.instance.cashierManager[cashierListIndex] = cashierManager;
             Destroy(gameObject);
         }

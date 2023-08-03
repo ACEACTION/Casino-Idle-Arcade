@@ -19,19 +19,29 @@ public class PlayerData : UpgradeData<float>
     public override void PassValueToData(float v)
     {
         base.PassValueToData(v);
-        animationMoveSpeed = v;
+
         // animation speed
+        animationMoveSpeed = v;
         PlayerMovements.Instance.SetAnimationMoveSpeed(animationMoveSpeed);
 
         // player move speed
-        PlayerMovements.Instance.SetPlayerMoveSpeed(playerMoveSpeedUpgrades[upgradeLevelCounter - 1]);
+        playerMoveSpeed = playerMoveSpeedUpgrades[upgradeLevelCounter - 1];
+        PlayerMovements.Instance.SetPlayerMoveSpeed(playerMoveSpeed);
+    }
+
+    public override void ResetData()
+    {
+        base.ResetData();
+        upgradeValue = 0;
+        playerMoveSpeed = defaultPlayerMoveSpeed;
+        animationMoveSpeed = defaultAnimationMoveSpeed;
     }
 
     public override void OnEnable()
     {
         base.OnEnable();
-        animationMoveSpeed = defaultAnimationMoveSpeed;        
-        playerMoveSpeed = defaultPlayerMoveSpeed;
+        //animationMoveSpeed = defaultAnimationMoveSpeed;        
+        //playerMoveSpeed = defaultPlayerMoveSpeed;
     }
 
 }

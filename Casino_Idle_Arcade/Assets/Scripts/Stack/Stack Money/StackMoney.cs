@@ -43,6 +43,18 @@ public class StackMoney : MonoBehaviour
         }
     }
 
+    public void InitStackMoney(int moneyAmout, MoneyType type)
+    {
+        for (int i = 0; i < moneyAmout; i++)
+        {         
+            Money money = StackMoneyPool.Instance.pool.Get();
+            money.transform.position = transform.position;
+            money.transform.eulerAngles = new Vector3(0, 0, 0);
+            money.SetMoneyAmount(type);
+            AddToStack(money);
+        }
+    }
+
 
     private void Update()
     {

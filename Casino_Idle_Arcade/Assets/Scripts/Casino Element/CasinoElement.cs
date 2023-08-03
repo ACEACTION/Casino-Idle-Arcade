@@ -10,7 +10,7 @@ public class CasinoElement : MonoBehaviour
     public int upgradeIndex;
     public int maxGameCapacity;
     public int customerCounter;
-    [SerializeField] GameObject buyAreaController;
+    public GameObject buyAreaController;
     [SerializeField] int[] upgradeCapacity;
     [SerializeField] GameObject[] upgradeModels;
     public List<CustomerMovement> customers = new List<CustomerMovement>();
@@ -116,7 +116,9 @@ public class CasinoElement : MonoBehaviour
         GetModel().localScale = new Vector3(0.01f, 0.01f, 0.01f);
         GetModel().DOScale(defaultScale, 0.7f).SetEase(Ease.OutBounce);
     }
-    
+
+    public virtual StackMoney GetStackMoney() => null;
+
 }
 
 [System.Serializable]

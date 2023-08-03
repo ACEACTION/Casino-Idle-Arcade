@@ -96,23 +96,6 @@ public class PriorityController : MonoBehaviour
                 Debug.Log(success);
             });
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SaveLoadSystem.SaveAes(prioritiesSaveDataSlots, openedPrioritiesDataPath,
-            (error) =>
-            {
-                Debug.Log(error);
-            },
-            (success) =>
-            {
-                Debug.Log(success);
-            });
-        }
-    }
-
     void LoadPrioritiesId()
     {
         for (int i = 0; i < prioritiesSaveDataSlots.Count; i++)
@@ -139,6 +122,12 @@ public class PriorityController : MonoBehaviour
         , (success) => { Debug.Log(success); });
 
     }
+
+    public void DeleteOpenedPriorityFile()
+    {
+        SaveLoadSystem.DeleteFile(openedPrioritiesDataPath);
+    }
+
 }
 
 [System.Serializable]

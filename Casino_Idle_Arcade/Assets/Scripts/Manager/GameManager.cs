@@ -22,10 +22,15 @@ public static class GameManager
     public static void AddMoney(int amount)
     {
         totalMoney += amount;
+        SaveTotalMoney();
     }
-    
 
-    public static void MinusMoney(int amount) => totalMoney -= amount;
+
+    public static void MinusMoney(int amount)
+    {
+        totalMoney -= amount;
+        SaveTotalMoney();
+    }
 
     public static int GetTotalMoney() => totalMoney;
 
