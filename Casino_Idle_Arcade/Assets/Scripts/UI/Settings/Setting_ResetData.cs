@@ -26,6 +26,8 @@ public class Setting_ResetData : MonoBehaviour
         SaveLoad_Cashier.Instance.DeleteCashierData();
         SaveLoad_Workers.Instance.DeleteWorkersDataFile();
 
+        LevelUpSlider.Instance.data.ResetData();
+
         ResetUpgradeData();
 
         SceneManager.LoadScene(0);

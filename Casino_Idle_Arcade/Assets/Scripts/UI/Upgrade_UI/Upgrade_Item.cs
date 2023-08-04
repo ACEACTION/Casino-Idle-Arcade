@@ -35,6 +35,9 @@ public class Upgrade_Item : MonoBehaviour
                 
                 CameraFollow.instance.SetDynamicFollow_UpgradeWorker(upgradeEff.transform.parent
                     , upgradeEff, upgradeData.upgradeName);
+
+
+                LevelUpSlider.Instance.SetLevelUp(LevelUpSlider.Instance.starIcon.position);
             }
             else
             {

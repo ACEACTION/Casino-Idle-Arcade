@@ -8,12 +8,12 @@ using DG.Tweening;
 public class LevelUpSlider : MonoBehaviour
 {
 
-    int totalMoney;
+    //int totalMoney;
 
     [SerializeField] int sliderUnit;
 
     [SerializeField] Slider slider;
-    [SerializeField] LevelUpData data;
+    public LevelUpData data;
     [SerializeField] TextMeshProUGUI lvlTxt;
     Camera cam;
     [SerializeField] Canvas canvas;
@@ -31,10 +31,16 @@ public class LevelUpSlider : MonoBehaviour
     Vector3 moneyTxtOriginPos;
 
     [Header("Stars")]
+    [SerializeField] float starFirsScaleDuration;
+    [SerializeField] float starRotDuration;
+    [SerializeField] float doPathDelay;
+    [SerializeField] float starRotate;
     [SerializeField] float starsDuration;
     [SerializeField] float starRevertFirstPosAmount;
     [SerializeField] float startMidPathAmount;
-    [SerializeField] RectTransform starIcon;
+    float starIconDefaultScale;
+    float starCloneDefaultScale;
+    public RectTransform starIcon;
     [SerializeField] RectTransform[] starsClone;
 
     public static LevelUpSlider Instance;
@@ -48,15 +54,22 @@ public class LevelUpSlider : MonoBehaviour
     {
         SetLvlTxt();
         SetSliderMaxValue();
+        slider.value = data.lvlUpCurrentUnit;
 
         SetMoneyScale();
-        money.gameObject.SetActive(false);
         money.onClick.AddListener(MoneyAction);
         cam = Camera.main;
+        
+        if (data.totalMoney > 0)
+            money.gameObject.SetActive(true);
+        else
+            money.gameObject.SetActive(false);
 
         moneyTxtOriginPos = moneyTxt.transform.position;
         moneyTxt.gameObject.SetActive(false);
 
+        starIconDefaultScale = starIcon.localScale.x;
+        starCloneDefaultScale = starsClone[0].localScale.x;
     }
 
     void SetMoneyScale() =>
@@ -66,9 +79,9 @@ public class LevelUpSlider : MonoBehaviour
     void MoneyAction()
     {
 
-        MoveMoneyClones();
+        money.gameObject.SetActive(false);
+        //MoveMoneyClones();
         MoveMoneyTxt();
-
     }
 
     void MoveMoneyClones()
@@ -92,25 +105,29 @@ public class LevelUpSlider : MonoBehaviour
 
             SetDoPath(moneyCloneTransform, totalMoneyIcon.position, midPathOffset, () =>
             {
-                totalMoney = 0;
                 moneyCloneTransform.DOKill();
                 moneyCloneTransform.position = originPos;
                 moneyCloneTransform.localScale = Vector3.one;
-                GameManager.AddMoney(50);
+                GameManager.AddMoney(data.totalMoney);
                 Money_UI.Instance.SetTotalMoneyTxt();
+                data.totalMoney = 0;
             });
 
         }
     }
 
-    void MoveMoneyTxt() 
+    void MoveMoneyTxt()
     {
-        moneyTxt.text = string.Concat("+", totalMoney);
+        GameManager.AddMoney(data.totalMoney);
+        Money_UI.Instance.SetTotalMoneyTxt();
+
+        moneyTxt.text = string.Concat("+", data.totalMoney);
         moneyTxt.gameObject.SetActive(true);
         moneyTxt.transform.DOMoveY(moneyTxt.transform.position.y + moveY, moneyDuration).OnComplete(() =>
         {
             moneyTxt.transform.position = moneyTxtOriginPos;
             moneyTxt.gameObject.SetActive(false);
+            data.totalMoney = 0;
         });
     }
 
@@ -121,48 +138,29 @@ public class LevelUpSlider : MonoBehaviour
             SetLevelUp(PlayerMovements.Instance.transform.position);            
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            for (int i = 0; i < starsClone.Length; i++)
+            {
+                starsClone[i].localScale = Vector3.zero;
+            }
+        }
+
     }
 
 
 
-    bool lvlUped = false;
     public void SetLevelUp(Vector3 worldPos)
     {
         data.lvlUpCurrentUnit += sliderUnit;
         StartCoroutine(Delay());
-        //slider.value += sliderUnit;
-        //if (data.lvlUpCurrentUnit >= slider.maxValue)
-        //{
-        //    int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter];
-        //    if (remain > 0)
-        //    {
-        //        slider.value = remain;
-        //        data.lvlUpCurrentUnit = remain;
-        //    }
-        //    else
-        //    {
-        //        slider.value = 0;
-        //        data.lvlUpCurrentUnit = 0;
-        //    }
-
-        //    data.lvlUpCounter++;
-        //    SetSliderMaxValue();
-        //    money.gameObject.SetActive(true);
-        //    totalMoney += data.GetMoneyAmountPerLevelUp();
-        //    lvlUped = true;
-
-        //    SetLvlTxt();
-        //}
-
-
-        //if (makeStars)
         MakeStars(worldPos);
 
     }
 
     IEnumerator Delay()
     { 
-        yield return new WaitForSeconds(starsDuration);
+        yield return new WaitForSeconds(starsDuration + doPathDelay * starsClone.Length * 2);
 
         slider.value += sliderUnit;
         if (data.lvlUpCurrentUnit >= slider.maxValue)
@@ -182,42 +180,13 @@ public class LevelUpSlider : MonoBehaviour
             data.lvlUpCounter++;
             SetSliderMaxValue();
             money.gameObject.SetActive(true);
-            totalMoney += data.GetMoneyAmountPerLevelUp();
-            lvlUped = true;
+            data.totalMoney += data.GetMoneyAmountPerLevelUp();
+
 
             SetLvlTxt();
         }
     }
 
-
-    void SetSliderValue()
-    {
-        //slider.value += sliderUnit;
-
-        if (data.lvlUpCurrentUnit >= slider.maxValue)
-        {
-            print("VC");
-            data.lvlUpCounter++;
-            int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter];
-            if (remain > 0)
-            {
-                slider.value = remain;
-                data.lvlUpCurrentUnit = remain;
-            }
-            else
-            {
-                slider.value = 0;
-                data.lvlUpCurrentUnit = 0;
-            }
-
-            SetSliderMaxValue();
-            money.gameObject.SetActive(true);
-            totalMoney += data.GetMoneyAmountPerLevelUp();
-            lvlUped = true;
-
-            SetLvlTxt();
-        }
-    }
 
     
     void MakeStars(Vector3 worldPos)
@@ -227,24 +196,55 @@ public class LevelUpSlider : MonoBehaviour
         {
             Transform star = starsClone[i];
             star.gameObject.SetActive(true);
-            SetFirstStarClonePos(star, screenPos, starRevertFirstPosAmount);
-
-            SetDoPath(star, starIcon.position, startMidPathAmount, ()=> {
-                MakeStarIconScale();
-                //slider.value += sliderUnit;
-                //SetSliderValue();
-            });
-
-            star.localScale = Vector3.zero;
-
-            star.DOScale(1.2f, starsDuration / 2).OnComplete(() =>
-            {
-                star.DOScale(1, starsDuration / 2);
-            });
-
+            SetFirstStarClonePos(star, screenPos, starRevertFirstPosAmount);            
             revertPos = !revertPos;
         }
-        
+
+        StartCoroutine(StarsDoPathProcess());
+
+    }
+
+    
+    
+    IEnumerator StarsDoPathProcess()
+    {
+
+        for (int i = 0; i < starsClone.Length; i++)
+        {
+            starsClone[i].localScale = Vector3.zero;
+        }
+
+        for (int i = 0; i < starsClone.Length; i++)
+        {
+            Transform star = starsClone[i];
+            star.transform.DOKill();
+            yield return new WaitForSeconds(doPathDelay);                                   
+            star.eulerAngles = new Vector3(0, starRotate, 0);
+            star.DOScale(starCloneDefaultScale, starFirsScaleDuration).OnComplete(() =>
+            {                
+                star.DORotate(new Vector3(0, -starRotate, 0), starRotDuration).SetLoops(-1, LoopType.Yoyo);
+            });
+        }
+
+        yield return new WaitForSeconds(.5f);
+
+        for (int i = 0; i < starsClone.Length; i++)
+        {
+            Transform star = starsClone[i];
+            star.transform.DOKill();
+            star.DORotate(Vector3.zero, starRotDuration);
+            yield return new WaitForSeconds(doPathDelay);
+
+            MakeObjectScale(star, starCloneDefaultScale + .3f, starCloneDefaultScale / 2, starsDuration / 2);
+
+            SetDoPath(star, starIcon.position, startMidPathAmount, () =>
+            {
+                MakeStarIconScale();
+                star.localScale = Vector3.one;
+                star.transform.DOKill();
+            });
+        }
+
     }
 
 
@@ -281,7 +281,7 @@ public class LevelUpSlider : MonoBehaviour
     }
 
     void MakeStarIconScale() 
-        => MakeObjectScale(starIcon, starIcon.localScale.x + .2f, starIcon.localScale.x, .2f);
+        => MakeObjectScale(starIcon, starIconDefaultScale + .4f, starIconDefaultScale, .2f);
 
     void MakeObjectScale(Transform t, float targetScale, float originScale, float duration) =>
         t.DOScale(targetScale, duration).OnComplete(() => { t.DOScale(originScale, duration); });
@@ -293,8 +293,8 @@ public class LevelUpSlider : MonoBehaviour
 
     private void OnDisable()
     {
-        data.lvlUpCounter = 0;
-        data.lvlUpCurrentUnit = 0;
+        //data.lvlUpCounter = 0;
+        //data.lvlUpCurrentUnit = 0;
     }
 
 }
