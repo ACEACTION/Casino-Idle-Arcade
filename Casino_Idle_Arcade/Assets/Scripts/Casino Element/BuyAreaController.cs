@@ -24,7 +24,7 @@ public class BuyAreaController : MonoBehaviour
 
     public float maxPlayerWaitingCd;
     float playerWaitingCd;
-
+    bool lvlUpSlider;
     public int paymentAmount = 0;
     int remainingPayment;
     float defaultScale;
@@ -98,10 +98,12 @@ public class BuyAreaController : MonoBehaviour
             buildEffect.gameObject.SetActive(true);
             buildEffect.Play();
 
+
             if (!playSfx)
             {
                 playSfx = true;
                 AudioSourceManager.Instance.PlayBuyAreaSfx();
+                LevelUpSlider.Instance.SetLevelUp(transform.position);
             }
 
             if (destroyAfterBought)

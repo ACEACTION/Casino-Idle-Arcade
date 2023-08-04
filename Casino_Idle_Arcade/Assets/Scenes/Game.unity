@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11281,6 +11281,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cbb8c9ee2ada87b4d839707fbe01b7c7, type: 2}
+    - target: {fileID: 7444508482839504920, guid: fc45fd062a7539240bcb7576e2e73f38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790072495112434338, guid: fc45fd062a7539240bcb7576e2e73f38,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7951363266597731260, guid: fc45fd062a7539240bcb7576e2e73f38,
         type: 3}
       propertyPath: m_IsActive
@@ -11399,7 +11409,7 @@ GameObject:
   - component: {fileID: 7790072495112434338}
   - component: {fileID: 7790072495112434339}
   m_Layer: 0
-  m_Name: CH_main
+  m_Name: CH_main_outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11695,15 +11705,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2203419397760399638, guid: 00840687c9751ef458d835ea36450997,
-        type: 3}
-      propertyPath: m_text
-      value: Mamad.ezio99@gmail.com
+    - target: {fileID: 759805290, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: sliderUnit
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2203419398702821967, guid: 00840687c9751ef458d835ea36450997,
-        type: 3}
-      propertyPath: m_text
-      value: rashabaar@gmail.com
+    - target: {fileID: 759805290, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: midPathOffset
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 759805290, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: moneyDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 759805290, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: starRevertFirstPosAmount
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138758310, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3036236806881520960, guid: 00840687c9751ef458d835ea36450997,
         type: 3}
@@ -11734,16 +11754,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6793054527486170811, guid: 00840687c9751ef458d835ea36450997,
-        type: 3}
-      propertyPath: email
-      value: rashabaar@gmail.com
-      objectReference: {fileID: 0}
-    - target: {fileID: 6793054528699129314, guid: 00840687c9751ef458d835ea36450997,
-        type: 3}
-      propertyPath: email
-      value: Mamad.ezio99@gmail.com
       objectReference: {fileID: 0}
     - target: {fileID: 8431720599722076367, guid: 00840687c9751ef458d835ea36450997,
         type: 3}

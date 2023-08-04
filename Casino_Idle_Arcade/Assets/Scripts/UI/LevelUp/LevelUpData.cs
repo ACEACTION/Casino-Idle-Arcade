@@ -6,6 +6,10 @@ using UnityEngine;
 public class LevelUpData : ScriptableObject
 {
     public int lvlUpCounter;
+    public int moneyAmountPerUnit;
     public int lvlUpCurrentUnit;
     public List<int> maxLvlUpUnit = new List<int>();
+
+    public int GetMoneyAmountPerLevelUp() => moneyAmountPerUnit;
+
 }
