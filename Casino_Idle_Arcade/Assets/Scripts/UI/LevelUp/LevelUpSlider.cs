@@ -53,14 +53,21 @@ public class LevelUpSlider : MonoBehaviour
     void Start()
     {
         SetLvlTxt();
-        SetSliderMaxValue();
-        slider.value = data.lvlUpCurrentUnit;
+        if (LvlIsMax())
+        {
+            slider.value = slider.maxValue;
+        }
+        else
+        {
+            SetSliderMaxValue();
+            slider.value = data.lvlUpCurrentUnit;
+        }
 
         SetMoneyScale();
         money.onClick.AddListener(MoneyAction);
         cam = Camera.main;
         
-        if (data.totalMoney > 0)
+        if (data.totalMoney > 0 && !LvlIsMax())
             money.gameObject.SetActive(true);
         else
             money.gameObject.SetActive(false);
