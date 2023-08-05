@@ -152,37 +152,65 @@ public class LevelUpSlider : MonoBehaviour
 
     public void SetLevelUp(Vector3 worldPos)
     {
-        data.lvlUpCurrentUnit += sliderUnit;
-        StartCoroutine(Delay());
+        StartCoroutine(FillSliderValue());
         MakeStars(worldPos);
 
     }
 
-    IEnumerator Delay()
-    { 
+    IEnumerator FillSliderValue()
+    {
         yield return new WaitForSeconds(starsDuration + doPathDelay * starsClone.Length * 2);
 
-        slider.value += sliderUnit;
-        if (data.lvlUpCurrentUnit >= slider.maxValue)
+        if (!LvlIsMax())
         {
-            int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter];
-            if (remain > 0)
+            data.lvlUpCurrentUnit += sliderUnit;
+            //slider.value += sliderUnit;
+
+            if (data.lvlUpCurrentUnit >= slider.maxValue)
             {
-                slider.value = remain;
-                data.lvlUpCurrentUnit = remain;
+                int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter];
+                if (remain > 0)
+                {
+                    //slider.value = remain;
+                    data.lvlUpCurrentUnit = remain;
+
+                    slider.DOValue(slider.maxValue, .4f).OnComplete(() =>
+                    {
+                        slider.value = 0;
+                        slider.DOValue(remain, .4f);
+                    });
+
+                }
+                else
+                {
+                    data.lvlUpCurrentUnit = 0;
+                    slider.DOValue(slider.maxValue, .4f).OnComplete(() =>
+                    {
+                        slider.value = 0;
+                    });
+                }
+
+
+                data.lvlUpCounter++;
+                if (!LvlIsMax())
+                {
+                    SetSliderMaxValue();
+                }
+                else
+                {
+                    slider.DOKill();
+                    slider.DOValue(slider.maxValue, .4f);
+                }
+
+                money.gameObject.SetActive(true);
+                data.totalMoney += data.GetMoneyAmountPerLevelUp();
+                SetLvlTxt();
             }
             else
-            {
-                slider.value = 0;
-                data.lvlUpCurrentUnit = 0;
-            }
-
-            data.lvlUpCounter++;
-            SetSliderMaxValue();
-            money.gameObject.SetActive(true);
-            data.totalMoney += data.GetMoneyAmountPerLevelUp();
-
-
+                slider.DOValue(data.lvlUpCurrentUnit, .4f);
+        }
+        else
+        {
             SetLvlTxt();
         }
     }
@@ -201,7 +229,6 @@ public class LevelUpSlider : MonoBehaviour
         }
 
         StartCoroutine(StarsDoPathProcess());
-
     }
 
     
@@ -289,7 +316,19 @@ public class LevelUpSlider : MonoBehaviour
     Vector2 GetScreenPos(Vector3 worldPos) => RectTransformUtility.WorldToScreenPoint(cam, worldPos);
 
     void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter];
-    void SetLvlTxt() => lvlTxt.text = string.Concat("lvl ", data.lvlUpCounter + 1);
+    void SetLvlTxt()
+    {
+        if (LvlIsMax())
+            lvlTxt.text = "lvl max";
+        else
+            lvlTxt.text = string.Concat("lvl ", data.lvlUpCounter + 1);
+        
+        //MakeObjectScale(lvlTxt.transform, lvlTxt.transform.localScale.x + .2f, lvlTxt.transform.localScale.x, .3f);
+        lvlTxt.transform.DOScale(lvlTxt.transform.localScale + new Vector3(.2f, 0, 0), .3f).OnComplete(
+            () => { lvlTxt.transform.DOScale(lvlTxt.transform.localScale - new Vector3(.2f, 0, 0), .3f); });
+    }
+
+    bool LvlIsMax() => data.lvlUpCounter + 1 > data.maxLvlUpUnit.Count;
 
     private void OnDisable()
     {
