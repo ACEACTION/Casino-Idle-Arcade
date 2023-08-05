@@ -22,6 +22,7 @@ public class LevelUpData : ScriptableObject
         lvlUpCurrentValue = 0;
         lvlUpCurrentValue = 0;
         totalMoney = 0;
+        lvlUpCounter = 0;
     }
 }
 

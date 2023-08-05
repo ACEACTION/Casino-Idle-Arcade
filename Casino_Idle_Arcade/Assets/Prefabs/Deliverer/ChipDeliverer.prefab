@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flCam: {fileID: 0}
+  camFollow: 1
   agent: {fileID: 3628109666241430342}
   afterSpawnTransform: {fileID: 0}
   spawnPoint: {fileID: 0}
@@ -759,7 +760,6 @@ MonoBehaviour:
   capacity: 3
   capacityAmount: 3
   anim: {fileID: 3628109666241430349}
-  buyAreaController: {fileID: 2579812154198415040}
   state: 1
   destination: {fileID: 0}
   camStayCd: 0
@@ -1414,6 +1414,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuyArea Deliver
       objectReference: {fileID: 0}
+    - target: {fileID: 5378571929610464673, guid: 85e9e3d8969197343b9bd9650d4209ec,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 5378571929990083564, guid: 85e9e3d8969197343b9bd9650d4209ec,
         type: 3}
       propertyPath: buildEffect
@@ -1491,18 +1496,6 @@ PrefabInstance:
       objectReference: {fileID: 3628109665283185774}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e9e3d8969197343b9bd9650d4209ec, type: 3}
---- !u!114 &2579812154198415040 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5378571929990083564, guid: 85e9e3d8969197343b9bd9650d4209ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 7595835137846764844}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8277dbec7f03d364eb03949a4b76d44d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2614317598955631415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5561452758810498587, guid: 85e9e3d8969197343b9bd9650d4209ec,
