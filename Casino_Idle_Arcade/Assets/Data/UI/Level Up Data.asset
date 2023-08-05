@@ -12,28 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b096d0927c42f46865e96f7d3e1de8, type: 3}
   m_Name: Level Up Data
   m_EditorClassIdentifier: 
-  lvlUpCounter: 4
+  lvlUpUnit: 3
   moneyAmountPerUnit: 500
-  lvlUpCurrentUnit: 11
-  totalMoney: 750
+  lvlUpCounter: 0
+  lvlUpCurrentValue: 0
+  totalMoney: 0
   maxLvlUpUnit:
-  - lvlUnit: 10
+  - maxLvlValue: 10
     moneyAmount: 100
-  - lvlUnit: 20
+  - maxLvlValue: 15
     moneyAmount: 250
-  - lvlUnit: 30
+  - maxLvlValue: 20
     moneyAmount: 350
-  - lvlUnit: 40
+  - maxLvlValue: 25
     moneyAmount: 400
-  - lvlUnit: 50
-    moneyAmount: 600
-  - lvlUnit: 60
-    moneyAmount: 700
-  - lvlUnit: 70
-    moneyAmount: 800
-  - lvlUnit: 80
-    moneyAmount: 900
-  - lvlUnit: 90
-    moneyAmount: 1200
-  - lvlUnit: 100
-    moneyAmount: 1500

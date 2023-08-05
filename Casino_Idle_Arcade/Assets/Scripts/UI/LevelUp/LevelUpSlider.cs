@@ -8,15 +8,12 @@ using DG.Tweening;
 public class LevelUpSlider : MonoBehaviour
 {
 
-    //int totalMoney;
-
-    [SerializeField] int sliderUnit;
+    [SerializeField] float sliderFillDuration;
 
     [SerializeField] Slider slider;
     public LevelUpData data;
     [SerializeField] TextMeshProUGUI lvlTxt;
     Camera cam;
-    [SerializeField] Canvas canvas;
 
     bool revertPos = true;
 
@@ -60,7 +57,7 @@ public class LevelUpSlider : MonoBehaviour
         else
         {
             SetSliderMaxValue();
-            slider.value = data.lvlUpCurrentUnit;
+            slider.value = data.lvlUpCurrentValue;
         }
 
         SetMoneyScale();
@@ -100,11 +97,6 @@ public class LevelUpSlider : MonoBehaviour
             Transform moneyCloneTransform = moneyClones[i].transform;
             moneyCloneTransform.gameObject.SetActive(true);
             Vector3 originPos = moneyCloneTransform.position;
-
-            //moneyCloneTransform.DOScale(moneyCloneTransform.localScale.x + .2f, moneyDuration / 2).OnComplete(() =>
-            //{
-            //    moneyCloneTransform.DOScale(.3f, moneyDuration / 2);
-            //});
 
             moneyCloneTransform.transform.localScale = new Vector3(.4f, .4f, .4f);
             MakeObjectScale(moneyCloneTransform,
@@ -170,56 +162,46 @@ public class LevelUpSlider : MonoBehaviour
 
         if (!LvlIsMax())
         {
-            data.lvlUpCurrentUnit += sliderUnit;
-            //slider.value += sliderUnit;
-
-            if (data.lvlUpCurrentUnit >= slider.maxValue)
+            data.lvlUpCurrentValue += data.lvlUpUnit;
+            if (data.lvlUpCurrentValue >= data.maxLvlUpUnit[data.lvlUpCounter].maxLvlValue)
             {
-                int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter].lvlUnit;
-                if (remain > 0)
-                {
-                    //slider.value = remain;
-                    data.lvlUpCurrentUnit = remain;
-
-                    slider.DOValue(slider.maxValue, .4f).OnComplete(() =>
-                    {
-                        slider.value = 0;
-                        slider.DOValue(remain, .4f);
-                    });
-
-                }
-                else
-                {
-                    data.lvlUpCurrentUnit = 0;
-                    slider.DOValue(slider.maxValue, .4f).OnComplete(() =>
-                    {
-                        slider.value = 0;
-                    });
-                }
-
+                int remain = data.lvlUpCurrentValue - data.maxLvlUpUnit[data.lvlUpCounter].maxLvlValue;
+                data.lvlUpCurrentValue = remain;
 
                 data.lvlUpCounter++;
+                SetLvlTxt();
+
+                money.gameObject.SetActive(true);
+                data.SetTotalMoney();
+
                 if (!LvlIsMax())
                 {
-                    SetSliderMaxValue();
+
+                    slider.DOValue(slider.maxValue, sliderFillDuration).OnComplete(() =>
+                    {
+                        SetSliderMaxValue();
+                        slider.value = 0;
+                        slider.DOValue(data.lvlUpCurrentValue, sliderFillDuration);
+                    });
+
                 }
                 else
                 {
-                    slider.DOKill();
-                    slider.DOValue(slider.maxValue, .4f);
+                    SetLvlTxt();
+                    slider.DOValue(slider.maxValue, sliderFillDuration);
                 }
-
-                money.gameObject.SetActive(true);
-                data.totalMoney += data.GetMoneyAmountPerLevelUp();
-                SetLvlTxt();
             }
             else
-                slider.DOValue(data.lvlUpCurrentUnit, .4f);
+            {
+                slider.DOValue(data.lvlUpCurrentValue, sliderFillDuration);
+            }
         }
         else
         {
             SetLvlTxt();
         }
+
+
     }
 
 
@@ -269,7 +251,7 @@ public class LevelUpSlider : MonoBehaviour
             star.DORotate(Vector3.zero, starRotDuration);
             yield return new WaitForSeconds(doPathDelay);
 
-            MakeObjectScale(star, starCloneDefaultScale + .3f, starCloneDefaultScale / 2, starsDuration / 2);
+            MakeObjectScale(star, starCloneDefaultScale + .4f, starCloneDefaultScale / 2, starsDuration / 2);
 
             SetDoPath(star, starIcon.position, startMidPathAmount, () =>
             {
@@ -322,7 +304,7 @@ public class LevelUpSlider : MonoBehaviour
 
     Vector2 GetScreenPos(Vector3 worldPos) => RectTransformUtility.WorldToScreenPoint(cam, worldPos);
 
-    void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter].lvlUnit;
+    void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter].maxLvlValue;
     void SetLvlTxt()
     {
         if (LvlIsMax())
@@ -339,8 +321,8 @@ public class LevelUpSlider : MonoBehaviour
 
     private void OnDisable()
     {
-        //data.lvlUpCounter = 0;
-        //data.lvlUpCurrentUnit = 0;
+        data.lvlUpCounter = 0;
+        data.lvlUpCurrentValue = 0;
     }
 
 }

@@ -5,19 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/UI/LevelUp Data")]
 public class LevelUpData : ScriptableObject
 {
-    public int lvlUpCounter;
+    public int lvlUpUnit;
     public int moneyAmountPerUnit;
-    public int lvlUpCurrentUnit;
+    public int lvlUpCounter;
+    public int lvlUpCurrentValue;
     public int totalMoney;
 
     public List<LvlUpSlot> maxLvlUpUnit = new List<LvlUpSlot>();
 
-    public int GetMoneyAmountPerLevelUp() => maxLvlUpUnit[lvlUpCounter - 1].moneyAmount;
+    int GetMoneyAmountPerLevelUp() => maxLvlUpUnit[lvlUpCounter - 1].moneyAmount;
+
+    public void SetTotalMoney() => totalMoney += GetMoneyAmountPerLevelUp();
 
     public void ResetData()
     {
-        lvlUpCurrentUnit = 0;
-        lvlUpCurrentUnit = 0;
+        lvlUpCurrentValue = 0;
+        lvlUpCurrentValue = 0;
         totalMoney = 0;
     }
 }
@@ -25,6 +28,6 @@ public class LevelUpData : ScriptableObject
 [System.Serializable]
 public class LvlUpSlot
 {
-    public int lvlUnit;
+    public int maxLvlValue;
     public int moneyAmount;
 }
