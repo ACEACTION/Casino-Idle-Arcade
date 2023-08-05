@@ -175,7 +175,7 @@ public class LevelUpSlider : MonoBehaviour
 
             if (data.lvlUpCurrentUnit >= slider.maxValue)
             {
-                int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter];
+                int remain = data.lvlUpCurrentUnit - data.maxLvlUpUnit[data.lvlUpCounter].lvlUnit;
                 if (remain > 0)
                 {
                     //slider.value = remain;
@@ -322,7 +322,7 @@ public class LevelUpSlider : MonoBehaviour
 
     Vector2 GetScreenPos(Vector3 worldPos) => RectTransformUtility.WorldToScreenPoint(cam, worldPos);
 
-    void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter];
+    void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter].lvlUnit;
     void SetLvlTxt()
     {
         if (LvlIsMax())
