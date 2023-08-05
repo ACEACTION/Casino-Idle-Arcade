@@ -71,12 +71,4 @@ public class SaveLoadController : MonoBehaviour
         SaveLoadSystem.DeleteFile(tutorialStatePath);
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print(GameManager.sfx + "  " + GameManager.music);
-        }
-    }
 }

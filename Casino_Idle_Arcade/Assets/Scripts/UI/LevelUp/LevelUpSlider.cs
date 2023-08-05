@@ -321,8 +321,8 @@ public class LevelUpSlider : MonoBehaviour
 
     private void OnDisable()
     {
-        data.lvlUpCounter = 0;
-        data.lvlUpCurrentValue = 0;
+        //data.lvlUpCounter = 0;
+        //data.lvlUpCurrentValue = 0;
     }
 
 }
