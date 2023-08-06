@@ -78,9 +78,10 @@ public class Truck : MonoBehaviour
             snack.transform.SetParent(casinoResource.transform);
             casinoResource.snacks.Add(snack);
 
-            snack.transform.DOJump(casinoResource.snackPositions[casinoResource.snacks.Count - 1].transform.position, 1f, 1, 0.1f).OnComplete(() =>
+        snack.transform.DOJump(casinoResource.snackPositions[casinoResource.snacks.Count-1].transform.position, 1f, 1, 0.09f).OnComplete(() =>
             {
                 snack.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.1f);
+
 
             });
            // casinoResource.listIndex++;
