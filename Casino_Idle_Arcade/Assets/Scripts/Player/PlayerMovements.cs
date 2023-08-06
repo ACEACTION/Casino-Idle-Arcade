@@ -46,6 +46,7 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (canMove)
         {
             Move();
@@ -58,6 +59,7 @@ public class PlayerMovements : MonoBehaviour
 
 
         }
+
     }
 
     public void RotatePlayerFace()
@@ -76,13 +78,14 @@ public class PlayerMovements : MonoBehaviour
             SetMovingAnimationState(false);
             footSteps.SetActive(false);
         }
+
     }
 
 
     private void Move()
     {
-        xDir = Joystick.Instance.Horizontal + Input.GetAxisRaw("Horizontal");
-        zDir = Joystick.Instance.Vertical + Input.GetAxisRaw("Vertical");
+        xDir = Joystick.Instance.Horizontal + Input.GetAxis("Horizontal");
+        zDir = Joystick.Instance.Vertical + Input.GetAxis("Vertical");
 
         _input = new Vector3(xDir, 0, zDir);
         inputMagnitude = Mathf.Clamp01(_input.magnitude);
@@ -100,8 +103,9 @@ public class PlayerMovements : MonoBehaviour
 
         controller.Move(_input);
 
+
     }
- 
+
     public void SetMovingAnimationState(bool state) => anim.SetBool("isRunning", state);
 
 
