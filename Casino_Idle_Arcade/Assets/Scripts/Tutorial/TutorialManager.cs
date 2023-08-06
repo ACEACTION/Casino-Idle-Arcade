@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
 {
+    public int startMoney;
     [SerializeField] float followCamTime;
     [SerializeField] float chipDeskTime;
     [SerializeField] Vector3 camOffset;

@@ -45,6 +45,7 @@ public class StackMoney : MonoBehaviour
 
     public void InitStackMoney(int moneyAmout, MoneyType type)
     {
+        print("BB");
         for (int i = 0; i < moneyAmout; i++)
         {         
             Money money = StackMoneyPool.Instance.pool.Get();
