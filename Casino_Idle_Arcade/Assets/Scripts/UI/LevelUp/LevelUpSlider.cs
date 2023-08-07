@@ -46,11 +46,12 @@ public class LevelUpSlider : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
-        data.LoadData();
     }
 
     void Start()
     {
+        data.LoadData();
+
         SetLvlTxt();
         if (LvlIsMax())
         {

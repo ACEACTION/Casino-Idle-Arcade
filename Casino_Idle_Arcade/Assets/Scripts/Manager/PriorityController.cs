@@ -18,7 +18,6 @@ public class PriorityController : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
-        LoadData();
     }
 
     private void Start()
@@ -29,6 +28,7 @@ public class PriorityController : MonoBehaviour
         }
 
 
+        LoadData();
         LoadPrioritiesId();
     }
 

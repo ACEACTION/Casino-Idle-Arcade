@@ -31,12 +31,12 @@ public class SaveLoadController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LoadTutorialState();
     }
 
 
-    private void Start()
+    void Start()
     {
-        LoadTutorialState();
         saveLoad_settings.LoadSettings();
         GameManager.LoadTotalMoney(defaultMoney);
     }
@@ -62,6 +62,15 @@ public class SaveLoadController : MonoBehaviour
         , (error) => {
             //GameManager.isCompleteTutorial = false;
             GameManager.isCompleteTutorial = isCompleteTutorial;
+
+            if (!isCompleteTutorial)
+            {
+                SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+                PriorityController.Instance.DeleteOpenedPriorityFile();
+                SaveLoad_Cashier.Instance.DeleteCashierData();
+                GameManager.DeleteTotalMoneyFile();
+                LevelUpSlider.Instance.data.ResetData();
+            }
         }
         , (success) => { Debug.Log(success); });
     }

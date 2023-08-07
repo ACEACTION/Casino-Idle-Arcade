@@ -384,16 +384,16 @@ public class TutorialManager : MonoBehaviour
 
     Vector3 GetPlayerPos() => PlayerMovements.Instance.transform.position;
 
-    private void OnApplicationQuit()
-    {
-        if (!GameManager.isCompleteTutorial)
-        {
-            SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
-            PriorityController.Instance.DeleteOpenedPriorityFile();         
-            SaveLoad_Cashier.Instance.DeleteCashierData();
-            GameManager.DeleteTotalMoneyFile();
-            LevelUpSlider.Instance.data.ResetData();
-        }
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    if (!GameManager.isCompleteTutorial)
+    //    {
+    //        SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+    //        PriorityController.Instance.DeleteOpenedPriorityFile();         
+    //        SaveLoad_Cashier.Instance.DeleteCashierData();
+    //        GameManager.DeleteTotalMoneyFile();
+    //        LevelUpSlider.Instance.data.ResetData();
+    //    }
+    //}
 
 }
