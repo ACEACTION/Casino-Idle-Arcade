@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class StartLoaderSceneSlider : MonoBehaviour
 {
+    [SerializeField] GameObject startLoaderCanvas;
     [SerializeField] Slider progressSlider;
 
     void Start()
@@ -16,7 +17,7 @@ public class StartLoaderSceneSlider : MonoBehaviour
     IEnumerator LoadAsynchronously()
     {
 
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
         while (!operation.isDone)
@@ -26,6 +27,10 @@ public class StartLoaderSceneSlider : MonoBehaviour
             progressSlider.value = progress;            
             yield return null;
         }
+
+        yield return new WaitForSeconds(1f);
+        startLoaderCanvas.SetActive(false);
+
     }
 
 }

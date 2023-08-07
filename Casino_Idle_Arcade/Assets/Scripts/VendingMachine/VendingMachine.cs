@@ -86,4 +86,5 @@ public class VendingMachine : CasinoGame
         base.CustomerLeft();
         customerCounter--;
     }
+
 }

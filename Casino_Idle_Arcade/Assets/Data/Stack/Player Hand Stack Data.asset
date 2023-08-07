@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Player Hand Stack Data
   m_EditorClassIdentifier: 
   upgradeName: Stack
-  upgradeValue: 6
-  upgradeLevelCounter: 0
+  upgradeValue: 15
+  upgradeLevelCounter: 4
   upgradeSlots:
   - upgradeValue: 6
     upgradeCost: 1600
@@ -24,7 +24,11 @@ MonoBehaviour:
     upgradeCost: 3800
   - upgradeValue: 15
     upgradeCost: 5400
-  maxStackCount: 5
+  dataFileName: playerHandStack
+  upgradeDataSlot:
+    upgradeLevelCounter: 4
+    upgradeValue: 15
+  maxStackCount: 15
   defaultMaxStackCount: 5
   stackYOffset: 0.17
   maxAddStackCd: 0.1

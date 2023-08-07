@@ -35,7 +35,6 @@ public class PriorityController : MonoBehaviour
 
     public void AddPriority(List<GameObject> priorities, GameObject boughtElement)
     {
-        
         foreach (GameObject obj in priorities)
         {
             PriorityObjectSlot slot = GetPriorityObj(obj);
@@ -44,9 +43,10 @@ public class PriorityController : MonoBehaviour
             else
                 prioritiesSaveDataSlots.Add(new PrioritySaveDataSlot(-1, -1));
         }
+        
 
         PriorityObjectSlot priorityObject = GetPriorityObj(boughtElement);
-
+        
         if (priorityObject == null) return;
 
         foreach (PrioritySaveDataSlot slot in prioritiesSaveDataSlots)
@@ -95,6 +95,7 @@ public class PriorityController : MonoBehaviour
             {
                 Debug.Log(success);
             });
+
     }
     void LoadPrioritiesId()
     {

@@ -14,17 +14,28 @@ public class WorkerData : UpgradeData<float>
         moveSpeed = v;
     }
 
-    public override void ResetData()
-    {
-        base.ResetData();
-        upgradeValue = 0;
-        moveSpeed = defaultMoveSpeed;
-    }
-
     public override void OnEnable()
     {
         base.OnEnable();
         //moveSpeed = defaultMoveSpeed;
     }
 
+    public override void LoadDefaultValue()
+    {
+        base.LoadDefaultValue();
+        upgradeValue = 0;
+        moveSpeed = defaultMoveSpeed;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        LoadDefaultValue();
+    }
+
+    public override void ResetData()
+    {
+        LoadDefaultValue();
+        base.ResetData();
+    }
 }

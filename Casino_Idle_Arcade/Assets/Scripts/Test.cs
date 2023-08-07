@@ -11,23 +11,62 @@ using System;
 
 public class Test : MonoBehaviour
 {
-    public float vibrateCancelTime;
-    public TMP_InputField inputField;
-    public TMP_InputField inputField2;
 
-
-    public void VibrateBtn()
+    private void Start()
     {
-        StartCoroutine(VibrateProcess());
-    }
-
-    IEnumerator VibrateProcess()
-    {
-        Vibrator.Vibrate((Convert.ToInt64(inputField.text)));
-        yield return new WaitForSeconds(0.1f);
-        Vibrator.Cancel();
-
+        
     }
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MyClass myObject = new MyClass();
+            AnotherClass anotherObject = new AnotherClass();
+
+            myObject.ValueChanged += anotherObject.HandleValueChanged; // Subscribe to the event
+
+            myObject.MyValue = 10; // This will trigger the action in AnotherClass
+            
+            print(myObject.MyValue);
+        }
+    }
+}
+
+
+public class MyClass
+{
+    private int myValue;
+    public event Action<int> ValueChanged; // Event to notify the change
+
+    public int MyValue
+    {
+        get { return myValue; }
+        set
+        {
+            if (myValue != value)
+            {
+                myValue = value;
+                OnValueChanged(myValue); // Trigger the event
+            }
+        }
+    }
+
+    protected virtual void OnValueChanged(int newValue)
+    {
+        ValueChanged?.Invoke(newValue); // Invoke the event
+    }
+}
+
+
+
+// Class that handles the action
+public class AnotherClass
+{
+    public void HandleValueChanged(int newValue)
+    {
+        // Perform the desired action with the new value
+        Debug.Log("Value changed: " + newValue);
+    }
 }

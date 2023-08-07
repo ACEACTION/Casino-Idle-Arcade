@@ -12,8 +12,16 @@ public class CasinoGame : CasinoElement
     public CasinoGameMoneyStack[] moneyStacks;
     public CasinoGameStack gameStack;
     public StackMoney stackMoney;
-    
-    
+
+    public Action OnStackMoneyAmountChange;
+
+    public override void Start()
+    {
+        base.Start();
+        stackMoney.StackCounterOnChanged += SaveLoad_CasinoElement.Instance.SaveStackMoneyAmount;
+    }
+
+
     public override void CustomerHasArrived()
     {
         base.CustomerHasArrived();

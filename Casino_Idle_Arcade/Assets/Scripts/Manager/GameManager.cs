@@ -59,6 +59,8 @@ public static class GameManager
 
     public static void DeleteTotalMoneyFile()
     {
+        totalMoney = 0;
+        isCompleteTutorial = false;
         SaveLoadSystem.DeleteFile(totalMoneyDataPath);
     }
 

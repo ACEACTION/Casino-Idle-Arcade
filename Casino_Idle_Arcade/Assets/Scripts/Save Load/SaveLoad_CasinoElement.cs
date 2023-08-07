@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
 
     [SerializeField] List<CasinoElementId> casinoElementsId;
     [SerializeField] List<CasinoElementSaveData> elementsSaveDatas;
+
 
 
     public static SaveLoad_CasinoElement Instance;
@@ -28,6 +30,8 @@ public class SaveLoad_CasinoElement : MonoBehaviour
 
         StartCoroutine(LoadCasinoElements());
     }
+
+
 
     IEnumerator LoadCasinoElements()
     {
@@ -112,28 +116,28 @@ public class SaveLoad_CasinoElement : MonoBehaviour
 
         return -1;
     }
-    public void DeleteCasinoElementDataFile()
-    {
-        SaveLoadSystem.DeleteFile(casinoElementSaveDatasPath);
-    }
 
-
-    private void OnApplicationQuit()
+    public void SaveStackMoneyAmount()
     {
         for (int i = 0; i < elementsSaveDatas.Count; i++)
         {
             for (int j = 0; j < casinoElementsId.Count; j++)
-            {                
-                if (casinoElementsId[j].element.gameObject.activeSelf == true                    
-                    && elementsSaveDatas[i].elementId == casinoElementsId[j].elementId)
+            {
+                if (elementsSaveDatas[i].elementId == casinoElementsId[j].elementId)
                 {
-                    elementsSaveDatas[i].stackMoneyAmount = casinoElementsId[j].element.GetStackMoney().stackCounter;
+                    elementsSaveDatas[i].stackMoneyAmount = casinoElementsId[j].element.GetStackMoney().StackCounter;
                     break;
                 }
             }
         }
-
         SaveElementData();
+    }
+
+
+    public void DeleteCasinoElementDataFile()
+    {
+        elementsSaveDatas.Clear();
+        SaveLoadSystem.DeleteFile(casinoElementSaveDatasPath);
     }
 
 }

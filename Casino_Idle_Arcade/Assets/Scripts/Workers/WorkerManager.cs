@@ -94,5 +94,12 @@ public static class WorkerManager
 
     public static bool BuyedWorker() => rouletteCleaners.Count > 0 || chipDeliverers.Count > 0;
 
-  
+    
+    public static void ResetData()
+    {
+        rouletteCleaners.Clear();
+        casinoGamesForCleaners.Clear();
+        casinoGamesForDeliverer.Clear();
+        chipDeliverers.Clear();
+    }
 }

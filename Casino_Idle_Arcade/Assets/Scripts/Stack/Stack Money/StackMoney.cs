@@ -5,8 +5,28 @@ using DG.Tweening;
 
 public class StackMoney : MonoBehaviour
 {
+    public event System.Action StackCounterOnChanged;
+    int stackCounter;
+    public int StackCounter
+    {
+        get { return stackCounter; }
+        set
+        {
+            if (stackCounter != value)
+            {
+                stackCounter = value;
+                StackCounterOnChanged?.Invoke();
+            } 
+        }
+    }
+
+    public int a;
+    private void Update()
+    {
+        a = StackCounter;
+    }
+
     [Header("Stack")]    
-    public int stackCounter;
     [HideInInspector] public bool isPlayer;
     public int totalMoney;
 
@@ -45,7 +65,6 @@ public class StackMoney : MonoBehaviour
 
     public void InitStackMoney(int moneyAmout, MoneyType type)
     {
-        print("BB");
         for (int i = 0; i < moneyAmout; i++)
         {         
             Money money = StackMoneyPool.Instance.pool.Get();
@@ -57,29 +76,30 @@ public class StackMoney : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if (isPlayer)
-        {
-            //foreach (Money money in moneyList)
-            //{
-            //    money.transform.DOMove(money.transform.position + GetRandomLootOffset(), lootData.lootMoveUpDuration)
-            //        .OnComplete(() =>
-            //        {
-            //            money.SetGoToPlayer();
-            //        });
+    //private void Update()
+    //{
+    //    if (isPlayer)
+    //    {
+    //        foreach (Money money in moneyList)
+    //        {
+    //            money.transform.DOMove(money.transform.position + GetRandomLootOffset(), lootData.lootMoveUpDuration)
+    //                .OnComplete(() =>
+    //                {
+    //                    money.SetGoToPlayer();
+    //                });
 
-            //    money.transform.DORotate(new Vector3(Random.Range(0, 360),
-            //        Random.Range(0, 360),
-            //        Random.Range(0, 360)), lootData.lootRotDuration);
+    //            money.transform.DORotate(new Vector3(Random.Range(0, 360),
+    //                Random.Range(0, 360),
+    //                Random.Range(0, 360)), lootData.lootRotDuration);
 
-            //    money.transform.DOScale(.4f, lootData.lootScaleDuration);
-            //}
-            //stackCounter = 0;
-            //moneyList.Clear();
-        }
-    }
-    
+    //            money.transform.DOScale(.4f, lootData.lootScaleDuration);
+    //        }
+    //        stackCounter = 0;
+    //        moneyList.Clear();
+    //    }
+    //}
+   
+
     void MoveUpMoneyAndGoToPlayer()
     {
         foreach (Money money in moneyList)
@@ -96,7 +116,8 @@ public class StackMoney : MonoBehaviour
 
             money.transform.DOScale(.4f, lootData.lootScaleDuration);
         }
-        stackCounter = 0;
+
+        StackCounter = 0;
         moneyList.Clear();
     }
 
@@ -108,9 +129,9 @@ public class StackMoney : MonoBehaviour
 
         if (!isPlayer)
         {
-            if (stackCounter < slots.Count)
+            if (StackCounter < slots.Count)
             {                
-                SetMoneyParent(money.transform, slots[stackCounter].transform);
+                SetMoneyParent(money.transform, slots[StackCounter].transform);
                 money.transform.DOLocalJump(Vector3.zero, stackData.jumpPower, 1, stackData.moneyMoveDuration)
                     .SetEase(stackData.moneyMoveEase);
                 moneyList.Add(money);
@@ -129,7 +150,7 @@ public class StackMoney : MonoBehaviour
                     money.transform.DORotate(new Vector3(0, Random.Range(-7, 7), 0), .5f, RotateMode.FastBeyond360);
 
                 });
-            stackCounter++;
+            StackCounter++;
 
         }
         else
@@ -156,7 +177,7 @@ public class StackMoney : MonoBehaviour
 
     public void GetFromStack()
     {
-        stackCounter = 0;        
+        StackCounter = 0;        
         StartCoroutine(GoToPlayer());
     }
 

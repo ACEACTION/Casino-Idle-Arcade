@@ -30,6 +30,9 @@ public class CashierManager : MonoBehaviour
         slider.maxValue = cooldown;
         CustomerSpawner.instance.maxCustomer += maxCapacity;
         slider.gameObject.SetActive(false);
+
+        stackMoney.StackCounterOnChanged += SaveLoad_Cashier.Instance.SaveStackMoneyAmount;
+
     }
 
 

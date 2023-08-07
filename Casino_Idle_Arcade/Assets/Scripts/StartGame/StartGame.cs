@@ -12,6 +12,8 @@ public class StartGame : MonoBehaviour
     [SerializeField] GameObject startGameCanvas;
     [SerializeField] GameObject tutorial;
     [SerializeField] GameObject settingPanel;
+    
+    
     public static StartGame Instance;
 
     private void Awake()
@@ -25,6 +27,16 @@ public class StartGame : MonoBehaviour
         mainCanvas.SetActive(false);
         tutorial.SetActive(false);
         PlayerMovements.Instance.canMove = false;
+
+        StartCoroutine(ActiveStartGameCanvas());
+
+    }
+
+    IEnumerator ActiveStartGameCanvas() 
+    {
+        startGameCanvas.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        startGameCanvas.SetActive(true);
     }
 
     public void TapToStart()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6102607708014967550}
   - component: {fileID: 6102607708014967551}
   - component: {fileID: 6102607708014967549}
+  - component: {fileID: 8192506016310223944}
   m_Layer: 0
   m_Name: Save Load Controller
   m_TagString: Untagged
@@ -60,3 +61,25 @@ MonoBehaviour:
   saveLoad_settings: {fileID: 6102607708014967551}
   isCompleteTutorial: 1
   defaultMoney: 2371
+--- !u!114 &8192506016310223944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102607708014967488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8806db62377a24a887ead6cbe57792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStack: {fileID: 11400000, guid: 67454789013e8b4448639e7c2ff16b74, type: 2}
+  playerData: {fileID: 11400000, guid: e42c85ffe2fa00d4a84def698c6859a7, type: 2}
+  cleanerData1: {fileID: 11400000, guid: c399897c1e5f4664e8d231c701e2d96d, type: 2}
+  cleanerData2: {fileID: 11400000, guid: 91040b004500d6e43a5db4da81d1d90f, type: 2}
+  chipDeliverStackData1: {fileID: 11400000, guid: 6c465caa3f218a04eb518cc845e570a0,
+    type: 2}
+  chipDeliverData1: {fileID: 11400000, guid: 838255393aa14b2488b7465a75bd09ea, type: 2}
+  chipDeliverStackData2: {fileID: 11400000, guid: fb42201377bd4c146a2867af86a35d1a,
+    type: 2}
+  chipDeliverData2: {fileID: 11400000, guid: 9bc4d4fc2d05e6f4fa6ab7c302e75584, type: 2}

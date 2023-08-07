@@ -47,6 +47,7 @@ public class CasinoGame_ChipGame : CasinoGame
     public Slider gameSlider;
     [SerializeField] CasinoChipGameCanvas casinoGameCanvas;
 
+    
     public void Init()
     {
         cleaningSlider.value = 0;
@@ -72,7 +73,7 @@ public class CasinoGame_ChipGame : CasinoGame
             if (totalChipCounter >= 10 && totalChipCounter < 15) moneyAmount = (int)(moneyAmount * 2f);
             if (totalChipCounter >= 15) moneyAmount *= 3;
             customers[winnerIndex].PayMoney(stackMoney, moneyAmount, MoneyType.baccaratMoney);
-
+            
         }
     }
 

@@ -62,7 +62,8 @@ public class SettingPanel : MonoBehaviour
         if (!wasSelected)
         {
             wasSelected = true;
-            SaveLoad_Settings.Instance.SaveSettings(GameManager.sfx, GameManager.music);        
+            if (SaveLoad_Settings.Instance != null)
+                SaveLoad_Settings.Instance.SaveSettings(GameManager.sfx, GameManager.music);        
             settingWindow.DOScale(0, openWinDuration).SetEase(closeWindowEase).OnComplete(() =>
             {
                 gameObject.SetActive(false);

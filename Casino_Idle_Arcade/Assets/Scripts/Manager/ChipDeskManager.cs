@@ -26,4 +26,9 @@ public static class ChipDeskManager
         return nearestDesk;
     }
 
+    public static void ResetData()
+    {
+        chipDeskList.Clear();
+    }
+
 }

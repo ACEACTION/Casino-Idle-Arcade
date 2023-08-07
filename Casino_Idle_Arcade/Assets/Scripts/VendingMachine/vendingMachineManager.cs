@@ -25,4 +25,8 @@ public static class vendingMachineManager
         return FindVendingMachine();
     }
 
+    public static void ResetData()
+    {
+        vendingMachines.Clear();
+    }
 }

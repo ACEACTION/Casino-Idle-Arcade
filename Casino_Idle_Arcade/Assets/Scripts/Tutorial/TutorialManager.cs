@@ -20,6 +20,8 @@ public class TutorialManager : MonoBehaviour
     bool getChip;
     public bool carryChip;
 
+    bool showFirstLook;
+
     // clean
     bool goToCleanTable;
     bool baccaratGameIsEnded;
@@ -31,11 +33,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] BuyAreaController baccaratBAController;
     [SerializeField] CashierManager cashierManager;
     [SerializeField] GameObject chipDesk;
-    [SerializeField] float beforeFollowTime;
+    //[SerializeField] float beforeFollowTime;
     [SerializeField] Baccarat firstBaccarat;
     //[SerializeField] HandStack playerHandStack;
     [SerializeField] GameObject secondBaccarat;
-    [SerializeField] PriorityManager firstPriority_Baccarat;
+    //[SerializeField] PriorityManager firstPriority_Baccarat;
     //[SerializeField] PlayerHandStackData playerHandStackData;
     [SerializeField] GameObject ambienceAudioSrc;
 
@@ -57,23 +59,46 @@ public class TutorialManager : MonoBehaviour
     bool notYetUpgradePanelClosed;
     bool enoughMoneyToUpgradePlayerStack;
 
+    // second bacc
+    //[SerializeField] PriorityManager secondBaccaratPriority;
+    //public List<GameObject> secondBaccPriorityObjs;
+    //public GameObject secondBaccOpenedPriority;
+        
+    private void Awake()
+    {
+        if (!GameManager.isCompleteTutorial)
+            cashierManager.gameObject.SetActive(false);
+    }
+
     private void Start()
     {
 
         if (!GameManager.isCompleteTutorial)
         {
-            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 5.7f;
+            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 5f;
             cashierManager.transform.parent.gameObject.SetActive(false);
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
-            ChangeCamera();
+            //ChangeCamera();
             chipDesk.SetActive(false);
             
             standArrow.transform.DOMoveY(standArrow.transform.position.y - 1f, 1.5f).SetLoops(-1, LoopType.Yoyo);
-            firstPriority_Baccarat.priorityObjs.RemoveAt(0);
+            //firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
             ambienceAudioSrc.SetActive(false);
-            upgradeBtn.SetActive(false);
+            //upgradeBtn.SetActive(false);
+
+
+            // second baccarat priority 
+            //for (int i = 0; i < secondBaccaratPriority.priorityObjs.Count; i++)
+            //{
+            //    secondBaccPriorityObjs.Add(secondBaccaratPriority.priorityObjs[i]);
+            //}
+            //secondBaccOpenedPriority = secondBaccaratPriority.openedPriority;
+            
+            //secondBaccPriorityObjs.Add(secondBaccarat);
+            //secondBaccOpenedPriority = firstBaccarat.gameObject;
+
         }
         else
         {
@@ -98,18 +123,27 @@ public class TutorialManager : MonoBehaviour
         if (GameManager.isCompleteTutorial) return;
         
         MaxStackText.Instance.SetTextState(false);
-
+        
+        ShowFirstLook();
         LootStartMoney();
         MakeFirstBaccarat();
         ShowCashier();
         ChipDeskProcess();
         CarryChipToTable();
         ClearTable();
-        UpgradePlayerStack();
+        //UpgradePlayerStack();
         SetArrowFollow();
     }
 
- 
+
+    void ShowFirstLook()
+    {
+        if (!showFirstLook)
+        {
+            showFirstLook = true;
+            //ChangeCamera();
+        }
+    }
     void LootStartMoney()
     {
         if (!lootStartMoney && startMoneyStack.isPlayer)
@@ -133,7 +167,7 @@ public class TutorialManager : MonoBehaviour
 
             objs.RemoveAt(0);
             makeFirstRoulette = true;
-            
+            secondBaccarat.SetActive(false);
             cashierManager.transform.parent.gameObject.SetActive(true);
 
             changeCam = true;            
@@ -225,6 +259,18 @@ public class TutorialManager : MonoBehaviour
             standArrow.SetActive(false);
             baccaratGameIsEnded = false;
             canUpgradePlayerStack = true;
+
+            secondBaccarat.SetActive(true);
+            ambienceAudioSrc.SetActive(true);
+
+            secondBaccarat.SetActive(true);
+
+            // save data
+            GameManager.isCompleteTutorial = true;
+            SaveLoadController.Instance.SaveTutorialState();
+            GameManager.SaveTotalMoney();
+            
+            //PriorityController.Instance.AddPriority(secondBaccPriorityObjs, secondBaccOpenedPriority);
         }
 
     }
@@ -276,12 +322,14 @@ public class TutorialManager : MonoBehaviour
                         uIBlock_closeUpgradePanel.SetActive(false);
                         canUpgradePlayerStack = false;
                         ambienceAudioSrc.SetActive(true);
-                        secondBaccarat.SetActive(true);
+                        
+                        //secondBaccarat.SetActive(true);
 
-                        GameManager.isCompleteTutorial = true;
+                        //GameManager.isCompleteTutorial = true;
+                        
                         // save data
-                        SaveLoadController.Instance.SaveTutorialState();
-                        GameManager.SaveTotalMoney();
+                        //SaveLoadController.Instance.SaveTutorialState();
+                        //GameManager.SaveTotalMoney();
 
                     }
                 }
@@ -324,7 +372,7 @@ public class TutorialManager : MonoBehaviour
         Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false); 
         followCam.SetActive(true);
 
-        standArrow.transform.position = objs[0].position + new Vector3(0, 4, 0);
+        standArrow.transform.position = objs[0].position + new Vector3(0, 6, 0);
         LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
         followCam.SetActive(false);
@@ -336,5 +384,16 @@ public class TutorialManager : MonoBehaviour
 
     Vector3 GetPlayerPos() => PlayerMovements.Instance.transform.position;
 
+    private void OnApplicationQuit()
+    {
+        if (!GameManager.isCompleteTutorial)
+        {
+            SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+            PriorityController.Instance.DeleteOpenedPriorityFile();         
+            SaveLoad_Cashier.Instance.DeleteCashierData();
+            GameManager.DeleteTotalMoneyFile();
+            LevelUpSlider.Instance.data.ResetData();
+        }
+    }
 
 }

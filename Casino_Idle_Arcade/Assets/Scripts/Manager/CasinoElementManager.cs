@@ -9,11 +9,11 @@ public static class CasinoElementManager
     public static List<CasinoElement> jackPots = new List<CasinoElement>();
 
     public static List<CasinoElement> allCasinoElements = new List<CasinoElement>();
-
     
   
     public static CasinoElement FindCasinoElement()
     {
+        
         foreach (CasinoElement element in allCasinoElements)
         {
             if (element.HasCapacity())
@@ -26,5 +26,13 @@ public static class CasinoElementManager
     {
         return FindCasinoElement();
     }  
+
+
+    public static void ResetData()
+    {
+        allCasinoElements.Clear();
+        roulettes.Clear();
+        jackPots.Clear();
+    }
 
 }

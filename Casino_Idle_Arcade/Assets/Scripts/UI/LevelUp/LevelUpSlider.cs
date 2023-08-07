@@ -45,6 +45,8 @@ public class LevelUpSlider : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        data.LoadData();
     }
 
     void Start()
@@ -127,6 +129,8 @@ public class LevelUpSlider : MonoBehaviour
             moneyTxt.transform.position = moneyTxtOriginPos;
             moneyTxt.gameObject.SetActive(false);
             data.totalMoney = 0;
+
+            data.SaveData();
         });
     }
 
@@ -195,6 +199,9 @@ public class LevelUpSlider : MonoBehaviour
             {
                 slider.DOValue(data.lvlUpCurrentValue, sliderFillDuration);
             }
+
+            data.SaveData();
+
         }
         else
         {

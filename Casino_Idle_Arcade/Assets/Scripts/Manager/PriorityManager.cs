@@ -11,14 +11,12 @@ public class PriorityManager : MonoBehaviour
 
     public void OpenNextPriority()
     {
-        if (!GameManager.isCompleteTutorial) return;
-
+        //if (!GameManager.isCompleteTutorial) return;
 
         if (!setPriority)
         {
             setPriority = true;
             SetPrioritySlotState(true);
-            
             PriorityController.Instance.AddPriority(priorityObjs, openedPriority);
         }
 

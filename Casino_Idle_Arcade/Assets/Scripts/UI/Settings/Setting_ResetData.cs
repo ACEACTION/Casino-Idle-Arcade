@@ -11,22 +11,33 @@ public class Setting_ResetData : MonoBehaviour
     [SerializeField] List<HandStackData> handStackUpgradeDatas;
     [SerializeField] List<WorkerData> workerDatas;
 
+    public static Setting_ResetData Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;    
+    }
+
     void Start()
     {
         resetBtn.onClick.AddListener(ResetProcess);
     }
 
-    void ResetProcess()
+    public void ResetProcess()
     {
         GameManager.DeleteTotalMoneyFile();
-        SaveLoadController.Instance.DeleteTutorialStateFile();
-        SaveLoad_Settings.Instance.DeleteSettingDataFile();
+        SaveLoadController.Instance?.DeleteTutorialStateFile();
+        SaveLoad_Settings.Instance?.DeleteSettingDataFile();
         SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
         PriorityController.Instance.DeleteOpenedPriorityFile();
         SaveLoad_Cashier.Instance.DeleteCashierData();
         SaveLoad_Workers.Instance.DeleteWorkersDataFile();
-
         LevelUpSlider.Instance.data.ResetData();
+        CasinoElementManager.ResetData();
+        vendingMachineManager.ResetData();
+        WorkerManager.ResetData();
+        ChipDeskManager.ResetData();
 
         ResetUpgradeData();
 

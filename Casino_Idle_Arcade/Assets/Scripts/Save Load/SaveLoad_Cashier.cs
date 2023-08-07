@@ -147,10 +147,8 @@ public class SaveLoad_Cashier : MonoBehaviour
         return -1;
     }
 
-    public void DeleteCashierData() => SaveLoadSystem.DeleteFile(cashierDataPath);
 
-
-    private void OnApplicationQuit()
+    public void SaveStackMoneyAmount()
     {
         for (int i = 0; i < cashierDataSlots.Count; i++)
         {
@@ -158,14 +156,19 @@ public class SaveLoad_Cashier : MonoBehaviour
             {
                 if (cashierDataSlots[i].id == cashierObjSlots[j].id)
                 {
-                    cashierDataSlots[i].stackMoneyAmount = cashierObjSlots[j].stackMoney.stackCounter;
+                    cashierDataSlots[i].stackMoneyAmount = cashierObjSlots[j].stackMoney.StackCounter;
                     break;
                 }
             }
         }
 
         SaveData();
+    }
 
+    public void DeleteCashierData()
+    {
+        cashierDataSlots.Clear();
+        SaveLoadSystem.DeleteFile(cashierDataPath);
     }
 
 }

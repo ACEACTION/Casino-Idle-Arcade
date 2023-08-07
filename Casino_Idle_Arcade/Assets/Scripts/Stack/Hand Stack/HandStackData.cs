@@ -19,17 +19,30 @@ public class HandStackData : UpgradeData<int>
         maxStackCount = v;
     }
 
-    public override void ResetData()
-    {
-        base.ResetData();
-        upgradeValue = 0;
-        maxStackCount = defaultMaxStackCount;
-    }
 
     public override void OnEnable()
     {
         base.OnEnable();
         //maxStackCount = defaultMaxStackCount;
+    }
+
+    public override void LoadDefaultValue()
+    {
+        base.LoadDefaultValue();
+        upgradeValue = 0;
+        maxStackCount = defaultMaxStackCount;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        LoadDefaultValue();
+    }
+
+    public override void ResetData()
+    {
+        LoadDefaultValue();
+        base.ResetData();
     }
 
 }
