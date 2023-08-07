@@ -60,6 +60,12 @@ public class LevelUpData : ScriptableObject
         LoadDefaultValue();
         SaveLoadSystem.DeleteFile(lvlUpFileName);
     }
+
+    private void OnDisable()
+    {
+        LoadDefaultValue();
+    }
+
 }
 
 [System.Serializable]
