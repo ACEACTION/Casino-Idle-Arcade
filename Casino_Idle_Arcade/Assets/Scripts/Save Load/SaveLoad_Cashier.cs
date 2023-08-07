@@ -20,6 +20,9 @@ public class SaveLoad_Cashier : MonoBehaviour
 
     private void Start()
     {
+       if (!GameManager.isCompleteTutorial)
+           DeleteCashierData();
+
        StartCoroutine(LoadCashierData());
     }
 
@@ -113,7 +116,7 @@ public class SaveLoad_Cashier : MonoBehaviour
                 Debug.Log(error);
             },
             (success) => {
-                Debug.Log(success);
+                //Debug.Log(success);
             });
     }
 
@@ -124,7 +127,10 @@ public class SaveLoad_Cashier : MonoBehaviour
             cashierDataSlots = data;
         }, cashierDataPath
            , (error) => { Debug.Log(error); }
-           , (success) => { Debug.Log(success); });
+           , (success) => 
+           { 
+               //Debug.Log(success); 
+           });
     }
 
     int GetIdByBuyAreaController(BuyAreaController bAC)

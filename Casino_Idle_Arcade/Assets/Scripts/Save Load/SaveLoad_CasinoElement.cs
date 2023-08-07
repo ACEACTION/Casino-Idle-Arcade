@@ -28,6 +28,9 @@ public class SaveLoad_CasinoElement : MonoBehaviour
             casinoElementsId[i].elementId = i;
         }
 
+        if (!GameManager.isCompleteTutorial)
+            DeleteCasinoElementDataFile();
+
         StartCoroutine(LoadCasinoElements());
     }
 
@@ -65,7 +68,10 @@ public class SaveLoad_CasinoElement : MonoBehaviour
             elementsSaveDatas = data;
         }, casinoElementSaveDatasPath
         , (error) => { Debug.Log(error); }
-        , (success) => { Debug.Log(success); });
+        , (success) =>
+        { 
+            //Debug.Log(success); 
+        });
     }
 
     public void AddItemToElementsSaveDatas(CasinoElement element)
@@ -100,7 +106,7 @@ public class SaveLoad_CasinoElement : MonoBehaviour
                 Debug.Log(error);
             },
             (success) => {
-            Debug.Log(success);
+            //Debug.Log(success);
         });
     }
 

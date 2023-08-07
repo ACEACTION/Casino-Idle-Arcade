@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AmirSaveLoadSystem;
 
 [CreateAssetMenu(menuName = "Data/WorkerData")]
 public class WorkerData : UpgradeData<float>
@@ -27,15 +28,62 @@ public class WorkerData : UpgradeData<float>
         moveSpeed = defaultMoveSpeed;
     }
 
-    public override void OnDisable()
-    {
-        base.OnDisable();
-        LoadDefaultValue();
-    }
+    //public override void OnDisable()
+    //{
+    //    base.OnDisable();
+    //    LoadDefaultValue();
+    //}
 
     public override void ResetData()
     {
         LoadDefaultValue();
         base.ResetData();
     }
+    public override void LoadData()
+    {
+        base.LoadData();
+
+        SaveLoadSystem.LoadAes<UpgradeWorkerDataSlot>((data) =>
+        {
+            upgradeLevelCounter = data.upgradeLevelCounter;
+            upgradeValue = data.upgradeValue;
+            PassValueToData(upgradeValue);
+        }, dataFileName
+        , (error) =>
+        {
+            Debug.Log(error);
+            LoadDefaultValue();
+        }
+        , (success) => 
+        { 
+           // Debug.Log(success);
+        });
+
+    }
+
+    public override void SaveData()
+    {
+        base.SaveData();
+        UpgradeWorkerDataSlot upgradeDataSlot = new UpgradeWorkerDataSlot();
+        upgradeDataSlot.upgradeLevelCounter = upgradeLevelCounter;
+        upgradeDataSlot.upgradeValue = upgradeValue;
+
+        SaveLoadSystem.SaveAes(upgradeDataSlot, dataFileName,
+            (error) =>
+            {
+                Debug.Log(error);
+            },
+            (success) =>
+            {
+                //Debug.Log(success);
+            });
+    }
 }
+
+[System.Serializable]
+public class UpgradeWorkerDataSlot
+{
+    public int upgradeLevelCounter;
+    public float upgradeValue;
+}
+

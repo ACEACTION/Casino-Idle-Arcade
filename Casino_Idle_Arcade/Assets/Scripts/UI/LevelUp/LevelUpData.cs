@@ -30,7 +30,10 @@ public class LevelUpData : ScriptableObject
             Debug.Log(error);
             LoadDefaultValue();
         }
-        , (success) => { Debug.Log(success); });
+        , (success) => 
+        { 
+            //Debug.Log(success); 
+        });
     }
 
     public void SaveData()
@@ -44,7 +47,7 @@ public class LevelUpData : ScriptableObject
                 Debug.Log(error);
             },
             (success) => {
-                Debug.Log(success);
+                //Debug.Log(success);
             });
     }
 

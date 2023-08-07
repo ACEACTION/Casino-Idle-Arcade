@@ -12,8 +12,7 @@ public class UpgradeData <T> : ScriptableObject
     public List<UpgradeSlot<T>> upgradeSlots;
 
     [Header("SaveLoadFile")]
-    [SerializeField] string dataFileName;
-    public UpgradeDataSlot<T> upgradeDataSlot;
+    public string dataFileName;
 
     public bool CanUpgrade()
         => upgradeLevelCounter < upgradeSlots.Count;
@@ -31,10 +30,10 @@ public class UpgradeData <T> : ScriptableObject
 
     public int GetUpgradeCost() => upgradeSlots[upgradeLevelCounter].upgradeCost;
 
-    public virtual void OnDisable()
-    {
-        upgradeLevelCounter = 0;
-    }
+    //public virtual void OnDisable()
+    //{
+    //    upgradeLevelCounter = 0;
+    //}
 
     public virtual void OnEnable()
     {        
@@ -43,42 +42,41 @@ public class UpgradeData <T> : ScriptableObject
 
     public virtual void LoadDefaultValue() => upgradeLevelCounter = 0;
 
-    public void LoadData()
+    public virtual void LoadData()
     {
-        SaveLoadSystem.LoadAes<UpgradeDataSlot<T>>((data) =>
-        {
-            upgradeLevelCounter = data.upgradeLevelCounter;
-            upgradeValue = data.upgradeValue;
-            upgradeDataSlot.upgradeLevelCounter = upgradeLevelCounter;
-            upgradeDataSlot.upgradeValue = upgradeValue;
-            PassValueToData(upgradeValue);
-        }, dataFileName
-        , (error) => { 
-            Debug.Log(error); 
-            LoadDefaultValue();
-        }
-        , (success) => { Debug.Log(success); });        
+        //SaveLoadSystem.LoadAes<UpgradeDataSlot<T>>((data) =>
+        //{
+        //    upgradeLevelCounter = data.upgradeLevelCounter;
+        //    upgradeValue = data.upgradeValue;
+        //    upgradeDataSlot.upgradeLevelCounter = upgradeLevelCounter;
+        //    upgradeDataSlot.upgradeValue = upgradeValue;
+        //    PassValueToData(upgradeValue);
+        //}, dataFileName
+        //, (error) => { 
+        //    Debug.Log(error); 
+        //    LoadDefaultValue();
+        //}
+        //, (success) => { Debug.Log(success); });        
     }
 
-    void SaveData()
+    public virtual void SaveData()
     {
-        upgradeDataSlot = new UpgradeDataSlot<T>();
-        upgradeDataSlot.upgradeLevelCounter = upgradeLevelCounter;
-        upgradeDataSlot.upgradeValue = upgradeValue;
+        //upgradeDataSlot = new UpgradeDataSlot<T>();
+        //upgradeDataSlot.upgradeLevelCounter = upgradeLevelCounter;
+        //upgradeDataSlot.upgradeValue = upgradeValue;
 
-        SaveLoadSystem.SaveAes(upgradeDataSlot, dataFileName,
-            (error) => {
-                Debug.Log(error);
-            },
-            (success) => {
-                Debug.Log(success);
-            });
+        //SaveLoadSystem.SaveAes(upgradeDataSlot, dataFileName,
+        //    (error) => {
+        //        Debug.Log(error);
+        //    },
+        //    (success) => {
+        //        Debug.Log(success);
+        //    });
     }
 
     public virtual void ResetData()
     {
-        upgradeLevelCounter = 0;        
-        upgradeDataSlot = null;
+        upgradeLevelCounter = 0;                
         SaveLoadSystem.DeleteFile(dataFileName);
     }
 
@@ -89,11 +87,4 @@ public class UpgradeSlot<T>
 {
     public T upgradeValue;
     public int upgradeCost;
-}
-
-[System.Serializable]
-public class UpgradeDataSlot<T>
-{
-    public int upgradeLevelCounter;
-    public T upgradeValue;
 }

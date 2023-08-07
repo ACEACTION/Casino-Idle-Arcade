@@ -42,7 +42,7 @@ public static class GameManager
                 Debug.Log(error);
             },
             (success) => {
-                Debug.Log(success);
+                //Debug.Log(success);
             });
     }
 

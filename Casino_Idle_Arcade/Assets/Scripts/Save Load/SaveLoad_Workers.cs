@@ -67,7 +67,7 @@ public class SaveLoad_Workers : MonoBehaviour
                 Debug.Log(error);
             },
             (success) => {
-                Debug.Log(success);
+                //Debug.Log(success);
             });
     }
 
@@ -78,7 +78,9 @@ public class SaveLoad_Workers : MonoBehaviour
             workersData = data;
         }, workerSaveDatasPath
            , (error) => { Debug.Log(error); }
-           , (success) => { Debug.Log(success); });
+           , (success) => { 
+               //Debug.Log(success);
+            });
     }
 
     int GetIdByWorker(Worker worker)

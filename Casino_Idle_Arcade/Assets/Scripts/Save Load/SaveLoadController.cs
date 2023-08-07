@@ -48,7 +48,7 @@ public class SaveLoadController : MonoBehaviour
                 Debug.Log(error);
             },
             (success) => {
-                Debug.Log(success);
+               // Debug.Log(success);
             });
 
         saveLoad_settings.SaveSettings(true, true); 
@@ -65,14 +65,16 @@ public class SaveLoadController : MonoBehaviour
 
             if (!isCompleteTutorial)
             {
-                SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
-                PriorityController.Instance.DeleteOpenedPriorityFile();
-                SaveLoad_Cashier.Instance.DeleteCashierData();
+                //SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
+                //PriorityController.Instance.DeleteOpenedPriorityFile();
+                //SaveLoad_Cashier.Instance.DeleteCashierData();
                 GameManager.DeleteTotalMoneyFile();
-                LevelUpSlider.Instance.data.ResetData();
+                //LevelUpSlider.Instance.data.ResetData();
             }
         }
-        , (success) => { Debug.Log(success); });
+        , (success) => { 
+           // Debug.Log(success); 
+        });
     }
 
     public void DeleteTutorialStateFile()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2901536146476313027}
   - component: {fileID: 2901536146476313036}
   - component: {fileID: 2901536146476313026}
+  - component: {fileID: 3564215600887397228}
   m_Layer: 0
   m_Name: SaveLoad Game Scene
   m_TagString: Untagged
@@ -58,6 +59,10 @@ MonoBehaviour:
     element: {fileID: 0}
   - elementId: 4
     element: {fileID: 0}
+  - elementId: 10
+    element: {fileID: 0}
+  - elementId: 11
+    element: {fileID: 0}
   - elementId: 5
     element: {fileID: 0}
   - elementId: 6
@@ -83,6 +88,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allPriorityObjects: []
   allBuyAreas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -160,13 +171,39 @@ MonoBehaviour:
   - id: 0
     worker: {fileID: 0}
     bAC: {fileID: 0}
+    priorityUi: {fileID: 0}
   - id: 1
     worker: {fileID: 0}
     bAC: {fileID: 0}
+    priorityUi: {fileID: 0}
   - id: 2
     worker: {fileID: 0}
     bAC: {fileID: 0}
+    priorityUi: {fileID: 0}
   - id: 3
     worker: {fileID: 0}
     bAC: {fileID: 0}
+    priorityUi: {fileID: 0}
   workersData: 
+--- !u!114 &3564215600887397228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901536146476313039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8806db62377a24a887ead6cbe57792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStack: {fileID: 11400000, guid: 67454789013e8b4448639e7c2ff16b74, type: 2}
+  playerData: {fileID: 11400000, guid: e42c85ffe2fa00d4a84def698c6859a7, type: 2}
+  cleanerData1: {fileID: 11400000, guid: c399897c1e5f4664e8d231c701e2d96d, type: 2}
+  cleanerData2: {fileID: 11400000, guid: 91040b004500d6e43a5db4da81d1d90f, type: 2}
+  chipDeliverStackData1: {fileID: 11400000, guid: 6c465caa3f218a04eb518cc845e570a0,
+    type: 2}
+  chipDeliverData1: {fileID: 11400000, guid: 838255393aa14b2488b7465a75bd09ea, type: 2}
+  chipDeliverStackData2: {fileID: 11400000, guid: fb42201377bd4c146a2867af86a35d1a,
+    type: 2}
+  chipDeliverData2: {fileID: 11400000, guid: 9bc4d4fc2d05e6f4fa6ab7c302e75584, type: 2}

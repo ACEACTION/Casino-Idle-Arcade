@@ -24,10 +24,9 @@ public class BuyAreaController : MonoBehaviour
 
     public float maxPlayerWaitingCd;
     float playerWaitingCd;
-    bool lvlUpSlider;
     public int paymentAmount = 0;
     int remainingPayment;
-    float defaultScale;
+    public float defaultScale;
     bool playSfx;
     private void Start()
     {

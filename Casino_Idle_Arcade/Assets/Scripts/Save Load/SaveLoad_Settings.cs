@@ -36,7 +36,7 @@ public class SaveLoad_Settings : MonoBehaviour
                 Debug.Log(error);    
             },            
             (success) => {
-                Debug.Log(success);
+                //Debug.Log(success);
             });
     }
 
@@ -49,23 +49,36 @@ public class SaveLoad_Settings : MonoBehaviour
             {
                 GameManager.sfx = data.sfx;
                 GameManager.music = data.music;
-                AudioSourceBgMusic.Instance.SetAudioSource();
+
             }, dataPath
-            , (error) => { Debug.Log(error); }
-            , (success) => { Debug.Log(success); });
+            , (error) => {
+                SetSettingsDefault();
+                Debug.Log(error); 
+            }
+            , (success) => { //Debug.Log(success);
+                            });
+
+            AudioSourceBgMusic.Instance.SetAudioSource();
         }
         else
         {
             // player doesnt play game even, firs time (or player didn't complete tutorial)
-            GameManager.sfx = true;
-            GameManager.music = true;
-            AudioSourceBgMusic.Instance.SetAudioSource();
+            SetSettingsDefault();
         }
     }
 
     public void DeleteSettingDataFile()
     {
+        SetSettingsDefault();
         SaveLoadSystem.DeleteFile(dataPath);
+    }
+
+    void SetSettingsDefault()
+    {
+        GameManager.sfx = true;
+        GameManager.music = true;
+        SaveSettings(true, true);
+        AudioSourceBgMusic.Instance.SetAudioSource();
     }
 
 }

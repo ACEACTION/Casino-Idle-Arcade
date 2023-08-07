@@ -85,6 +85,8 @@ public class TutorialManager : MonoBehaviour
             //firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
+            baccaratBAController.defaultScale = 1;
+
             ambienceAudioSrc.SetActive(false);
             //upgradeBtn.SetActive(false);
 
@@ -167,8 +169,11 @@ public class TutorialManager : MonoBehaviour
 
             objs.RemoveAt(0);
             makeFirstRoulette = true;
-            secondBaccarat.SetActive(false);
             cashierManager.transform.parent.gameObject.SetActive(true);
+
+            // it's active after tutorial, why after 0.01f is deactive? because we need to run start method of second bacc and childs
+            StartCoroutine(DeactiveSeconBacc());
+
 
             changeCam = true;            
             // next move
@@ -179,7 +184,13 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    
+    IEnumerator DeactiveSeconBacc()
+    {
+        yield return new WaitForSeconds(.1f);
+        //yield return new WaitForEndOfFrame();
+        secondBaccarat.SetActive(false);
+    }
+
     void ShowCashier()
     {
         if (showCashier)

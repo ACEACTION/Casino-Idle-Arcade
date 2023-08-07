@@ -27,6 +27,8 @@ public class PriorityController : MonoBehaviour
             allPriorityObjects.Add(new PriorityObjectSlot(i, allBuyAreas[i]));
         }
 
+        if (!GameManager.isCompleteTutorial)
+            DeleteOpenedPriorityFile();
 
         LoadData();
         LoadPrioritiesId();

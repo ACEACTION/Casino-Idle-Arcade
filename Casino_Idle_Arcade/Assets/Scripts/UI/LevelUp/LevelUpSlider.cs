@@ -50,6 +50,11 @@ public class LevelUpSlider : MonoBehaviour
 
     void Start()
     {
+        if (!GameManager.isCompleteTutorial)
+        {
+            data.ResetData();
+        }
+
         data.LoadData();
 
         SetLvlTxt();

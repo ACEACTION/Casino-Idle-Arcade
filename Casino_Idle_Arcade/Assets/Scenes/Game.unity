@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44398695, g: 0.49312526, b: 0.5722133, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465403, g: 0.4963718, b: 0.57479656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1424,7 +1424,7 @@ PrefabInstance:
     - target: {fileID: 6102607708014967549, guid: 4dae5543773b8af48b2b595455ae397c,
         type: 3}
       propertyPath: isCompleteTutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6102607708014967550, guid: 4dae5543773b8af48b2b595455ae397c,
         type: 3}
@@ -8792,6 +8792,11 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 228520692}
+    - target: {fileID: 3111766854272372097, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3111766854272372102, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -8872,6 +8877,11 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 3066260427739711760}
+    - target: {fileID: 3111766856049532536, guid: 3567e7409b55bbb4284f1992c4ff1a75,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3111766856049532537, guid: 3567e7409b55bbb4284f1992c4ff1a75,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -11194,11 +11204,6 @@ PrefabInstance:
       objectReference: {fileID: 839562028}
     - target: {fileID: 2901536146476313027, guid: dd74248eae89bb342b35aa30aea1a3ab,
         type: 3}
-      propertyPath: allBuyAreas.Array.size
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313027, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
       propertyPath: allBuyAreas.Array.data[0]
       value: 
       objectReference: {fileID: 335433752}
@@ -11504,11 +11509,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
         type: 3}
-      propertyPath: casinoElementsId.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
       propertyPath: casinoElementsId.Array.data[0].element
       value: 
       objectReference: {fileID: 782831043}
@@ -11567,41 +11567,6 @@ PrefabInstance:
       propertyPath: casinoElementsId.Array.data[11].element
       value: 
       objectReference: {fileID: 1610400078}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[5].elementId
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[6].elementId
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[7].elementId
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[8].elementId
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[9].elementId
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[10].elementId
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901536146476313038, guid: dd74248eae89bb342b35aa30aea1a3ab,
-        type: 3}
-      propertyPath: casinoElementsId.Array.data[11].elementId
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 2901536146476313039, guid: dd74248eae89bb342b35aa30aea1a3ab,
         type: 3}
       propertyPath: m_Name
@@ -13285,6 +13250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658539990230508047, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
         type: 3}
+      propertyPath: chipDesk
+      value: 
+      objectReference: {fileID: 1291266590}
+    - target: {fileID: 5658539990230508047, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
+        type: 3}
       propertyPath: tutorial
       value: 
       objectReference: {fileID: 1511046663}
@@ -13308,6 +13278,11 @@ PrefabInstance:
       propertyPath: settingPanel
       value: 
       objectReference: {fileID: 1047057906}
+    - target: {fileID: 5658539990230508047, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
+        type: 3}
+      propertyPath: ambienceAudioScr
+      value: 
+      objectReference: {fileID: 1734151231}
     - target: {fileID: 5658539991284010642, guid: 7e1c92b9421b8ca4eba21e59e0489a66,
         type: 3}
       propertyPath: m_IsActive

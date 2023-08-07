@@ -12,8 +12,9 @@ public class StartGame : MonoBehaviour
     [SerializeField] GameObject startGameCanvas;
     [SerializeField] GameObject tutorial;
     [SerializeField] GameObject settingPanel;
-    
-    
+    [SerializeField] GameObject chipDesk;
+    [SerializeField] GameObject ambienceAudioScr;
+
     public static StartGame Instance;
 
     private void Awake()
@@ -26,7 +27,15 @@ public class StartGame : MonoBehaviour
         //defaultCam.SetActive(false);
         mainCanvas.SetActive(false);
         tutorial.SetActive(false);
+        startGameCanvas.SetActive(false);
+
         PlayerMovements.Instance.canMove = false;
+
+        if (!GameManager.isCompleteTutorial)
+        { 
+            chipDesk.SetActive(false); 
+            ambienceAudioScr.SetActive(false);
+        }
 
         StartCoroutine(ActiveStartGameCanvas());
 
@@ -34,7 +43,6 @@ public class StartGame : MonoBehaviour
 
     IEnumerator ActiveStartGameCanvas() 
     {
-        startGameCanvas.SetActive(false);
         yield return new WaitForSeconds(1f);
         startGameCanvas.SetActive(true);
     }
