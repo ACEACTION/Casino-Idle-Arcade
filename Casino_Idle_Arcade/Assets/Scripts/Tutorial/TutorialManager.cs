@@ -88,8 +88,8 @@ public class TutorialManager : MonoBehaviour
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
             
-            baccaratBAController.defaultScale = 1;
-            secondBaccaratBAController.defaultScale = 1;
+            //baccaratBAController.defaultScale = 1;
+            //secondBaccaratBAController.defaultScale = 1;
 
             ambienceAudioSrc.SetActive(false);
             //upgradeBtn.SetActive(false);
@@ -159,6 +159,7 @@ public class TutorialManager : MonoBehaviour
             ChangeCamera();
             lootStartMoney = true;
             firstBaccarat.transform.parent.gameObject.SetActive(true);
+            baccaratBAController.defaultScale = 1;
         }
 
 
@@ -192,6 +193,8 @@ public class TutorialManager : MonoBehaviour
     {
         //yield return new WaitForSeconds(.1f);
         yield return new WaitForEndOfFrame();
+        secondBaccaratBAController.defaultScale = 1;
+        secondBaccaratBAController.paymentAmount = 65;
         secondBaccarat.SetActive(false);
     }
 
