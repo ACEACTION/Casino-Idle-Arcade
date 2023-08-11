@@ -64,7 +64,6 @@ public class SettingPanel : MonoBehaviour
             wasSelected = true;
             if (SaveLoad_Settings.Instance != null)
             {
-                print(GameManager.music);
                 SaveLoad_Settings.Instance.SaveSettings(GameManager.sfx, GameManager.music);
             }
             settingWindow.DOScale(0, openWinDuration).SetEase(closeWindowEase).OnComplete(() =>

@@ -11,6 +11,9 @@ public class CasinoGame_ChipGame : CasinoGame
     public float playCd;
     public float cleaningCd;
     public bool isWorkerAvailable = false;
+    
+    int gamesCounter;
+    bool isHeavyBet;
 
     [Header("Chip Process")]
     public int betCounter;
@@ -59,6 +62,7 @@ public class CasinoGame_ChipGame : CasinoGame
         ShakeModel();
         gameStack.SetMaxStackCount(upgradeIndex);
         cleaningCd = data.cleaningCdAmount;
+        SetGamesCounter();
     }
 
     public virtual void PayMoney()
@@ -66,12 +70,18 @@ public class CasinoGame_ChipGame : CasinoGame
         if (payedMoney)
         {
             payedMoney = false;
-            int moneyAmount = totalChipCounter * (upgradeIndex + 1);
+            int moneyAmount = 0;
 
-            //if (totalChipCounter >= 1 && totalChipCounter < 5) moneyAmount *= 2;
-            if (totalChipCounter >= 5 && totalChipCounter < 10)  moneyAmount = (int)(moneyAmount * 1.5f);
-            if (totalChipCounter >= 10 && totalChipCounter < 15) moneyAmount = (int)(moneyAmount * 2f);
-            if (totalChipCounter >= 15) moneyAmount *= 3;
+            //int moneyAmount = totalChipCounter * (upgradeIndex + 1);
+            //if (totalChipCounter >= 5 && totalChipCounter < 10)  moneyAmount = (int)(moneyAmount * 1.5f);
+            //if (totalChipCounter >= 10 && totalChipCounter < 15) moneyAmount = (int)(moneyAmount * 2f);
+            //if (totalChipCounter >= 15) moneyAmount *= 3;
+
+            moneyAmount = data.moneyAmountLevel[upgradeIndex];
+
+            if (isHeavyBet)
+                moneyAmount += data.heavyMoneyAmount;
+            
             customers[winnerIndex].PayMoney(stackMoney, moneyAmount, MoneyType.baccaratMoney);
             
         }
@@ -293,12 +303,25 @@ public class CasinoGame_ChipGame : CasinoGame
         if (!getBet)
         {
             getBet = true;
-            foreach (Customer customer in customers)
-            {
-                betCounter += customer.Bet(data.betUnitPrice);
-            }
+            //foreach (Customer customer in customers)
+            //{
+            //    betCounter += customer.Bet(data.betUnitPrice);
+            //}
 
-            betCounter /= 100;
+            //betCounter /= 100;
+
+            if (--gamesCounter <= 0)
+            {
+                betCounter = data.chipAmountPerLevel[upgradeIndex] + data.heavyChipAmount; 
+                SetGamesCounter();
+                isHeavyBet = true;
+
+            }
+            else
+            {
+                betCounter = data.chipAmountPerLevel[upgradeIndex];
+                isHeavyBet = false;
+            }
 
             //creative 2
 
@@ -318,6 +341,9 @@ public class CasinoGame_ChipGame : CasinoGame
         }
     }
 
+    
+
+    void SetGamesCounter() => gamesCounter = data.gamesCounterForHeavyBet;
 
     public override void UpgradeElements()
     {

@@ -31,6 +31,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject followCam;
     [SerializeField] List<Transform> objs;
     [SerializeField] BuyAreaController baccaratBAController;
+    [SerializeField] BuyAreaController secondBaccaratBAController;
+
     [SerializeField] CashierManager cashierManager;
     [SerializeField] GameObject chipDesk;
     //[SerializeField] float beforeFollowTime;
@@ -85,7 +87,9 @@ public class TutorialManager : MonoBehaviour
             //firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
             firstBaccarat.transform.parent.gameObject.SetActive(false);
+            
             baccaratBAController.defaultScale = 1;
+            secondBaccaratBAController.defaultScale = 1;
 
             ambienceAudioSrc.SetActive(false);
             //upgradeBtn.SetActive(false);
@@ -186,8 +190,8 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator DeactiveSeconBacc()
     {
-        yield return new WaitForSeconds(.1f);
-        //yield return new WaitForEndOfFrame();
+        //yield return new WaitForSeconds(.1f);
+        yield return new WaitForEndOfFrame();
         secondBaccarat.SetActive(false);
     }
 

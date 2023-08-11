@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c766b416f5cbe4a9a4d788fbde4d83, type: 3}
   m_Name: "\u200CBaccarat Data"
   m_EditorClassIdentifier: 
-  moneyAmountLevel: 050000000a0000000f000000
+  minGamesCounterForHeavyBet: 10
+  maxGamesCounterForHeavyBet: 20
+  heavyChipAmount: 10
+  chipAmountPerLevel: 030000000500000007000000
+  heavyMoneyAmount: 10
+  moneyAmountLevel: 020000000300000004000000
   maxPlayCdLevel:
   - 5
   - 8
@@ -22,5 +27,5 @@ MonoBehaviour:
   betUnitPrice: 100
   maxGetChipCd: 0.2
   playChipSpotOffset: 0.12
-  playChipSpotDefaultPos: {x: 0, y: 0.775, z: 0.114}
+  playChipSpotDefaultPos: {x: 0, y: 1, z: 0.114}
   afterGameDuration: 4
