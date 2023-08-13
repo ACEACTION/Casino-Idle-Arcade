@@ -77,7 +77,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!GameManager.isCompleteTutorial)
         {
-            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 5f;
+            cashierTime = cashierManager.data.cooldownAmount * firstBaccarat.maxGameCapacity + 4.8f;
             cashierManager.transform.parent.gameObject.SetActive(false);
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             //ChangeCamera();
@@ -160,6 +160,7 @@ public class TutorialManager : MonoBehaviour
             lootStartMoney = true;
             firstBaccarat.transform.parent.gameObject.SetActive(true);
             baccaratBAController.defaultScale = 1;
+            baccaratBAController.SetPayAmount();
         }
 
 
@@ -194,7 +195,7 @@ public class TutorialManager : MonoBehaviour
         //yield return new WaitForSeconds(.1f);
         yield return new WaitForEndOfFrame();
         secondBaccaratBAController.defaultScale = 1;
-        secondBaccaratBAController.paymentAmount = 65;
+        secondBaccaratBAController.SetPayAmount();
         secondBaccarat.SetActive(false);
     }
 

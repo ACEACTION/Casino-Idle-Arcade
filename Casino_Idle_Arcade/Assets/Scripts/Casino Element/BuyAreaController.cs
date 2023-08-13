@@ -36,11 +36,16 @@ public class BuyAreaController : MonoBehaviour
     IEnumerator DelayForLoadPriorityController()
     {
         yield return new WaitForSeconds(.1f);
-        payTime = 2;
         priceText.text = price.ToString();
         defaultScale = transform.localScale.x;
         playerWaitingCd = maxPlayerWaitingCd;
         //priceAmount = price;
+        SetPayAmount();
+    }
+
+    public void SetPayAmount()
+    {
+        payTime = 2;
         paymentAmount = (price / (payTime * 10));
         if (paymentAmount < 1) paymentAmount = price;
     }
