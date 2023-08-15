@@ -10,6 +10,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] float followCamTime;
     [SerializeField] float chipDeskTime;
     [SerializeField] Vector3 camOffset;
+    [SerializeField] Vector3 standArrowOffset;
+
     float cashierTime;
     bool followArrow = true;
     bool changeCam = true;
@@ -82,7 +84,8 @@ public class TutorialManager : MonoBehaviour
             //getChipTime = playerHandStack.data.maxAddStackCd * playerHandStack.data.maxStackCount + 2f;
             //ChangeCamera();
             chipDesk.SetActive(false);
-            
+
+            standArrow.transform.position += standArrowOffset;
             standArrow.transform.DOMoveY(standArrow.transform.position.y - 1f, 1.5f).SetLoops(-1, LoopType.Yoyo);
             //firstPriority_Baccarat.priorityObjs.RemoveAt(0);
             cashierManager.transform.parent.gameObject.SetActive(false);
@@ -391,7 +394,7 @@ public class TutorialManager : MonoBehaviour
         Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false); 
         followCam.SetActive(true);
 
-        standArrow.transform.position = objs[0].position + new Vector3(0, 100, 0);
+        standArrow.transform.position = objs[0].position + standArrowOffset;
         LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
         followCam.SetActive(false);
