@@ -391,7 +391,7 @@ public class TutorialManager : MonoBehaviour
         Joystick.Instance.transform.GetChild(0).gameObject.SetActive(false); 
         followCam.SetActive(true);
 
-        standArrow.transform.position = objs[0].position + new Vector3(0, 6, 0);
+        standArrow.transform.position = objs[0].position + new Vector3(0, 100, 0);
         LootMoneu_UI.Instance.gameObject.SetActive(false);
         yield return new WaitForSeconds(followCamTime);
         followCam.SetActive(false);

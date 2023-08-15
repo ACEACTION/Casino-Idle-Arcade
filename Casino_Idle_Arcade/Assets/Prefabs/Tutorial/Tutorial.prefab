@@ -182,7 +182,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021334975}
-  m_LocalRotation: {x: 0.27771577, y: 0.41571444, z: -0.13495432, w: 0.8554781}
+  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
   m_LocalPosition: {x: -9.87, y: 6.66, z: -23.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -190,7 +190,7 @@ Transform:
   - {fileID: 1992857219}
   m_Father: {fileID: 2770717608160236452}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 51, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &2021334976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223874173038895821}
   m_LocalRotation: {x: -0.70264995, y: 0, z: 0, w: 0.71153575}
-  m_LocalPosition: {x: 0.44536, y: 2.2476, z: -9.676561}
+  m_LocalPosition: {x: -4.162, y: 4, z: -15.659}
   m_LocalScale: {x: 0.4989985, y: 0.49899843, z: 0.49899843}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -381,9 +381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b431e6a0b40684ca8be325bbdf5e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 300
-  followCamTime: 3
-  chipDeskTime: 3
+  startMoney: 500
+  followCamTime: 1.7
+  chipDeskTime: 0.7
   camOffset: {x: 0, y: 0, z: 0}
   carryChip: 0
   arrowRenderer: {fileID: 1662080786034622734}
@@ -396,12 +396,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   baccaratBAController: {fileID: 0}
+  secondBaccaratBAController: {fileID: 0}
   cashierManager: {fileID: 0}
   chipDesk: {fileID: 0}
-  beforeFollowTime: 1
   firstBaccarat: {fileID: 0}
   secondBaccarat: {fileID: 0}
-  firstPriority_Baccarat: {fileID: 0}
   ambienceAudioSrc: {fileID: 0}
   startMoneyStack: {fileID: 4661743752316880268}
   upgradeBtn: {fileID: 0}
