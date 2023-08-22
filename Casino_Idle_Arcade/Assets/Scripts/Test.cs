@@ -14,7 +14,12 @@ public class Test : MonoBehaviour
 
     private void Start()
     {
-        
+
+    }
+
+    public void BtnTest()
+    {
+        Application.OpenURL("myket://comment?id=ir.mservices.mybook");
     }
 
 
