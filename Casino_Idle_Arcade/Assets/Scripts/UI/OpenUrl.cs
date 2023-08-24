@@ -6,6 +6,6 @@ public class OpenUrl : MonoBehaviour
 {
     [SerializeField] string url;
 
-    public void OpenUrlAction() => Application.OpenURL(url);
+  //  public void OpenUrlAction() => Application.OpenURL(url);
 
 }
