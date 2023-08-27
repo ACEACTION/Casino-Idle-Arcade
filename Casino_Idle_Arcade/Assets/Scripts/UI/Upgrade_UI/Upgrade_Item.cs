@@ -35,7 +35,7 @@ public class Upgrade_Item : MonoBehaviour
                 AudioSourceManager.Instance.PlayBuyItem();
                 
                 CameraFollow.instance.SetDynamicFollow_UpgradeWorker(upgradeEff.transform.parent
-                    , upgradeEff, upgradeData.upgradeName);
+                    , upgradeEff, upgradeData.farsiUpgradeName);
 
 
                 LevelUpSlider.Instance.SetLevelUp(LevelUpSlider.Instance.starIcon.position);

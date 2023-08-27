@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flCam: {fileID: 0}
+  camFollow: 1
   agent: {fileID: 1835598863279699245}
   afterSpawnTransform: {fileID: 0}
   spawnPoint: {fileID: 0}
@@ -783,6 +784,8 @@ MonoBehaviour:
   capacity: 4
   capacityAmount: 4
   anim: {fileID: 1835598863279699248}
+  playerMaxStackTxtState: 0
+  getPlayerMaxStackTxtState: 0
   camStayCd: 0
   offSet: {x: 0, y: 0, z: 0}
   isCleaning: 0
@@ -1079,21 +1082,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5657
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5657
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5657
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107167153780478340, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.098
       objectReference: {fileID: 0}
@@ -1142,25 +1130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5107167153780478341, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
-      propertyPath: yMoveTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107167153780478341, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
-      propertyPath: yMoveDuration
-      value: 1.3
-      objectReference: {fileID: 0}
     - target: {fileID: 5107167153780478347, guid: d140f52ee63a468459b15f1fb4592bda,
         type: 3}
       propertyPath: m_Name
       value: Worker Upgrade Show
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107167155035402579, guid: d140f52ee63a468459b15f1fb4592bda,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.434
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d140f52ee63a468459b15f1fb4592bda, type: 3}
