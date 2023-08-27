@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class LevelUpSlider : MonoBehaviour
 {
+    [SerializeField] string lvlTxtContent;
+    [SerializeField] string maxLvlTxtContent;
 
     [SerializeField] float sliderFillDuration;
 
@@ -321,9 +323,9 @@ public class LevelUpSlider : MonoBehaviour
     void SetLvlTxt()
     {
         if (LvlIsMax())
-            lvlTxt.text = "lvl max";
+            lvlTxt.text = maxLvlTxtContent;
         else
-            lvlTxt.text = string.Concat("lvl ", data.lvlUpCounter + 1);
+            lvlTxt.text = string.Concat(lvlTxtContent, data.lvlUpCounter + 1);
         
         //MakeObjectScale(lvlTxt.transform, lvlTxt.transform.localScale.x + .2f, lvlTxt.transform.localScale.x, .3f);
         lvlTxt.transform.DOScale(lvlTxt.transform.localScale + new Vector3(.2f, 0, 0), .3f).OnComplete(

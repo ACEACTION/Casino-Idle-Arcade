@@ -6,6 +6,7 @@ using AmirSaveLoadSystem;
 public class UpgradeData <T> : ScriptableObject
 {
     public string upgradeName;
+    public string farsiUpgradeName;
     public T upgradeValue;
     public int upgradeLevelCounter; 
 
