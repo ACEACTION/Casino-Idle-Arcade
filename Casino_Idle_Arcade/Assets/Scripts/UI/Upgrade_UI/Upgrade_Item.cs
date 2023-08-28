@@ -7,6 +7,7 @@ using TMPro;
 public class Upgrade_Item : MonoBehaviour
 {
     // references        
+    [SerializeField] string lvlContent;
     [SerializeField] Upgrade_Item_Btn item_btn;           
 
     public void InitItemBtn<T>(UpgradeData<T> upgradeData)
@@ -14,7 +15,7 @@ public class Upgrade_Item : MonoBehaviour
 
         if (upgradeData.CanUpgrade())
         {
-            item_btn.InitItemTxt(string.Concat(upgradeData.upgradeName, " Lvl.", upgradeData.upgradeLevelCounter + 1)
+            item_btn.InitItemTxt(string.Concat(upgradeData.farsiUpgradeName, " ", lvlContent, " ", upgradeData.upgradeLevelCounter + 1)
                     , upgradeData.GetUpgradeCost());
         }
 
@@ -34,7 +35,7 @@ public class Upgrade_Item : MonoBehaviour
                 AudioSourceManager.Instance.PlayBuyItem();
                 
                 CameraFollow.instance.SetDynamicFollow_UpgradeWorker(upgradeEff.transform.parent
-                    , upgradeEff, upgradeData.upgradeName);
+                    , upgradeEff, upgradeData.farsiUpgradeName);
 
 
                 LevelUpSlider.Instance.SetLevelUp(LevelUpSlider.Instance.starIcon.position);
