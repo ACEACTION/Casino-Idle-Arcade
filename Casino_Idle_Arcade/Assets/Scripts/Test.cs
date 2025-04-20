@@ -33,8 +33,6 @@ public class Test : MonoBehaviour
             myObject.ValueChanged += anotherObject.HandleValueChanged; // Subscribe to the event
 
             myObject.MyValue = 10; // This will trigger the action in AnotherClass
-            
-            print(myObject.MyValue);
         }
     }
 }
@@ -72,6 +70,5 @@ public class AnotherClass
     public void HandleValueChanged(int newValue)
     {
         // Perform the desired action with the new value
-        Debug.Log("Value changed: " + newValue);
     }
 }
