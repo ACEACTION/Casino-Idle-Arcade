@@ -96,11 +96,11 @@ public class CameraFollow : MonoBehaviour
 
     public void CamFollowDynamic(Transform obj) => firstFollowCamera.transform.position = obj.position + offset;
 
-    public void SetDynamicFollow_UpgradeWorker(Transform obj, WorkerUpgradeEffect upgradeEff, string upgradeMsg)
+    public void SetDynamicFollow_UpgradeWorker(Transform obj, WorkerUpgradeEffect upgradeEff, string upgrade_localize_key)
     {
         upgradeWorker = true;
         SetDynamicFollow(obj);
-        StartCoroutine(ShowUpgradeWorkerMsg(upgradeEff, upgradeMsg));
+        StartCoroutine(ShowUpgradeWorkerMsg(upgradeEff, upgrade_localize_key));
     }
 
     public void SetDynamicFollow_BuyWorker(Transform obj)
@@ -112,12 +112,12 @@ public class CameraFollow : MonoBehaviour
     }
 
 
-    IEnumerator ShowUpgradeWorkerMsg(WorkerUpgradeEffect upgradeEff, string msg)
+    IEnumerator ShowUpgradeWorkerMsg(WorkerUpgradeEffect upgradeEff, string upgrade_localize_key)
     {        
         MainUpgradePanel.Instance.gameObject.SetActive(false);
         float delay = maxFollowWorkerCd / 2;
         yield return new WaitForSeconds(delay);
-        upgradeEff.UpgradeEffectProcess(msg);
+        upgradeEff.UpgradeEffectProcess(upgrade_localize_key);
     }
 
     IEnumerator ResetPlayerMaxStackTxt()

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.Localization.Components;
 
 public class WorkerUpgradeEffect : MonoBehaviour
 {
     [SerializeField] Transform upgradeMsgPanel;
     [SerializeField] TextMeshProUGUI upgradeTxt;
     [SerializeField] ParticleSystem upgradeEff;
+    [SerializeField] LocalizeStringEvent localizeStringEvent;
     [SerializeField] WorkerUpgradeShowData data;
-    //Vector3 upgradeMsgPanelOriginPos;
-    //[SerializeField] float yMoveTarget;
-    //[SerializeField] float yMoveDuration;
 
     private void Awake()
     {
@@ -25,14 +24,16 @@ public class WorkerUpgradeEffect : MonoBehaviour
         upgradeMsgPanel.gameObject.SetActive(false);
     }
 
-    public void UpgradeEffectProcess(string upgradeMessage)
+    public void UpgradeEffectProcess(string upgrade_localize_key)
     {
         // effect process
         upgradeEff.Play();
 
         // show process
         upgradeMsgPanel.gameObject.SetActive(true);
-        upgradeTxt.text = upgradeMessage;
+
+        localizeStringEvent.StringReference.TableEntryReference = upgrade_localize_key;
+        upgradeTxt.text = localizeStringEvent.StringReference.GetLocalizedString();
 
         // y move process
         upgradeMsgPanel.localPosition = data.upgradeMsgPanelOriginPos;

@@ -6,17 +6,19 @@ using TMPro;
 
 public class Upgrade_Item : MonoBehaviour
 {
-    // references        
+    // references
     [SerializeField] string lvlContent;
-    [SerializeField] Upgrade_Item_Btn item_btn;           
+    [SerializeField] Upgrade_Item_Btn item_btn;
 
     public void InitItemBtn<T>(UpgradeData<T> upgradeData)
     {
 
         if (upgradeData.CanUpgrade())
         {
-            item_btn.InitItemTxt(string.Concat(upgradeData.farsiUpgradeName, " ", lvlContent, " ", upgradeData.upgradeLevelCounter + 1)
-                    , upgradeData.GetUpgradeCost());
+            //item_btn.InitItemTxt(string.Concat(upgradeData.upgrade_localize_key, " ", lvlContent, " ", upgradeData.upgradeLevelCounter + 1)
+            //        , upgradeData.GetUpgradeCost());
+
+            item_btn.InitItemTxt((upgradeData.upgradeLevelCounter + 1).ToString(), upgradeData.GetUpgradeCost());
         }
 
         item_btn.SetMaxedState(upgradeData.CanUpgrade());
@@ -35,7 +37,7 @@ public class Upgrade_Item : MonoBehaviour
                 AudioSourceManager.Instance.PlayBuyItem();
                 
                 CameraFollow.instance.SetDynamicFollow_UpgradeWorker(upgradeEff.transform.parent
-                    , upgradeEff, upgradeData.farsiUpgradeName);
+                    , upgradeEff, upgradeData.upgrade_localize_key);
 
 
                 LevelUpSlider.Instance.SetLevelUp(LevelUpSlider.Instance.starIcon.position);

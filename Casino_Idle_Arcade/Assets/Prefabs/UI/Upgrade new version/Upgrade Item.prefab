@@ -32,7 +32,6 @@ RectTransform:
   - {fileID: 6483971609940187390}
   - {fileID: 2887654168066151939}
   m_Father: {fileID: 9108274488610109861}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -96,7 +95,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9108274488610109861}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -152,8 +150,9 @@ GameObject:
   - component: {fileID: 4681379557989927045}
   - component: {fileID: 2498436533328831397}
   - component: {fileID: 5920262353544118814}
+  - component: {fileID: 8832205480512450912}
   m_Layer: 5
-  m_Name: Farsi Item Name
+  m_Name: Item Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +171,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9108274488610109861}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -282,6 +280,46 @@ MonoBehaviour:
   originalText: "\u067E\u0644\u06CC\u0631"
   fixTags: 1
   forceFix: 0
+--- !u!114 &8832205480512450912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645539452316895531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:1e717376b5855ee4e8e6686fe32ace17
+    m_TableEntryReference:
+      m_KeyId: 121073832218624
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5920262353544118814}
+        m_TargetAssemblyTypeName: RTLTMPro.RTLTextMeshPro, RTLTMPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8213876391353152774
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +351,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9108274488610109861}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -454,7 +491,6 @@ RectTransform:
   - {fileID: 4681379557989927045}
   - {fileID: 5908669651340590178}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -548,6 +584,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5908669651340590178}
     m_Modifications:
     - target: {fileID: 2854339541741234469, guid: 7308224531c284749b76cc546ae1fbc3,
@@ -686,6 +723,10 @@ PrefabInstance:
       value: Item Player Stack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 7307587398419029274, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
 --- !u!224 &2887654168066151939 stripped
 RectTransform:
@@ -698,6 +739,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5908669651340590178}
     m_Modifications:
     - target: {fileID: 2005625967, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
@@ -707,6 +749,11 @@ PrefabInstance:
     - target: {fileID: 2005625967, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayerSpeedBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044751881761058976, guid: 7308224531c284749b76cc546ae1fbc3,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 122091676553216
       objectReference: {fileID: 0}
     - target: {fileID: 2854339541741234469, guid: 7308224531c284749b76cc546ae1fbc3,
         type: 3}
@@ -839,6 +886,10 @@ PrefabInstance:
       value: Item Player Speed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 7307587398419029274, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7308224531c284749b76cc546ae1fbc3, type: 3}
 --- !u!224 &6483971609940187390 stripped
 RectTransform:

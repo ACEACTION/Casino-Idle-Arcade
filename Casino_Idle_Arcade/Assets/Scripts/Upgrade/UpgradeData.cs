@@ -7,6 +7,7 @@ public class UpgradeData <T> : ScriptableObject
 {
     public string upgradeName;
     public string farsiUpgradeName;
+    public string upgrade_localize_key;
     public T upgradeValue;
     public int upgradeLevelCounter; 
 

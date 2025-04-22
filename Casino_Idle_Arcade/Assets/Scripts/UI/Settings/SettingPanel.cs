@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class SettingPanel : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SettingPanel : MonoBehaviour
     [SerializeField] float openWinDuration;
     [SerializeField] Ease openWindowEase;
     [SerializeField] Ease closeWindowEase;
+    [SerializeField] GameObject joystick;
     [SerializeField] Transform settingWindow;
     [SerializeField] Setting_Sfx setting_Sfx;
     [SerializeField] Setting_Music setting_Music;
@@ -18,8 +20,11 @@ public class SettingPanel : MonoBehaviour
 
     public bool defaultGameMngrSfx;
 
+    public static SettingPanel Instance;
+
     private void Awake()
     {
+        Instance = this;
         settingWindow.transform.localScale = Vector3.zero;        
     }
 
@@ -55,6 +60,7 @@ public class SettingPanel : MonoBehaviour
     void OpenWindow()
     {
         settingWindow.DOScale(1, openWinDuration).SetEase(openWindowEase);
+        joystick.SetActive(false);
     }
 
     void CloseWindow()
@@ -72,6 +78,13 @@ public class SettingPanel : MonoBehaviour
                 wasSelected = false;
             });
         }
+
+        joystick.SetActive(true);
+    }
+
+    void OnDestroy()
+    {
+        Instance = null;
     }
 
 }

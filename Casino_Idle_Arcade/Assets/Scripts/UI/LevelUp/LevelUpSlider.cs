@@ -1,23 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using DG.Tweening;
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 public class LevelUpSlider : MonoBehaviour
 {
-    [SerializeField] string lvlTxtContent;
-    [SerializeField] string maxLvlTxtContent;
-
-    [SerializeField] float sliderFillDuration;
-
-    [SerializeField] Slider slider;
     public LevelUpData data;
+    [SerializeField] string lvlKey;
+    [SerializeField] string maxLvlKey;
+    [SerializeField] float sliderFillDuration;
+    [SerializeField] LocalizeStringEvent localizeStringEvent;
+    [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI lvlTxt;
-    Camera cam;
-
-    bool revertPos = true;
 
     [Header("Money")]
     [SerializeField] float moneyDuration;
@@ -27,9 +23,9 @@ public class LevelUpSlider : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyTxt;
     [SerializeField] float moveY;
     [SerializeField] float midPathOffset;
-    Vector3 moneyTxtOriginPos;
 
     [Header("Stars")]
+    public RectTransform starIcon;
     [SerializeField] float starFirsScaleDuration;
     [SerializeField] float starRotDuration;
     [SerializeField] float doPathDelay;
@@ -37,17 +33,20 @@ public class LevelUpSlider : MonoBehaviour
     [SerializeField] float starsDuration;
     [SerializeField] float starRevertFirstPosAmount;
     [SerializeField] float startMidPathAmount;
-    float starIconDefaultScale;
-    float starCloneDefaultScale;
-    public RectTransform starIcon;
     [SerializeField] RectTransform[] starsClone;
 
+    Vector3 moneyTxtOriginPos;
+    float starIconDefaultScale;
+    float starCloneDefaultScale;
+    Camera cam;
+    int currentLevel;
+    bool revertPos = true;
     public static LevelUpSlider Instance;
-    private void Awake()
+
+    void Awake()
     {
         if (Instance == null)
             Instance = this;
-
     }
 
     void Start()
@@ -59,7 +58,7 @@ public class LevelUpSlider : MonoBehaviour
 
         data.LoadData();
 
-        SetLvlTxt();
+        SetLvlTxtAnimation();
         if (LvlIsMax())
         {
             slider.value = slider.maxValue;
@@ -73,7 +72,7 @@ public class LevelUpSlider : MonoBehaviour
         SetMoneyScale();
         money.onClick.AddListener(MoneyAction);
         cam = Camera.main;
-        
+
         if (data.totalMoney > 0 && !LvlIsMax())
             money.gameObject.SetActive(true);
         else
@@ -84,6 +83,8 @@ public class LevelUpSlider : MonoBehaviour
 
         starIconDefaultScale = starIcon.localScale.x;
         starCloneDefaultScale = starsClone[0].localScale.x;
+
+        localizeStringEvent.OnUpdateString.AddListener(OnLocalizedTextChanged);
     }
 
     void SetMoneyScale() =>
@@ -94,35 +95,7 @@ public class LevelUpSlider : MonoBehaviour
     {
 
         money.gameObject.SetActive(false);
-        //MoveMoneyClones();
         MoveMoneyTxt();
-    }
-
-    void MoveMoneyClones()
-    {
-        money.gameObject.SetActive(false);
-
-        for (int i = 0; i < moneyClones.Length; i++)
-        {
-            Transform moneyCloneTransform = moneyClones[i].transform;
-            moneyCloneTransform.gameObject.SetActive(true);
-            Vector3 originPos = moneyCloneTransform.position;
-
-            moneyCloneTransform.transform.localScale = new Vector3(.4f, .4f, .4f);
-            MakeObjectScale(moneyCloneTransform,
-                1, .2f, moneyDuration / 2);
-
-            SetDoPath(moneyCloneTransform, totalMoneyIcon.position, midPathOffset, () =>
-            {
-                moneyCloneTransform.DOKill();
-                moneyCloneTransform.position = originPos;
-                moneyCloneTransform.localScale = Vector3.one;
-                GameManager.AddMoney(data.totalMoney);
-                Money_UI.Instance.SetTotalMoneyTxt();
-                data.totalMoney = 0;
-            });
-
-        }
     }
 
     void MoveMoneyTxt()
@@ -142,30 +115,10 @@ public class LevelUpSlider : MonoBehaviour
         });
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SetLevelUp(PlayerMovements.Instance.transform.position);            
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            for (int i = 0; i < starsClone.Length; i++)
-            {
-                starsClone[i].localScale = Vector3.zero;
-            }
-        }
-
-    }
-
-
-
     public void SetLevelUp(Vector3 worldPos)
     {
         StartCoroutine(FillSliderValue());
         MakeStars(worldPos);
-
     }
 
     IEnumerator FillSliderValue()
@@ -181,7 +134,7 @@ public class LevelUpSlider : MonoBehaviour
                 data.lvlUpCurrentValue = remain;
 
                 data.lvlUpCounter++;
-                SetLvlTxt();
+                SetLvlTxtAnimation();
 
                 money.gameObject.SetActive(true);
                 data.SetTotalMoney();
@@ -199,7 +152,7 @@ public class LevelUpSlider : MonoBehaviour
                 }
                 else
                 {
-                    SetLvlTxt();
+                    SetLvlTxtAnimation();
                     slider.DOValue(slider.maxValue, sliderFillDuration);
                 }
             }
@@ -213,30 +166,24 @@ public class LevelUpSlider : MonoBehaviour
         }
         else
         {
-            SetLvlTxt();
+            SetLvlTxtAnimation();
         }
-
 
     }
 
-
-    
     void MakeStars(Vector3 worldPos)
-    {        
+    {
         Vector2 screenPos = GetScreenPos(worldPos);
         for (int i = 0; i < starsClone.Length; i++)
         {
             Transform star = starsClone[i];
             star.gameObject.SetActive(true);
-            SetFirstStarClonePos(star, screenPos, starRevertFirstPosAmount);            
+            SetFirstStarClonePos(star, screenPos, starRevertFirstPosAmount);
             revertPos = !revertPos;
         }
-
         StartCoroutine(StarsDoPathProcess());
     }
 
-    
-    
     IEnumerator StarsDoPathProcess()
     {
 
@@ -249,10 +196,10 @@ public class LevelUpSlider : MonoBehaviour
         {
             Transform star = starsClone[i];
             star.transform.DOKill();
-            yield return new WaitForSeconds(doPathDelay);                                   
+            yield return new WaitForSeconds(doPathDelay);
             star.eulerAngles = new Vector3(0, starRotate, 0);
             star.DOScale(starCloneDefaultScale, starFirsScaleDuration).OnComplete(() =>
-            {                
+            {
                 star.DORotate(new Vector3(0, -starRotate, 0), starRotDuration).SetLoops(-1, LoopType.Yoyo);
             });
         }
@@ -278,7 +225,6 @@ public class LevelUpSlider : MonoBehaviour
 
     }
 
-
     void SetFirstStarClonePos(Transform clone, Vector2 centerPos, float offset)
     {
         if (revertPos)
@@ -292,8 +238,6 @@ public class LevelUpSlider : MonoBehaviour
     {
         Vector2 midPath = (clone.position + destination) / 2;
 
-        //midPath.x += Random.Range(-startMidPathAmount, startMidPathAmount);
-
         if (!revertPos)
         {
             midPath.x += Random.Range(0, midOffset);
@@ -301,17 +245,15 @@ public class LevelUpSlider : MonoBehaviour
         else
             midPath.x -= Random.Range(0, midOffset);
 
-
-        Vector3[] path = { clone.position, midPath, destination};
+        Vector3[] path = { clone.position, midPath, destination };
         clone.DOPath(path, starsDuration, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(() =>
         {
-            //MakeStarIconScale();
             completeAction();
             clone.gameObject.SetActive(false);
         });
     }
 
-    void MakeStarIconScale() 
+    void MakeStarIconScale()
         => MakeObjectScale(starIcon, starIconDefaultScale + .4f, starIconDefaultScale, .2f);
 
     void MakeObjectScale(Transform t, float targetScale, float originScale, float duration) =>
@@ -320,24 +262,35 @@ public class LevelUpSlider : MonoBehaviour
     Vector2 GetScreenPos(Vector3 worldPos) => RectTransformUtility.WorldToScreenPoint(cam, worldPos);
 
     void SetSliderMaxValue() => slider.maxValue = data.maxLvlUpUnit[data.lvlUpCounter].maxLvlValue;
-    void SetLvlTxt()
+
+    void OnLocalizedTextChanged(string localizedValue)
     {
-        if (LvlIsMax())
-            lvlTxt.text = maxLvlTxtContent;
-        else
-            lvlTxt.text = string.Concat(lvlTxtContent, data.lvlUpCounter + 1);
-        
-        //MakeObjectScale(lvlTxt.transform, lvlTxt.transform.localScale.x + .2f, lvlTxt.transform.localScale.x, .3f);
+        SetLevelText();
+    }
+
+    void SetLvlTxtAnimation()
+    {
+        SetLevelText();
         lvlTxt.transform.DOScale(lvlTxt.transform.localScale + new Vector3(.2f, 0, 0), .3f).OnComplete(
             () => { lvlTxt.transform.DOScale(lvlTxt.transform.localScale - new Vector3(.2f, 0, 0), .3f); });
     }
 
-    bool LvlIsMax() => data.lvlUpCounter + 1 > data.maxLvlUpUnit.Count;
-
-    private void OnDisable()
+    void SetLevelText() 
     {
-        //data.lvlUpCounter = 0;
-        //data.lvlUpCurrentValue = 0;
+        if (LvlIsMax())
+        {
+            localizeStringEvent.StringReference.TableEntryReference = maxLvlKey;
+            lvlTxt.text = localizeStringEvent.StringReference.GetLocalizedString();
+        }
+        else
+        {
+            localizeStringEvent.StringReference.TableEntryReference = lvlKey;
+            currentLevel = data.lvlUpCounter + 1;
+            lvlTxt.text = string.Concat(localizeStringEvent.StringReference.GetLocalizedString(), " ", currentLevel);
+        }
+
     }
+
+    bool LvlIsMax() => data.lvlUpCounter + 1 > data.maxLvlUpUnit.Count;
 
 }

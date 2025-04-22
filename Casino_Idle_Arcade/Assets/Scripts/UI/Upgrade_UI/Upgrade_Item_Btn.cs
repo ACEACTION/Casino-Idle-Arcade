@@ -9,6 +9,7 @@ public class Upgrade_Item_Btn : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI itemLvlTxt;
+    [SerializeField] ItemLevelText itemLevelText;
     [SerializeField] TextMeshProUGUI itemBtnTxt;
     [SerializeField] GameObject cashIcon;
     [SerializeField] Image defaultBg;
@@ -17,9 +18,18 @@ public class Upgrade_Item_Btn : MonoBehaviour
     [SerializeField] GameObject maxedTxt;
     [SerializeField] Button btn;
 
+    void Start()
+    {
+        //itemLvlTxt.
+
+
+    }
+
     public void InitItemTxt(string lvlTxt, int itemPrice)
     {
-        itemLvlTxt.text = lvlTxt;
+        //itemLvlTxt.text = lvlTxt;
+        //itemLvlTxt.text = string.Concat(itemLvlTxt.text, " ", lvlTxt);
+        itemLevelText.SetText(lvlTxt);
         itemBtnTxt.text = itemPrice.ToString();
 
     }
