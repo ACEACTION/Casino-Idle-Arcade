@@ -9,6 +9,7 @@ public class Upgrade_Icon_Btn : MonoBehaviour
     [SerializeField] float openUpgradePanelDuration;
     [SerializeField] Ease openEase;
     [SerializeField] Ease closeEase;
+    [SerializeField] GameObject joystick;
     bool wasSelected = false;
     [SerializeField] Button btn;
     [SerializeField] MainUpgradePanel upgradeMainPanel;
@@ -29,6 +30,7 @@ public class Upgrade_Icon_Btn : MonoBehaviour
         upgradeMainPanel.gameObject.SetActive(true);
         upgradeMainPanel.mainWindow.DOScale(upgradePanelDefaultScale, openUpgradePanelDuration).SetEase(openEase);
         AudioSourceManager.Instance.OpenWindowUi();
+        joystick.SetActive(false);
     }
 
 
@@ -45,6 +47,7 @@ public class Upgrade_Icon_Btn : MonoBehaviour
                 wasSelected = false;
             });
         }
+        joystick.SetActive(true);
     }
 
 }
