@@ -349,6 +349,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64cb50dfb151a7f479063f08b9a4bac5, type: 3}
+--- !u!1 &23090187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 223171963020371244, guid: 00840687c9751ef458d835ea36450997,
+    type: 3}
+  m_PrefabInstance: {fileID: 8249163097526929101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &24030867
 GameObject:
   m_ObjectHideFlags: 0
@@ -13511,6 +13517,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 693863096, guid: 00840687c9751ef458d835ea36450997, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 23090187}
     - target: {fileID: 1138758310, guid: 00840687c9751ef458d835ea36450997, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
