@@ -2,31 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Components;
 public class StartLoaderSceneDialogue : MonoBehaviour
 {
     [SerializeField] float dotInTxtCd;
     [SerializeField] List<string> dialogues;
+    [SerializeField] List<string> tipKeyList;
     [SerializeField] TextMeshProUGUI dialogueTxt;
-    
-    IEnumerator Start()
+    [SerializeField] LocalizeStringEvent localizeStringEvent;
+
+    public void CallDialogue() => StartCoroutine(StartDialogue());
+
+    IEnumerator StartDialogue()
     {
         int dialogueIndex = Random.Range(0, dialogues.Count);
-        string dialogue;
+        string tipKey;
 
         while (true)
         {
-            dialogue = dialogues[dialogueIndex];
+            tipKey = tipKeyList[dialogueIndex];
 
-            SetDialogueTxt(dialogue, "");
-
-            yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(dialogue, ".");
+            SetDialogueTxt(tipKey, "");
 
             yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(dialogue, "..");
+            SetDialogueTxt(tipKey, ".");
 
             yield return new WaitForSeconds(dotInTxtCd);
-            SetDialogueTxt(dialogue, "...");
+            SetDialogueTxt(tipKey, "..");
+
+            yield return new WaitForSeconds(dotInTxtCd);
+            SetDialogueTxt(tipKey, "...");
 
             yield return new WaitForSeconds(dotInTxtCd);
 
@@ -36,10 +41,10 @@ public class StartLoaderSceneDialogue : MonoBehaviour
 
     }
 
-    void SetDialogueTxt(string dialogue, string dot)
+    void SetDialogueTxt(string tip_key, string dot)
     {
-        dialogueTxt.text = string.Concat(dialogue, dot);
-        
+        localizeStringEvent.StringReference.TableEntryReference = tip_key;
+        dialogueTxt.text = string.Concat(localizeStringEvent.StringReference.GetLocalizedString(), dot);
     }
     
 

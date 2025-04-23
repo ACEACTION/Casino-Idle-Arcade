@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AmirSaveLoadSystem;
+using System;
 
 public static class GameManager 
 {
-
- 
     // settings
     public static bool sfx;
     public static bool music;
@@ -62,6 +61,6 @@ public static class GameManager
         totalMoney = 0;
         isCompleteTutorial = false;
         SaveLoadSystem.DeleteFile(totalMoneyDataPath);
-    }
+    }    
 
 }

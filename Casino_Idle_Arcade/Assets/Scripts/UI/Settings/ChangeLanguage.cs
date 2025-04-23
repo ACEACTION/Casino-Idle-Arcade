@@ -16,19 +16,6 @@ public class ChangeLanguage : MonoBehaviour
     {
         // Get available locales
         locales = LocalizationSettings.AvailableLocales.Locales;
-
-        // Clear and populate dropdown
-        //languageDropdown.ClearOptions();
-        //List<string> options = new List<string>();
-
-        //foreach (var locale in locales)
-        //{
-        //    options.Add(locale.Identifier.CultureInfo.NativeName);
-        //}
-
-        //languageDropdown.AddOptions(options);
-
-        // Set current selected value
         languageDropdown.value = GetCurrentLocaleIndex();
         languageDropdown.RefreshShownValue();
 
@@ -50,5 +37,7 @@ public class ChangeLanguage : MonoBehaviour
     void OnLanguageChanged(int index)
     {
         LocalizationSettings.SelectedLocale = locales[index];
+
+        SaveLoadController.Instance.SaveLanguageIndex(index);
     }
 }

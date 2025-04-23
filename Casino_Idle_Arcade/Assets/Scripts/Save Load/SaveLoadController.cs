@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AmirSaveLoadSystem;
+using System;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 public class SaveLoadController : MonoBehaviour
 {
-
-
-    // paths
-    const string tutorialStatePath = "toturialStatePath";
-
+    // Keys
+    const string tutorialStatePath = "tutorialStatePath";
+    const string languageIndexKey = "languageIndexKey";
 
     // refs
     [SerializeField] SaveLoad_Settings saveLoad_settings;
+    [SerializeField] StartLoaderSceneDialogue startLoaderDialogue;
 
     [Header("Test")]
     public bool isCompleteTutorial;
@@ -39,6 +41,7 @@ public class SaveLoadController : MonoBehaviour
     {
         saveLoad_settings.LoadSettings();
         GameManager.LoadTotalMoney(defaultMoney);
+        LoadLanguageIndex();
     }
 
     public void SaveTutorialState()
@@ -49,27 +52,22 @@ public class SaveLoadController : MonoBehaviour
             },
             (success) => {
                // Debug.Log(success);
+                saveLoad_settings.SaveSettings(true, true); 
             });
 
-        saveLoad_settings.SaveSettings(true, true); 
     }
 
     void LoadTutorialState()
     {
         SaveLoadSystem.LoadAes<bool>((data) => {
-            GameManager.isCompleteTutorial = true;
+            GameManager.isCompleteTutorial = data;
         }, tutorialStatePath
         , (error) => {
-            //GameManager.isCompleteTutorial = false;
             GameManager.isCompleteTutorial = isCompleteTutorial;
 
             if (!isCompleteTutorial)
             {
-                //SaveLoad_CasinoElement.Instance.DeleteCasinoElementDataFile();
-                //PriorityController.Instance.DeleteOpenedPriorityFile();
-                //SaveLoad_Cashier.Instance.DeleteCashierData();
                 GameManager.DeleteTotalMoneyFile();
-                //LevelUpSlider.Instance.data.ResetData();
             }
         }
         , (success) => { 
@@ -80,6 +78,35 @@ public class SaveLoadController : MonoBehaviour
     public void DeleteTutorialStateFile()
     {
         SaveLoadSystem.DeleteFile(tutorialStatePath);
+    }
+
+    public void SaveLanguageIndex(int languageIndex)
+    {
+        SaveLoadSystem.SaveAes(languageIndex, languageIndexKey,
+            (error) => {
+                Debug.Log(error);
+            },
+            (success) => {
+                Debug.Log("language saved succeed");
+                saveLoad_settings.SetLanguageIndex(languageIndex);
+            });
+    }
+
+    public void LoadLanguageIndex()
+    {
+        SaveLoadSystem.LoadAes<int>((data) => {
+            List<Locale> locales = LocalizationSettings.AvailableLocales.Locales;
+            LocalizationSettings.SelectedLocale = locales[data];
+            saveLoad_settings.SetLanguageIndex(data);
+            startLoaderDialogue.CallDialogue();
+        }, languageIndexKey
+       , (error) => {
+            Debug.Log(error);
+       }
+       , (success) => {
+       });
+
+       
     }
 
 }

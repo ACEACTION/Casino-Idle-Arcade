@@ -7,7 +7,7 @@ public class StartLoaderSceneSlider : MonoBehaviour
 {
     [SerializeField] GameObject startLoaderCanvas;
     [SerializeField] Slider progressSlider;
-
+    [SerializeField] float waitToLoadScene;
     void Start()
     {
         progressSlider.value = 0;
@@ -28,7 +28,7 @@ public class StartLoaderSceneSlider : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(waitToLoadScene);
         startLoaderCanvas.SetActive(false);
     }
 

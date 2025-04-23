@@ -81,6 +81,10 @@ public class SaveLoad_Settings : MonoBehaviour
         AudioSourceBgMusic.Instance.SetAudioSource();
     }
 
+    int languageIndex;
+    public int GetLanguageIndex() => languageIndex;
+    public void SetLanguageIndex(int index) => languageIndex = index;
+    
 }
 
 [System.Serializable]
